@@ -1,0 +1,61 @@
+.header {
+  @apply py-[20px] bg-white; }
+  .header__top {
+    @apply flex justify-between items-center; }
+    .header__top-search {
+      @apply relative; }
+      .header__top-search .input-search input {
+        @apply pr-[55px] h-[43px] w-[580px] pl-[15px] rounded-[11px] border border-solid border-[#e0e0e0]; }
+        .header__top-search .input-search input::placeholder {
+          @apply text-[#898d92]; }
+      .header__top-search .icon-search {
+        @apply flex justify-center items-center rounded-[11px] w-[42px] h-[43px] absolute right-0
+        bg-gradient-to-r from-dynamic-color-from to-dynamic-color-to; }
+    .header__top .phone {
+      @apply transition-colors hover:text-[#1051ef] !important; }
+  .header__logo {
+    @apply ml-[40px]; }
+    .header__logo img {
+      color: grey;
+      display: inline-block;
+      -webkit-mask: linear-gradient(-60deg, #000 30%, #0005, #000 50%) right/300% 100%;
+      mask: linear-gradient(-60deg, #000 30%, #0005, #000 50%) right/300% 100%;
+      background-repeat: no-repeat;
+      animation: shimmer 3s infinite; }
+  .header .account {
+    @apply cursor-pointer flex items-center gap-[8px] rounded-[11px] border border-solid border-[#e0e0e2]
+    px-[10px] py-[8px]; }
+    .header .account .account-text {
+      @apply font-bold; }
+  .header .shopping-cart {
+    @apply relative; }
+    .header .shopping-cart em {
+      position: absolute;
+      top: 1px;
+      right: -4px;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      color: #FFF;
+      text-align: center;
+      letter-spacing: 0;
+      font-weight: 400;
+      font-size: 10px;
+      line-height: 15px;
+      @apply bg-gradient-to-r from-dynamic-color-from to-dynamic-color-to; }
+  .header .line-account {
+    background: #e4e4e4;
+    height: 18px;
+    display: flex;
+    width: 1px;
+    margin: 0 10px; }
+
+@keyframes shimmer {
+  0% {
+    -webkit-mask-position: 140% 140%;
+    mask-position: 140% 140%; }
+  100% {
+    -webkit-mask-position: -20% -20%;
+    mask-position: -20% -20%; } }
+
+/*# sourceMappingURL=header.css.map */
