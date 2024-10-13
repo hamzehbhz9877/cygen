@@ -15,21 +15,22 @@ const Search = () => {
     const [value, setValue] = useState<string>('')
 
     const handleChangeValue = (data: string) => setValue(data)
-    const overlay = document.querySelector('.overlay')
 
     const searchRef = useRef<HTMLFormElement | null>(null)
     const searchResult = useRef<HTMLDivElement | null>(null)
 
 
     const handleOpenSearchResult = () => {
-        overlay.classList.add('active')
+        const overlay = document.querySelector('body .overlay')
         searchResult.current?.classList.add('active')
+        overlay?.classList.add('active')
     }
 
 
     useClickOutside(searchRef, () => {
+        const overlay = document.querySelector('body .overlay')
         searchResult.current?.classList.remove('active')
-        overlay.classList.remove('active')
+        overlay?.classList.remove('active')
     })
 
 
