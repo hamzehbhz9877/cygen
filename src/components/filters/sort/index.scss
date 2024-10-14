@@ -1,0 +1,60 @@
+.sort-products {
+
+  @apply flex justify-between items-center;
+
+  padding: 16px 10px;
+
+  &__filter {
+    @apply flex items-center;
+    &-title {
+      font-size: 13px;
+      font-weight: 500;
+      color: #232933;
+      margin-left: 11px;
+    }
+
+    &-icon {
+      fill: #424750;
+      height: 24px;
+      width: 24px;
+      margin-left: 4px;
+    }
+
+
+    &-item {
+
+        color: #4d4d4d;
+        display: inline-block;
+        padding: 1px 8px;
+        position: relative;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 24px;
+        vertical-align: middle;
+        border-radius: 7px;
+
+      &--active {
+        @apply bg-dynamic-color-from bg-dynamic-color-to;
+
+        a {
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  &__count {
+    color: #81858b;
+    font-size: 14px;
+    font-weight: 400;
+
+    .count {
+      line-height: 16px;
+    }
+
+    .total {
+      font-weight: 700;
+      color: #2e2e2e;
+    }
+  }
+}

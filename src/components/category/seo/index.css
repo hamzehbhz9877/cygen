@@ -1,0 +1,43 @@
+.category-seo {
+  display: inline-block;
+  position: relative;
+  border-radius: 11px;
+  margin: 15px 0 10px;
+  padding: 20px 30px 10px 30px;
+  font-size: 14px;
+  line-height: 2;
+  letter-spacing: -.1px;
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #e3e3e3;
+  color: #656565; }
+  .category-seo__title {
+    font-size: 20px;
+    color: #2c2b2b;
+    font-weight: 500;
+    line-height: 1.5;
+    margin-bottom: 10px; }
+  .category-seo .footer-description-shop.boxed .term-description {
+    max-height: 300px;
+    overflow: hidden; }
+  .category-seo a.mask-handler {
+    font-size: 12px;
+    margin: 3px 0;
+    font-weight: 500;
+    color: #474747;
+    text-align: center; }
+    .category-seo a.mask-handler .show-more, .category-seo a.mask-handler .show-less {
+      margin-top: 15px;
+      color: #1051ef !important;
+      cursor: pointer;
+      text-align: center;
+      font-weight: bold;
+      position: relative;
+      font-size: 15px; }
+  .category-seo__description {
+    max-height: 300px;
+    overflow: hidden; }
+    .category-seo__description--open {
+      max-height: unset !important; }
+
+/*# sourceMappingURL=index.css.map */

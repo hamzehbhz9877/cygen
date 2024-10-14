@@ -1,0 +1,46 @@
+import React, {useEffect, useRef, useState} from 'react';
+import useClickOutside from "@/hooks/useOutsideClick";
+import {headerCategory} from "@/api/megamenu";
+import Categories from "@/layout/header/bottom/categories";
+import CategoryContent from "@/layout/header/bottom/categoryContent";
+import {MdOutlineMenu} from "react-icons/md";
+import Link from "next/link";
+import UseBodyOverLay from "@/hooks/useBodyOverLay";
+
+const MegaMenu = () => {
+    const clickRef = useRef<HTMLDivElement | null>(null);
+
+    const [categoryId, setCategoryId] = useState(1)
+    const [isDropdownActive, setIsDropDownActive] = useState(false)
+
+
+    const handleDropDown = () => {
+        setIsDropDownActive(!isDropdownActive)
+    }
+
+    const closeMenu = () => {
+        clickRef.current?.classList.remove("category-dropdown--active");
+        setIsDropDownActive(false)
+    };
+    useClickOutside(clickRef, closeMenu);
+
+    UseBodyOverLay(isDropdownActive)
+
+    return (
+        <li className="header__bottom-list-item" onMouseEnter={handleDropDown} onMouseLeave={handleDropDown}>
+            <Link href={"/"} className="!pr-0">
+                <MdOutlineMenu size={18}/>
+                <span>دسته بندی کالا ها</span>
+            </Link>
+            <div ref={clickRef} className={`category-dropdown flex ${isDropdownActive ?
+                "category-dropdown--active" : ""}`}>
+                <Categories headerCategory={headerCategory} setSubCategoryId={setCategoryId}/>
+                <CategoryContent categoryId={categoryId}/>
+            </div>
+        </li>
+
+    )
+        ;
+};
+
+export default MegaMenu;
