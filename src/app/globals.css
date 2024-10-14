@@ -47,6 +47,13 @@ input:focus{
   visibility: visible;
 }
 
+* {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

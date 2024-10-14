@@ -24,7 +24,7 @@
       vertical-align: middle;
       border-radius: 7px; }
       .sort-products__filter-item--active {
-        @apply bg-dynamic-color-from bg-dynamic-color-to; }
+        @apply bg-gradient-to-r from-dynamic-color-from to-dynamic-color-to; }
         .sort-products__filter-item--active a {
           color: #fff; }
   .sort-products__count {

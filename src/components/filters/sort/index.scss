@@ -34,7 +34,7 @@
         border-radius: 7px;
 
       &--active {
-        @apply bg-dynamic-color-from bg-dynamic-color-to;
+        @apply bg-gradient-to-r from-dynamic-color-from to-dynamic-color-to;
 
         a {
           color: #fff;

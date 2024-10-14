@@ -1,4 +1,4 @@
-.category-seo{
+.category-seo {
 
   display: inline-block;
   position: relative;
@@ -14,8 +14,7 @@
   color: #656565;
 
 
-
-  &__title{
+  &__title {
     font-size: 20px;
     color: #2c2b2b;
     font-weight: 500;
@@ -34,21 +33,28 @@
     font-weight: 500;
     color: #474747;
     text-align: center;
-    .show-more,.show-less{
+
+    .show-more, .show-less {
       margin-top: 15px;
-      color:#1051ef!important;
+      color: #1051ef !important;
       cursor: pointer;
       text-align: center;
       font-weight: bold;
       position: relative;
       font-size: 15px;
     }
+
+    .show-less {
+      padding: 5px 0;
+    font-size: 12px;
+    }
   }
 
-  &__description{
+  &__description {
     max-height: 300px;
     overflow: hidden;
-    &--open{
+
+    &--open {
       max-height: unset !important;
     }
   }

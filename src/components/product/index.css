@@ -159,7 +159,7 @@
         line-height: 18px;
         display: inline-flex;
         order: 2;
-        @apply bg-dynamic-color-from bg-dynamic-color-to; }
+        @apply bg-gradient-to-r from-dynamic-color-from to-dynamic-color-to; }
       .product .index-prices-pro del span.woocommerce-Price-amount {
         font-weight: 400;
         font-size: 12px;

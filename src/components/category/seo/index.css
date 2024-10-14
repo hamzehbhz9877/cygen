@@ -34,6 +34,9 @@
       font-weight: bold;
       position: relative;
       font-size: 15px; }
+    .category-seo a.mask-handler .show-less {
+      padding: 5px 0;
+      font-size: 12px; }
   .category-seo__description {
     max-height: 300px;
     overflow: hidden; }

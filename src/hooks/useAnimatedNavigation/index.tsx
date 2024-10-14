@@ -2,11 +2,11 @@
 
 import React, {Ref, useEffect} from 'react';
 
-const UseAnimatedNavigation = (menuRef,borLineRef) => {
+const UseAnimatedNavigation = (menuRef:any,borLineRef:any) => {
 
     useEffect(() => {
         const list = menuRef.current?.querySelectorAll('li')
-        list.forEach(d => {
+        list.forEach((d:any) => {
             d.addEventListener('mouseenter', () => {
                 borLineRef.current.style.right = menuRef.current?.offsetWidth - d.offsetLeft - d.offsetWidth + "px"
                 borLineRef.current.style.width = d.offsetWidth + "px"
