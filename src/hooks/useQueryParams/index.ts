@@ -11,14 +11,30 @@ const UseQueryParams = () => {
 
     const removeQueryParam = (query: string) => {
         nextSearchParams.delete(query)
-        router.replace(`${pathname}?${nextSearchParams}`)
+        router.push(`${pathname}?${nextSearchParams}`)
     }
 
-    const addQueryParam = (query: string, value: any) => {
+    const addQueryParam = (query: string, value: any,type:string="") => {
 
-        nextSearchParams.set(query, value)
+        if (nextSearchParams.get(query) && type==="array") {
+            let items;
+            const exsist = nextSearchParams.get(query)?.split(",").includes(value)
+            if (exsist) {
+                items = nextSearchParams.get(query)?.split(",")?.filter(data => data !== value)
 
-        router.replace(`${pathname}?${nextSearchParams}`)
+            } else {
+                items = [nextSearchParams.get(query), value].map((value) => `${value}`).join(',');
+            }
+
+            if (items.length === 0)
+                removeQueryParam(query)
+            else
+                nextSearchParams.set(query, items)
+        } else {
+            nextSearchParams.set(query, value)
+        }
+
+        router.push(decodeURIComponent(`${pathname}?${nextSearchParams}`))
 
     }
 

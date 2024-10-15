@@ -15,7 +15,7 @@ import {formatter} from "@/utils/helpers-client";
 const ActiveFilters = () => {
 
 
-    const {getAllSearchParams,removeQueryParam} = useQueryParams()
+    const {getAllSearchParams, removeQueryParam,addQueryParam} = useQueryParams()
 
     return (
         Object.entries(getAllSearchParams())?.length > 0 ?
@@ -33,14 +33,29 @@ const ActiveFilters = () => {
                             <ul className="filter-active__list">
                                 {Object.entries(getAllSearchParams()).map(item => {
 
-                                            return <li>
-                                                <Link href={"/"}>
-                                                    {item[0] === "min_price" ? "حداقل" + " " + formatter.format(item[1]) + " " + "تومان" : item[0] === "max_price" ?
-                                                        "حداقل" + " " + formatter.format(item[1]) + " " + "تومان" : item[1]}
-                                                </Link>
-                                                <IoClose className="cursor-pointer" size={13} color={"#bdbdbd"}
-                                                         onClick={() => removeQueryParam(item[0])}/>
-                                            </li>
+
+                                    if (item[1].includes(",")) {
+                                        return item[1].split(",").map(data => {
+                                            return (
+                                                <li>
+                                                    <Link href={"/"}>
+                                                        {data}
+                                                    </Link>
+                                                    <IoClose className="cursor-pointer" size={13} color={"#bdbdbd"}
+                                                             onClick={() => addQueryParam(item[0],data)}/>
+                                                </li>
+                                            )
+                                        })
+                                    } else {
+                                        return <li>
+                                            <Link href={"/"}>
+                                                {item[0] === "min_price" ? "حداقل" + " " + formatter.format(item[1]) + " " + "تومان" : item[0] === "max_price" ?
+                                                    "حداقل" + " " + formatter.format(item[1]) + " " + "تومان" : item[1]}
+                                            </Link>
+                                            <IoClose className="cursor-pointer" size={13} color={"#bdbdbd"}
+                                                     onClick={() => removeQueryParam(item[0])}/>
+                                        </li>
+                                    }
                                 })}
                             </ul>
                         </div>

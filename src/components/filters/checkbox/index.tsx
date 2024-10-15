@@ -36,7 +36,8 @@ const CheckBoxFilter = ({isOpen=false,title, data}: Props) => {
                     <div className="filter__content">
                         <ul className="filter-checkbox__list">
                             {data.map(item => {
-                                return <li className={`${allParams['filter_color-selector']?.includes(item)?'chosen':''}`} onClick={()=>addQueryParam('filter_color-selector',item)}>
+                                return <li className={`${allParams['filter_color-selector']?.includes(item)?'chosen':''}`}
+                                           onClick={()=>addQueryParam('filter_color-selector',item,"array")}>
                                     <Link href={"/"} >
                                         {item}
                                     </Link>
