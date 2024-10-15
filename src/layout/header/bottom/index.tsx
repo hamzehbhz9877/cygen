@@ -10,20 +10,38 @@ import {IoIosArrowDown} from "react-icons/io";
 import Image from "next/image";
 import UseAnimatedNavigation from "@/hooks/useAnimatedNavigation";
 import MegaMenu from "@/layout/header/bottom/megaMenu";
+import UseScrollDetection from "@/hooks/scrollDetection";
 
 const Bottom = () => {
 
 
+
     const menuRef = useRef<HTMLUListElement | null>(null)
     const borLineRef = useRef<HTMLDivElement | null>(null)
+    const stickyRef = useRef<HTMLDivElement | null>(null)
 
-    UseAnimatedNavigation(menuRef,borLineRef)
+
+    const down=()=> {
+
+        document.querySelector(".header")?.classList.add("sticky")
+        stickyRef.current?.classList.add("sticky")
+    }
+    const up=()=> {
+        document.querySelector(".header")?.classList.remove("sticky")
+        stickyRef.current?.classList.remove("sticky")
+    }
+
+    UseScrollDetection(up,down)
+
+
+
+    UseAnimatedNavigation(menuRef, borLineRef)
 
     return (
-        <div className="header__bottom ">
+        <div className="header__bottom " ref={stickyRef}>
             <div className="container nav">
                 <ul className="header__bottom-list relative" ref={menuRef}>
-                            <MegaMenu/>
+                    <MegaMenu/>
                     <div className="menu-line"></div>
                     <li className="header__bottom-list-item">
                         <Link href={"/"}>

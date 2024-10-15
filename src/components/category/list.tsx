@@ -17,22 +17,26 @@ const CategoryList = () => {
     return (
         <div className="categories">
             <div className="categories__title">دسته‌بندی‌ها</div>
-            {
-                data.length > 7 ? <>
-                    {data.slice(0, 7).map(d => {
-                        return <Category key={d}/>
-                    })}
-                    {otherCategory ?
-                        data.slice(7, data.length).map(d => {
-                            return <Category key={d}/>
-                        })
-                        : <OtherCategory otherContent={(data) => setOtherCategory(data)} itemCount={data.length - 7}/>
-                    }
 
-                </> : data.map(d => {
-                    return <Category key={d}/>
-                })
-            }
+            <div className={"categories__wrapper"}>
+                {
+                    data.length > 7 ? <>
+                        {data.slice(0, 7).map((d,index)=> {
+                            return <Category key={index}/>
+                        })}
+                        {otherCategory ?
+                            data.slice(7, data.length).map((d,index) => {
+                                return <Category key={index}/>
+                            })
+                            : <OtherCategory otherContent={(data) => setOtherCategory(data)} itemCount={data.length - 7}/>
+                        }
+
+                    </> : data.map((d,index) => {
+                        return <Category key={index}/>
+                    })
+                }
+            </div>
+
 
         </div>
 

@@ -1,5 +1,8 @@
 .categories{
-  @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-8  xl:grid-cols-8 gap-[10px];
+  &__wrapper{
+    @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-8  xl:grid-cols-8 gap-[20px];
+
+  }
   &__title{
     font-weight: bold;
     font-size: 16px;
@@ -50,6 +53,7 @@
       top: 0;
       width: 24px;
     }
+
 }
 
 

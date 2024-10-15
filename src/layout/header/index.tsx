@@ -6,6 +6,7 @@ import Bottom from "@/layout/header/bottom";
 import "./header.scss"
 
 const Header = () => {
+
     return (
         <header className="header">
             <Top/>

@@ -1,0 +1,22 @@
+.filter-active {
+  &__list {
+    @apply flex items-center flex-wrap;
+    li {
+      @apply flex items-center gap-[5px];
+      border-radius: 10px;
+      border: 1px solid #bdbdbd;
+      color: #090909;
+      letter-spacing: .3px;
+      font-size: 13px;
+      line-height: 29px;
+      padding: 0 10px 0 10px;
+      position: relative;
+      margin-left: 5px;
+      margin-bottom: 5px;
+      a {
+        @apply text-dynamic-color-to;
+      }
+    }
+
+  }
+}

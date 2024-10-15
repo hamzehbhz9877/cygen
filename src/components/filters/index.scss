@@ -1,0 +1,24 @@
+.filter {
+  padding: 15px 15px;
+  border: 1px solid #e3e3e3;
+  box-shadow: none;
+  border-radius: 11px;
+  margin-bottom: 10px;
+
+  &__title {
+    @apply flex items-center justify-between cursor-pointer;
+    h2 {
+      font-weight: 700;
+      color: #000;
+      display: block;
+      font-size: 15px;
+      padding: 0;
+      position: relative;
+      line-height: 24px;
+    }
+  }
+
+  &__content {
+    @apply mt-[24px]
+  }
+}

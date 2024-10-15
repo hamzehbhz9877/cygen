@@ -1,14 +1,19 @@
 .header {
 
+  background: white;
   width: 100%;
-  background-color: #fff;
   align-items: center;
   position: sticky;
+  height: max-content;
   z-index: 1024;
   top: 0px;
 
+  &.sticky{
+    box-shadow: 0 1px 0 rgb(0 0 0 / 14%), 0 2px 0 rgb(0 0 0 / 5%);
+  }
+
   &__top {
-    @apply py-[15px] bg-white flex justify-between items-center;
+    @apply py-[15px] bg-white flex justify-between items-center z-[1024] relative;
 
     &-search {
       input {
@@ -115,6 +120,15 @@
     align-items: center;
     margin-bottom: 10px;
     background: #fff;
+
+    &.sticky {
+      transform: translateY(-100%);
+      z-index: 99;
+      position: absolute;
+      box-shadow: unset;
+      top: 100%;
+      right: 0;
+    }
 
     .nav{
       @apply flex justify-between items-center relative;
