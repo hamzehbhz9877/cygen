@@ -1,10 +1,11 @@
 'use client'
 
 import React from 'react';
+import useCountdown from "@/hooks/useCountdown";
 
 const SpecialOffer = () => {
 
-    const {hours,minutes,seconds,days}=[0,0,0,0]
+    const {hours,minutes,seconds,days}=useCountdown(new Date("2024/10/18"))
 
     return (
         <div className="head-archie-pro"><span className="onsale prs">پیشنهاد ویژه</span>

@@ -17,7 +17,7 @@ const UseQueryParams = () => {
     const addQueryParam = (query: string, value: any,type:string="") => {
 
         if (nextSearchParams.get(query) && type==="array") {
-            let items;
+            let items:any;
             const exsist = nextSearchParams.get(query)?.split(",").includes(value)
             if (exsist) {
                 items = nextSearchParams.get(query)?.split(",")?.filter(data => data !== value)

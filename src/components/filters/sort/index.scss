@@ -22,7 +22,6 @@
 
 
     &-item {
-
         color: #4d4d4d;
         display: inline-block;
         padding: 1px 8px;
@@ -32,6 +31,12 @@
         line-height: 24px;
         vertical-align: middle;
         border-radius: 7px;
+
+      &:hover{
+        a{
+          color: #000;
+        }
+      }
 
       &--active {
         @apply bg-gradient-to-r from-dynamic-color-from to-dynamic-color-to;

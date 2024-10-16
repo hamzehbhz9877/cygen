@@ -12,7 +12,7 @@ const AllProducts = () => {
             <SortProducts/>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  xl:grid-cols-5">
-                {new Array(6).fill(0).map((d,index)=>{
+                {new Array(12).fill(0).map((d,index)=>{
                     return(
                         <Product key={index}/>
                     )

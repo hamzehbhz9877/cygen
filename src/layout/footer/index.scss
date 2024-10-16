@@ -207,14 +207,13 @@
 .mail-foot button{
   width: 17%;
   padding: 13px 0;
-  background: #4b5870;
+  background-color: #ef394e;
   color: #fff;
   border: 0;
   border-radius: 11px;
   float: left;
   font-size: 17px;
   font-weight: 500;
-  font-family: prk-font;
   transition: 0.1s all;
   cursor: pointer;
 }
@@ -222,10 +221,6 @@
 .mail-foot input:active,.mail-foot input:focus{
   outline: 0;
   border: 0;
-}
-.mail-foot:hover button{
-  background-color: #ef394e;
-  transition: 0.2s all
 }
 
 .foot-dn-app .dn-box{

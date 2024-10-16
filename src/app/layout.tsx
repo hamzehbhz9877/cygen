@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/layout/header";
 import Footer from "@/layout/footer";
+import ModalContext from "@/context/modal";
 
 const bYekan = localFont({
     src: "./fonts/YekanBakhFaNum-Regular.woff",
@@ -31,14 +32,18 @@ export default function RootLayout({
         <body
             className={`${bYekan.variable} ${parsKala.variable} antialiased`}
         >
-        <Header/>
 
-        <main>
-            {children}
-        </main>
+        <ModalContext>
+            <Header/>
 
-        <Footer/>
-        <div className="overlay"/>
+            <main>
+                {children}
+            </main>
+            <Footer/>
+            <div className="overlay"/>
+
+        </ModalContext>
+
 
         </body>
         </html>
