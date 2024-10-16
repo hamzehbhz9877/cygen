@@ -26,16 +26,58 @@ const FilterByPrice = () => {
         addQueryParam("max_price", to)
     }
 
-    const {getAllSearchParams}=useQueryParams()
-    const allPrams=getAllSearchParams()
+    const {getAllSearchParams} = useQueryParams()
+    const allPrams = getAllSearchParams()
 
 
-    useEffect(()=>{
+    useEffect(() => {
         if (allPrams['min_price'])
-        setFrom(+allPrams['min_price'])
-        if(allPrams['max_price'])
-        setTo(+allPrams['max_price'])
-    },[])
+            setFrom(+allPrams['min_price'])
+        if (allPrams['max_price'])
+            setTo(+allPrams['max_price'])
+    }, [])
+
+    function toEnglishDigits(num: any) {
+
+        const id = {
+            '۰': '0',
+            '۱': '1',
+            '۲': '2',
+            '۳': '3',
+            '۴': '4',
+            '۵': '5',
+            '۶': '6',
+            '۷': '7',
+            '۸': '8',
+            '۹': '9',
+        }
+        return num ? num.toString().replace(/[^0-9.]/g, function (w) {
+            return id[w] || w
+        }) : null
+    }
+
+    const handleChangeFrom = (data: string) => {
+        const value = toEnglishDigits(data)?.replaceAll('٬', "")
+        if (data === '' || value > 40000000) {
+            setFrom(0)
+        } else {
+            if (Number(value))
+                setFrom(value)
+        }
+    }
+
+    const handleChangeTo = (data: string) => {
+        const value = toEnglishDigits(data)?.replaceAll('٬', "")
+        if (toEnglishDigits(data)?.replaceAll('٬', "") > 40000000) {
+            setTo(40000000)
+        } else {
+            if (Number(value)) {
+                if (value > from)
+                    setTo(40000000)
+                else setTo(value)
+            }
+        }
+    }
 
 
     return (
@@ -50,6 +92,27 @@ const FilterByPrice = () => {
                 content={
                     <div className="filter__content">
                         <form action="" onSubmit={handlesubmit}>
+
+                            <div className="filter-price__inputs">
+                                <div className="filter-price__input">
+                                    <span>از</span>
+                                    <label htmlFor="">
+                                        <input value={formatter.format(from)} data-value={from}
+                                               onChange={(e) => handleChangeFrom(e.target.value)} type={"text"}/>
+                                    </label>
+                                    <span>تومان</span>
+                                </div>
+                                <div className="filter-price__input">
+                                    <span>تا</span>
+                                    <label htmlFor="">
+                                        <input value={formatter.format(to)} data-value={to}
+                                               onChange={(e) => handleChangeTo(e.target.value)}
+                                               type={"text"}/>
+                                    </label>
+                                    <span>تومان</span>
+                                </div>
+                            </div>
+
                             <SliderRange step={1000} min={24000} max={40000000} from={from} to={to}
                                          setFrom={setFrom} setTo={setTo}/>
 

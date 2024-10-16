@@ -35,6 +35,7 @@
   border: 0;
   border-radius: 1em;
 }
+
 .slider > .thumb {
   position: absolute;
   transition: box-shadow .3s ease-in-out;
@@ -49,16 +50,19 @@
   top: -.2em;
   //margin-left: -.5em;
   border: 1px solid;
-  svg{
+
+  svg {
     width: 100%;
     height: 100%;
     padding: 2px;
   }
 }
+
 .slider > .thumb.left {
   left: 0;
   transform: translate(-8px, -4px);
 }
+
 .slider > .thumb.right {
   right: 0;
   transform: translate(8px, -4px);
@@ -73,6 +77,7 @@ input[type=range] {
   width: 100%;
   opacity: 0;
 }
+
 input[type=range]::-webkit-slider-thumb {
   pointer-events: all;
   width: 30px;
@@ -85,19 +90,36 @@ input[type=range]::-webkit-slider-thumb {
 }
 
 
-.filter-price{
-  &__label{
-    @apply flex justify-between items-center mt-[1.7em] px-[8px];
-    width: 100%;
-    font-size: 13px;
-    color: #535353;
-    text-align: center;
+.filter-price {
+  &__label {
+    @apply flex justify-between items-center mt-[1.7em] px-[8px] w-full text-[13px] text-[#535353] text-center;
   }
-  .right,.left{
+
+  .right, .left {
     font-size: 14px;
     font-weight: 400;
   }
-  button{
+
+  &__input {
+    @apply flex items-center justify-between gap-y-[10px] mb-[25px] px-[10px];
+    label {
+      border-bottom: 1px solid #e0e0e2;
+      margin: 0 5px;
+      direction: ltr;
+
+      input {
+        caret-color: #ef4056;
+        width: 150px;
+        font-size: 18px;
+      }
+
+      span {
+        color: #81858b;
+      }
+    }
+  }
+
+  button {
     @apply flex items-center justify-center gap-[4px];
     line-height: 1;
     font-size: 14px;
