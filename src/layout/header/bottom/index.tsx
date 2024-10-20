@@ -2,15 +2,15 @@
 
 import React, {useEffect, useRef} from 'react';
 
-import {MdOutlineMenu} from "react-icons/md";
 import Link from "next/link";
 import {RiHome5Fill} from "react-icons/ri";
 import {IoIosArrowDown} from "react-icons/io";
 
 import Image from "next/image";
 import UseAnimatedNavigation from "@/hooks/useAnimatedNavigation";
-import MegaMenu from "@/layout/header/bottom/megaMenu";
+import MegaMenu from "@/layout/header/bottom/megaMenu/megaMenu";
 import UseScrollDetection from "@/hooks/scrollDetection";
+import Menu from "@/layout/header/bottom/menu/menu";
 
 const Bottom = () => {
 
@@ -22,7 +22,6 @@ const Bottom = () => {
 
 
     const down=()=> {
-
         document.querySelector(".header")?.classList.add("sticky")
         stickyRef.current?.classList.add("sticky")
     }
@@ -31,14 +30,14 @@ const Bottom = () => {
         stickyRef.current?.classList.remove("sticky")
     }
 
+
     UseScrollDetection(up,down)
 
+    UseAnimatedNavigation(menuRef, borLineRef,'li.header__bottom-list-item')
 
-
-    UseAnimatedNavigation(menuRef, borLineRef)
 
     return (
-        <div className="header__bottom " ref={stickyRef}>
+        <div className="header__bottom" ref={stickyRef}>
             <div className="container nav">
                 <ul className="header__bottom-list relative" ref={menuRef}>
                     <MegaMenu/>
@@ -49,18 +48,7 @@ const Bottom = () => {
                             <span>صفحه اصلی</span>
                         </Link>
                     </li>
-                    <li className="header__bottom-list-item">
-                        <Link href={"/"}>
-                            <Image alt={"image-icon-menu"}
-                                   src="https://pars.parskalas.com/wp-content/uploads/2022/10/store.png" width={18}
-                                   height={18}/>
-                            <span className="flex items-center gap-[5px]">
-                        <span>لیست کالا ها</span>
-                        <IoIosArrowDown size={10}/>
-
-                        </span>
-                        </Link>
-                    </li>
+                    <Menu/>
                     <li className="header__bottom-list-item">
                         <Link href={"/"}>
                             <RiHome5Fill size={18}/>

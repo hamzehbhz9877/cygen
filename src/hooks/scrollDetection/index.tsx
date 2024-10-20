@@ -2,10 +2,10 @@ import {useEffect} from "react";
 
 const UseScrollDetection = (up: any, down: any) => {
     useEffect(()=>{
-        var lastScrollTop = 0;
+        let lastScrollTop = 0;
 
         window.addEventListener("scroll", function(){
-            var st = window.pageYOffset || document.documentElement.scrollTop;
+            const st = window.pageYOffset || document.documentElement.scrollTop;
             if (st > lastScrollTop) {
                 down()
             } else if (st < lastScrollTop) {

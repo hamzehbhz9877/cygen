@@ -28,9 +28,12 @@ const Search = () => {
 
 
     useClickOutside(searchRef, () => {
-        const overlay = document.querySelector('body .overlay')
-        searchResult.current?.classList.remove('active')
-        overlay?.classList.remove('active')
+        if (searchResult.current?.classList.contains('active')) {
+            const overlay = document.querySelector('body .overlay')
+            searchResult.current?.classList.remove('active')
+            overlay?.classList.remove('active')
+        }
+
     })
 
 

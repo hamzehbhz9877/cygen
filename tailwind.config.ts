@@ -1,6 +1,6 @@
-/** @type {import('tailwindcss').Config} */
+/** @type {import("@types/tailwindcss/tailwind-config").TailwindConfig } */
 
-const config: Config = {
+const config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -23,8 +23,8 @@ const config: Config = {
     container: {
       center: true,
       padding: {
-        DEFAULT: '.5rem',
-        sm: '.5rem',
+        DEFAULT: '1.3em',
+        sm: '2.5rem',
         lg: '.5rem',
         xl: '.5rem',
         '2xl': '2rem',
@@ -38,6 +38,5 @@ const config: Config = {
       }
     },
   },
-  plugins: [],
 };
 export default config;

@@ -1,0 +1,71 @@
+.modal {
+  @apply rounded-[16px] mx-auto right-0 left-0 h-max bg-white
+  //max-w-[95%]
+  shadow-[0_0_10px_-5px] w-[650px] relative
+  z-[100];
+  animation: mmslideOut 0.3s cubic-bezier(0, 0, 0.2, 1);
+}
+.modal__header {
+  @apply text-center;
+  padding: 20px 25px;
+}
+.modal__header {
+  @apply mb-5 flex items-center justify-between;
+}
+.modal__header svg {
+  @apply text-[27px];
+}
+.modal__header h3 {
+  @apply text-[18px] font-bold;
+}
+.modal__footer {
+  @apply mt-3;
+}
+.modal__footer.text-center {
+  text-align: center;
+}
+.modal__footer.text-right {
+  text-align: right;
+}
+.modal__footer.text-left {
+  text-align: left;
+}
+
+.modal-overlay {
+  @apply fixed inset-0 flex invisible opacity-0  z-[1025]
+  overflow-y-auto flex justify-center items-center  bg-[rgb(0,0,0,0.51)];
+  transition: all 0.3s ease-in-out 0s;
+}
+.modal-overlay--active {
+  @apply visible opacity-100  !important;
+}
+.modal-overlay--active .modal {
+  animation: mmslideIn 0.5s cubic-bezier(0, 0, 0.2, 1);
+}
+
+.loading-overlay {
+  @apply absolute inset-0 grid content-center;
+}
+.loading-overlay:before {
+  content: "";
+  @apply absolute inset-0 bg-[rgb(0,0,0,0.28)];
+}
+
+@keyframes mmslideIn {
+  0% {
+    transform: translateY(-30%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes mmslideOut {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-40%);
+  }
+}
+
+/*# sourceMappingURL=index.css.map */

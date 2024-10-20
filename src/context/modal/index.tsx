@@ -31,8 +31,9 @@ const ModalContext= ({children}:Props) => {
                 options={options}
                 showModal={isModalOpen}
                 close={handleClose}
-                children={modalData}
-            />
+            >
+                {modalData}
+            </Modal>
         </ModalProvider.Provider>
     );
 };

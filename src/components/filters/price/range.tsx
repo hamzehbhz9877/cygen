@@ -23,20 +23,20 @@ const SliderRange = ({
                      }:sliderRangeType) => {
 
     const calcRangeLeft=()=>{
-        var inputLeft = document.getElementById("input-left");
-        var inputRight = document.getElementById("input-right");
+        const inputLeft:any = document.getElementById("input-left");
+        const inputRight:any = document.getElementById("input-right");
 
-        var thumbLeft = document.querySelector(".slider > .thumb.left");
-        var range = document.querySelector(".slider > .range");
+        const thumbLeft:any = document.querySelector(".slider > .thumb.left");
+        const range:any = document.querySelector(".slider > .range");
 
         function setLeftValue() {
-            var _this = inputLeft,
+            const _this:any = inputLeft,
                 min = parseInt(_this.min),
                 max = parseInt(_this.max);
 
             _this.value = Math.min(parseInt(_this.value), parseInt(inputRight.value) - 1);
 
-            var percent = ((_this.value - min) / (max - min)) * 100;
+            const percent = ((_this.value - min) / (max - min)) * 100;
 
             thumbLeft.style.left = percent + "%";
             range.style.left = percent + "%";
@@ -45,19 +45,19 @@ const SliderRange = ({
     }
 
     const calRangeRight=()=>{
-        var inputLeft = document.getElementById("input-left");
-        var inputRight = document.getElementById("input-right");
+        const inputLeft:any = document.getElementById("input-left");
+        const inputRight = document.getElementById("input-right");
 
-        var thumbRight = document.querySelector(".slider > .thumb.right");
-        var range = document.querySelector(".slider > .range");
+        const thumbRight:any = document.querySelector(".slider > .thumb.right");
+        const range:any = document.querySelector(".slider > .range");
         function setRightValue() {
-            var _this = inputRight,
+            const _this:any = inputRight,
                 min = parseInt(_this.min),
                 max = parseInt(_this.max);
 
             _this.value = Math.max(parseInt(_this.value), parseInt(inputLeft.value) + 1);
 
-            var percent = ((_this.value - min) / (max - min)) * 100;
+            const percent = ((_this.value - min) / (max - min)) * 100;
 
             thumbRight.style.right = (100 - percent) + "%";
             range.style.right = (100 - percent) + "%";
@@ -76,12 +76,12 @@ const SliderRange = ({
                 <div className="multi-range-slider">
                     <input  type="range" id="input-left" onChange={(e) => {
                         calcRangeLeft()
-                        setFrom(e.target.value)
+                        setFrom(+e.target.value)
                     }}
                            step={step} min={min} max={max} value={from}/>
                     <input type="range" id="input-right"  onChange={(e) => {
                         calRangeRight()
-                        setTo(e.target.value)
+                        setTo(+e.target.value)
                     }}
                            step={step} min={min} max={max} value={to}/>
 

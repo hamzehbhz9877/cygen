@@ -31,13 +31,13 @@ const ActiveFilters = () => {
                     content={
                         <div className="filter__content">
                             <ul className="filter-active__list">
-                                {Object.entries(getAllSearchParams()).map(item => {
+                                {Object.entries(getAllSearchParams()).map((item,index) => {
 
 
                                     if (item[1].includes(",")) {
-                                        return item[1].split(",").map(data => {
+                                        return item[1].split(",").map((data,index) => {
                                             return (
-                                                <li>
+                                                <li key={index}>
                                                     <Link href={"/"}>
                                                         {data}
                                                     </Link>
@@ -47,10 +47,10 @@ const ActiveFilters = () => {
                                             )
                                         })
                                     } else {
-                                        return <li>
+                                        return <li key={index}>
                                             <Link href={"/"}>
-                                                {item[0] === "min_price" ? "حداقل" + " " + formatter.format(item[1]) + " " + "تومان" : item[0] === "max_price" ?
-                                                    "حداقل" + " " + formatter.format(item[1]) + " " + "تومان" : item[1]}
+                                                {item[0] === "min_price" ? "حداقل" + " " + formatter.format(Number(item[1])) + " " + "تومان" : item[0] === "max_price" ?
+                                                    "حداقل" + " " + formatter.format(Number(item[1])) + " " + "تومان" : item[1]}
                                             </Link>
                                             <IoClose className="cursor-pointer" size={13} color={"#bdbdbd"}
                                                      onClick={() => removeQueryParam(item[0])}/>

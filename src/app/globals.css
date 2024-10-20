@@ -7,6 +7,22 @@
   --foreground: #171717;
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #ececed !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c0c2c5 !important;
+  border-radius: 6px !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b1b1b1 !important;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -40,6 +56,9 @@ input:focus{
     opacity: 0;
     visibility: hidden;
     transition: 0.1s all;
+  &.navigation{
+    cursor: url('https://pars.parskalas.com/wp-content/themes/parskala/assets/img/close.png'), default;
+  }
 }
 
 .overlay.active{

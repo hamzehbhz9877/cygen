@@ -16,7 +16,7 @@ const useTimer = ({min,sec}:Props) => {
     },[min,sec])
 
     useEffect(() => {
-        let myInterval = setInterval(() => {
+        const myInterval = setInterval(() => {
             if (seconds > 0) {
                 setSeconds(seconds - 1);
             }

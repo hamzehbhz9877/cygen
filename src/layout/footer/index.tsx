@@ -13,6 +13,7 @@ import Copyright from "@/layout/footer/copyright";
 
 // css
 import "./index.scss"
+import MenuMobile from "@/layout/footer/menuMobile";
 
 
 const Footer = () => {
@@ -33,6 +34,9 @@ const Footer = () => {
                     <Menu/>
                     <Menu/>
                     <Menu/>
+                    <MenuMobile/>
+                    <MenuMobile/>
+                    <MenuMobile/>
                     <MailBox/>
                     <div className="clear"></div>
                     <App/>

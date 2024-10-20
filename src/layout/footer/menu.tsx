@@ -2,10 +2,10 @@ import React from 'react';
 
 const Menu = () => {
     return (
-        <div className="foot-box has-menu">
+        <div className="foot-box has-menu hidden lg:block">
             <span className="foot-title">راهنمای خرید</span>
-            <div className="menu-%d9%85%d9%86%d9%88-%d9%81%d9%88%d8%aa%d8%b1-1-container">
-                <ul id="menu-%d9%85%d9%86%d9%88-%d9%81%d9%88%d8%aa%d8%b1-1" className="menu">
+            <div>
+                <ul  className="menu">
                     <li id="navi"
                         className="menu-item menu-item-type-post_type menu-item-object-page menu-item-764">
                         <a href="https://pars.parskalas.com/%d9%86%d8%ad%d9%88%d9%87-%d8%ab%d8%a8%d8%aa-%d8%b3%d9%81%d8%a7%d8%b1%d8%b4/">نحوه
