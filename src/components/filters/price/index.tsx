@@ -68,6 +68,16 @@ const FilterByPrice = ({isOpen=true}:Props) => {
             setInput({...input, to: value})
             setTo(value)
         }
+
+    }
+
+
+    const handleChangeInout = (e:any, type:string) => {
+        const value = e.target.value === '' ? 0 : toEnglishDigits(e.target.value)?.replaceAll('٬', "")
+        setInput({
+            ...input,
+            [type]: Number(value)
+        })
     }
 
 
