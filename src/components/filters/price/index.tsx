@@ -68,6 +68,7 @@ const FilterByPrice = ({isOpen=true}:Props) => {
             setInput({...input, to: value})
             setTo(value)
         }
+
     }
 
 
