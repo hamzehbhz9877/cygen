@@ -16,7 +16,10 @@ const HeaderMobile = () => {
         document.querySelector(".modal-menu")?.classList.toggle('open')
         document.querySelector(".overlay")?.classList.add('navigation')
         document.querySelector('.overlay').classList.toggle("active")
-        document.querySelector("body").style.overflow = "hidden"
+        if (document.querySelector("body").style.overflow === "hidden")
+            document.querySelector("body").style.overflow = "auto"
+        else
+            document.querySelector("body").style.overflow = "hidden"
         document.querySelector('.sub-menu.open')?.classList.remove("open")
     }
 

@@ -50,7 +50,7 @@ const ActiveFilters = () => {
                                         return <li key={index}>
                                             <Link href={"/"}>
                                                 {item[0] === "min_price" ? "حداقل" + " " + formatter.format(Number(item[1])) + " " + "تومان" : item[0] === "max_price" ?
-                                                    "حداقل" + " " + formatter.format(Number(item[1])) + " " + "تومان" : item[1]}
+                                                    "حداکثر" + " " + formatter.format(Number(item[1])) + " " + "تومان" : item[1]}
                                             </Link>
                                             <IoClose className="cursor-pointer" size={13} color={"#bdbdbd"}
                                                      onClick={() => removeQueryParam(item[0])}/>
