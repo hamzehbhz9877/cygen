@@ -5,7 +5,7 @@ const Colors = () => {
     return (
         <div className="prk-archive-swatches">
             {["طلایی", "بنفش", "سبز"].map((color, index: number) => {
-                return <Color color={color}/>
+                return <Color key={index} color={color}/>
             })}
             <div className="prk_swatches-divider">+1</div>
         </div>

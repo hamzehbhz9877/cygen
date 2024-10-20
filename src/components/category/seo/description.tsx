@@ -27,10 +27,8 @@ const CategoryDescription = ({content}: Props) => {
             </div>
 
             <Link href="#" className="mask-handler" scroll={false}>
-
                 <span className={`show-more ${isOpen?'hidden':"block"}`} onClick={handleShowMore}>نمایش بیشتر +</span>
                 <span className={`show-less ${isOpen?'block':"hidden"}`} onClick={handleShowMore}>- بستن</span>
-
             </Link>
         </div>
     );

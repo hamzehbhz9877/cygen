@@ -7,10 +7,9 @@ import {PiShoppingCartSimpleLight} from "react-icons/pi";
 
 
 const Top = () => {
-
     return (
         <div className="header__top container">
-            <div className="flex items-center">
+            <div className="flex items-center ">
                 <Logo/>
                 <Search/>
             </div>
@@ -24,8 +23,6 @@ const Top = () => {
                     <em className="">0</em>
                 </div>
             </div>
-
-
         </div>
     );
 };

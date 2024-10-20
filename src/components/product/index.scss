@@ -5,13 +5,36 @@
   padding-bottom: 0;
   margin: 0;
   text-align: center;
-  height: 380px;
+  position: relative;
+  &::before,
+  &::after {
+    @apply hidden lg:block;
+    content: '';
+    position: absolute;
+    background-color: #e4e4e4;
+    z-index: 1;
+  }
+  &::after {
+    width: 100vw;
+    height: 1px;
+    left: 0;
+    right: 0;
+    top: -1.5px;
+  }
+  &::before {
+    width: 1px;
+    height: -webkit-fill-available;
+    left: -1.5px;
+    top: 0;
+  }
 
-  @apply border border-solid border-[#e4e4e4] relative;
+  @apply h-auto lg:h-[380px] rounded-[14px] lg:rounded-[0] lg:border-none
+  border border-solid border-[#e4e4e4]
+  relative ;
 
 
   &__label{
-    @apply absolute top-[35px] left-[10px] bg-green-500 rounded-[12px] px-[12px] py-[3px] text-white text-[12px];
+    @apply absolute top-[10px] lg:top-[35px] left-[10px] bg-green-500 rounded-[12px] px-[12px] py-[3px] text-white text-[12px];
   }
 
   &:hover .thumb-pro.hover-image img {
@@ -64,9 +87,9 @@
   }
 
   .head-archie-pro {
-    display: flex;
     justify-content: space-between;
     padding: 0;
+    @apply hidden lg:flex;
 
     .prs, #sales_timer_display {
       padding: 0 !important;

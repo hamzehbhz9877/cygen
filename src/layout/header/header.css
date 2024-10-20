@@ -2,19 +2,57 @@
   background: white;
   width: 100%;
   align-items: center;
-  position: sticky;
   height: max-content;
   z-index: 1024;
   top: 0px;
+  @apply static lg:sticky mb-[10px] lg:mb-0;
+}
+.header .mobile {
+  width: calc(100% - 30px);
+  position: relative;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  border-radius: 16px;
+  transition-duration: 0.3s;
+  transform: translateZ(1px);
+  box-shadow: 5px 2px 31px rgba(0, 0, 0, 0.17);
+  background-color: #fff;
+  opacity: 1;
+  z-index: 99999;
+  visibility: visible;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 15px;
+}
+.header .mobile .logo img {
+  @apply max-h-[36px] object-contain;
 }
 .header.sticky {
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.14), 0 2px 0 rgba(0, 0, 0, 0.05);
+  @apply shadow-none lg:shadow-[0_1px_0_rgb(0_0_0_/_14%),0_2px_0_rgb(0_0_0_/_5%)];
+}
+.header .phone {
+  @apply transition-colors hover:text-[#1051ef] !important;
+}
+.header .logo {
+  @apply ml-0 lg:ml-[40px];
+}
+.header .logo img {
+  @apply text-[gray] inline-block bg-no-repeat mt-0 lg:mt-[11px];
+  mask: linear-gradient(-60deg, #000 30%, #0005, #000 50%) right/300% 100%;
+  animation: shimmer 3s infinite;
+  max-width: 170px;
+  max-height: 50px;
+  line-height: 0;
+  vertical-align: middle;
+  height: auto;
 }
 .header__top {
-  @apply py-[15px] bg-white flex justify-between items-center z-[1024] relative;
+  @apply py-[15px] bg-white gap-x-[30px] flex justify-between items-center z-[1024] relative;
 }
 .header__top-search input {
-  @apply pr-[55px] h-[46px] w-[570px] pl-[15px] rounded-[11px] border border-solid border-[#e0e0e0] text-[14px];
+  @apply pr-[55px] h-[46px] flex-grow lg:w-[500px]  xl:w-[570px] rounded-[11px] border border-solid border-[#e0e0e0] text-[14px];
 }
 .header__top-search input::placeholder {
   @apply text-[#a1a3a8];
@@ -39,7 +77,7 @@
   @apply w-full h-[205px];
 }
 .header__top-search .search-result__image img {
-  @apply w-full h-[200px] object-cover rounded-[6px];
+  @apply w-full  h-[200px] object-cover rounded-[6px];
 }
 .header__top-search .search-result__tags {
   @apply flex gap-[5px] flex-wrap mt-[12px] mr-[30px];
@@ -62,17 +100,6 @@
 }
 .header__top-search .search-result__promote span .icon {
   @apply text-[24px] font-bold text-[#a1a3a8] ml-[11px] relative top-[-3px];
-}
-.header__top .phone {
-  @apply transition-colors hover:text-[#1051ef] !important;
-}
-.header__top .logo {
-  @apply ml-[40px];
-}
-.header__top .logo img {
-  @apply text-[gray] inline-block bg-no-repeat mt-[11px];
-  mask: linear-gradient(-60deg, #000 30%, #0005, #000 50%) right/300% 100%;
-  animation: shimmer 3s infinite;
 }
 .header__top .account {
   @apply cursor-pointer flex items-center rounded-[11px] border border-solid border-[#e0e0e2]
@@ -127,6 +154,38 @@
 .header__bottom-list-item {
   border-left: 1px solid rgba(255, 255, 255, 0.03);
 }
+.header__bottom-list-item.menu {
+  @apply relative;
+}
+.header__bottom-list-item.menu .menu-dropdown {
+  padding: 10px;
+  z-index: 10;
+  position: absolute;
+  top: 96%;
+  right: 50%;
+  transform: translateX(50%);
+  width: 200px;
+  left: 0;
+  background: #FFFFFF;
+  max-height: 300px;
+  visibility: hidden;
+  opacity: 0;
+  border-radius: 0 0 8px 8px;
+  border: 1px solid #eee;
+}
+.header__bottom-list-item.menu .menu-dropdown ul {
+  @apply w-full;
+}
+.header__bottom-list-item.menu .menu-dropdown ul li {
+  @apply cursor-pointer;
+}
+.header__bottom-list-item.menu .menu-dropdown ul li a {
+  @apply inline-block px-[5px];
+}
+.header__bottom-list-item.menu .menu-dropdown--active {
+  visibility: visible;
+  opacity: 1;
+}
 .header__bottom-list-item > a:not(.page-promotes li a) {
   @apply flex items-center gap-[8px];
   font-size: 14px;
@@ -139,11 +198,22 @@
   padding: 8px 12px;
   margin-bottom: 2px;
 }
+.header__bottom-list-item > a:not(.page-promotes li a) img {
+  position: relative;
+  font-size: 17px;
+  color: #000;
+  max-width: 21px;
+  margin-left: 4px;
+  height: auto;
+  display: inline-block;
+}
 .header__bottom-list-item > a:not(.page-promotes li a) span {
   line-height: 24px;
 }
 .header__bottom .page-promotes {
-  @apply relative top-[5px] w-[6%] text-center;
+  @apply relative top-[5px]
+      w-max xl:w-[6%]
+      text-center;
 }
 .header__bottom .page-promotes::after {
   content: "";
@@ -223,7 +293,7 @@
   right: 0;
   left: 0;
   background: #FFFFFF;
-  max-height: 502px;
+  max-height: 402px;
   min-height: 392px;
   visibility: hidden;
   opacity: 0;

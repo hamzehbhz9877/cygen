@@ -22,45 +22,41 @@ const SliderRange = ({
                          to, from, setFrom, setTo,
                      }:sliderRangeType) => {
 
+
+    const inputLeft=useRef<HTMLInputElement|null>(null)
+    const inputRight=useRef<HTMLInputElement|null>(null)
+    const thumbRight=useRef<HTMLDivElement|null>(null)
+    const thumbLeft=useRef<HTMLDivElement|null>(null)
+    const range=useRef<HTMLDivElement|null>(null)
+
     const calcRangeLeft=()=>{
-        var inputLeft = document.getElementById("input-left");
-        var inputRight = document.getElementById("input-right");
-
-        var thumbLeft = document.querySelector(".slider > .thumb.left");
-        var range = document.querySelector(".slider > .range");
-
         function setLeftValue() {
-            var _this = inputLeft,
+            const _this:any = inputLeft.current,
                 min = parseInt(_this.min),
                 max = parseInt(_this.max);
 
-            _this.value = Math.min(parseInt(_this.value), parseInt(inputRight.value) - 1);
+            _this.value = Math.min(parseInt(_this.value), parseInt(inputRight.current.value) - 1);
 
-            var percent = ((_this.value - min) / (max - min)) * 100;
+            const percent = ((_this.value - min) / (max - min)) * 100;
 
-            thumbLeft.style.left = percent + "%";
-            range.style.left = percent + "%";
+            thumbLeft.current.style.left = percent + "%";
+            range.current.style.left = percent + "%";
         }
         setLeftValue()
     }
 
     const calRangeRight=()=>{
-        var inputLeft = document.getElementById("input-left");
-        var inputRight = document.getElementById("input-right");
-
-        var thumbRight = document.querySelector(".slider > .thumb.right");
-        var range = document.querySelector(".slider > .range");
         function setRightValue() {
-            var _this = inputRight,
+            const _this:any = inputRight.current,
                 min = parseInt(_this.min),
                 max = parseInt(_this.max);
 
-            _this.value = Math.max(parseInt(_this.value), parseInt(inputLeft.value) + 1);
+            _this.value = Math.max(parseInt(_this.value), parseInt(inputLeft.current.value) + 1);
 
-            var percent = ((_this.value - min) / (max - min)) * 100;
+            const percent = ((_this.value - min) / (max - min)) * 100;
 
-            thumbRight.style.right = (100 - percent) + "%";
-            range.style.right = (100 - percent) + "%";
+            thumbRight.current.style.right = (100 - percent) + "%";
+            range.current.style.right = (100 - percent) + "%";
         }
         setRightValue();
     }
@@ -74,24 +70,24 @@ const SliderRange = ({
         <div className="sliderRange">
             <div className="middle">
                 <div className="multi-range-slider">
-                    <input  type="range" id="input-left" onChange={(e) => {
+                    <input ref={inputLeft} type="range" id="input-left" onChange={(e) => {
                         calcRangeLeft()
-                        setFrom(e.target.value)
+                        setFrom(+e.target.value)
                     }}
                            step={step} min={min} max={max} value={from}/>
-                    <input type="range" id="input-right"  onChange={(e) => {
+                    <input ref={inputRight} type="range" id="input-right"  onChange={(e) => {
                         calRangeRight()
-                        setTo(e.target.value)
+                        setTo(+e.target.value)
                     }}
                            step={step} min={min} max={max} value={to}/>
 
                     <div className="slider">
                         <div className="track"></div>
-                        <div className="range" style={{left:"0",right:"0"}}></div>
-                        <div className="thumb left" style={{left:"0"}}>
+                        <div ref={range} className="range" style={{left:"0",right:"0"}}></div>
+                        <div ref={thumbLeft} className="thumb left" style={{left:"0"}}>
                             <FaAngleLeft color={"#1051ef"}/>
                         </div>
-                        <div className="thumb right" style={{right:"0"}}>
+                        <div ref={thumbRight} className="thumb right" style={{right:"0"}}>
                             <FaAngleRight color={"#1051ef"}/>
                         </div>
                     </div>

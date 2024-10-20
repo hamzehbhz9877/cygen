@@ -1,11 +1,12 @@
 'use client'
 
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 // css
 import "./index.scss"
 import Category from "@/components/category/single";
 import OtherCategory from "@/components/category/otherCategory";
+import useResize from "@/hooks/useResize";
 
 
 const data = new Array(12).fill(0)
@@ -14,11 +15,20 @@ const CategoryList = () => {
 
     const [otherCategory, setOtherCategory] = useState(false)
 
+    const {windowWidth}=useResize()
+
+    useEffect(()=>{
+        if(windowWidth<1024)
+            setOtherCategory(true)
+    },[windowWidth])
+
+
+
     return (
         <div className="categories">
             <div className="categories__title">دسته‌بندی‌ها</div>
 
-            <div className={"categories__wrapper"}>
+            <div className={"categories__list"}>
                 {
                     data.length > 7 ? <>
                         {data.slice(0, 7).map((d,index)=> {

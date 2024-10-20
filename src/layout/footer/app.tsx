@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from "next/image";
 
 const App = () => {
     return (
@@ -6,7 +7,7 @@ const App = () => {
             <div className="dn-box">
                 <a href="https://www.rtl-theme.com/parskala-wordpress-theme/">
                     <div className="dn-link">
-                        <img src="https://pars.parskalas.com/wp-content/uploads/2022/10/icon-app.png"
+                        <Image width={200} height={200} src="https://pars.parskalas.com/wp-content/uploads/2022/10/icon-app.png"
                              alt="Download app"/>
                         <span className="name-app">دانلود اپلیکیشن پارس کالا</span>
                     </div>
@@ -15,21 +16,21 @@ const App = () => {
 
                     <a href="https://www.rtl-theme.com/parskala-wordpress-theme/">
                         <div className="img-dn-link">
-                            <img src="https://pars.parskalas.com/wp-content/uploads/2022/10/dn-app1.svg"
+                            <Image width={200} height={200} src="https://pars.parskalas.com/wp-content/uploads/2022/10/dn-app1.svg"
                                  alt="Download app"/>
                         </div>
                     </a>
 
                     <a href="https://www.rtl-theme.com/parskala-wordpress-theme/">
                         <div className="img-dn-link">
-                            <img src="https://pars.parskalas.com/wp-content/uploads/2022/10/dn-app2.svg"
+                            <Image width={200} height={200} src="https://pars.parskalas.com/wp-content/uploads/2022/10/dn-app2.svg"
                                  alt="Download app"/>
                         </div>
                     </a>
 
                     <a href="https://www.rtl-theme.com/parskala-wordpress-theme/">
                         <div className="img-dn-link">
-                            <img src="https://pars.parskalas.com/wp-content/uploads/2022/10/dn-app3.png"
+                            <Image width={200} height={200} src="https://pars.parskalas.com/wp-content/uploads/2022/10/dn-app3.png"
                                  alt="Download app"/>
                         </div>
                     </a>
@@ -37,7 +38,7 @@ const App = () => {
 
                     <a href="https://www.rtl-theme.com/parskala-wordpress-theme/">
                         <div className="img-dn-link">
-                            <img src="https://pars.parskalas.com/wp-content/uploads/2022/10/dn-app4.svg"
+                            <Image width={200} height={200} src="https://pars.parskalas.com/wp-content/uploads/2022/10/dn-app4.svg"
                                  alt="Download app"/>
                         </div>
                     </a>

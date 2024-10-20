@@ -1,7 +1,7 @@
 
 import React, {useEffect} from 'react';
 
-const useBodyOverLay = (isActive) => {
+const useBodyOverLay = (isActive:boolean) => {
     useEffect(() => {
         const overlay = document.querySelector('.overlay')
         if (isActive)

@@ -4,14 +4,25 @@ import Bottom from "@/layout/header/bottom";
 
 // css
 import "./header.scss"
+import HeaderMobile from "@/layout/header/mobile";
 
 const Header = () => {
 
     return (
-        <header className="header">
-            <Top/>
-            <Bottom/>
-        </header>
+        <>
+            <header className="header">
+                <div className="hidden lg:block">
+                    <Top/>
+                    <Bottom/>
+                </div>
+
+                <div className="block lg:hidden ">
+                  <HeaderMobile/>
+                </div>
+
+            </header>
+        </>
+
     );
 };
 

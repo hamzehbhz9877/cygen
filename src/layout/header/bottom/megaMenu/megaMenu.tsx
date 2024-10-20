@@ -1,8 +1,8 @@
 import React, {useEffect, useRef, useState} from 'react';
 import useClickOutside from "@/hooks/useOutsideClick";
 import {headerCategory} from "@/api/megamenu";
-import Categories from "@/layout/header/bottom/categories";
-import CategoryContent from "@/layout/header/bottom/categoryContent";
+import Categories from "@/layout/header/bottom/megaMenu/categories";
+import CategoryContent from "@/layout/header/bottom/megaMenu/categoryContent";
 import {MdOutlineMenu} from "react-icons/md";
 import Link from "next/link";
 import UseBodyOverLay from "@/hooks/useBodyOverLay";
@@ -19,9 +19,12 @@ const MegaMenu = () => {
     }
 
     const closeMenu = () => {
-        clickRef.current?.classList.remove("category-dropdown--active");
-        setIsDropDownActive(false)
+        if (clickRef.current?.classList.contains("category-dropdown--active")) {
+            clickRef.current?.classList.remove("category-dropdown--active");
+            setIsDropDownActive(false)
+        }
     };
+
     useClickOutside(clickRef, closeMenu);
 
     UseBodyOverLay(isDropdownActive)

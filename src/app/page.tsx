@@ -4,6 +4,7 @@ import AllProducts from "@/app/components/allProducts";
 import CategoryDescription from "@/components/category/seo/description";
 import {description} from "@/api/megamenu";
 import Filters from "@/components/filters";
+import {Suspense} from "react";
 
 export default function Home() {
 
@@ -14,7 +15,7 @@ export default function Home() {
             <CategoryList/>
 
             <div className="flex">
-                <Filters/>
+                    <Filters/>
                 <AllProducts/>
             </div>
 

@@ -1,11 +1,11 @@
 'use client'
 
-import React, {Ref, useEffect} from 'react';
+import  {useEffect} from 'react';
 
-const UseAnimatedNavigation = (menuRef:any,borLineRef:any) => {
+const UseAnimatedNavigation = (menuRef:any,borLineRef:any,selector:string) => {
 
     useEffect(() => {
-        const list = menuRef.current?.querySelectorAll('li')
+        const list = menuRef.current?.querySelectorAll(selector)
         list.forEach((d:any) => {
             d.addEventListener('mouseenter', () => {
                 borLineRef.current.style.right = menuRef.current?.offsetWidth - d.offsetLeft - d.offsetWidth + "px"

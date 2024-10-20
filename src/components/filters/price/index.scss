@@ -100,22 +100,29 @@ input[type=range]::-webkit-slider-thumb {
     font-weight: 400;
   }
 
+  &__inputs{
+    @apply mb-[40px]
+  }
+
   &__input {
-    @apply flex items-center justify-between gap-y-[10px] mb-[25px] px-[10px];
+    & + &{
+      @apply mt-[24px];
+    }
+    @apply flex items-center justify-center gap-y-[10px];
+    .currency{
+
+    }
     label {
       border-bottom: 1px solid #e0e0e2;
-      margin: 0 5px;
+      @apply mx-[8px]  leading-[48px];
       direction: ltr;
 
       input {
-        caret-color: #ef4056;
-        width: 150px;
-        font-size: 18px;
+        @apply caret-[#ef4056] px-[16px] text-[26px] font-bold w-[150px] text-[#3f4064];
       }
-
-      span {
-        color: #81858b;
-      }
+    }
+    span {
+      @apply text-[15px] text-[#81858b];
     }
   }
 

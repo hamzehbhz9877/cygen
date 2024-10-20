@@ -16,5 +16,8 @@
   &__content {
     overflow: hidden;
     transition: all .2s ease-in-out 0s;
+    &.no-animate{
+      transition: none;
+    }
   }
 }
