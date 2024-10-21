@@ -32,7 +32,7 @@
 }
 
 .modal-overlay {
-  @apply fixed inset-0 flex invisible opacity-0  z-[1025]
+  @apply fixed inset-0 flex invisible opacity-0  z-[99999]
   overflow-y-auto flex justify-center items-center  bg-[rgb(0,0,0,0.51)];
   transition: all 0.3s ease-in-out 0s;
 }

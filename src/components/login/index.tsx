@@ -23,7 +23,7 @@ const Login = () => {
     const handleSubmit = (values: any) => {
         console.log(values)
 
-        openModal(<SubmissionCode phone={values.phone}/>, {className: "!w-[31%] max-w-[500px] login"})
+        openModal(<SubmissionCode phone={values.phone}/>, {className: "login"})
     }
 
     return (

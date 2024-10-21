@@ -33,13 +33,10 @@ const Menu = () => {
 
             <div ref={clickRef} className={`menu-dropdown  flex ${isDropdownActive?'menu-dropdown--active':""}`}>
                 <ul>
-                    <li><Link href={"/"}/>آیتم</li>
-                    <hr className="h-px my-3 bg-gray-200 border-0 dark:bg-gray-700"/>
-                    <li><Link href={"/"}/>آیتم</li>
-                    <hr className="h-px my-3 bg-gray-200 border-0 dark:bg-gray-700"/>
-                    <li><Link href={"/"}/>آیتم</li>
-                    <hr className="h-px my-3 bg-gray-200 border-0 dark:bg-gray-700"/>
-                    <li><Link href={"/"}/>آیتم</li>
+                    <li><Link href={"/"}><span>آیتم</span></Link></li>
+                    <li><Link href={"/"}><span>آیتم</span></Link></li>
+                    <li><Link href={"/"}><span>آیتم</span></Link></li>
+                    <li><Link href={"/"}><span>آیتم</span></Link></li>
                 </ul>
 
             </div>

@@ -378,7 +378,7 @@ img {
 }
 
 .enmads {
-  @apply w-max grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3  xl:grid-cols-3 gap-[10px];
+  @apply w-max grid grid-cols-4 sm:grid-cols-5 md:grid-cols-8 lg:grid-cols-3  xl:grid-cols-3 gap-[10px];
   margin: 0;
 }
 
@@ -390,9 +390,8 @@ body .enmads .codes {
   display: inline-block;
   border: 1px solid #e5e5ea;
   border-radius: 11px;
-  max-width: 95px;
-  width: 95px;
   padding: 10px;
+  @apply w-auto max-w-[auto] lg:max-w-[95px] lg:w-[95px];
 }
 
 .copy-right-foot {
@@ -655,6 +654,7 @@ body .enmads .codes {
   .main-footer .foot-box.text, .main-footer .foot-box.enmads {
     width: 100% !important;
     margin: 6px 0 !important;
+    float: unset;
   }
 
   .main-footer .foot-box .foot-title {

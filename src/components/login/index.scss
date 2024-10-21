@@ -1,6 +1,5 @@
 .login {
 
-
   .label{
     @apply flex justify-between;
     font-size: 13px;
@@ -79,6 +78,14 @@
     text-align: center;
     font-size: 12px;
     line-height: 21px;
+  }
+}
+
+//modal
+.modal{
+  &.login{
+    @apply w-full h-full max-w-full rounded-[0] #{!important};
+    @apply lg:w-[31%] lg:max-w-[500px] lg:h-max lg:rounded-[12px] #{!important};
   }
 }
 

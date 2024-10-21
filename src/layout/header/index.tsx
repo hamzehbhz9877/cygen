@@ -5,6 +5,7 @@ import Bottom from "@/layout/header/bottom";
 // css
 import "./header.scss"
 import HeaderMobile from "@/layout/header/mobile";
+import Navbar from "@/layout/header/mobile/navbar";
 
 const Header = () => {
 
@@ -19,6 +20,8 @@ const Header = () => {
                 <div className="block lg:hidden ">
                   <HeaderMobile/>
                 </div>
+
+                <Navbar/>
 
             </header>
         </>

@@ -29,7 +29,7 @@ const SubMissionCode = ({phone}: Props) => {
     }
 
 
-    const handleBackToPrevStep = () => openModal(<Login/>, {className: "!w-[31%] max-w-[500px] login"})
+    const handleBackToPrevStep = () => openModal(<Login/>, {className: "login"})
 
 
 

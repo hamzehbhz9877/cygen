@@ -2,7 +2,7 @@ import React, {useRef} from 'react';
 
 import { RiCloseFill } from "react-icons/ri";
 
-import "./index.scss"
+import "../index.scss"
 
 type Props={
     title:string

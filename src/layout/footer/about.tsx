@@ -37,7 +37,7 @@ const About = () => {
 
             <div className="foot-box enmads">
 
-                {["https://pars.parskalas.com/wp-content/uploads/2022/10/1e5dab5a.png"].map((link, index: number) => {
+                {new Array(5).fill("https://pars.parskalas.com/wp-content/uploads/2022/10/1e5dab5a.png").map((link, index: number) => {
                     return <Enamad key={index} link={link}/>
                 })}
             </div>

@@ -6,7 +6,7 @@ import {RiSortDesc} from "react-icons/ri";
 
 // css
 import "./index.scss"
-import FilterSidebarMobile from "@/components/filters/filterSidebarMobile";
+import FilterSidebarMobile from "@/components/filters/mobile/filterSidebarMobile";
 import Filters from "@/components/filters";
 import ActiveFilters from "@/components/filters/active";
 import FilterByPrice from "@/components/filters/price";
@@ -34,9 +34,10 @@ const MobileHeadFilters = () => {
 
     useEffect(() => {
         const element:any = document.querySelector('.box-filter-shop')
-        const top = element.offsetTop + 120
+        const rect = element.getBoundingClientRect();
+
         window.addEventListener("scroll", () => {
-            if (window.scrollY > top) {
+            if (window.scrollY > rect.y) {
                 element.classList.add("fixed")
             } else {
                 element.classList.remove("fixed")
