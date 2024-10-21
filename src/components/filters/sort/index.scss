@@ -42,6 +42,11 @@
       &--active {
         @apply bg-gradient-to-r from-dynamic-color-from to-dynamic-color-to;
 
+        &:hover{
+          a{
+            color: #fff !important;
+          }
+        }
         a {
           color: #fff;
         }
@@ -113,7 +118,7 @@
         @apply bg-gradient-to-r from-dynamic-color-from to-dynamic-color-to;
       }
       a {
-        @apply text-dynamic-color-to ;
+        @apply text-dynamic-color-to;
       }
     }
   }

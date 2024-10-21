@@ -34,6 +34,9 @@
 .sort-products__filter-item--active {
   @apply bg-gradient-to-r from-dynamic-color-from to-dynamic-color-to;
 }
+.sort-products__filter-item--active:hover a {
+  color: #fff !important;
+}
 .sort-products__filter-item--active a {
   color: #fff;
 }
@@ -64,7 +67,7 @@
   transform: translateX(50%);
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
   border-radius: 11px;
-  padding-right: 20px;
+  padding-right: 15px;
   visibility: hidden;
   opacity: 0;
   transition: all 0.1s;
