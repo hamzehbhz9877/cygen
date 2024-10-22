@@ -6,15 +6,15 @@ const initialValues = {
 
 const validationSchema = Yup.object({
     phone: Yup.string()
-        .required("شماره موبایل یا ایمیل الزامی است")
-        .test('test-name', 'شماره موبایل یا ایمیل نامعتبر است',
+        .required("شماره همراه الزامی است")
+        .test('test-name', 'شماره همراه نامعتبر است',
             function (value) {
-                var emailRegex=/^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i;
+                // var emailRegex=/^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i;
 
-                const phoneRegex = /^(\+91-|\+91|0)?\d{10}$/; // Change this regex based on requirement
-                let isValidEmail = emailRegex.test(value);
+                const phoneRegex = /^(\+9|0)?9\d{9}$/ // Change this regex based on requirement
+                // let isValidEmail = emailRegex.test(value);
                 let isValidPhone = phoneRegex.test(value);
-                if (!isValidEmail && !isValidPhone) {
+                if (!isValidPhone) {
                     return false;
                 }
                 return true;

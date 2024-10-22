@@ -13,37 +13,17 @@ import FilterByPrice from "@/components/filters/price";
 import CheckBoxFilter from "@/components/filters/checkbox";
 import useClickOutside from "@/hooks/useOutsideClick";
 import MobileSort from "@/components/filters/sort/mobile";
+import Logic from "@/components/filters/mobile/logic";
 
 const MobileHeadFilters = () => {
 
-
     const sortRef = useRef<HTMLDivElement | null>(null)
 
-    const handleFilter = () => {
-        document.querySelector('#filter-sidebar-mobile').classList.toggle("open")
-        document.querySelector("body").style.overflow = "hidden"
-    }
-
-    const handleSort = () => {
-        document.querySelector('.sort__mobile').classList.toggle("open")
-    }
+    const {handleFilter, handleSort} = Logic()
 
     useClickOutside(sortRef, () => {
         document.querySelector('.sort__mobile').classList.remove("open")
     })
-
-    useEffect(() => {
-        const element:any = document.querySelector('.box-filter-shop')
-        const rect = element.getBoundingClientRect();
-
-        window.addEventListener("scroll", () => {
-            if (window.scrollY > rect.y) {
-                element.classList.add("fixed")
-            } else {
-                element.classList.remove("fixed")
-            }
-        })
-    }, [])
 
     return (
         <div className="block lg:hidden mb-[15px] filters__mobile">

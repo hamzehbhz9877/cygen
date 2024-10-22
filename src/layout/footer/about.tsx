@@ -4,13 +4,13 @@ import React, {useState} from 'react';
 import Enamad from "@/layout/footer/enamad";
 import Link from "next/link";
 import { FaAngleLeft } from "react-icons/fa6";
+import UseMoreContent from "@/hooks/useMoreContent";
 
 
 const About = () => {
 
-    const [isOpen, setIsOpen] = useState(false)
+    const {isOpen,handleShowMore}=UseMoreContent()
 
-    const handleShowMore = () => setIsOpen(!isOpen)
 
     return (
         <div className="foot-core">

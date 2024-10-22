@@ -26,7 +26,7 @@ const Menu = () => {
                        src="https://pars.parskalas.com/wp-content/uploads/2022/10/store.png" width={18}
                        height={18}/>
                 <span className="flex items-center gap-[5px]">
-                        <span>لیست کالا ها</span>
+                        <span className="w-max">لیست کالا ها</span>
                         <IoIosArrowDown size={10}/>
                         </span>
             </Link>

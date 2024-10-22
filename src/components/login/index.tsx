@@ -1,8 +1,8 @@
-import {ModalBody, ModalFooter, ModalHeader} from "@/components/modal";
+'use client'
+
+import {ModalBody} from "@/components/modal";
 import Logo from "@/layout/header/top/logo";
 
-
-// css
 
 import "./index.scss"
 import {Form, Formik} from "formik";
@@ -11,20 +11,24 @@ import Input from "@/components/input/simple";
 import Button from "@/components/button/simple";
 import Link from "next/link";
 import useModal from "@/context/modal/useModal";
-import SubmissionCode from "@/components/login/submissionCode";
+import SubmissionCode from "@/components/login/otp";
 import {VscAccount} from "react-icons/vsc";
-import React from "react";
+import React, {useEffect} from "react";
+import {useMutation, useQuery} from "@tanstack/react-query";
+import {GetGuestCustomer, RequestLoginRegister} from "@/services/shortLink";
 
 
 const Login = () => {
 
-
     const {openModal} = useModal()
-    const handleSubmit = (values: any) => {
-        console.log(values)
 
-        openModal(<SubmissionCode phone={values.phone}/>, {className: "login"})
-    }
+    const {mutate, isPending} = useMutation({
+        mutationFn: RequestLoginRegister, onSuccess: (data: any) => {
+            openModal(<SubmissionCode resendCode={()=>mutate({mobileNumber: data.data.MobileNumber})} {...data.data}/>, {className: "login"})
+        }
+    });
+
+    const handleSubmit = (values: any) => mutate({mobileNumber: values.phone})
 
     return (
         <>
@@ -44,10 +48,8 @@ const Login = () => {
                                 <>
                                     <Input autoFocus type={"text"} label={'موبایل یا ایمیل خود را وارد نمایید.'}
                                            name={"phone"} icon={<VscAccount color={'#92929270'} size={25}/>}/>
-                                    <ModalFooter align={"center"}>
-                                        <Button onClick={close} text={"ورود / عضویت"}
-                                                className=""/>
-                                    </ModalFooter>
+                                    <Button type={"submit"} loading={isPending} text={"ورود / عضویت"}
+                                            className=""/>
                                 </>
                             </Form>
                         )

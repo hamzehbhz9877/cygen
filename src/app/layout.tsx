@@ -4,6 +4,9 @@ import "./globals.css";
 import Header from "@/layout/header";
 import Footer from "@/layout/footer";
 import ModalContext from "@/context/modal";
+import ClientReactQueryProvider from "@/utils/reactQueryProvider-client";
+import Auth from "../context/authentication";
+import ToastProvider from "@/utils/react-toastify-client";
 
 const bYekan = localFont({
     src: "./fonts/YekanBakhFaNum-Regular.woff",
@@ -32,19 +35,20 @@ export default function RootLayout({
         <body
             className={`${bYekan.variable} ${parsKala.variable} antialiased`}
         >
-
-        <ModalContext>
-            <Header/>
-
-            <main>
-                {children}
-            </main>
-            <Footer/>
-            <div className="overlay"/>
-
-        </ModalContext>
-
-
+        <ClientReactQueryProvider>
+            <ToastProvider>
+                <Auth>
+                    <ModalContext>
+                        <Header/>
+                        <main>
+                            {children}
+                        </main>
+                        <Footer/>
+                        <div className="overlay"/>
+                    </ModalContext>
+                </Auth>
+            </ToastProvider>
+        </ClientReactQueryProvider>
         </body>
         </html>
     );

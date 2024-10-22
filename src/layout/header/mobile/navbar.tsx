@@ -12,12 +12,16 @@ import "./index.scss"
 import useModal from "@/context/modal/useModal";
 import Login from "@/components/login";
 import Link from "next/link";
+import useAuth from "@/context/authentication/useAuth";
+import { IoCheckmarkCircleSharp } from "react-icons/io5";
 
 const Navbar = () => {
 
     const {openModal}=useModal()
+const {user}=useAuth()
 
     const handleLogin=()=>{
+        if(!user)
         openModal(<Login/>,{className:"login"})
     }
 
@@ -58,9 +62,11 @@ const Navbar = () => {
                 </div>
 
 
-                <div className="mobile-bottom-navitem account1" onClick={handleLogin}>
-                    <Link href="#" data-custom-open="loginmodal" scroll={false}>
+                <div className="mobile-bottom-navitem account1 " onClick={handleLogin}>
+                    <Link href="#" className="relative"  scroll={false}>
                         <AiOutlineUser size={23} color={"#333"}/>
+                        {user?<IoCheckmarkCircleSharp className="check" size={11}/>
+                        :""}
                         <span>حساب کاربری</span>
                     </Link>
                 </div>

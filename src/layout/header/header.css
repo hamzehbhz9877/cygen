@@ -108,6 +108,14 @@
 .header__top .account .account-text {
   @apply font-bold text-[14px];
 }
+.header__top .account .angle {
+  transform: rotate(0deg);
+  line-height: 1;
+  transition: all 200ms ease-out;
+}
+.header__top .account .angle.rotate {
+  transform: rotate(180deg);
+}
 .header__top .shopping-cart {
   @apply relative;
 }
@@ -294,7 +302,7 @@
 .category-dropdown {
   z-index: 10;
   position: absolute;
-  top: 96%;
+  top: 97%;
   right: 0;
   left: 0;
   background: #FFFFFF;
@@ -416,6 +424,66 @@
 }
 .category-dropdown__header-item--active .icon g {
   color: var(--c2);
+}
+
+header .dashboard {
+  background: #f9f9f9;
+  position: absolute;
+  top: 100%;
+  border-radius: 11px;
+  padding: 0 10px;
+  text-align: right;
+  margin-top: 10px;
+  border: 1px solid #ddd;
+  z-index: 1;
+  width: 190px;
+  right: unset;
+  left: 0px;
+  opacity: 0;
+  visibility: hidden;
+}
+header .dashboard.active {
+  opacity: 1;
+  visibility: visible;
+}
+header .dashboard ul {
+  display: flex;
+  flex-direction: column;
+  color: #767676;
+  border-bottom: 1px solid #ddd;
+  font-size: 13px;
+  font-weight: 550;
+  line-height: 25px;
+  transition: 0.2s all;
+}
+header .dashboard ul li {
+  color: #767676;
+  padding: 8px 0;
+  font-size: 13px;
+  font-weight: 550;
+  line-height: 25px;
+  display: flex;
+  align-items: center;
+  transition: 0.2s all;
+}
+header .dashboard ul li + li {
+  border-top: 1px solid #ddd;
+}
+header .dashboard ul li a {
+  color: #767676;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  transition: 0.2s all;
+}
+header .dashboard ul li a svg {
+  @apply pl-[9px];
+}
+header .dashboard ul li.log-out a, header .dashboard ul li.log-out svg {
+  color: #00bf6f !important;
+}
+header .dashboard ul li:hover a, header .dashboard ul li:hover svg {
+  color: #1051ef !important;
 }
 
 /*# sourceMappingURL=header.css.map */

@@ -2,18 +2,21 @@ import {useEffect, useState} from "react";
 
 
 type Props = {
-    min: number,
     sec: number
 }
 
-const useTimer = ({min,sec}:Props) => {
+const useTimer = ({sec}:Props) => {
     const [minutes, setMinutes] = useState(0);
     const [seconds, setSeconds] = useState(0);
 
     useEffect(()=>{
-        setMinutes(min)
+        console.log("sec",sec)
+        const minutes = Math.floor(sec / 60);
+        const seconds = sec - minutes * 60;
+
+        setMinutes(minutes)
         setSeconds(seconds)
-    },[min,sec])
+    },[sec])
 
     useEffect(() => {
         const myInterval = setInterval(() => {
@@ -33,6 +36,7 @@ const useTimer = ({min,sec}:Props) => {
             clearInterval(myInterval);
         };
     });
+
     const format = (num: number): string => {
         return num < 10 ? '0' + num : num.toString();
     };

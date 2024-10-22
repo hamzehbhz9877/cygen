@@ -1,5 +1,4 @@
 import React, {useRef} from 'react';
-import Image from "next/image"
 import {headerCategory} from "@/api/megamenu";
 import {MdKeyboardArrowLeft} from "react-icons/md";
 import Link from "next/link";

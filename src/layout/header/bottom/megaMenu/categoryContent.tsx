@@ -1,6 +1,5 @@
 import React from 'react';
 import {headerCategory} from "@/api/megamenu";
-import { MdKeyboardArrowLeft } from "react-icons/md";
 import Link from "next/link";
 
 type Props = {

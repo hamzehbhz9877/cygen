@@ -9,7 +9,7 @@
 
   @apply static lg:sticky mb-[10px] lg:mb-0;
 
-  .mobile{
+  .mobile {
     width: calc(100% - 30px);
     position: relative;
     top: 15px;
@@ -27,8 +27,9 @@
     display: flex;
     justify-content: space-between;
     padding: 12px 15px;
-    .logo{
-      img{
+
+    .logo {
+      img {
         @apply max-h-[36px] object-contain;
       }
     }
@@ -55,6 +56,7 @@
       height: auto;
     }
   }
+
   &__top {
     @apply py-[15px] bg-white gap-x-[30px] flex justify-between items-center z-[1024] relative;
 
@@ -119,11 +121,20 @@
         }
       }
     }
+
     .account {
       @apply cursor-pointer flex items-center rounded-[11px] border border-solid border-[#e0e0e2]
       px-[10px] py-[8px];
       .account-text {
         @apply font-bold text-[14px];
+      }
+      .angle{
+        transform: rotate(0deg);
+        line-height: 1;
+        transition: all 200ms ease-out;
+      }
+      .angle.rotate{
+        transform: rotate(180deg);
       }
     }
 
@@ -230,7 +241,8 @@
           gap: 4px;
           padding: 8px 12px;
           margin-bottom: 2px;
-          img{
+
+          img {
             position: relative;
             font-size: 17px;
             color: #000;
@@ -342,7 +354,7 @@
 .category-dropdown {
   z-index: 10;
   position: absolute;
-  top: 96%;
+  top: 97%;
   right: 0;
   left: 0;
   background: #FFFFFF;
@@ -486,6 +498,79 @@
 
       .icon g {
         color: var(--c2);
+      }
+    }
+  }
+}
+
+//dashboardMenu
+header .dashboard {
+  background: #f9f9f9;
+  position: absolute;
+  top: 100%;
+  border-radius: 11px;
+  padding: 0 10px;
+  text-align: right;
+  margin-top: 10px;
+  border: 1px solid #ddd;
+  z-index: 1;
+  width: 190px;
+  right: unset;
+  left: 0px;
+  opacity: 0;
+  visibility: hidden;
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    color: #767676;
+    border-bottom: 1px solid #ddd;
+    font-size: 13px;
+    font-weight: 550;
+    line-height: 25px;
+    transition: 0.2s all;
+
+    li {
+      color: #767676;
+      padding: 8px 0;
+      font-size: 13px;
+      font-weight: 550;
+      line-height: 25px;
+      display: flex;
+      align-items: center;
+      transition: 0.2s all;
+
+      & + li {
+        border-top: 1px solid #ddd;
+      }
+
+      a {
+        color: #767676;
+        display: flex;
+        width: 100%;
+        align-items: center;
+        transition: 0.2s all;
+
+        svg {
+          @apply pl-[9px];
+        }
+      }
+
+      &.log-out {
+        a, svg {
+          color: #00bf6f !important;
+        }
+      }
+
+      &:hover {
+        a, svg {
+          color: #1051ef !important;
+        }
       }
     }
   }

@@ -154,4 +154,13 @@ header.modern .modal-menu {
   margin-top: 7px;
 }
 
+.mobile-bottom-navitem .check {
+  position: absolute;
+  top: 12px;
+  right: 13px;
+  background: white;
+  border-radius: 50%;
+  @apply fill-dynamic-color-from;
+}
+
 /*# sourceMappingURL=index.css.map */

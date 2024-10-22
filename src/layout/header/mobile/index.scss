@@ -120,6 +120,8 @@ header.modern .modal-menu {
   }
 }
 
+
+//navbar
 .mobile-navbar-menu {
   @apply block lg:hidden;
   height: 60px;
@@ -162,3 +164,13 @@ header.modern .modal-menu {
   color: #333;
   margin-top: 7px;
 }
+
+.mobile-bottom-navitem .check{
+  position: absolute;
+  top: 12px;
+  right: 13px;
+  background: white;
+  border-radius: 50%;
+  @apply fill-dynamic-color-from;
+}
+

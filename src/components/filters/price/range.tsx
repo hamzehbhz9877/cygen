@@ -3,6 +3,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 
 import {FaAngleLeft, FaAngleRight} from "react-icons/fa6";
+import RangeLogic from "@/components/filters/price/rangeLogic";
 
 
 type sliderRangeType = {
@@ -29,37 +30,7 @@ const SliderRange = ({
     const thumbLeft=useRef<HTMLDivElement|null>(null)
     const range=useRef<HTMLDivElement|null>(null)
 
-    const calcRangeLeft=()=>{
-        function setLeftValue() {
-            const _this:any = inputLeft.current,
-                min = parseInt(_this.min),
-                max = parseInt(_this.max);
-
-            _this.value = Math.min(parseInt(_this.value), parseInt(inputRight.current.value) - 1);
-
-            const percent = ((_this.value - min) / (max - min)) * 100;
-
-            thumbLeft.current.style.left = percent + "%";
-            range.current.style.left = percent + "%";
-        }
-        setLeftValue()
-    }
-
-    const calRangeRight=()=>{
-        function setRightValue() {
-            const _this:any = inputRight.current,
-                min = parseInt(_this.min),
-                max = parseInt(_this.max);
-
-            _this.value = Math.max(parseInt(_this.value), parseInt(inputLeft.current.value) + 1);
-
-            const percent = ((_this.value - min) / (max - min)) * 100;
-
-            thumbRight.current.style.right = (100 - percent) + "%";
-            range.current.style.right = (100 - percent) + "%";
-        }
-        setRightValue();
-    }
+   const {calRangeRight,calcRangeLeft}=RangeLogic(inputLeft,thumbLeft,range,inputRight,thumbRight)
 
     useEffect(() => {
         calcRangeLeft()

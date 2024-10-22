@@ -1,0 +1,10 @@
+import React from 'react';
+
+import "./index.scss"
+const Loader = () => {
+    return (
+        <span className="loader"></span>
+    );
+};
+
+export default Loader;

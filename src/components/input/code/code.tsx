@@ -1,11 +1,14 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 
 // css
 import "./index.scss"
 
 
-const Code = () => {
+type Props={
+    getValue:(value:string)=>void
+}
 
+const Code = ({getValue}:Props) => {
 
     useEffect(()=>{
         const inputs:any = document.querySelectorAll('.otp-input input');
@@ -20,9 +23,11 @@ const Code = () => {
                         inputs[index + 1].focus();
                     }
                     else{
-                        const otp = Array.from(inputs).map((input:any) => input.value).join('');
+                        // const otp=Array.from(inputs).map((input:any) => input.value).join('');
                     }
                 }
+                const otp=Array.from(inputs).map((input:any) => input.value).join('');
+                getValue(otp)
             });
 
             input.addEventListener('keydown', (e:any) => {

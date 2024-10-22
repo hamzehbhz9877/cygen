@@ -6,7 +6,6 @@
   margin: 15px auto 0 auto;
   line-height: 1.571;
   color: #fff;
-  background: #ef394e;
   border: none;
   outline: none !important;
   overflow: hidden;
@@ -16,6 +15,9 @@
   font-size: 15px;
   font-weight: 600;
   border-radius: 11px;
+}
+.button:disabled {
+  @apply cursor-not-allowed opacity-50;
 }
 .button__icon {
   @apply ml-[12px];

@@ -7,11 +7,12 @@
   margin: 1.5rem 0 2rem 0;
 }
 .code-input .otp-input input {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   margin: 0 8px;
   text-align: center;
-  font-size: 14px;
+  font-size: 20px;
+  font-weight: bold;
   border: 1px solid #81858b;
   border-radius: 12px;
   transition: all 0.3s ease;

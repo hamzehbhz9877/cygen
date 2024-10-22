@@ -14,28 +14,28 @@ const UseQueryParams = () => {
         router.push(`${pathname}?${nextSearchParams}`)
     }
 
-    const addQueryParam = (query: string, value: any,type:string="") => {
+    const addQueryParam = (query: string, value: any, type?:any) => {
 
-        if (nextSearchParams.get(query) && type==="array") {
-            let items:any;
-            const exsist = nextSearchParams.get(query)?.split(",").includes(value)
-            if (exsist) {
-                items = nextSearchParams.get(query)?.split(",")?.filter(data => data !== value)
+        if (nextSearchParams.get(query) && type === "multiple") {
+            const queryData = nextSearchParams.get(query)?.split(",")
 
+            if (queryData.includes(value)) {
+                queryData?.filter(data => data !== value)
             } else {
-                items = [nextSearchParams.get(query), value].map((value) => `${value}`).join(',');
+                queryData.push(value)
             }
 
-            if (items.length === 0)
+            const multiple = queryData.join(',');
+
+            if (multiple.length === 0)
                 removeQueryParam(query)
             else
-                nextSearchParams.set(query, items)
+                nextSearchParams.set(query, multiple)
         } else {
             nextSearchParams.set(query, value)
         }
 
         router.push(decodeURIComponent(`${pathname}?${nextSearchParams}`))
-
     }
 
     function getAllSearchParams() {
