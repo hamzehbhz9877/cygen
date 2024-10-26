@@ -10,7 +10,7 @@ type propsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>,
 
 interface Props extends propsType {
     type: "text" | "number" | "email" | "password" | 'hidden';
-    label: string | React.ReactNode;
+    label?: string | React.ReactNode;
     name?: string;
     icon?: React.ReactNode
 }
@@ -23,8 +23,10 @@ const Input = ({type, label, name, icon, ...rest}: Props) => {
 
     return (
         <div className="input simple">
+            {
+                label ? <label className="simple__label">{label}</label>:""
+            }
 
-            <label className="simple__label">{label}</label>
 
             <div className="relative">
                 <Field

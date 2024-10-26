@@ -11,7 +11,7 @@ $modal-overlay-background--isLoading: 0.28;
 $modal-z-index: 100;
 
 .modal {
-  @apply rounded-[16px] mx-auto right-0 left-0 h-max bg-white
+  @apply rounded-[16px] h-full md:h-max  mx-auto right-0 left-0 bg-white my-0 md:my-[20px]
   //max-w-[95%]
   shadow-[0_0_10px_-5px] w-[650px] relative
   z-[#{$modal-z-index}];
@@ -54,8 +54,8 @@ $modal-z-index: 100;
 
 
 .modal-overlay {
-  @apply fixed inset-0 flex invisible opacity-0  z-[#{$modal-overlay-z-index}]
-  overflow-y-auto flex justify-center items-center  bg-[rgb(0,0,0,#{$modal-overlay-background})];
+  @apply fixed flex  inset-0  invisible opacity-0  z-[#{$modal-overlay-z-index}]
+  overflow-y-auto  bg-[rgb(0,0,0,#{$modal-overlay-background})];
   transition: all .3s ease-in-out 0s;
   &--active {
     @apply  visible opacity-100  #{!important};

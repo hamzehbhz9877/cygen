@@ -46,7 +46,7 @@ const Login = () => {
                         return (
                             <Form>
                                 <>
-                                    <Input autoFocus type={"text"} label={'موبایل یا ایمیل خود را وارد نمایید.'}
+                                    <Input autoFocus type={"text"} label={'شماره همراه خود را وارد نمایید.'}
                                            name={"phone"} icon={<VscAccount color={'#92929270'} size={25}/>}/>
                                     <Button type={"submit"} loading={isPending} text={"ورود / عضویت"}
                                             className=""/>

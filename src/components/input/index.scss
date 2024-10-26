@@ -1,5 +1,8 @@
 .input{
 
+  & + .input{
+    @apply mt-[20px];
+  }
   &-field{
     background-color: #fff;
     border: 1px solid #e0e0e2;
@@ -8,7 +11,6 @@
     width: 100%;
     color: #030a16;
     direction: rtl;
-    text-align: left;
     font-weight: 500;
     padding: 12px 12px;
     border-radius: 11px;
@@ -19,7 +21,9 @@
       border-color: #000;
     }
   }
-
+  & [name='phone']{
+    @apply text-left;
+  }
   &__icon{
     position: absolute;
     top: 50%;
