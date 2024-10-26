@@ -1,11 +1,15 @@
 import React from 'react';
 
-const Title = () => {
+
+type Props={
+    title:string
+}
+
+const Title = ({title}:Props) => {
     return (
         <div className="index-title-pro archive">
             <h2 className="woocommerce-loop-product_title"><a
-                href="/">آیفون
-                13 پرو مکس 512 گیگابایت دو سیمکارت (ZAA) Active</a>
+                href="/">{title}</a>
             </h2>
         </div>
     );

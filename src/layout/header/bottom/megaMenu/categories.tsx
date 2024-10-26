@@ -30,7 +30,7 @@ const DropdownHeading = ({headerCategory, setSubCategoryId}: Props) => {
          ${active ? activeList : ''}`}
                                        ref={tabRef} onMouseEnter={(e) => handleMouseEnter(e, id)}
                             >
-                                <Link href={"/"}>
+                                <Link href={"/"} ke>
                                     <span className="flex items-center gap-[4px]">
                                         <Icon size={18} className="icon ml-[4px]"/>
                                     <span>{tab}</span>

@@ -7,15 +7,19 @@ import Image from "next/image";
 
 // css
 import "./index.scss"
+import {CategoryListType} from "@/components/category/list";
 
-const Category = () => {
+
+
+
+const Category = ({PictureModel}:CategoryListType["data"][0]) => {
     return (
         <div className="category">
             <Link href="/">
-                <Image src="https://pars.parskalas.com/wp-content/uploads/2023/07/cover-thumbnail-1.svg" width="150"
+                <Image src={PictureModel.ImageUrl} width="150"
                        height="150"
-                       alt="آیفون 13 پرو مکس 512 گیگابایت دو سیمکارت (ZAA) Active" className="post-thumb"/>
-                <h2 className="category__name">اسپیکر بلوتوث باسیم</h2>
+                       alt={PictureModel.AlternateText} className="post-thumb"/>
+                <h2 className="category__name">{PictureModel.Title}</h2>
                 <span className="category__count">12</span>
             </Link>
         </div>

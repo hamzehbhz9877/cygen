@@ -11,7 +11,7 @@ import Login from "@/components/login/index";
 import useTimer from "@/hooks/useTimer";
 import Code from "@/components/input/code/code";
 import {useMutation} from "@tanstack/react-query";
-import {LoginRegisterVerification} from "@/services/shortLink";
+import {LoginRegisterVerification} from "@/services/OtpAuthentication";
 import {showToast} from "@/helpers/react-toastify";
 import useAuth from "@/context/authentication/useAuth";
 import {initialValues, validationSchema} from "@/components/login/otpValidation";
@@ -50,8 +50,6 @@ const Otp = ({MobileNumber, OtpExpireDateTotalSeconds, resendCode, Authenticatio
     const {minutes, seconds} = useTimer({sec:OtpExpireDateTotalSeconds})
 
     const handleResendCode = () => resendCode()
-
-
 
 
     return (

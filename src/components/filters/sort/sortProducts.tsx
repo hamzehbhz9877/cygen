@@ -4,11 +4,13 @@ import {BsSortDownAlt} from "react-icons/bs";
 
 // css
 import "./index.scss"
+import Link from "next/link";
 
 
-const SortProducts = () => {
-
-
+type SortProductsType = {
+    data: any
+}
+const SortProducts = ({data}: SortProductsType) => {
     return (
         <div className="sort-products">
 
@@ -17,41 +19,17 @@ const SortProducts = () => {
                 <span className="sort-products__filter-title">مرتب سازی:</span>
                 <ul className="sort-products__filter-list">
 
-                    <li className="sort-products__filter-item sort-products__filter-item--active">
-                        <a rel="nofollow"
-                           href="/">
-                            پیشفرض </a>
-                    </li>
-
-                    <li className="sort-products__filter-item order-rating">
-                        <a rel="nofollow"
-                           href="/">
-                            محبوبیت </a>
-                    </li>
-
-                    <li className="sort-products__filter-item order-popularity">
-                        <a rel="nofollow"
-                           href="/">
-                            پربازدیدترین </a>
-                    </li>
-
-                    <li className="sort-products__filter-item order-date">
-                        <a rel="nofollow"
-                           href="/">
-                            جدیدترین </a>
-                    </li>
-
-                    <li className="sort-products__filter-item order-price">
-                        <a rel="nofollow"
-                           href="/">
-                            ارزانترین </a>
-                    </li>
-
-                    <li className="sort-products__filter-item order-price-desc">
-                        <a rel="nofollow"
-                           href="/">
-                            گرانترین </a>
-                    </li>
+                    {
+                        data.map((sort: any, index: number) => {
+                            return <li key={index}
+                                       className={`sort-products__filter-item
+                                        ${sort.Selected ? "sort-products__filter-item--active" : ""}`}>
+                                <Link rel="nofollow"
+                                   href="/">
+                                    {sort.Text} </Link>
+                            </li>
+                        })
+                    }
                 </ul>
             </div>
 

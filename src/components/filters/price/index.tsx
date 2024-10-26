@@ -14,12 +14,23 @@ import UseQueryParams from "@/hooks/useQueryParams";
 import useQueryParams from "@/hooks/useQueryParams";
 import Logic from "@/components/filters/price/logic";
 
-type Props = {
+type FilterByPriceType = {
     isOpen?: boolean
+    data: any
 }
-const FilterByPrice = ({isOpen = true}: Props) => {
+const FilterByPrice = ({isOpen = true, data}: FilterByPriceType) => {
 
-    const {to, from, handleChangeFrom, handleChangeTo, handleChangeInout, handlesubmit, input, setFrom, setTo} = Logic()
+    const {
+        to,
+        from,
+        handleChangeFrom,
+        handleChangeTo,
+        handleChangeInout,
+        handlesubmit,
+        input,
+        setFrom,
+        setTo
+    } = Logic(data)
 
     return (
         <div className="filter filter-price">
@@ -27,7 +38,7 @@ const FilterByPrice = ({isOpen = true}: Props) => {
                 isOpen={isOpen}
                 title={
                     <div className="filter__title">
-                        <h2 className="">فیلتر بر اساس قیمت:</h2>
+                        <h2 className="">فیلتر بر اساس قیمت</h2>
                         <LiaAngleDownSolid size={14} color={"#000"}/>
                     </div>}
                 content={
@@ -56,7 +67,7 @@ const FilterByPrice = ({isOpen = true}: Props) => {
                                 </div>
                             </div>
 
-                            <SliderRange step={1000} min={24000} max={40000000} from={from} to={to}
+                            <SliderRange step={1000} min={data?.AvailablePriceRange.From} max={data?.AvailablePriceRange.To} from={from} to={to}
                                          setFrom={setFrom} setTo={setTo}/>
 
                             <div className="filter-price__label">

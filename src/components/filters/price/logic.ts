@@ -3,10 +3,16 @@ import {toEnglishDigits} from "@/utils/helpers-client";
 import UseQueryParams from "@/hooks/useQueryParams";
 import useQueryParams from "@/hooks/useQueryParams";
 
-const Logic = () => {
-    const [from, setFrom] = useState(24000)
-    const [to, setTo] = useState(40000000)
+const Logic = (data:any) => {
+
+    const [from, setFrom] = useState(0)
+    const [to, setTo] = useState(0)
     const [input, setInput] = useState({from, to})
+
+    useEffect(()=>{
+        setFrom(data?.AvailablePriceRange.From)
+        setTo(data?.AvailablePriceRange.To)
+    },[data?.AvailablePriceRange])
 
 
     const {addQueryParam} = UseQueryParams()
@@ -15,10 +21,10 @@ const Logic = () => {
 
     useEffect(() => {
         if (allPrams['min_price'])
-            setFrom(+allPrams['min_price'])
+            setFrom(data?.SelectedPriceRange)
         if (allPrams['max_price'])
-            setTo(+allPrams['max_price'])
-    }, [])
+            setTo(data?.SelectedPriceRange)
+    }, [data?.SelectedPriceRange])
 
     useEffect(() => {
         setInput({from,to})
@@ -32,7 +38,7 @@ const Logic = () => {
 
     const handleChangeFrom = () => {
         const value = input.from
-        if (value > to || value < 24000) {
+        if (value > to || value < data?.AvailablePriceRange.From) {
             setInput({...input, from})
             setFrom(from)
         } else {
@@ -44,7 +50,7 @@ const Logic = () => {
 
     const handleChangeTo = () => {
         const value = input.to
-        if (value > 40000000 || value < from) {
+        if (value > data?.AvailablePriceRange.To || value < from) {
             setTo(to)
             setInput({...input, to})
         } else {
