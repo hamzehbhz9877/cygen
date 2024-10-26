@@ -5,7 +5,6 @@ const formatter = new Intl.NumberFormat("fa-IR", {
 });
 
 function toEnglishDigits(num: any) {
-
     const id = {
         '۰': '0',
         '۱': '1',

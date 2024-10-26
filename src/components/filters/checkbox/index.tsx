@@ -5,18 +5,19 @@ import Collapse from "@/components/collapse";
 import {LiaAngleDownSolid} from "react-icons/lia";
 
 
-type Props = {
-    title: string
-    data: Array<any>
-    isOpen?:boolean
-}
-
 // css
 import "./index.scss"
 import Link from "next/link";
 import useQueryParams from "@/hooks/useQueryParams";
 
-const CheckBoxFilter = ({isOpen=false,title, data}: Props) => {
+
+type CheckBoxFilter={
+    data:any
+    title:string
+    isOpen?:boolean
+    type?:string
+}
+const CheckBoxFilter = ({isOpen=false,title, data,type}: CheckBoxFilter) => {
 
     const {addQueryParam,getAllSearchParams}=useQueryParams()
 
@@ -35,13 +36,13 @@ const CheckBoxFilter = ({isOpen=false,title, data}: Props) => {
                 content={
                     <div className="filter__content">
                         <ul className="filter-checkbox__list">
-                            {data.map((item,index) => {
-                                return <li key={index} className={`${allParams['filter_color-selector']?.includes(item)?'chosen':''}`}
-                                           onClick={()=>addQueryParam('filter_color-selector',item,"multiple")}>
+                            {data.map((item:any,index:number) => {
+                                return <li key={index} className={`${data.Selected?'chosen':''}`}
+                                           onClick={()=>addQueryParam(type,item?.Name??item.Text,"multiple")}>
                                     <Link href={"/"} >
-                                        {item}
+                                        {item?.Name??item.Text}
                                     </Link>
-                                    <span className="color" ></span>
+                                    <span className={`color bg-[${item.ColorSquaresRgb}]`}></span>
                                 </li>
                             })}
                         </ul>

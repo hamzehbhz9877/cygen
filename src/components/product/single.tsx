@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Link from "next/link";
 import SpecialOffer from "@/components/product/specialOffer";
@@ -13,7 +12,7 @@ import Colors from "@/components/product/color/list";
 import "./index.scss"
 
 
-const Product = () => {
+const Product = ({Name, MarkAsNew, ProductPrice, PictureModels}: any) => {
     return (
         <div className="product">
             <div className="product-box-inner">
@@ -21,13 +20,13 @@ const Product = () => {
                     <Link href="/" className="woocommerce-LoopProduct-link woocommerce-loop-product__link">
                         <Colors/>
                         <SpecialOffer/>
-                        <Images/>
+                        <Images data={PictureModels}/>
                     </Link>
-                    <Title/>
+                    <Title title={Name}/>
                     <div className="flex-1"/>
-                    <Price/>
+                    <Price {...ProductPrice}/>
                 </div>
-                <Label/>
+                {MarkAsNew ? <Label/> : ""}
             </div>
         </div>
     );

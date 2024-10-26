@@ -5,7 +5,7 @@ import {useRouter} from "next/navigation";
 
 import Cookie from 'universal-cookie'
 import {useQuery} from "@tanstack/react-query";
-import {GetGuestCustomer} from "@/services/shortLink";
+import {GetGuestCustomer} from "@/services/OtpAuthentication";
 
 export const AuthProvider = createContext({} as any);
 

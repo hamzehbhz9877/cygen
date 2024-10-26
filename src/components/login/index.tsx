@@ -15,7 +15,7 @@ import SubmissionCode from "@/components/login/otp";
 import {VscAccount} from "react-icons/vsc";
 import React, {useEffect} from "react";
 import {useMutation, useQuery} from "@tanstack/react-query";
-import {GetGuestCustomer, RequestLoginRegister} from "@/services/shortLink";
+import {GetGuestCustomer, RequestLoginRegister} from "@/services/OtpAuthentication";
 
 
 const Login = () => {
