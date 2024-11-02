@@ -17,24 +17,20 @@ const UseQueryParams = () => {
     const addQueryParam = (query: string, value: any, type?:any) => {
 
         if (nextSearchParams.get(query) && type === "multiple") {
-            const queryData = nextSearchParams.get(query)?.split(",")
-
-            if (queryData.includes(value)) {
-                queryData?.filter(data => data !== value)
+            let queryData;
+            const dataQuery = nextSearchParams.get(query)?.split(",")
+            if (dataQuery.includes(value.toString())) {
+                queryData=dataQuery?.filter(data => +data !== +value)
             } else {
-                queryData.push(value)
+                queryData=[...dataQuery,value]
             }
-
-            const multiple = queryData.join(',');
-
-            if (multiple.length === 0)
+            if (queryData.length === 0)
                 removeQueryParam(query)
             else
-                nextSearchParams.set(query, multiple)
+                nextSearchParams.set(query, queryData.toString())
         } else {
             nextSearchParams.set(query, value)
         }
-
         router.push(decodeURIComponent(`${pathname}?${nextSearchParams}`))
     }
 

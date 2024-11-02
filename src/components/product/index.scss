@@ -28,14 +28,14 @@
     top: 0;
   }
 
-  @apply h-auto lg:h-[380px] rounded-[14px] lg:rounded-[0] lg:border-none
+  @apply h-auto xl:h-[380px] rounded-[14px] lg:rounded-[0] lg:border-none
   border border-solid border-[#e4e4e4]
   relative ;
 
 
   &__label{
-    @apply absolute top-[10px] lg:top-[35px] left-[10px]
-    bg-green-100 text-green-800 text-xs font-medium  px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300;
+    @apply absolute rounded-full top-[10px] lg:top-[35px] left-[10px]
+    bg-green-100 text-green-800 text-xs font-medium  px-2.5 py-0.5  dark:bg-green-900 dark:text-green-300;
   }
 
   &:hover .thumb-pro.hover-image img {

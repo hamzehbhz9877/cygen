@@ -7,6 +7,7 @@ export const headerCategory=[
         id:1,
         icon:RiStore2Line ,
         active:true,
+        link:'/category/موبایل-بر-اساس-برند',
         subCategory:[
             {
                 title:"مد و پوشاک",

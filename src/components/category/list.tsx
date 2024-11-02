@@ -10,17 +10,7 @@ import useResize from "@/hooks/useResize";
 
 
 export type CategoryListType = {
-    data:{
-        Name: string,
-        SeName: string,
-        Description: null,
-        PictureModel: {
-            ImageUrl: string,
-            FullSizeImageUrl: string,
-            Title: string,
-            AlternateText: string
-        }
-    }[]
+    data:any,
 }
 
 const CategoryList = ({data}: CategoryListType) => {
@@ -41,7 +31,7 @@ const CategoryList = ({data}: CategoryListType) => {
             <div className="categories__title">دسته‌بندی‌ها</div>
 
             <div className={"categories__list"}>
-                {
+            {
                     data.length > 7 ? <>
                         {data.slice(0, 7).map((data, index: number) => {
                             return <Category {...data} key={index}/>

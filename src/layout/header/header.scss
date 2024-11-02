@@ -141,7 +141,7 @@
     .shopping-cart {
       @apply relative;
       em {
-        @apply absolute top-[1px] right-[-4px] w-[15px] h-[15px] rounded-full text-white text-center text-[10px] bg-gradient-to-r from-dynamic-color-from to-dynamic-color-to;
+        @apply absolute top-[1px] right-[-4px] w-[15px] h-[15px]  text-white text-center text-[10px] bg-gradient-to-r from-dynamic-color-from to-dynamic-color-to;
       }
     }
   }
@@ -183,7 +183,7 @@
       width: 95%;
 
       .bor-line {
-        @apply invisible opacity-0 w-0 right-0 h-[1.5px] bg-[red] rounded-[2px] absolute top-[calc(100%_-_1.5px)];
+        @apply invisible opacity-0 w-0 right-0 h-[1.5px] bg-dynamic-color-from rounded-[2px] absolute top-[calc(100%_-_1.5px)];
         transition: all 200ms ease-out;
       }
 
@@ -230,7 +230,7 @@
 
         border-left: 1px solid rgb(255 255 255 / 3%);
 
-        > a:not(.page-promotes li a) {
+        > a:not(.page-promotes li a),&>span {
           @apply flex items-center gap-[8px];
           font-size: 14px;
           color: #000;
@@ -442,7 +442,7 @@
         margin-left: 5px;
         border-radius: 1px;
         display: inline-block;
-        background: #ff6a00;
+        @apply bg-dynamic-color-to;
       }
     }
 
@@ -482,12 +482,13 @@
     }
 
     &--active {
-      background: linear-gradient(270deg, rgba(255, 10, 10, .1) 0%, rgba(239, 58, 79, .01) 100%);
-      color: var(--c2);
-      border-color: #ff6a00;
+      //background: linear-gradient(270deg, rgba(255, 10, 10, .1) 0%, rgba(239, 58, 79, .01) 100%);
+
+      @apply border-dynamic-color-to
+      bg-gradient-to-l from-dynamic-color-from-rgba to-dynamic-color-to-rgba;
 
       a {
-        color: #ff6a00 !important;
+        @apply text-dynamic-color-to #{!important};
       }
 
       .arrow-left {

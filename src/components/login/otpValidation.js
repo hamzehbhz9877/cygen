@@ -2,19 +2,19 @@ import * as Yup from "yup";
 
 
 const initialValues = {
-    otpCode: ''
+    OtpCode: ''
 }
 const validationSchema = Yup.object({
-    otpCode: Yup.string().min(5, "کد ورودی را بررسی کنید").required('لطفا کد ارسال شده را وارد کنید')
+    OtpCode: Yup.string().min(5, "").required('لطفا کد ارسال شده را وارد کنید')
 });
 
 const initialValuesRegister = {
-    otpCode: '',
+    OtpCode: '',
     firstName:'',
     lastName:''
 }
 const validationSchemaRegister = Yup.object({
-    otpCode: Yup.string().min(5, "کد ورودی را بررسی کنید").required('لطفا کد ارسال شده را وارد کنید'),
+    OtpCode: Yup.string().min(5, "کد تایید باید ۵ رقمی باشد").required('مقدار وارد شده باید فقط شامل عدد باشد.'),
     firstName: Yup.string().required('لطفا نام را وارد کنید'),
     lastName: Yup.string().required('لطفا نام خانوادگی را وارد کنید'),
 });

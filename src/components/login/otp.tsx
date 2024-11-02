@@ -1,6 +1,6 @@
 import {ModalBody} from "@/components/modal";
 import Logo from "@/layout/header/top/logo";
-import {ErrorMessage, Form, Formik} from "formik";
+import {ErrorMessage, Form, Formik, useFormikContext} from "formik";
 import Button from "@/components/button/simple";
 import {FaArrowRight} from "react-icons/fa6";
 
@@ -11,8 +11,8 @@ import Login from "@/components/login/index";
 import useTimer from "@/hooks/useTimer";
 import Code from "@/components/input/code/code";
 import {useMutation} from "@tanstack/react-query";
-import {LoginRegisterVerification} from "@/services/shortLink";
-import {showToast} from "@/helpers/react-toastify";
+import {LoginRegisterVerification, ResendLoginRegisterOtpCode} from "@/services/OtpAuthentication";
+import {showToast} from "@/components/react-toastify/react-toastify";
 import useAuth from "@/context/authentication/useAuth";
 import {
     initialValues,
@@ -21,6 +21,7 @@ import {
     validationSchemaRegister
 } from "@/components/login/otpValidation";
 import Input from "@/components/input/simple";
+import React, {useEffect, useState} from "react";
 
 
 type Props = {
@@ -28,11 +29,24 @@ type Props = {
     MobileNumber: string,
     OtpExpireDateTotalSeconds: number,
     RegisterRequired: boolean
-    resendCode: () => void
 }
+const AutoSubmitToken = ():any => {
+    const {values, submitForm}:any = useFormikContext();
+    React.useEffect(() => {
+        if (values.OtpCode.toString().length === 5) {
+            submitForm();
+        }
+    }, [values, submitForm]);
+    return null;
+};
 
-const Otp = ({MobileNumber, OtpExpireDateTotalSeconds, resendCode, AuthenticationToken, RegisterRequired}: Props) => {
+const Otp = ({MobileNumber, OtpExpireDateTotalSeconds, AuthenticationToken, RegisterRequired}: Props) => {
 
+    const [timer, setTimer] = useState() as any
+
+    useEffect(() => {
+        setTimer(OtpExpireDateTotalSeconds)
+    }, [OtpExpireDateTotalSeconds])
 
     const {openModal, closeModal} = useModal()
 
@@ -47,6 +61,11 @@ const Otp = ({MobileNumber, OtpExpireDateTotalSeconds, resendCode, Authenticatio
         }
     });
 
+    const {mutate: resendCode, error: ResendLoginRegisterOtpCodeError} = useMutation<any, any, any, any>({
+        mutationFn: ResendLoginRegisterOtpCode, onSuccess: (data) => {
+            setTimer(data.data.OtpExpireDateTotalSeconds)
+        }
+    });
 
     const handleSubmit = (values: any) => mutate({
         ...values,
@@ -55,12 +74,14 @@ const Otp = ({MobileNumber, OtpExpireDateTotalSeconds, resendCode, Authenticatio
         lastName: values?.lastName,
     })
 
+
     const handleBackToPrevStep = () => openModal(<Login/>, {className: "login"})
 
 
-    const {minutes, seconds} = useTimer({sec: OtpExpireDateTotalSeconds})
+    const {minutes, seconds} = useTimer({sec: timer})
 
-    const handleResendCode = () => resendCode()
+    const handleResendCode = () => resendCode({authenticationToken: AuthenticationToken})
+
 
     return (
         <>
@@ -69,7 +90,9 @@ const Otp = ({MobileNumber, OtpExpireDateTotalSeconds, resendCode, Authenticatio
                 <div className="back-prev-step" onClick={handleBackToPrevStep}>
                     <FaArrowRight size={25} color={"#424750"}/>
                 </div>
-                {RegisterRequired ? "" :
+                {RegisterRequired ? <div className="login__title">
+                        <span>تکمیل ثبت نام</span>
+                    </div> :
                     <div className="login__title">
                         <span>کد تایید را وارد کنید</span>
                     </div>}
@@ -86,8 +109,10 @@ const Otp = ({MobileNumber, OtpExpireDateTotalSeconds, resendCode, Authenticatio
                                         {
                                             RegisterRequired ?
                                                 <div className="mb-[30px]">
-                                                    <Input type={'text'} label={'نام'} name={"firstName"}/>
-                                                    <Input type={'text'} label={'نام خانوادگی'} name={"lastName"}/>
+                                                    <Input error={error} type={'text'} label={'نام'}
+                                                           name={"firstName"}/>
+                                                    <Input error={error} type={'text'} label={'نام خانوادگی'}
+                                                           name={"lastName"}/>
                                                 </div> : ""
                                         }
                                         <div className="label">
@@ -95,24 +120,24 @@ const Otp = ({MobileNumber, OtpExpireDateTotalSeconds, resendCode, Authenticatio
                                             <span className="phone-number">{MobileNumber}</span>
                                         </div>
 
-                                        <Code getValue={(value) => {
-                                            formikProps.setFieldValue('otpCode', value)
-                                            if (value.length === 5)
-                                                mutate({
-                                                    otpCode: value,
-                                                    authenticationToken: AuthenticationToken,
-                                                    firstName: formikProps.values?.firstName,
-                                                    lastName: formikProps.values?.lastName,
-                                                })
-                                        }}/>
-                                        <ul>
-                                            {error && error.response.data ?
-                                                typeof error?.response?.data === 'string' ?
-                                                    <li className="error">{error?.response?.data}</li> :
-                                                    Object.values(error?.response?.data).map((err: any, index) =>
-                                                        <li key={index} className="error">{err}</li>
-                                                    ) : ""}
-                                        </ul>
+                                        <Input onKeyPress={(e) => {
+                                            const {value, maxLength}:any = e.target;
+                                            if (String(value).length >= maxLength) {
+                                                e.preventDefault();
+                                                return;
+                                            }
+                                        }} maxLength={5} className="text-center text-[18px] tracking-[11px]"
+                                               placeholder={ new Array(5).fill("-").join('')}
+                                               error={error} type={'number'} label={''}
+                                               name={"OtpCode"}/>
+
+                                        {/*<Code error={error || ResendLoginRegisterOtpCodeError} getValue={(value) => {*/}
+                                        {/*    formikProps.setFieldValue('otpCode', value)*/}
+                                        {/*}}/>*/}
+
+                                        {error && error?.status > 400 ?
+                                            <div className={"error"}>{error?.response.data}</div> : ""}
+                                        <AutoSubmitToken/>
                                     </div>
                                     <Button
                                         type={"submit"} loading={isPending} text={"ادامه"}

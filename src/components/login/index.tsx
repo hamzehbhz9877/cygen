@@ -22,9 +22,9 @@ const Login = () => {
 
     const {openModal} = useModal()
 
-    const {mutate, isPending} = useMutation({
+    const {mutate, isPending,error} = useMutation<any,any,any,any>({
         mutationFn: RequestLoginRegister, onSuccess: (data: any) => {
-            openModal(<SubmissionCode resendCode={()=>mutate({mobileNumber: data.data.MobileNumber})} {...data.data}/>, {className: "login"})
+            openModal(<SubmissionCode {...data.data}/>, {className: "login"})
         }
     });
 
@@ -46,8 +46,11 @@ const Login = () => {
                         return (
                             <Form>
                                 <>
-                                    <Input autoFocus type={"text"} label={'شماره همراه خود را وارد نمایید.'}
+                                    <Input error={error} autoFocus type={"text"}
+                                           label={'شماره همراه خود را وارد نمایید.'}
                                            name={"phone"} icon={<VscAccount color={'#92929270'} size={25}/>}/>
+                                    {error&&error?.status>400?
+                                        <div className={"error"}>{error?.response.data}</div>:""}
                                     <Button type={"submit"} loading={isPending} text={"ورود / عضویت"}
                                             className=""/>
                                 </>

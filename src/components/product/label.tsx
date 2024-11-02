@@ -4,7 +4,6 @@ const Label = () => {
     return (
         <span
             className="product__label">جدید</span>
-
     );
 };
 

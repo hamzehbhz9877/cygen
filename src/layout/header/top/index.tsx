@@ -20,7 +20,7 @@ const Top = () => {
                 <i className="line-account"></i>
                 <div className="shopping-cart cursor-pointer" title="cart">
                     <PiShoppingCartSimpleLight size={28} color={'#424750'}/>
-                    <em className="">0</em>
+                    <em className="rounded-full">0</em>
                 </div>
             </div>
         </div>

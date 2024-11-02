@@ -7,6 +7,7 @@ import ModalContext from "@/context/modal";
 import ClientReactQueryProvider from "@/utils/reactQueryProvider-client";
 import Auth from "../context/authentication";
 import ToastProvider from "@/utils/react-toastify-client";
+import NProgressProviders from "@/utils/nprogress-client";
 
 const bYekan = localFont({
     src: "./fonts/YekanBakhFaNum-Regular.woff",
@@ -39,11 +40,14 @@ export default function RootLayout({
             <ToastProvider>
                 <Auth>
                     <ModalContext>
-                        <Header/>
-                        <main>
-                            {children}
-                        </main>
-                        <Footer/>
+                        <NProgressProviders>
+                            <Header/>
+                            <main>
+                                {children}
+                            </main>
+                            <Footer/>
+                        </NProgressProviders>
+
                         <div className="overlay"/>
                     </ModalContext>
                 </Auth>

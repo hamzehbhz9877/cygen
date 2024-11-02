@@ -2,46 +2,26 @@ import React from 'react';
 
 
 import "./index.scss"
+import Link from "next/link";
+import useQueryParams from "@/hooks/useQueryParams";
 
-const MobileSort = () => {
+const MobileSort = ({data}:any) => {
+
+    const {addQueryParam}=useQueryParams()
+
     return (
             <div className="prK_orderby_mobile sort__mobile">
                 <ul className="prk-order-products">
-                    <li className="order-item order-menu-order is-active">
-                        <a rel="nofollow"
-                           href="/">
-                            پیشفرض </a>
-                    </li>
-
-                    <li className="order-item order-rating">
-                        <a rel="nofollow"
-                           href="/">
-                            محبوبیت </a>
-                    </li>
-
-                    <li className="order-item order-popularity">
-                        <a rel="nofollow"
-                           href="/">
-                            پربازدیدترین </a>
-                    </li>
-
-                    <li className="order-item order-date">
-                        <a rel="nofollow"
-                           href="/">
-                            جدیدترین </a>
-                    </li>
-
-                    <li className="order-item order-price">
-                        <a rel="nofollow"
-                           href="/">
-                            ارزانترین </a>
-                    </li>
-
-                    <li className="order-item order-price-desc">
-                        <a rel="nofollow"
-                           href="/">
-                            گرانترین </a>
-                    </li>
+                    {
+                        data?.map((sort: any, index: number) => {
+                            return <li key={index} onClick={() => addQueryParam('order', sort.Value)}
+                                       className={`order-item order-menu-order ${sort.Selected ? "is-active" : ""}`}>
+                                <Link rel="nofollow"
+                                      href="/">
+                                    {sort.Text} </Link>
+                            </li>
+                        })
+                    }
                 </ul>
 
             </div>

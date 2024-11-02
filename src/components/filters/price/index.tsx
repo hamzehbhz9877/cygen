@@ -8,7 +8,7 @@ import {LiaAngleDownSolid} from "react-icons/lia";
 
 // css
 import "./index.scss"
-import {formatter, toEnglishDigits} from "@/utils/helpers-client";
+import {formatter, toEnglishDigits} from "@/helpers/client";
 import Collapse from "@/components/collapse";
 import UseQueryParams from "@/hooks/useQueryParams";
 import useQueryParams from "@/hooks/useQueryParams";
@@ -16,7 +16,7 @@ import Logic from "@/components/filters/price/logic";
 
 type FilterByPriceType = {
     isOpen?: boolean
-    data: any
+    data?: any
 }
 const FilterByPrice = ({isOpen = true, data}: FilterByPriceType) => {
 
@@ -38,13 +38,12 @@ const FilterByPrice = ({isOpen = true, data}: FilterByPriceType) => {
                 isOpen={isOpen}
                 title={
                     <div className="filter__title">
-                        <h2 className="">فیلتر بر اساس قیمت</h2>
+                        <h2 className="">محدوده قیمت</h2>
                         <LiaAngleDownSolid size={14} color={"#000"}/>
                     </div>}
                 content={
                     <div className="filter__content">
                         <form action="" onSubmit={handlesubmit}>
-
                             <div className="filter-price__inputs">
                                 <div className="filter-price__input">
                                     <span>از</span>
@@ -66,10 +65,8 @@ const FilterByPrice = ({isOpen = true, data}: FilterByPriceType) => {
                                     <span>تومان</span>
                                 </div>
                             </div>
-
                             <SliderRange step={1000} min={data?.AvailablePriceRange.From} max={data?.AvailablePriceRange.To} from={from} to={to}
                                          setFrom={setFrom} setTo={setTo}/>
-
                             <div className="filter-price__label">
                                 <span className="to">{formatter.format(to) + " " + "تومان"}</span>
                                 <span className="from">{formatter.format(from) + " " + "تومان"}</span>

@@ -4,10 +4,7 @@ import React, {useEffect, useRef} from 'react';
 import {RiFilterOffLine} from "react-icons/ri";
 import {RiSortDesc} from "react-icons/ri";
 
-// css
-import "./index.scss"
 import FilterSidebarMobile from "@/components/filters/mobile/filterSidebarMobile";
-import Filters from "@/components/filters";
 import ActiveFilters from "@/components/filters/active";
 import FilterByPrice from "@/components/filters/price";
 import CheckBoxFilter from "@/components/filters/checkbox";
@@ -15,7 +12,7 @@ import useClickOutside from "@/hooks/useOutsideClick";
 import MobileSort from "@/components/filters/sort/mobile";
 import Logic from "@/components/filters/mobile/logic";
 
-const MobileHeadFilters = () => {
+const MobileHeadFilters = ({data,isRefetching}: any) => {
 
     const sortRef = useRef<HTMLDivElement | null>(null)
 
@@ -29,13 +26,13 @@ const MobileHeadFilters = () => {
         <div className="block lg:hidden mb-[15px] filters__mobile">
             <div className="title_shop">
                 کالای دیجیتال
-                <div className="sort-products__count">
+                {isRefetching ? <div className="loader-count"/> : <div className="sort-products__count">
                     <span className="count">نمایش</span>
 
-                    <span className="count total"> 23 </span>
+                    <span className="count total"> {data.TotalItems} </span>
 
                     <span className="count">قیمت کالا ها</span>
-                </div>
+                </div>}
             </div>
 
             <div className="box-filter-shop">
@@ -50,14 +47,25 @@ const MobileHeadFilters = () => {
                     <span className="filter_by_botton show_sortby"><RiSortDesc size={17} color={"#2c2c2c"}
                     />مرتب سازی</span>
 
-                    <MobileSort/>
+                    <MobileSort data={data.AvailableSortOptions}/>
                 </div>
 
             </div>
             <FilterSidebarMobile title={"کالای دیجیتال"}>
-                <ActiveFilters/>
-                <FilterByPrice isOpen={false}/>
-                <CheckBoxFilter isOpen={false} title={'فیلتر بر اساس رنگ ها:'} data={['بنفش', "زرد", "قرمز"]}/>
+                <ActiveFilters activeFilters={data}/>
+                {
+                    data?.PriceRangeFilter?.Enabled ?
+                        <FilterByPrice data={data.PriceRangeFilter}/> : ""
+                }
+                {
+                    data?.SpecificationFilter?.Enabled ? data.SpecificationFilter.Attributes.map((data: any, index: number) => {
+                        return <CheckBoxFilter type={"specifications"} key={index} title={data.Name} data={data.Values}/>
+                    }) : ""
+                }
+                {
+                    data?.ManufacturerFilter?.Enabled ? <CheckBoxFilter type={"manufacturers"}  title={"برند ها"}
+                                                                                        data={data.ManufacturerFilter.Manufacturers}/>: ""
+                }
             </FilterSidebarMobile>
         </div>
     );

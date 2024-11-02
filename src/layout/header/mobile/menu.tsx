@@ -39,8 +39,8 @@ const MenuMobile = () => {
                                 <TbCategory2 size={24} color={"#162C5B"}/>
                                 خانه</Link></li>
                         <li id="navi"
-                            className="menu-item menu-item-type-custom menu-item-object-custom menu-item-3840"><Link
-                            href="/">
+                            className="menu-item menu-item-type-custom menu-item-object-custom menu-item-3840">
+                            <Link href="/">
                             <TbCategory2 size={24} color={"#162C5B"}/>
 
                             دسته بندی

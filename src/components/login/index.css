@@ -77,7 +77,7 @@
 
 .modal.login {
   @apply w-full max-w-full rounded-[0] !important;
-  @apply md:w-max lg:w-[450px]  md:max-w-[500px] md:rounded-[12px] !important;
+  @apply sm:w-[450px] md:rounded-[12px] !important;
 }
 
 /*# sourceMappingURL=index.css.map */

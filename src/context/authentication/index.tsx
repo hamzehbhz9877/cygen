@@ -6,6 +6,7 @@ import {useRouter} from "next/navigation";
 import Cookie from 'universal-cookie'
 import {useQuery} from "@tanstack/react-query";
 import {GetGuestCustomer} from "@/services/OtpAuthentication";
+import {isTokenExpired} from "@/helpers/client";
 
 export const AuthProvider = createContext({} as any);
 
@@ -28,13 +29,13 @@ const Auth= ({children}:Props) => {
         queryFn: GetGuestCustomer,enabled:cookie.get("guest") === undefined && cookie.get('user')===undefined
     });
 
-    const resetCookie = async () => {
+    const resetUserCookie = async () => {
         await cookie.remove("user",{path:"/"});
         setUser(null)
         router.push("/");
     };
 
-    const setCookie = (data: any) => {
+    const setUserCookie = (data: any) => {
         cookie.set("user", data.data, {path: "/"});
         setUser(data.data)
     };
@@ -48,12 +49,18 @@ const Auth= ({children}:Props) => {
             cookie.set("guest", data.data, {path: "/"});
     },[data])
 
+    const resetGuestCookie=()=>{
+        cookie.remove('guest')
+    }
+
+
     return (
         <AuthProvider.Provider
             value={{
                 user,
-                resetCookie,
-                setCookie,
+                resetGuestCookie,
+                resetUserCookie,
+                setUserCookie,
             }}
         >
             {children}

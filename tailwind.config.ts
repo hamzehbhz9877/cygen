@@ -16,8 +16,12 @@ const config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        'dynamic-color-from':'#ff3a30',
-        'dynamic-color-to':'#ff6a00'
+        // 'dynamic-color-from':'#ff3a30',
+        // 'dynamic-color-to':'#ff6a00',
+        'dynamic-color-from':'#4859f9',
+        'dynamic-color-to':'#4859f9',
+        'dynamic-color-from-rgba':'#4859f910',
+        'dynamic-color-to-rgba':'#4859f901'
       },
     },
     container: {

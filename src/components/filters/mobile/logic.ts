@@ -13,6 +13,7 @@ const Logic = () => {
         const element:any = document.querySelector('.box-filter-shop')
         const rect = element.getBoundingClientRect();
 
+
         window.addEventListener("scroll", () => {
             if (window.scrollY > rect.y) {
                 element.classList.add("fixed")
@@ -20,6 +21,15 @@ const Logic = () => {
                 element.classList.remove("fixed")
             }
         })
+        return ()=>{
+            window.removeEventListener("scroll", () => {
+                if (window.scrollY > rect.y) {
+                    element.classList.add("fixed")
+                } else {
+                    element.classList.remove("fixed")
+                }
+            })
+        }
     }, [])
 
     return {handleFilter,handleSort}

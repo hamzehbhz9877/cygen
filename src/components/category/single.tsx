@@ -12,14 +12,14 @@ import {CategoryListType} from "@/components/category/list";
 
 
 
-const Category = ({PictureModel}:CategoryListType["data"][0]) => {
+const Category = ({PictureModel,Name}:any) => {
     return (
         <div className="category">
             <Link href="/">
                 <Image src={PictureModel.ImageUrl} width="150"
-                       height="150"
+                       height="150" title={PictureModel.Title}
                        alt={PictureModel.AlternateText} className="post-thumb"/>
-                <h2 className="category__name">{PictureModel.Title}</h2>
+                <h2 className="category__name">{Name}</h2>
                 <span className="category__count">12</span>
             </Link>
         </div>

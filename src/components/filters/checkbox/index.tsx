@@ -11,17 +11,16 @@ import Link from "next/link";
 import useQueryParams from "@/hooks/useQueryParams";
 
 
-type CheckBoxFilter={
-    data:any
-    title:string
-    isOpen?:boolean
-    type?:string
+type CheckBoxFilter = {
+    data: any
+    title: string
+    isOpen?: boolean
+    type?: string
 }
-const CheckBoxFilter = ({isOpen=false,title, data,type}: CheckBoxFilter) => {
+const CheckBoxFilter = ({isOpen = false, title, data, type}: CheckBoxFilter) => {
 
-    const {addQueryParam,getAllSearchParams}=useQueryParams()
+    const {addQueryParam} = useQueryParams()
 
-    const allParams=getAllSearchParams()
 
     return (
         <div className="filter filter-checkbox">
@@ -36,13 +35,14 @@ const CheckBoxFilter = ({isOpen=false,title, data,type}: CheckBoxFilter) => {
                 content={
                     <div className="filter__content">
                         <ul className="filter-checkbox__list">
-                            {data.map((item:any,index:number) => {
-                                return <li key={index} className={`${data.Selected?'chosen':''}`}
-                                           onClick={()=>addQueryParam(type,item?.Name??item.Text,"multiple")}>
-                                    <Link href={"/"} >
-                                        {item?.Name??item.Text}
+                            {data.map((item: any, index: number) => {
+                                if ( !item?.Disabled || item.Disabled===false)
+                                return <li key={index} className={`${item.Selected ? 'chosen' : ''}`}
+                                           onClick={() => addQueryParam(type, item?.Id ?? item?.Value, "multiple")}>
+                                    <Link href={"/"}>
+                                        {item?.Name ?? item.Text}
                                     </Link>
-                                    <span className={`color bg-[${item.ColorSquaresRgb}]`}></span>
+                                    <span className={`color bg-[${item?.ColorSquaresRgb}]`}></span>
                                 </li>
                             })}
                         </ul>

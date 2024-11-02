@@ -120,7 +120,7 @@
   @apply relative;
 }
 .header__top .shopping-cart em {
-  @apply absolute top-[1px] right-[-4px] w-[15px] h-[15px] rounded-full text-white text-center text-[10px] bg-gradient-to-r from-dynamic-color-from to-dynamic-color-to;
+  @apply absolute top-[1px] right-[-4px] w-[15px] h-[15px]  text-white text-center text-[10px] bg-gradient-to-r from-dynamic-color-from to-dynamic-color-to;
 }
 .header__bottom {
   margin-top: 0;
@@ -156,7 +156,7 @@
   width: 95%;
 }
 .header__bottom-list .bor-line {
-  @apply invisible opacity-0 w-0 right-0 h-[1.5px] bg-[red] rounded-[2px] absolute top-[calc(100%_-_1.5px)];
+  @apply invisible opacity-0 w-0 right-0 h-[1.5px] bg-dynamic-color-from rounded-[2px] absolute top-[calc(100%_-_1.5px)];
   transition: all 200ms ease-out;
 }
 .header__bottom-list-item {
@@ -199,7 +199,7 @@
   visibility: visible;
   opacity: 1;
 }
-.header__bottom-list-item > a:not(.page-promotes li a) {
+.header__bottom-list-item > a:not(.page-promotes li a), .header__bottom-list-item > span {
   @apply flex items-center gap-[8px];
   font-size: 14px;
   color: #000;
@@ -211,7 +211,7 @@
   padding: 8px 12px;
   margin-bottom: 2px;
 }
-.header__bottom-list-item > a:not(.page-promotes li a) img {
+.header__bottom-list-item > a:not(.page-promotes li a) img, .header__bottom-list-item > span img {
   position: relative;
   font-size: 17px;
   color: #000;
@@ -220,7 +220,7 @@
   height: auto;
   display: inline-block;
 }
-.header__bottom-list-item > a:not(.page-promotes li a) span {
+.header__bottom-list-item > a:not(.page-promotes li a) span, .header__bottom-list-item > span span {
   line-height: 24px;
 }
 .header__bottom .page-promotes {
@@ -377,7 +377,7 @@
   margin-left: 5px;
   border-radius: 1px;
   display: inline-block;
-  background: #ff6a00;
+  @apply bg-dynamic-color-to;
 }
 .category-dropdown__content-item {
   line-height: 29px;
@@ -410,12 +410,11 @@
   transition: all 0.3s ease-in-out 0s;
 }
 .category-dropdown__header-item--active {
-  background: linear-gradient(270deg, rgba(255, 10, 10, 0.1) 0%, rgba(239, 58, 79, 0.01) 100%);
-  color: var(--c2);
-  border-color: #ff6a00;
+  @apply border-dynamic-color-to
+      bg-gradient-to-l from-dynamic-color-from-rgba to-dynamic-color-to-rgba;
 }
 .category-dropdown__header-item--active a {
-  color: #ff6a00 !important;
+  @apply text-dynamic-color-to !important;
 }
 .category-dropdown__header-item--active .arrow-left {
   visibility: visible;

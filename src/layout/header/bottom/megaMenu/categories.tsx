@@ -3,11 +3,11 @@ import {headerCategory} from "@/api/megamenu";
 import {MdKeyboardArrowLeft} from "react-icons/md";
 import Link from "next/link";
 
-type Props = { setSubCategoryId: (id: number) => void, headerCategory: typeof headerCategory }
+type Props = { closeMenu:()=>void,setSubCategoryId: (id: number) => void, headerCategory: typeof headerCategory }
 
 const activeList = "category-dropdown__header-item--active"
 
-const DropdownHeading = ({headerCategory, setSubCategoryId}: Props) => {
+const DropdownHeading = ({closeMenu,headerCategory, setSubCategoryId}: Props) => {
 
     const tabRef = useRef<HTMLLIElement | null>(null)
 
@@ -23,14 +23,14 @@ const DropdownHeading = ({headerCategory, setSubCategoryId}: Props) => {
         <div className="sub-menu level-0">
             <ul>
                 {
-                    headerCategory?.map(({tab, icon, id, active,subCategory}: typeof headerCategory[0], index) => {
+                    headerCategory?.map(({tab, icon, id, active,subCategory,link}: typeof headerCategory[0], index) => {
 
                             const Icon = icon
                             return <li key={index} className={`category-dropdown__header-item relative
          ${active ? activeList : ''}`}
                                        ref={tabRef} onMouseEnter={(e) => handleMouseEnter(e, id)}
                             >
-                                <Link href={"/"} ke>
+                                <Link href={link??"/"} key={index} onClick={closeMenu}>
                                     <span className="flex items-center gap-[4px]">
                                         <Icon size={18} className="icon ml-[4px]"/>
                                     <span>{tab}</span>

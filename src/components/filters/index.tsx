@@ -16,22 +16,20 @@ type FiltersType = {
 const Filters = ({FeaturedProducts, CatalogProductsModel}: FiltersType) => {
     return (
         <div className="all-filter w-[20%] ml-[15px] sticky top-[105px] h-max hidden lg:block">
-            <Suspense>
-                <ActiveFilters/>
+                <ActiveFilters activeFilters={CatalogProductsModel}/>
                 {
-                    CatalogProductsModel.PriceRangeFilter.Enabled ?
+                    CatalogProductsModel?.PriceRangeFilter?.Enabled ?
                         <FilterByPrice data={CatalogProductsModel.PriceRangeFilter}/> : ""
                 }
                 {
-                    CatalogProductsModel.SpecificationFilter.Enabled ? CatalogProductsModel.SpecificationFilter.Attributes.map((data: any, index: number) => {
+                    CatalogProductsModel?.SpecificationFilter?.Enabled ? CatalogProductsModel.SpecificationFilter.Attributes.map((data: any, index: number) => {
                         return <CheckBoxFilter type={"specifications"} key={index} title={data.Name} data={data.Values}/>
                     }) : ""
                 }
                 {
-                    CatalogProductsModel.ManufacturerFilter.Enabled ? <CheckBoxFilter type={"manufacturers"}  title={"برند ها"}
+                    CatalogProductsModel?.ManufacturerFilter?.Enabled ? <CheckBoxFilter type={"manufacturers"}  title={"برند ها"}
                                                                                       data={CatalogProductsModel.ManufacturerFilter.Manufacturers}/>: ""
                 }
-            </Suspense>
         </div>
     );
 };

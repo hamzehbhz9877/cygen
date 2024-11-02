@@ -1,18 +1,18 @@
 import React, {useEffect, useState} from 'react';
-import {toEnglishDigits} from "@/utils/helpers-client";
+import {toEnglishDigits} from "@/helpers/client";
 import UseQueryParams from "@/hooks/useQueryParams";
 import useQueryParams from "@/hooks/useQueryParams";
 
-const Logic = (data:any) => {
+const Logic = (data: any) => {
 
     const [from, setFrom] = useState(0)
     const [to, setTo] = useState(0)
     const [input, setInput] = useState({from, to})
 
-    useEffect(()=>{
+    useEffect(() => {
         setFrom(data?.AvailablePriceRange.From)
         setTo(data?.AvailablePriceRange.To)
-    },[data?.AvailablePriceRange])
+    }, [data?.AvailablePriceRange])
 
 
     const {addQueryParam} = UseQueryParams()
@@ -20,20 +20,17 @@ const Logic = (data:any) => {
     const allPrams = getAllSearchParams()
 
     useEffect(() => {
-        if (allPrams['min_price'])
-            setFrom(data?.SelectedPriceRange)
-        if (allPrams['max_price'])
-            setTo(data?.SelectedPriceRange)
+        setFrom(data?.SelectedPriceRange.From)
+        setTo(data?.SelectedPriceRange.To)
     }, [data?.SelectedPriceRange])
 
     useEffect(() => {
-        setInput({from,to})
-    }, [to,from]);
+        setInput({from, to})
+    }, [to, from]);
 
-    const handlesubmit = (e:any) => {
+    const handlesubmit = (e: any) => {
         e.preventDefault()
-        addQueryParam("min_price", from)
-        addQueryParam("max_price", to)
+        addQueryParam("price", from + "-" + to)
     }
 
     const handleChangeFrom = () => {
@@ -61,16 +58,16 @@ const Logic = (data:any) => {
     }
 
 
-    const handleChangeInout = (e:any, type:string) => {
+    const handleChangeInout = (e: any, type: string) => {
         const value = e.target.value === '' ? 0 : toEnglishDigits(e.target.value)?.replaceAll('٬', "")
-        if(value===0 || Number(value))
+        if (value === 0 || Number(value))
             setInput({
                 ...input,
                 [type]: Number(value)
             })
     }
 
-return {setFrom,setTo,handleChangeFrom,handleChangeTo,handleChangeInout,from,input,to,handlesubmit}
+    return {setFrom, setTo, handleChangeFrom, handleChangeTo, handleChangeInout, from, input, to, handlesubmit}
 };
 
 export default Logic;
