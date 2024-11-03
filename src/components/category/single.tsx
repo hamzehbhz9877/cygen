@@ -7,15 +7,15 @@ import Image from "next/image";
 
 // css
 import "./index.scss"
-import {CategoryListType} from "@/components/category/list";
 
 
 
 
-const Category = ({PictureModel,Name}:any) => {
+const Category = ({PictureModel,Name,SeName}:any) => {
+
     return (
         <div className="category">
-            <Link href="/">
+            <Link href={`/category/${SeName}`}>
                 <Image src={PictureModel.ImageUrl} width="150"
                        height="150" title={PictureModel.Title}
                        alt={PictureModel.AlternateText} className="post-thumb"/>

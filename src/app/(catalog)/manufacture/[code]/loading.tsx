@@ -1,5 +1,4 @@
 import React from 'react';
-import LoadingPage from "../../../../components/product/loader/product";
 import CatalogLoader from "@/app/(catalog)/_components/catalogLoader";
 
 const Loading = () => {

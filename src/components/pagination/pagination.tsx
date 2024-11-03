@@ -25,7 +25,7 @@ const Pagination = ({
             key={index}
             id={index.toString()}
             className={`pagination__item 
-            ${item==="..."?"dot !border-none":""}
+            ${item==="..." || item==="... "||item===" ..."?"dot !cursor-default !border-none":""}
             ${currentPage === item ? "pagination__item--active" : ""
             }`}
             onClick={() =>

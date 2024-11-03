@@ -11,14 +11,17 @@ import Link from "next/link";
 import {IoClose} from "react-icons/io5";
 import useQueryParams from "@/hooks/useQueryParams";
 import {formatter} from "@/helpers/client";
+import {useSearchParams} from "next/navigation";
 
 const ActiveFilters = ({activeFilters}: any) => {
 
 
     const {getAllSearchParams, removeQueryParam, addQueryParam} = useQueryParams()
 
+    const searchParams=useSearchParams()
+
     return (
-        Object.entries(getAllSearchParams())?.length > 0 ?
+        (searchParams.get("PageNumber")?searchParams.size-1:searchParams.size) > 0 ?
             <div className="filter filter-active">
                 <Collapse
                     isOpen

@@ -11,10 +11,20 @@ import UseAnimatedNavigation from "@/hooks/useAnimatedNavigation";
 import MegaMenu from "@/layout/header/bottom/megaMenu/megaMenu";
 import UseScrollDetection from "@/hooks/scrollDetection";
 import Menu from "@/layout/header/bottom/menu/menu";
+import {useQuery, useSuspenseQuery} from "@tanstack/react-query";
+import {GetDynamicLinkPositionsQuery, GetDynamicLinks} from "@/services/DynamicLink";
 
 const Bottom = () => {
 
 
+    const {data} = useSuspenseQuery(GetDynamicLinkPositionsQuery)
+
+
+    const {data:HeaderLinks}=useQuery({
+        queryKey:["GetDynamicLinks",data.data?.find(n=>n.Name==='Header')?.Value],
+        enabled:data.data.length>0,
+        queryFn:()=>GetDynamicLinks(data.data?.find(n=>n.Name==='Header')?.Value)
+    })
 
     const menuRef = useRef<HTMLUListElement | null>(null)
     const borLineRef = useRef<HTMLDivElement | null>(null)
@@ -35,6 +45,8 @@ const Bottom = () => {
 
     UseAnimatedNavigation(menuRef, borLineRef,'li.header__bottom-list-item')
 
+
+    console.log(HeaderLinks)
 
     return (
         <div className="header__bottom" ref={stickyRef}>

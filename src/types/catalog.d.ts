@@ -1,13 +1,13 @@
 
-type UncapitalizeObjectKeys<T> = T extends Array<infer U>
-    ? Array<UncapitalizeObjectKeys<U>>
+type CapitalizeObjectKeys<T> = T extends Array<infer U>
+    ? Array<CapitalizeObjectKeys<U>>
     : T extends object
         ? {
             [K in keyof T as Capitalize<string & K>]: Capitalize<T[K]>
         }
         : T
 
-type catalog = UncapitalizeObjectKeys<{
+type catalog = CapitalizeObjectKeys<{
     id: number,
     name: string,
     description: string,
@@ -112,7 +112,7 @@ type catalog = UncapitalizeObjectKeys<{
             }
         }
     ],
-    catalogProductsModel: UncapitalizeObjectKeys<{
+    catalogProductsModel: CapitalizeObjectKeys<{
         pageIndex: number,
         pageNumber: number,
         pageSize: number,
@@ -123,7 +123,7 @@ type catalog = UncapitalizeObjectKeys<{
         hasPreviousPage: boolean,
         hasNextPage: boolean,
         noResultMessage: string,
-        priceRangeFilter:UncapitalizeObjectKeys< {
+        priceRangeFilter:CapitalizeObjectKeys< {
             enabled: boolean,
             selectedPriceRange: {
                 from: number,
@@ -134,7 +134,7 @@ type catalog = UncapitalizeObjectKeys<{
                 to: number
             }
         }>,
-        specificationFilter: UncapitalizeObjectKeys<{
+        specificationFilter: CapitalizeObjectKeys<{
             enabled: boolean,
             attributes: [
                 {
@@ -151,7 +151,7 @@ type catalog = UncapitalizeObjectKeys<{
                 }
             ]
         }>,
-        manufacturerFilter:UncapitalizeObjectKeys< {
+        manufacturerFilter:CapitalizeObjectKeys< {
             enabled: boolean,
             manufacturers: [
                 {
@@ -167,7 +167,7 @@ type catalog = UncapitalizeObjectKeys<{
             ]
         }>,
         allowProductSorting: boolean,
-        availableSortOptions:UncapitalizeObjectKeys< [
+        availableSortOptions:CapitalizeObjectKeys< [
             {
                 disabled: boolean,
                 group: {
@@ -179,7 +179,7 @@ type catalog = UncapitalizeObjectKeys<{
                 value: string
             }
         ]>,
-        products:UncapitalizeObjectKeys<[
+        products:CapitalizeObjectKeys<[
             {
                 id: number,
                 name: string,

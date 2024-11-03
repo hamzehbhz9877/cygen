@@ -15,10 +15,14 @@ const BreadCrumb = ({show, data}: BreadCrumbType) => {
     if (show)
         return (
             <nav className="breadcrumb" aria-label="Breadcrumb">
+                <span>
+                            <Link href={"/"}>خانه</Link>
+                            <i> / </i>
+                        </span>
                 {
                     data.map((link: any, index: number) => {
                         return data.length - 1 === index ? "" : <span key={index}>
-                            <Link  href={link.SeName}>{link.Name}</Link>
+                            <Link href={link.SeName}>{link.Name}</Link>
                             <i> / </i>
                         </span>
                     })

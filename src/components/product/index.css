@@ -6,7 +6,7 @@
   margin: 0;
   text-align: center;
   position: relative;
-  @apply h-auto xl:h-[380px] rounded-[14px] lg:rounded-[0] lg:border-none
+  @apply h-auto  rounded-[14px] lg:rounded-[0] lg:border-none
   border border-solid border-[#e4e4e4]
   relative;
 }
@@ -170,6 +170,7 @@
   display: block;
   width: 100%;
   height: auto;
+  object-fit: contain;
 }
 .product .thumb-pro .second-img {
   opacity: 0;

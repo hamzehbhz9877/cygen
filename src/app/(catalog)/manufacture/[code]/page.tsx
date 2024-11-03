@@ -1,4 +1,4 @@
-import {ProductsListByCategory} from "@/services/Catalog";
+import {ProductsListByManufacturer} from "@/services/Catalog";
 import Catalog from "@/app/(catalog)/_components/catalog";
 import {Metadata} from "next";
 
@@ -7,7 +7,7 @@ export const dynamic = "force-dynamic";
 export const revalidate = 0
 
 export async function generateMetadata({params,searchParams}: any): Promise<Metadata> {
-    const category:catalog=await ProductsListByCategory({categorySeName:decodeURIComponent(params.code),...searchParams})
+    const category:catalog=await ProductsListByManufacturer({categorySeName:decodeURIComponent(params.code),...searchParams})
     return {
         title: category?.MetaTitle,
         description: category?.MetaDescription,
@@ -17,7 +17,7 @@ export async function generateMetadata({params,searchParams}: any): Promise<Meta
 
 export default async function Home({searchParams,params}:any) {
 
-    const category:catalog = await ProductsListByCategory({categorySeName:decodeURIComponent(params.code),...searchParams})
+    const category:catalog = await ProductsListByManufacturer({categorySeName:decodeURIComponent(params.code),...searchParams})
 
     return (
         <div className="main-page container">
