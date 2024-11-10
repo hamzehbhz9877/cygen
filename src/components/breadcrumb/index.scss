@@ -1,21 +1,13 @@
-.breadcrumb{
-  display: inline-block;
-  color: #81858b;
-  font-size: 12px;
-  line-height: 2;
-  font-weight: 600;
-  margin-bottom: 15px;
-   a{
-     font-size: 11px;
-     color: #898d92;
-     margin: 0 4px;
-     font-weight: 400;
-     &:first-child{
-       margin-right: 0;
-     }
-   }
-   i {
-    font-size: 12px;
-    color: #c8c4c4;
+.breadcrumb {
+  @apply inline-block text-[#81858b] text-[12px] leading-[2] font-semibold mb-[15px];
+  a {
+    @apply text-[11px] text-[#898d92] my-[4px] font-semibold;
+    &:first-child {
+      @apply mr-0;
+    }
+  }
+
+  i {
+    @apply text-[12px] text-[#c8c4c4];
   }
 }

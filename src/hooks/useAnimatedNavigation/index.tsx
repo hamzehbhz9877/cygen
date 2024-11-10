@@ -2,7 +2,7 @@
 
 import  {useEffect} from 'react';
 
-const UseAnimatedNavigation = (menuRef:any,borLineRef:any,selector:string) => {
+const UseAnimatedNavigation = (menuRef:any,borLineRef:any,selector:string,HeaderLinks:any) => {
 
     useEffect(() => {
         const list = menuRef.current?.querySelectorAll(selector)
@@ -21,7 +21,7 @@ const UseAnimatedNavigation = (menuRef:any,borLineRef:any,selector:string) => {
             })
         })
 
-    }, [])
+    }, [HeaderLinks])
 };
 
 export default UseAnimatedNavigation;

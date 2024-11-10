@@ -3,50 +3,39 @@
 import React, {useEffect, useRef} from 'react';
 
 import Link from "next/link";
-import {RiHome5Fill} from "react-icons/ri";
-import {IoIosArrowDown} from "react-icons/io";
-
-import Image from "next/image";
 import UseAnimatedNavigation from "@/hooks/useAnimatedNavigation";
 import MegaMenu from "@/layout/header/bottom/megaMenu/megaMenu";
 import UseScrollDetection from "@/hooks/scrollDetection";
-import Menu from "@/layout/header/bottom/menu/menu";
 import {useQuery, useSuspenseQuery} from "@tanstack/react-query";
 import {GetDynamicLinkPositionsQuery, GetDynamicLinks} from "@/services/DynamicLink";
+import Image from "next/image";
 
 const Bottom = () => {
 
 
     const {data} = useSuspenseQuery(GetDynamicLinkPositionsQuery)
 
-
-    const {data:HeaderLinks}=useQuery({
-        queryKey:["GetDynamicLinks",data.data?.find(n=>n.Name==='Header')?.Value],
-        enabled:data.data.length>0,
-        queryFn:()=>GetDynamicLinks(data.data?.find(n=>n.Name==='Header')?.Value)
-    })
-
     const menuRef = useRef<HTMLUListElement | null>(null)
     const borLineRef = useRef<HTMLDivElement | null>(null)
     const stickyRef = useRef<HTMLDivElement | null>(null)
 
 
-    const down=()=> {
+    const down = () => {
         document.querySelector(".header")?.classList.add("sticky")
         stickyRef.current?.classList.add("sticky")
     }
-    const up=()=> {
+    const up = () => {
         document.querySelector(".header")?.classList.remove("sticky")
         stickyRef.current?.classList.remove("sticky")
     }
 
 
-    UseScrollDetection(up,down)
-
-    UseAnimatedNavigation(menuRef, borLineRef,'li.header__bottom-list-item')
+    UseScrollDetection(up, down)
 
 
-    console.log(HeaderLinks)
+    UseAnimatedNavigation(menuRef, borLineRef, 'li.header__bottom-list-item',[])
+
+
 
     return (
         <div className="header__bottom" ref={stickyRef}>
@@ -54,29 +43,37 @@ const Bottom = () => {
                 <ul className="header__bottom-list relative" ref={menuRef}>
                     <MegaMenu/>
                     <div className="menu-line"></div>
-                    <li className="header__bottom-list-item">
-                        <Link href={"/"}>
-                            <RiHome5Fill size={18}/>
-                            <span>صفحه اصلی</span>
-                        </Link>
-                    </li>
-                    <Menu/>
-                    <li className="header__bottom-list-item">
-                        <Link href={"/"}>
-                            <RiHome5Fill size={18}/>
-                            <span>سوالی دارید؟</span>
-                        </Link>
-                    </li>
+
+                    {data?.find(d=>d.key===10)?.data?.map(d => {
+                        return (
+                            <li key={d.Id} className="header__bottom-list-item">
+                                <Link href={d.Url} target={d.OpenInNewPage}>
+                                    {d.Icon ?
+                                        <Image className={""} alt={d.Name} src={d.Name} width={18} height={18}/> : ""}
+                                    <span>{d.Name}</span>
+                                </Link>
+                            </li>
+                        )
+                    })}
                     <div className="bor-line" ref={borLineRef}/>
                 </ul>
 
                 <div className="page-promotes">
+
                     <ul>
-                        <li>
-                            <Link href={"/"}>
-                                فروش ویژه
-                            </Link>
-                        </li>
+                        {
+                            data?.find(d=>d.key===11).data.map(d=>{
+                                return (
+                                    <li key={d.Id}>
+                                        <Link href={d.Url}>
+                                            {d.Icon ?
+                                                <Image className={""} alt={d.Name} src={d.Name} width={18} height={18}/> : ""}
+                                            {d.Name}
+                                        </Link>
+                                    </li>
+                                )
+                            })
+                        }
                     </ul>
                 </div>
             </div>

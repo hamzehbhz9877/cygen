@@ -1,0 +1,14 @@
+.breadcrumb {
+  @apply inline-block text-[#81858b] text-[12px] leading-[2] font-semibold mb-[15px];
+}
+.breadcrumb a {
+  @apply text-[11px] text-[#898d92] my-[4px] font-semibold;
+}
+.breadcrumb a:first-child {
+  @apply mr-0;
+}
+.breadcrumb i {
+  @apply text-[12px] text-[#c8c4c4];
+}
+
+/*# sourceMappingURL=index.css.map */

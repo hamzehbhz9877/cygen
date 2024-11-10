@@ -1,275 +1,147 @@
+
 .product {
-  display: inline-block;
-  transition: box-shadow .15s ease;
-  background-color: #fff;
-  padding-bottom: 0;
-  margin: 0;
-  text-align: center;
-  position: relative;
+  @apply inline-block transition-shadow duration-[0.15s] ease-[ease] bg-white text-center relative m-0 pb-0 after:w-screen after:h-px after:top-[-1.5px] after:inset-x-0 before:w-px before:h-[-webkit-fill-available] before:left-[-1.5px] before:top-0 hover:shadow-[0_2px_17px_0_rgba(0,0,0,0.09)] hover:z-[11];
+  @apply h-auto  rounded-[14px] lg:rounded-[0] lg:border-none
+  border border-solid border-[#e4e4e4] relative;
+
   &::before,
   &::after {
+    @apply content-[''] absolute bg-[#e4e4e4] z-[1];
     @apply hidden lg:block;
-    content: '';
-    position: absolute;
-    background-color: #e4e4e4;
-    z-index: 1;
-  }
-  &::after {
-    width: 100vw;
-    height: 1px;
-    left: 0;
-    right: 0;
-    top: -1.5px;
-  }
-  &::before {
-    width: 1px;
-    height: -webkit-fill-available;
-    left: -1.5px;
-    top: 0;
   }
 
-  @apply h-auto  rounded-[14px] lg:rounded-[0] lg:border-none
-  border border-solid border-[#e4e4e4]
-  relative ;
-
-
-  &__label{
+  &__label {
     @apply absolute rounded-full top-[10px] lg:top-[35px] left-[10px]
     bg-green-100 text-green-800 text-xs font-medium  px-2.5 py-0.5  dark:bg-green-900 dark:text-green-300;
   }
 
-  &:hover .thumb-pro.hover-image img {
-    opacity: 0;
-    visibility: hidden;
+  &:hover .hover-image img {
+    @apply opacity-0 invisible;
   }
 
-  &:hover .second-img{
-    opacity: 1 !important;
-    visibility: visible !important;
+  &:hover .second-img {
+    @apply opacity-100 visible #{!important};
   }
 
   .info-product {
-    padding: 10px;
+    @apply p-2.5;
     @apply flex flex-col justify-between h-full;
   }
 
   &:hover {
-    box-shadow: 0 2px 17px 0 rgba(0, 0, 0, .09);
-    transition: box-shadow .2s cubic-bezier(.4, 0, 1, 1), transform .2s cubic-bezier(.4, 0, 1, 1);
-    z-index: 11;
+    transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1),
+    transform 0.2s cubic-bezier(0.4, 0, 1, 1);
   }
 
-
   .product-box-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform .8s;
+    @apply relative w-full h-full transition-transform duration-[0.8s];
     transform-style: preserve-3d;
   }
 
-  .prk-archive-swatches {
-    position: absolute;
-    top: 50px;
-    right: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  .archive-swatches {
+    @apply absolute flex flex-col justify-center items-center right-2.5 top-[50px];
   }
 
-
-  .prs {
+  .onsale {
+    @apply relative min-h-0 right-0 top-[unset];
     display: unset !important;
-    position: relative !important;
-    min-height: 0 !important;
-    right: 0 !important;
-    top: unset !important;
   }
 
   .head-archie-pro {
-    justify-content: space-between;
-    padding: 0;
-    @apply hidden lg:flex;
-
-    .prs, #sales_timer_display {
-      padding: 0 !important;
-      margin: 0 !important;
-      line-height: 18px !important;
-      background: transparent !important;
-      font-size: 13px !important;
-      border-radius: 8px !important;
-      @apply text-dynamic-color-to;
-      font-weight: bold;
+    @apply justify-between p-0 hidden lg:flex;
+    .onsale,
+    #sales_timer_display {
+      @apply leading-[18px] text-[13px] font-bold m-0 p-0 rounded-lg bg-transparent text-dynamic-color-to;
     }
 
     #sales_timer_display {
-      font-size: 12px;
-      font-weight: 600;
+      @apply text-xs font-semibold;
     }
   }
 
-  .prk-archive-swatch {
-    width: 14px;
-    height: 14px;
-    display: block;
-    position: relative;
-    border-radius: 50%;
-    margin-bottom: 4px;
+
+  .archive-swatch {
+    @apply w-3.5 h-3.5 block relative mb-1 rounded-[50%];
+
+    &:hover .tooltiptext {
+      @apply visible;
+    }
+
+    &:nth-of-type(1) {
+      @apply bg-[#f7a468];
+    }
+
+    &:nth-of-type(2) {
+      @apply bg-[#5947da];
+    }
+
+    &:nth-of-type(3) {
+      @apply bg-[#1d9a34];
+    }
   }
 
-  .prk-archive-swatch:hover .tooltiptext {
-    visibility: visible;
-  }
-
-  .prk-archive-swatch:nth-of-type(1) {
-    background-color: #f7a468;
-  }
-
-  .prk-archive-swatch:nth-of-type(2) {
-    background-color: #5947da;
-  }
-
-  .prk-archive-swatch:nth-of-type(3) {
-    background-color: #1d9a34;
-  }
-
-  .prk_swatches-divider {
-    position: relative;
-    color: #474444;
-    letter-spacing: -1px !important;
-    margin-top: 4px;
-    font-size: 12px;
-    font-weight: 500;
+  .swatches-divider {
+    @apply relative text-[#474444] tracking-[-1px] text-xs font-medium mt-1;
   }
 
   .tooltiptext {
-    visibility: hidden;
-    width: auto;
-    text-align: center;
-    z-index: 1;
-    top: -5px;
-    right: 200%;
-    position: absolute;
-    padding: 2px 8px;
-    background: #878d9d;
-    color: #fff;
+    @apply invisible bg-[#878d9d] w-auto text-center z-[1] top-[-5px] absolute text-white text-xs
+    leading-[1.692] whitespace-nowrap font-medium px-2 py-0.5 rounded-[3px] right-[200%];
+
+    &::after{
+      @apply content-[""] absolute right-[-7px] -mt-2.5 border-l-[#878d9d] border-[5px] border-solid border-transparent border-t-[10px]
+      border-r-[0] border-b-[12px] border-l-[10px] left-full top-2/4;
+    }
+
     animation-name: Ib;
     animation-fill-mode: forwards;
-    animation-duration: .3s;
-    animation-delay: .5s;
+    animation-duration: 0.3s;
+    animation-delay: 0.5s;
     animation-timing-function: ease-in-out;
-    font-size: 12px;
-    line-height: 1.692;
-    white-space: nowrap;
-    font-weight: 500;
-    border-radius: 3px;
-  }
-
-  .tooltiptext::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 100%;
-    margin-top: -10px;
-    border-width: 5px;
-    border-style: solid;
-    border-width: 10px 0 12px 10px;
-    border-color: transparent transparent transparent #878d9d;
-    right: -7px;
   }
 
   .thumb-pro {
-    width: 85%;
-    position: relative;
-    max-width: 82%;
-    margin: 10px auto;
-    overflow: hidden;
-    text-align: center;
+    @apply w-[85%] relative max-w-[82%] overflow-hidden text-center mx-auto my-2.5;
+
 
     img {
-      max-width: 220px !important;
-      transition: all .2s ease;
-      margin: 0 auto;
-      display: block;
-      width: 100%;
-      height: auto;
-      object-fit: contain;
+      @apply max-w-[220px] transition-all duration-[0.2s] ease-[ease] block w-full h-auto object-contain mx-auto my-0;
     }
 
     .second-img {
-        opacity: 0;
-        visibility: hidden;
-        position: absolute !important;
-        top: 0;
-        left: 0;
-        right: 0;
-        border: 0;
-
+      @apply opacity-0 invisible absolute border-0 top-0 inset-x-0;
     }
   }
 
   #sales_timer_display span .dot {
-    margin: 0 6px;
-    font-size: 16px !important;
-    font-weight: 700 !important;
+    @apply text-base font-bold mx-1.5 my-0;
   }
-  .index-prices-pro {
-    height: 50px;
-    float: left;
-    display: inline-block;
 
+  .index-prices-pro {
+    @apply h-[50px] float-left inline-block;
     del {
+      @apply flex items-center no-underline;
       @apply text-dynamic-color-to;
-      display: flex;
-      align-items: center;
       justify-content: left;
-      text-decoration: none;
 
       .index-discount-pro {
-        margin-right: 5px;
-        float: left;
-        font-size: 13px;
-        padding: 2px 7px;
-        border-radius: 9px;
-        color: #fff !important;
-        font-weight: bold;
-        line-height: 18px;
-        display: inline-flex;
-        order: 2;
+        @apply float-left text-[13px] text-white font-bold leading-[18px] inline-flex order-2 mr-[5px] px-[7px] py-0.5 rounded-[9px];
         @apply bg-gradient-to-r from-dynamic-color-from to-dynamic-color-to;
       }
 
       span.woocommerce-Price-amount {
-        font-weight: 400;
-        font-size: 12px;
-        text-decoration: line-through;
-        display: inline-block !important;
+        @apply font-normal text-xs line-through inline-block;
       }
-
     }
 
     ins {
-      text-decoration: none;
-      display: block;
-      margin-top: 5px;
-      text-align: left;
-
+      @apply no-underline block text-left mt-[5px];
       span {
-        font-weight: 700;
-        font-size: 14px;
-        display: inline-block !important;
-
+        @apply font-bold text-sm inline-block;
         bdi {
-          display: flex;
-          align-items: center;
-          justify-content: left;
-
+          @apply flex items-center justify-end;
           .woocommerce-Price-currencySymbol {
-            font-weight: 500;
-            order: 1;
-            margin-right: 4px;
-            font-size: 12px;
+            @apply font-medium order-1 text-xs mr-1;
           }
         }
       }
@@ -277,17 +149,8 @@
   }
 
   .index-title-pro h2 {
-    color: #212121;
-    font-size: 13px !important;
-    line-height: 22px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
+    @apply text-[#212121] text-[13px] leading-[22px] overflow-hidden text-ellipsis h-[45px] font-semibold text-right mt-[15px] mb-2.5 mx-0;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
-    height: 45px;
-    font-weight: 600;
-    margin: 15px 0 10px 0;
-    text-align: right;
   }
 }

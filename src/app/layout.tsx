@@ -1,6 +1,6 @@
 import type {Metadata} from "next";
 import localFont from "next/font/local";
-import "./globals.css";
+import "./globals.scss";
 import Header from "@/layout/header";
 import Footer from "@/layout/footer";
 import ModalContext from "@/context/modal";
@@ -14,7 +14,12 @@ import {
     HydrationBoundary,
 } from '@tanstack/react-query'
 import {getQueryClient} from "@/utils/get-query-client";
+import {GetPopularSearchTermsQuery, GetSiteSettingsQuery} from "@/services/Common";
+import {GetSocialMediasQuery} from "@/services/SocialMedia";
+import {GetLicenseLogosQuery} from "@/services/LicenseLogo";
+import {GetAllActivePluginsQuery} from "@/services/Plugin";
 import {Suspense} from "react";
+import {ProductsListByCategory} from "@/services/Catalog";
 
 const bYekan = localFont({
     src: "./fonts/YekanBakhFaNum-Regular.woff",
@@ -39,11 +44,15 @@ export default async function RootLayout({
     children: React.ReactNode;
 }>) {
 
-    // const queryClient = getQueryClient()
 
+    const queryClient=getQueryClient()
 
-    // void queryClient.prefetchQuery(GetDynamicLinkPositionsQuery)
-
+    // void queryClient.prefetchQuery(GetSiteSettingsQuery)
+    // void queryClient.prefetchQuery(GetSocialMediasQuery)
+    // void queryClient.prefetchQuery(GetLicenseLogosQuery)
+    // void queryClient.prefetchQuery(GetAllActivePluginsQuery)
+    // void queryClient.prefetchQuery(GetPopularSearchTermsQuery)
+    void queryClient.prefetchQuery(GetDynamicLinkPositionsQuery)
 
     return (
         <html lang="en">
@@ -55,11 +64,13 @@ export default async function RootLayout({
                 <Auth>
                     <ModalContext>
                         <NProgressProviders>
-                                    <Header/>
-                                    <main>
-                                        {children}
-                                    </main>
-                                    <Footer/>
+                            <HydrationBoundary state={dehydrate(queryClient)}>
+                                <Header/>
+                                <main>
+                                    {children}
+                                </main>
+                                <Footer/>
+                            </HydrationBoundary>
                         </NProgressProviders>
                         <div className="overlay"/>
                     </ModalContext>

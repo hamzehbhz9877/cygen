@@ -225,7 +225,7 @@
 }
 .header__bottom .page-promotes {
   @apply relative top-[5px]
-      w-max xl:w-[6%]
+      w-max
       text-center;
 }
 .header__bottom .page-promotes::after {

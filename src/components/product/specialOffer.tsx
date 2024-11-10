@@ -8,8 +8,8 @@ const SpecialOffer = () => {
     const {hours,minutes,seconds,days}=useCountdown(new Date("2024/10/18"))
 
     return (
-        <div className="head-archie-pro"><span className="onsale prs">پیشنهاد ویژه</span>
-            <p id="sales_timer_display" className="timer-pros1-BLHZ6">
+        <div className="head-archie-pro"><span className="onsale">پیشنهاد ویژه</span>
+            <p id="sales_timer_display">
                 <span>
                     <span className="number">{days}</span>
                     <span className="dot">:</span>

@@ -1,0 +1,11 @@
+.filter-active__list {
+  @apply flex items-center flex-wrap;
+}
+.filter-active__list li {
+  @apply flex items-center gap-[5px] border text-[#090909] tracking-[0.3px] text-[13px] leading-[29px] relative ml-[5px] mb-[5px] px-2.5 py-0 rounded-[10px] border-solid border-[#bdbdbd];
+}
+.filter-active__list li a {
+  @apply text-dynamic-color-to;
+}
+
+/*# sourceMappingURL=index.css.map */

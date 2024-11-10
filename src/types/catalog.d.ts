@@ -1,5 +1,5 @@
 
-type CapitalizeObjectKeys<T> = T extends Array<infer U>
+ type CapitalizeObjectKeys<T> = T extends Array<infer U>
     ? Array<CapitalizeObjectKeys<U>>
     : T extends object
         ? {

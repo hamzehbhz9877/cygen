@@ -1,23 +1,23 @@
-.collapse{
+.collapse {
 
-  &__title{
-    svg{
-      transform: rotate(0deg);
-      line-height: 1;
-      transition: all 200ms ease-out;
+  &__title {
+    svg {
+      @apply rotate-0 leading-none transition-all duration-200 ease-[ease-out];
+
     }
-    svg.rotate{
-      transform: rotate(180deg);
-      fill: #202020;
+
+    svg.rotate {
+      @apply rotate-180 fill-[#202020];
+
     }
   }
 
 
   &__content {
-    overflow: hidden;
-    transition: all .2s ease-in-out 0s;
-    &.no-animate{
-      transition: none;
+    @apply overflow-hidden transition-all duration-[0.2s] ease-[ease-in-out] delay-[0s];
+
+    &.no-animate {
+      @apply transition-none;
     }
   }
 }

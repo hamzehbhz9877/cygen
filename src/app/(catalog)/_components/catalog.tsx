@@ -22,6 +22,7 @@ import useQueryParams from "@/hooks/useQueryParams";
 const Catalog = ({category, searchParams}: { category: catalog, searchParams: any }) => {
     const {ref, inView} = useInView()
 
+
     const params = useParams()
 
     const {addQueryParam} = useQueryParams()
@@ -59,10 +60,10 @@ const Catalog = ({category, searchParams}: { category: catalog, searchParams: an
         placeholderData:keepPreviousData,
         initialPageParam: 1,
         getPreviousPageParam: (firstPage) => {
-            return firstPage.CatalogProductsModel.HasPreviousPage ? firstPage.CatalogProductsModel.PageNumber - 1 : undefined
+            return firstPage.CatalogProductsModel?.HasPreviousPage ? firstPage.CatalogProductsModel.PageNumber - 1 : undefined
         },
         getNextPageParam: (lastPage) => {
-            if (lastPage.CatalogProductsModel.HasNextPage && lastPage.CatalogProductsModel.PageNumber + 1 <= 3) {
+            if (lastPage.CatalogProductsModel?.HasNextPage && lastPage.CatalogProductsModel.PageNumber + 1 <= 3) {
                 return lastPage.CatalogProductsModel.PageNumber + 1
             } else {
                 return undefined
@@ -98,7 +99,7 @@ const Catalog = ({category, searchParams}: { category: catalog, searchParams: an
                     <Breadcrumb data={data.pages[0].CategoryBreadcrumb}
                                 show={data.pages[0].DisplayCategoryBreadcrumb}/>}
                 <CategoryList data={data.pages[0].SubCategories}/>
-                <div className="flex">
+                <div className="flex mt-5">
                     <Filters FeaturedProducts={data.pages[0].FeaturedProducts}
                              CatalogProductsModel={data.pages[0].CatalogProductsModel}/>
                     <div className={"flex flex-col flex-1"}>

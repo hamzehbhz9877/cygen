@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react';
 
 import ScrollToTop from "@/layout/footer/scrollToTop";
@@ -13,13 +15,16 @@ import Copyright from "@/layout/footer/copyright";
 // css
 import "./index.scss"
 import MenuMobile from "@/layout/footer/menuMobile";
+import {useQuery, useSuspenseQuery} from "@tanstack/react-query";
+import {GetDynamicLinkPositionsQuery, GetDynamicLinks} from "@/services/DynamicLink";
 
 
 const Footer = () => {
+
+    const {data} = useSuspenseQuery(GetDynamicLinkPositionsQuery)
+
     return (
-        <footer className="footer-s ">
-
-
+        <footer className="footer-s">
             <div className="main-footer">
 
                 <div className="container">
@@ -30,9 +35,27 @@ const Footer = () => {
                         <TellBox/>
                         <div className="clear"></div>
                     </div>
-                    <Menu/>
-                    <Menu/>
-                    <Menu/>
+                    {
+                        data.find(d=>d.key===20)?.data.map(d => {
+                                return (
+                                    <Menu key={d.Id} {...d}/>
+                                )
+                        })
+                    }
+                    {
+                        data.find(d=>d.key===21)?.data.map(d => {
+                                return (
+                                    <Menu key={d.Id} {...d}/>
+                                )
+                        })
+                    }
+                    {
+                        data.find(d=>d.key===22)?.data.map(d => {
+                                return (
+                                    <Menu key={d.Id} {...d}/>
+                                )
+                        })
+                    }
                     <MenuMobile/>
                     <MenuMobile/>
                     <MenuMobile/>

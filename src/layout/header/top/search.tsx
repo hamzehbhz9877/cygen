@@ -8,9 +8,13 @@ import {RiFireLine} from "react-icons/ri";
 import {MdKeyboardArrowLeft} from "react-icons/md";
 import useClickOutside from "@/hooks/useOutsideClick";
 import UseBodyOverLay from "@/hooks/useBodyOverLay";
+import {useSuspenseQuery} from "@tanstack/react-query";
+import {GetPopularSearchTermsQuery} from "@/services/Common";
 
 
 const Search = () => {
+
+    const {data}=useSuspenseQuery(GetPopularSearchTermsQuery)
 
     const [value, setValue] = useState<string>('')
 
@@ -33,7 +37,6 @@ const Search = () => {
             searchResult.current?.classList.remove('active')
             overlay?.classList.remove('active')
         }
-
     })
 
 
@@ -55,14 +58,9 @@ const Search = () => {
                     <div className="search-result__promote">
                         <span><RiFireLine size={24} className="ml-[11px]"/> جستجوی پرطرفدار </span>
                         <ul className="search-result__tags">
-                            <li className="search-result__tags-item"><Link href={"/"}>گوشی و
-                                موبایل <MdKeyboardArrowLeft className="icon"/></Link></li>
-                            <li className="search-result__tags-item"><Link href={"/"}>
-                                آیفون <MdKeyboardArrowLeft className="icon"/></Link></li>
-                            <li className="search-result__tags-item"><Link href={"/"}>اپل واچ<MdKeyboardArrowLeft
-                                className="icon"/></Link></li>
-                            <li className="search-result__tags-item"><Link href={"/"}>مک بوک سری 8<MdKeyboardArrowLeft
-                                className="icon"/></Link></li>
+                            {data.data.map(d=> {
+                                return <li key={d} className="search-result__tags-item"><Link href={"/"}>{d}<MdKeyboardArrowLeft className="icon"/></Link></li>
+                            })}
                         </ul>
                     </div>
                 </div>

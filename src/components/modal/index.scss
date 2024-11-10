@@ -14,14 +14,10 @@ $modal-z-index: 100;
   @apply rounded-[16px] h-full md:h-max  mx-auto right-0 left-0 bg-white my-0 md:my-[20px]
   //max-w-[95%]
   shadow-[0_0_10px_-5px] w-[650px] relative
-  z-[#{$modal-z-index}];
-  //transform: translateY(-30%);
-  //transition: all .2s ease-in-out 0s;
-  animation: mmslideOut .3s cubic-bezier(0,0,.2,1);
+  z-[#{$modal-z-index}] animate-[mmslideOut_.3s_cubic-bezier(0,0,.2,1)];
 
   &__header {
-    @apply text-center;
-    padding: 20px 25px;
+    @apply px-[25px] py-5 text-center;
   }
 
   &__header {
@@ -34,34 +30,17 @@ $modal-z-index: 100;
       @apply text-[18px] font-bold;
     }
   }
-
-  &__footer {
-    &.text-center {
-      text-align: center;
-    }
-
-    &.text-right {
-      text-align: right;
-    }
-
-    &.text-left {
-      text-align: left;
-    }
-
-    @apply mt-3;
-  }
 }
 
 
 .modal-overlay {
   @apply fixed flex  inset-0  invisible opacity-0  z-[#{$modal-overlay-z-index}]
   overflow-y-auto  bg-[rgb(0,0,0,#{$modal-overlay-background})];
-  transition: all .3s ease-in-out 0s;
+  @apply transition-all duration-[0.3s] ease-[ease-in-out] delay-[0s];
   &--active {
     @apply  visible opacity-100  #{!important};
     .modal{
-      //transform: translateY(0);
-      animation: mmslideIn .5s cubic-bezier(0,0,.2,1);
+      @apply animate-[mmslideIn_0.5s_cubic-bezier(0,0,0.2,1)];
     }
   }
 }
@@ -69,8 +48,7 @@ $modal-z-index: 100;
 .loading-overlay {
   @apply absolute inset-0 grid content-center;
   &:before {
-    content: '';
-    @apply absolute inset-0 bg-[rgb(0,0,0,#{$modal-overlay-background--isLoading})]
+    @apply content-[''] absolute inset-0 bg-[rgb(0,0,0,#{$modal-overlay-background--isLoading})]
   }
 }
 

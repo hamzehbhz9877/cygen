@@ -6,7 +6,7 @@ type Props = {
 }
 const Color = ({color}: Props) => {
     return (
-        <div className="prk-archive-swatch prk-swatch-with-bg">
+        <div className="archive-swatch">
             <span className="tooltiptext">{color}</span></div>
     );
 };

@@ -1,34 +1,18 @@
 .product {
-  display: inline-block;
-  transition: box-shadow 0.15s ease;
-  background-color: #fff;
-  padding-bottom: 0;
-  margin: 0;
-  text-align: center;
-  position: relative;
+  @apply inline-block transition-shadow duration-[0.15s] ease-[ease] bg-white text-center relative m-0 pb-0;
   @apply h-auto   rounded-[14px] lg:rounded-[0] lg:border-none
   border border-solid border-[#e4e4e4]
   relative;
 }
 .product::before, .product::after {
   @apply hidden lg:block;
-  content: "";
-  position: absolute;
-  background-color: #e4e4e4;
-  z-index: 1;
+  @apply content-[""] absolute bg-[#e4e4e4] z-[1];
 }
 .product::after {
-  width: 100vw;
-  height: 1px;
-  left: 0;
-  right: 0;
-  top: -1.5px;
+  @apply w-screen h-px top-[-1.5px] inset-x-0;
 }
 .product::before {
-  width: 1px;
-  height: -webkit-fill-available;
-  left: -1.5px;
-  top: 0;
+  @apply w-px h-[-webkit-fill-available] left-[-1.5px] top-0;
 }
 
 /*# sourceMappingURL=product.css.map */

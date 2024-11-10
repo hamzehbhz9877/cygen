@@ -1,46 +1,27 @@
 .category-seo {
-  display: inline-block;
-  position: relative;
-  border-radius: 11px;
-  margin: 15px 0 10px;
-  padding: 20px 30px 10px 30px;
-  font-size: 14px;
-  line-height: 2;
-  letter-spacing: -.1px;
-  width: 100%;
-  background-color: #fff;
-  border: 1px solid #e3e3e3;
-  color: #656565; }
-  .category-seo__title {
-    font-size: 20px;
-    color: #2c2b2b;
-    font-weight: 500;
-    line-height: 1.5;
-    margin-bottom: 10px; }
-  .category-seo .footer-description-shop.boxed .term-description {
-    max-height: 300px;
-    overflow: hidden; }
-  .category-seo a.mask-handler {
-    font-size: 12px;
-    margin: 3px 0;
-    font-weight: 500;
-    color: #474747;
-    text-align: center; }
-    .category-seo a.mask-handler .show-more, .category-seo a.mask-handler .show-less {
-      margin-top: 15px;
-      color: #1051ef !important;
-      cursor: pointer;
-      text-align: center;
-      font-weight: bold;
-      position: relative;
-      font-size: 15px; }
-    .category-seo a.mask-handler .show-less {
-      padding: 5px 0;
-      font-size: 12px; }
-  .category-seo__description {
-    max-height: 300px;
-    overflow: hidden; }
-    .category-seo__description--open {
-      max-height: unset !important; }
+  @apply inline-block relative text-sm leading-loose tracking-[-0.1px] w-full bg-white border text-[#656565] mt-[15px] mb-2.5 mx-0 pt-5 pb-2.5 px-[30px] rounded-[11px] border-solid border-[#e3e3e3];
+}
+.category-seo__title {
+  @apply text-xl text-[#2c2b2b] font-medium leading-normal mb-2.5;
+}
+.category-seo .footer-description-shop.boxed .term-description {
+  @apply max-h-[300px] overflow-hidden;
+}
+.category-seo a.mask-handler {
+  @apply text-xs font-medium text-[#474747] text-center mx-0 my-[3px];
+}
+.category-seo a.mask-handler .show-more,
+.category-seo a.mask-handler .show-less {
+  @apply text-[#1051ef] cursor-pointer text-center font-[bold] relative text-[15px] mt-[15px];
+}
+.category-seo a.mask-handler .show-less {
+  @apply text-xs px-0 py-[5px];
+}
+.category-seo__description {
+  @apply max-h-[300px] overflow-hidden;
+}
+.category-seo__description--open {
+  @apply max-h-[unset];
+}
 
 /*# sourceMappingURL=index.css.map */

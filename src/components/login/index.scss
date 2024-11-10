@@ -2,89 +2,57 @@
 
 
   .error{
-    text-align: center;
-    font-size: 14px;
-    color: #f00;
-    margin-top: 10px;
+    @apply text-center text-sm text-[#f00] mt-2.5;
+
   }
   .label{
-    @apply flex justify-between;
-    font-size: 13px;
-    line-height: 21px;
-    color: #62666d;
-    margin-bottom: 15px;
+    @apply flex justify-between text-[13px] leading-[21px] text-[#62666d] mb-[15px];
   }
 
 
   .modal__body {
     @apply w-[90%] md:w-[77%];
-    margin: 29px auto;
-    margin-top: 25px;
+    @apply mt-[25px] mx-auto my-[29px];
+
     .back-prev-step {
-      cursor: pointer;
-      position: absolute;
-      top: 20px;
-      right: 20px;
+      @apply cursor-pointer absolute right-5 top-5;
+
     }
   }
 
   .title {
-    padding: 20px 25px;
-    padding-bottom: 0;
-    width: 100%;
+    @apply w-full pb-0 px-[25px] py-5;
+
   }
 
   &__title {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 15px;
+    @apply text-lg font-semibold mb-[15px];
+
   }
 
   .logo {
-    max-width: 164px;
-    height: auto;
-    object-fit: contain;
-    margin: 0 auto;
-    margin-bottom: 40px;
+    @apply max-w-[164px] h-auto object-contain mb-10 mx-auto my-0;
+
   }
 
   .copyright {
-    text-align: right;
-    color: #494c52;
-    font-size: 12px;
-    line-height: 23px;
-    margin-top: 20px;
-    font-weight: 400;
+    @apply text-right text-[#494c52] text-xs leading-[23px] font-normal mt-5;
+
 
     a {
-      position: relative;
-      font-weight: 600;
-      border-bottom: 1px solid;
-      color: #1051ef;
+      @apply relative font-semibold text-[#1051ef] border-b border-solid;
+
     }
   }
 
   .sms-confirm--retrieve {
-    display: block;
-    border: none;
-    font-weight: 700;
-    color: #1051ef;
-    padding: 12px;
-    text-align: center;
-    font-size: 12px;
-    line-height: 21px;
-    background: none;
-    margin: 10px auto;
-    cursor: pointer;
+    @apply block bg-none font-bold text-[#1051ef] text-center text-xs leading-[21px] cursor-pointer mx-auto my-2.5 p-3 border-[none];
+
   }
 
   .sms-confirm--timer-holder{
-    font-weight: 700;
-    color: #81858b;
-    padding: 12px;
-    text-align: center;
-    font-size: 12px;
-    line-height: 21px;
+    @apply font-bold text-[#81858b] text-center text-xs leading-[21px] p-3;
+
   }
 }
 

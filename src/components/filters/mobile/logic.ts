@@ -16,17 +16,17 @@ const Logic = () => {
 
         window.addEventListener("scroll", () => {
             if (window.scrollY > rect.y) {
-                element.classList.add("fixed")
+                element.classList.add("fixed-top")
             } else {
-                element.classList.remove("fixed")
+                element.classList.remove("fixed-top")
             }
         })
         return ()=>{
             window.removeEventListener("scroll", () => {
                 if (window.scrollY > rect.y) {
-                    element.classList.add("fixed")
+                    element.classList.add("fixed-top")
                 } else {
-                    element.classList.remove("fixed")
+                    element.classList.remove("fixed-top")
                 }
             })
         }

@@ -19,12 +19,6 @@ const TellBox = () => {
             <span className="tow-number">info@parskala.com</span>
           </span>
 
-                <span className="line-tell">|</span>
-
-
-                <span className="support">هفت روز هفته ، 24 ساعت شبانه‌روز پاسخگوی شما هستیم.</span>
-
-
             </div>
 
     );
