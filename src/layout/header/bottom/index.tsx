@@ -9,6 +9,8 @@ import UseScrollDetection from "@/hooks/scrollDetection";
 import {useQuery, useSuspenseQuery} from "@tanstack/react-query";
 import {GetDynamicLinkPositionsQuery, GetDynamicLinks} from "@/services/DynamicLink";
 import Image from "next/image";
+import Menu from "@/layout/header/bottom/menu/menu";
+import {GetSiteSettingsQuery} from "@/services/Common";
 
 const Bottom = () => {
 
@@ -24,6 +26,7 @@ const Bottom = () => {
         document.querySelector(".header")?.classList.add("sticky")
         stickyRef.current?.classList.add("sticky")
     }
+
     const up = () => {
         document.querySelector(".header")?.classList.remove("sticky")
         stickyRef.current?.classList.remove("sticky")
@@ -34,7 +37,6 @@ const Bottom = () => {
 
 
     UseAnimatedNavigation(menuRef, borLineRef, 'li.header__bottom-list-item',[])
-
 
 
     return (
@@ -52,6 +54,7 @@ const Bottom = () => {
                                         <Image className={""} alt={d.Name} src={d.Name} width={18} height={18}/> : ""}
                                     <span>{d.Name}</span>
                                 </Link>
+                                {/*<Menu/>*/}
                             </li>
                         )
                     })}

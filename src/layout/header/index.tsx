@@ -19,13 +19,10 @@ const Header = () => {
                     <Top/>
                     <Bottom/>
                 </div>
-
                 <div className="block lg:hidden ">
                   <HeaderMobile/>
                 </div>
-
                 <Navbar/>
-
             </header>
         </>
 

@@ -15,6 +15,7 @@ export async function generateMetadata({params,searchParams}: any): Promise<Meta
     };
 }
 
+
 export default async function Home({searchParams,params}:any) {
 
     const category:catalog = await ProductsListByCategory({categorySeName:decodeURIComponent(params.code),...searchParams})

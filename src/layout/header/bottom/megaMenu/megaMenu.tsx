@@ -1,11 +1,11 @@
 import React, {useEffect, useRef, useState} from 'react';
 import useClickOutside from "@/hooks/useOutsideClick";
-import {headerCategory} from "@/api/megamenu";
 import Categories from "@/layout/header/bottom/megaMenu/categories";
 import CategoryContent from "@/layout/header/bottom/megaMenu/categoryContent";
 import {MdOutlineMenu} from "react-icons/md";
-import Link from "next/link";
 import UseBodyOverLay from "@/hooks/useBodyOverLay";
+import {useSuspenseQuery} from "@tanstack/react-query";
+import {GetSiteSettingsQuery} from "@/services/Common";
 
 const MegaMenu = () => {
     const clickRef = useRef<HTMLDivElement | null>(null);
@@ -30,7 +30,8 @@ const MegaMenu = () => {
 
     UseBodyOverLay(isDropdownActive)
 
-    return (
+
+   return (
         <li className="header__bottom-list-item" onMouseEnter={()=>handleDropDown(true)}
             onMouseLeave={()=>handleDropDown(false)}>
             <span className="!pr-0 cursor-pointer">
@@ -39,8 +40,8 @@ const MegaMenu = () => {
             </span>
             <div ref={clickRef}  className={`category-dropdown flex ${isDropdownActive ?
                 "category-dropdown--active" : ""}`}>
-                <Categories headerCategory={headerCategory} closeMenu={closeMenu}  setSubCategoryId={setCategoryId}/>
-                <CategoryContent categoryId={categoryId}/>
+                <Categories closeMenu={closeMenu}  setSubCategoryId={setCategoryId}/>
+                <CategoryContent closeMenu={closeMenu} categoryId={categoryId}/>
             </div>
         </li>
 

@@ -47,7 +47,7 @@ export default async function RootLayout({
 
     const queryClient=getQueryClient()
 
-    // void queryClient.prefetchQuery(GetSiteSettingsQuery)
+    void queryClient.prefetchQuery(GetSiteSettingsQuery)
     // void queryClient.prefetchQuery(GetSocialMediasQuery)
     // void queryClient.prefetchQuery(GetLicenseLogosQuery)
     // void queryClient.prefetchQuery(GetAllActivePluginsQuery)

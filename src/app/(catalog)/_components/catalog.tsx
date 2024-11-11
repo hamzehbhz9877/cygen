@@ -1,12 +1,11 @@
 'use client'
 
-import React, {Suspense, useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import Breadcrumb from "@/components/breadcrumb";
 import CategoryList from "@/components/category/list";
 import Filters from "@/components/filters";
 import Products from "./products";
 import CategoryDescription from "@/components/category/seo/description";
-import {description} from "@/api/megamenu";
 import {keepPreviousData, useInfiniteQuery, useQuery} from "@tanstack/react-query";
 import {ProductsListByCategory} from "@/services/Catalog";
 import {useInView} from "react-intersection-observer";
@@ -40,7 +39,7 @@ const Catalog = ({category, searchParams}: { category: catalog, searchParams: an
         isFetched,
         ...rest
     } = useInfiniteQuery({
-        queryKey: ['category', Object.values(searchParams).join(","),params.code?params.code:""],
+        queryKey: ['category', Object.values(searchParams).join(","), params.code ? params.code : ""],
         queryFn: ({pageParam}) => {
             return ProductsListByCategory({
                 pageParam,
@@ -57,7 +56,7 @@ const Catalog = ({category, searchParams}: { category: catalog, searchParams: an
             }
         },
         staleTime: 0,
-        placeholderData:keepPreviousData,
+        placeholderData: keepPreviousData,
         initialPageParam: 1,
         getPreviousPageParam: (firstPage) => {
             return firstPage.CatalogProductsModel?.HasPreviousPage ? firstPage.CatalogProductsModel.PageNumber - 1 : undefined
@@ -88,7 +87,8 @@ const Catalog = ({category, searchParams}: { category: catalog, searchParams: an
 
 
     const makePagination = MakePagination(data.pages[data.pages.length - 1].CatalogProductsModel.PageNumber,
-        data.pages[data.pages.length - 1].CatalogProductsModel.TotalPages, () => {});
+        data.pages[data.pages.length - 1].CatalogProductsModel.TotalPages, () => {
+        });
 
 
     return (
@@ -140,7 +140,9 @@ const Catalog = ({category, searchParams}: { category: catalog, searchParams: an
                         }
                     </div>
                 </div>
-                <CategoryDescription content={description}/>
+                {
+                    data.pages[0].Description ?
+                        <CategoryDescription content={data.pages[0].Description} title={data.pages[0].Name}/> : ""}
             </div>
         </>
     )

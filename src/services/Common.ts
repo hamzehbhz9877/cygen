@@ -6,10 +6,13 @@ export const GetPopularSearchTerms = () => instant.get('Common/GetPopularSearchT
 
 export const GetSiteSettingsQuery = queryOptions({
     queryKey: ['GetSiteSettings'],
-    queryFn:GetSiteSettings,
+    queryFn: async () => {
+        const res = await GetSiteSettings()
+        return JSON.parse(JSON.stringify(res.data))
+    },
 })
 
 export const GetPopularSearchTermsQuery = queryOptions({
     queryKey: ['GetPopularSearchTerms'],
-    queryFn:GetPopularSearchTerms,
+    queryFn: GetPopularSearchTerms,
 })
