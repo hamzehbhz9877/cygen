@@ -1,3 +1,6 @@
+.categories {
+  @apply mb-5;
+}
 .categories__list {
   @apply flex overflow-auto lg:overflow-hidden lg:grid  pb-[7px] lg:pb-0 lg:grid-cols-6  xl:grid-cols-8 gap-x-[10px] lg:gap-[20px] mb-[10px] lg:mb-[10px];
 }

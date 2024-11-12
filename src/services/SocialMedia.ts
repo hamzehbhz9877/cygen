@@ -5,5 +5,8 @@ export const GetSocialMedias = () => instant.get('SocialMedia/GetSocialMedias')
 
 export const GetSocialMediasQuery = queryOptions({
     queryKey: ['GetSocialMedias'],
-    queryFn:GetSocialMedias,
+    queryFn:async ()=>{
+        const res=await GetSocialMedias()
+        return JSON.parse(JSON.stringify(res.data))
+    },
 })

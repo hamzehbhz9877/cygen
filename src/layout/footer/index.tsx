@@ -17,11 +17,14 @@ import "./index.scss"
 import MenuMobile from "@/layout/footer/menuMobile";
 import {useQuery, useSuspenseQuery} from "@tanstack/react-query";
 import {GetDynamicLinkPositionsQuery, GetDynamicLinks} from "@/services/DynamicLink";
+import {GetSiteSettingsQuery} from "@/services/Common";
 
 
 const Footer = () => {
 
     const {data} = useSuspenseQuery(GetDynamicLinkPositionsQuery)
+    const {data:settings} = useSuspenseQuery(GetSiteSettingsQuery)
+
 
     return (
         <footer className="footer-s">
@@ -38,21 +41,21 @@ const Footer = () => {
                     {
                         data.find(d=>d.key===20)?.data.map(d => {
                                 return (
-                                    <Menu key={d.Id} {...d}/>
+                                    <Menu key={d.Id} {...d} childs={settings.FooterTopics.filter(d=>d.IncludeInFooterColumn1)}/>
                                 )
                         })
                     }
                     {
                         data.find(d=>d.key===21)?.data.map(d => {
                                 return (
-                                    <Menu key={d.Id} {...d}/>
+                                    <Menu key={d.Id} {...d} childs={settings.FooterTopics.filter(d=>d.IncludeInFooterColumn2)}/>
                                 )
                         })
                     }
                     {
                         data.find(d=>d.key===22)?.data.map(d => {
                                 return (
-                                    <Menu key={d.Id} {...d}/>
+                                    <Menu key={d.Id} {...d} childs={settings.FooterTopics.filter(d=>d.IncludeInFooterColumn3)}/>
                                 )
                         })
                     }

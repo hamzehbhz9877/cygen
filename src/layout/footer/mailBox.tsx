@@ -1,26 +1,67 @@
+'use client'
+
 import React from 'react';
+import {useMutation, useQuery, useSuspenseQuery} from "@tanstack/react-query";
+import {GetSocialMediasQuery} from "@/services/SocialMedia";
+import Image from "next/image";
+import {useFormik} from "formik";
+import * as Yup from "yup";
+import {SubscribeToNewsletter} from "@/services/Newsletter";
+import {LoginRegisterVerification} from "@/services/OtpAuthentication";
+import {showToast} from "@/components/react-toastify/react-toastify";
 
 const MailBox = () => {
+
+    const formik = useFormik({
+        initialValues: {
+            email: '',
+        },
+        onSubmit: values => {
+            const emailRegex = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i;
+            const isValidEmail = emailRegex.test(values.email);
+            if (isValidEmail)
+                mutate(values)
+            else
+                showToast("error", 'ایمیل نامعتبر است')
+
+        },
+    });
+
+    const {data} = useSuspenseQuery(GetSocialMediasQuery)
+
+    const {mutate} = useMutation<any, any, any, any>({
+        mutationFn: SubscribeToNewsletter, onSuccess: () => {
+            showToast("success", 'عملیات با موفقیت انجام شد')
+        }
+    })
+
     return (
         <div className="foot-box mailbox">
             <span className="foot-title">رسانه های خبری ما</span>
             <div className="social-foot">
          <span className="icon-social">
-          <a href="https://www.rtl-theme.com/parskala-wordpress-theme/" target="_blank" rel="nofollow"></a>
-          <a href="https://www.rtl-theme.com/parskala-wordpress-theme/" target="_blank" rel="nofollow"></a>
-           <a href="https://www.rtl-theme.com/parskala-wordpress-theme/" target="_blank" rel="nofollow"></a>
-            <a href="https://www.rtl-theme.com/parskala-wordpress-theme/" target="_blank" rel="nofollow"></a>
-            <a href="https://www.rtl-theme.com/parskala-wordpress-theme/" target="_blank" rel="nofollow"></a>
-            <a href="https://www.rtl-theme.com/parskala-wordpress-theme/" target="_blank" rel="nofollow"></a>
+             {
+                 data.map((link) => {
+                     return <a key={link.Id}
+                               className={"cursor-pointer"}
+                               target="_blank" rel="nofollow">
+                         <Image src={link.Picture.ImageUrl} alt={link.Picture.AlternateText} width={30} height={30}/>
+                     </a>
+                 })
+             }
          </span>
             </div>
 
             <span className="foot-title mail">در خبرنامه پر تخفیف ما عضو شوید</span>
 
-            <form className="mail-foot prk_sms_newsletter_form">
-                <input type="text" data-nonce="9fd6e81b9d" className="prk_sms_newsletter_mobile"
-                       name="prk_sms_newsletter_mobile" placeholder="شماره موبایل خود را وارد نمایید."/>
-                <button className="submit_newsletter_form" type="submit">ثبت</button>
+            <form onSubmit={formik.handleSubmit} className="mail-foot">
+                <input
+                    type="text"
+                    onChange={formik.handleChange}
+                    value={formik.values.email}
+                    name={"email"}
+                    placeholder="ایمیل خود را وارد کنید..."/>
+                <button type="submit">ثبت</button>
             </form>
         </div>
     );

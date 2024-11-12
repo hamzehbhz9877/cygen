@@ -1,6 +1,6 @@
 'use client'
 
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 
 import Link from "next/link";
 import UseAnimatedNavigation from "@/hooks/useAnimatedNavigation";
@@ -36,8 +36,22 @@ const Bottom = () => {
     UseScrollDetection(up, down)
 
 
-    UseAnimatedNavigation(menuRef, borLineRef, 'li.header__bottom-list-item',[])
+    UseAnimatedNavigation(menuRef, borLineRef, 'li.header__bottom-list-item', [])
 
+    const [rightMenu, setRightMenu] = useState()
+
+    useEffect(() => {
+        const ddd = data?.find(d => d.key === 10)?.data.map(d => ({...d, children: []}))
+
+        ddd.forEach((d, index) => {
+            // const findIndex = ddd.findIndex(d => d.ParentId === d.Id)
+            // console.log(data[findIndex])
+            // if (findIndex !== -1) {
+            //     delete ddd[index];
+            //     ddd[findIndex].children = [...ddd[findIndex].children, d]
+            // }
+        })
+    }, [])
 
     return (
         <div className="header__bottom" ref={stickyRef}>
@@ -46,7 +60,7 @@ const Bottom = () => {
                     <MegaMenu/>
                     <div className="menu-line"></div>
 
-                    {data?.find(d=>d.key===10)?.data?.map(d => {
+                    {data?.find(d => d.key === 10)?.data?.map(d => {
                         return (
                             <li key={d.Id} className="header__bottom-list-item">
                                 <Link href={d.Url} target={d.OpenInNewPage}>
@@ -65,12 +79,13 @@ const Bottom = () => {
 
                     <ul>
                         {
-                            data?.find(d=>d.key===11).data.map(d=>{
+                            data?.find(d => d.key === 11).data.map(d => {
                                 return (
                                     <li key={d.Id}>
                                         <Link href={d.Url}>
                                             {d.Icon ?
-                                                <Image className={""} alt={d.Name} src={d.Name} width={18} height={18}/> : ""}
+                                                <Image className={""} alt={d.Name} src={d.Name} width={18}
+                                                       height={18}/> : ""}
                                             {d.Name}
                                         </Link>
                                     </li>

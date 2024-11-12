@@ -1,14 +1,8 @@
 .login {
 
-
-  .error{
-    @apply text-center text-sm text-[#f00] mt-2.5;
-
-  }
   .label{
     @apply flex justify-between text-[13px] leading-[21px] text-[#62666d] mb-[15px];
   }
-
 
   .modal__body {
     @apply w-[90%] md:w-[77%];

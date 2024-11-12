@@ -72,15 +72,19 @@
 }
 
 .line-foot {
-  @apply w-full relative block border-b-[#e8e8e8] border-b border-solid w-full relative block border-b-[#e8e8e8] border-b border-solid;
+  @apply w-full relative block border-b-[#e8e8e8] border-b border-solid;
 }
 
 .foot-box {
   @apply relative w-[24%] float-right;
 }
 
+.icon-social {
+  @apply flex items-center gap-[10px];
+}
+
 .foot-title {
-  @apply text-[15px] font-[650] text-black inline-flex leading-[30px] mb-[7px] text-[15px] font-[650] text-black inline-flex leading-[30px] mb-[7px];
+  @apply text-[15px] font-[650] text-black inline-flex leading-[30px] mb-[7px];
 }
 
 .mailbox .foot-title {
@@ -128,8 +132,7 @@
 }
 
 .mail-foot input {
-  @apply w-[74%] float-right text-sm font-normal text-[#81858b] ml-[11px] px-2.5 py-[15px] rounded-[11px] border-[none];
-  background: #e3e3e6;
+  @apply w-[74%] float-right text-sm font-normal text-[#81858b] ml-[11px] px-2.5 py-[15px] rounded-[11px] border-[none] bg-[#e3e3e6];
 }
 
 .mail-foot button {
@@ -217,6 +220,9 @@ img {
 .enmads {
   @apply m-0;
   @apply w-max grid grid-cols-4 sm:grid-cols-5 md:grid-cols-8 lg:grid-cols-3  xl:grid-cols-3 gap-[10px];
+}
+.enmads img {
+  @apply rounded-2xl bg-[#e3e3e6] py-[10px] px-[5px] w-[100px] h-[100px] object-contain;
 }
 
 body .enmads .codes {

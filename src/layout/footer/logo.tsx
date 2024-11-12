@@ -1,13 +1,18 @@
+'use client'
+
 import React from 'react';
 import Image from "next/image";
 import Link from "next/link";
+import {useSuspenseQuery} from "@tanstack/react-query";
+import {GetSiteSettingsQuery} from "@/services/Common";
 
 const Logo = () => {
+    const {data} = useSuspenseQuery(GetSiteSettingsQuery)
     return (
         <div className="logo-box">
-            <Link href="https://pars.parskalas.com"><Image width={100} height={100}
-                src="https://pars.parskalas.com/wp-content/uploads/2022/07/parskala-types.png"
-                alt="پارس کالا"/></Link>
+            <Link href=""><Image width={100} height={100}
+                alt={data.Logo.StoreName}
+                                 src={data.Logo.LogoPath}/></Link>
         </div>
 
     );

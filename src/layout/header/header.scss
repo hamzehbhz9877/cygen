@@ -46,7 +46,7 @@
   .logo {
     @apply ml-0 lg:ml-[40px];
     img {
-      @apply text-[gray] inline-block bg-no-repeat mt-0 lg:mt-[11px];
+      @apply text-[gray] inline-block bg-no-repeat;
       mask: linear-gradient(-60deg, #000 30%, #0005, #000 50%) right / 300% 100%;
       animation: shimmer 3s infinite;
       max-width: 170px;
@@ -354,7 +354,7 @@
 .category-dropdown {
   z-index: 10;
   position: absolute;
-  top: 97%;
+  top: 96.8%;
   right: 0;
   left: 0;
   background: #FFFFFF;

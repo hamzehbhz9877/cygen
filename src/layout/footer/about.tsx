@@ -5,16 +5,21 @@ import Enamad from "@/layout/footer/enamad";
 import Link from "next/link";
 import { FaAngleLeft } from "react-icons/fa6";
 import UseMoreContent from "@/hooks/useMoreContent";
+import {useSuspenseQuery} from "@tanstack/react-query";
+import {GetLicenseLogosQuery} from "@/services/LicenseLogo";
+import Image from "next/image";
 
 
 const About = () => {
+
+
+    const {data}=useSuspenseQuery(GetLicenseLogosQuery)
 
     const {isOpen,handleShowMore}=UseMoreContent()
 
 
     return (
         <div className="foot-core">
-
 
             <div className="foot-box text boxed">
 
@@ -37,8 +42,9 @@ const About = () => {
 
             <div className="foot-box enmads">
 
-                {new Array(5).fill("https://pars.parskalas.com/wp-content/uploads/2022/10/1e5dab5a.png").map((link, index: number) => {
-                    return <Enamad key={index} link={link}/>
+                {data.map((link, index: number) => {
+                    return <Image src={link.Picture.ImageUrl} key={index} alt={link.Picture.AlternateText} className={"cursor-pointer"}
+                                  title={link.Picture.Title} width={60} height={60}/>
                 })}
             </div>
         </div>
