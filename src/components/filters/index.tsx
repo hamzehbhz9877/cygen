@@ -15,7 +15,7 @@ type FiltersType = {
 
 const Filters = ({FeaturedProducts, CatalogProductsModel}: FiltersType) => {
     return (
-        <div className="all-filter w-[20%] ml-[15px] sticky top-[145px] h-max hidden lg:block">
+        <div className="all-filter w-[20%] ml-[15px] sticky top-[138px] h-max hidden lg:block">
                 <ActiveFilters activeFilters={CatalogProductsModel}/>
                 {
                     CatalogProductsModel?.PriceRangeFilter?.Enabled ?

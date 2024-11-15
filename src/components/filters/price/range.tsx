@@ -24,6 +24,7 @@ const SliderRange = ({
                      }:sliderRangeType) => {
 
 
+
     const inputLeft=useRef<HTMLInputElement|null>(null)
     const inputRight=useRef<HTMLInputElement|null>(null)
     const thumbRight=useRef<HTMLDivElement|null>(null)
@@ -42,11 +43,13 @@ const SliderRange = ({
             <div className="middle">
                 <div className="multi-range-slider">
                     <input ref={inputLeft} type="range" id="input-left" onChange={(e) => {
+                        console.log("1")
                         calcRangeLeft()
                         setFrom(+e.target.value)
                     }}
                            step={step} min={min} max={max} value={from}/>
                     <input ref={inputRight} type="range" id="input-right"  onChange={(e) => {
+                        console.log("2")
                         calRangeRight()
                         setTo(+e.target.value)
                     }}

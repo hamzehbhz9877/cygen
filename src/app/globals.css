@@ -86,17 +86,10 @@ input[type=number] {
   @apply font-bYekan z-[9999999]  !important;
 }
 
-@layer utilities {
-  .center-vertically {
-    @apply top-[50%] translate-y-[-50%];
-  }
-
-  .center-horizontally {
-    @apply left-[50%] translate-x-[-50%];
-  }
-}
 .error {
   @apply text-sm text-[#f00] mt-2.5;
 }
+
+@layer utilities {}
 
 /*# sourceMappingURL=globals.css.map */

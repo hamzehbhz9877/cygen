@@ -16,8 +16,6 @@ const Logic = (data: any) => {
 
 
     const {addQueryParam} = UseQueryParams()
-    const {getAllSearchParams} = useQueryParams()
-    const allPrams = getAllSearchParams()
 
     useEffect(() => {
         setFrom(data?.SelectedPriceRange.From)

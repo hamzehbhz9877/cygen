@@ -30,7 +30,7 @@ input[type=range] {
   @apply absolute pointer-events-none z-[2] h-2.5 w-full opacity-0;
   -webkit-appearance: none;
 }
-input[type=range] ::-webkit-slider-thumb {
+input[type=range]::-webkit-slider-thumb {
   @apply w-[30px] h-[30px] bg-[red] cursor-ew-resize rounded-none border-0 border-none pointer-events-auto;
   -webkit-appearance: none;
 }
