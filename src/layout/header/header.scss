@@ -82,6 +82,20 @@
         inline-block p-[15px] rounded-[11px] bg-white left-0 right-0
         w-full opacity-0 z-0 duration-200  transition-all ease-in-out
         border-[#e0e0e0] shadow-[0_0_15px_0_rgb(0_0_0_/_4%)] invisible;
+        &__list{
+          direction: ltr;
+          margin-right: 6px;
+          max-height: 26.5rem;
+          max-width: 100%;
+          overflow-y: auto;
+          overflow-x: hidden;
+          padding-left: 24px;
+          padding-right: 10px;
+          &>div{
+            direction: rtl;
+            @apply flex flex-col gap-[40px] mb-[30px]
+          }
+        }
         &.active {
           @apply z-10 opacity-100 visible;
         }

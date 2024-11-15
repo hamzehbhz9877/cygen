@@ -1,5 +1,6 @@
 import {notFound} from "next/navigation";
 import {redirectStatus} from "@/utils/notFound-server";
+import {instant} from "@/services/httpservice";
 
 export const ProductsListByCategory = async (query: any) => {
     const {pageParam = 1, ...rest}: any = query
@@ -27,3 +28,7 @@ export const ProductsListByGetTagProducts = async (query: any) => {
     const data = await res.json()
     return redirectStatus(data)
 }
+
+
+export const SearchTermAutoComplete = ({search,sizeOfImage}) => instant.get(`Catalog/SearchTermAutoComplete?term=${search}&productThumbPictureSize=${sizeOfImage}`)
+

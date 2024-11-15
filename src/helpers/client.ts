@@ -1,4 +1,6 @@
-import React from "react";
+'use client'
+
+import React, {useEffect} from "react";
 import {jwtDecode} from "jwt-decode";
 
 const formatter = new Intl.NumberFormat("fa-IR", {
@@ -46,6 +48,16 @@ function getErrorFromServer(error:any, name:any) {
     })
     return valueRes
 }
+const UseDebouncedEffect = (
+    onChange,
+    delay,
+    value
+) => {
+    useEffect(() => {
+        const handler = setTimeout(() => onChange(value), delay);
+        return () => clearTimeout(handler);
+    }, [value]);
+};
 
 
-export {formatter, toEnglishDigits,getErrorFromServer,isTokenExpired}
+export {formatter,UseDebouncedEffect, toEnglishDigits,getErrorFromServer,isTokenExpired}

@@ -4,7 +4,7 @@ import Image from "next/image";
 import {IoIosArrowDown} from "react-icons/io";
 import useClickOutside from "@/hooks/useOutsideClick";
 
-const Menu = () => {
+const Menu = ({Name, Icon,children}:any) => {
 
     const clickRef = useRef<HTMLDivElement | null>(null);
     const [isDropdownActive, setIsDropDownActive] = useState(false)
@@ -20,25 +20,24 @@ const Menu = () => {
     useClickOutside(clickRef, closeMenu);
 
     return (
-        <li className="header__bottom-list-item menu"  onMouseEnter={handleDropDown} onMouseLeave={handleDropDown}>
+        <li className="header__bottom-list-item menu" onMouseEnter={handleDropDown} onMouseLeave={handleDropDown}>
             <Link href={"/"}>
-                <Image alt={"image-icon-menu"}
-                       src="https://pars.parskalas.com/wp-content/uploads/2022/10/store.png" width={18}
-                       height={18}/>
+                {Icon ?
+                    <Image className={""} alt={Name} src={Name} width={18} height={18}/> : ""}
                 <span className="flex items-center gap-[5px]">
-                        <span className="w-max">لیست کالا ها</span>
+                        <span className="w-max">{Name}</span>
                         <IoIosArrowDown size={10}/>
                         </span>
             </Link>
 
-            <div ref={clickRef} className={`menu-dropdown  flex ${isDropdownActive?'menu-dropdown--active':""}`}>
+            <div ref={clickRef} className={`menu-dropdown  flex ${isDropdownActive ? 'menu-dropdown--active' : ""}`}>
                 <ul>
-                    <li><Link href={"/"}><span>آیتم</span></Link></li>
-                    <li><Link href={"/"}><span>آیتم</span></Link></li>
-                    <li><Link href={"/"}><span>آیتم</span></Link></li>
-                    <li><Link href={"/"}><span>آیتم</span></Link></li>
+                    {
+                        children.map(link => {
+                            return <li key={link.Id}><Link href={link.Url}><span>{link.Name}</span></Link></li>
+                        })
+                    }
                 </ul>
-
             </div>
         </li>
     );

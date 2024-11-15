@@ -38,20 +38,18 @@ const Bottom = () => {
 
     UseAnimatedNavigation(menuRef, borLineRef, 'li.header__bottom-list-item', [])
 
-    const [rightMenu, setRightMenu] = useState()
-
-    useEffect(() => {
+    const [rightMenu] = useState(()=>{
         const ddd = data?.find(d => d.key === 10)?.data.map(d => ({...d, children: []}))
-
-        ddd.forEach((d, index) => {
-            // const findIndex = ddd.findIndex(d => d.ParentId === d.Id)
-            // console.log(data[findIndex])
-            // if (findIndex !== -1) {
-            //     delete ddd[index];
-            //     ddd[findIndex].children = [...ddd[findIndex].children, d]
-            // }
+        const rightItems = ddd.filter(d => !d.ParentId)
+        ddd.forEach(item => {
+            if (item.ParentId) {
+                const findIndex = rightItems.findIndex(m => m.Id === item.ParentId)
+                rightItems[findIndex].children.push(item)
+            }
         })
-    }, [])
+        return rightItems
+    })
+
 
     return (
         <div className="header__bottom" ref={stickyRef}>
@@ -60,17 +58,19 @@ const Bottom = () => {
                     <MegaMenu/>
                     <div className="menu-line"></div>
 
-                    {data?.find(d => d.key === 10)?.data?.map(d => {
+                    {rightMenu?.map(d => {
+                        if(d.children.length===0)
                         return (
                             <li key={d.Id} className="header__bottom-list-item">
-                                <Link href={d.Url} target={d.OpenInNewPage}>
+                                <Link href={d.Url} target={d.OpenInNewPage ? "_blank" : "_self"}>
                                     {d.Icon ?
                                         <Image className={""} alt={d.Name} src={d.Name} width={18} height={18}/> : ""}
                                     <span>{d.Name}</span>
                                 </Link>
-                                {/*<Menu/>*/}
                             </li>
                         )
+                        else
+                        return <Menu key={d.Id} {...d}/>
                     })}
                     <div className="bor-line" ref={borLineRef}/>
                 </ul>
