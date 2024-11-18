@@ -1,15 +1,16 @@
 .product {
-  @apply inline-block transition-shadow duration-[0.15s] ease-[ease] bg-white text-center relative m-0 pb-0 after:w-screen after:h-px after:top-[-1.5px] after:inset-x-0 before:w-px before:h-[-webkit-fill-available] before:left-[-1.5px] before:top-0 hover:shadow-[0_2px_17px_0_rgba(0,0,0,0.09)] hover:z-[11];
-  @apply h-auto  rounded-[14px] lg:rounded-[0] lg:border-none
-  border border-solid border-[#e4e4e4] relative;
+  @apply inline-block transition-shadow duration-[0.15s] ease-[ease] bg-white text-center relative m-0 pb-0 after:w-screen after:h-px
+  after:top-[-1.5px] after:inset-x-0 before:w-px before:h-[-webkit-fill-available] before:left-[-1.5px]
+  before:top-0 hover:shadow-[0_2px_17px_0_rgba(0,0,0,0.09)] hover:z-[11];
+  @apply h-auto relative;
 }
 .product::before, .product::after {
-  @apply content-[""] absolute bg-[#e4e4e4] z-[1];
-  @apply hidden lg:block;
+  @apply content-[""] absolute bg-[#e4e4e4] bg-opacity-70 z-[1];
+  @apply block;
 }
 .product__label {
   @apply absolute rounded-full top-[10px] lg:top-[35px] left-[10px]
-    bg-green-100 text-green-800 text-xs font-medium  px-2.5 py-0.5  dark:bg-green-900 dark:text-green-300;
+    bg-green-100 text-green-800 text-xs font-medium  px-2.5 py-0.5;
 }
 .product:hover .hover-image img {
   @apply opacity-0 invisible;

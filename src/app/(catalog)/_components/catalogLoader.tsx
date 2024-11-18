@@ -4,12 +4,12 @@ import ProductSkeleton from "@/components/product/loader/product";
 const CatalogLoader = () => {
     return (
         <div className="container">
-            <div className="w-[100%] h-[40px] mb-4 bg-[#f0f0f1] rounded dark:bg-gray-700">
+            <div className="w-[100%] h-[40px] mb-4 bg-[#f0f0f1] rounded ">
             </div>
-            <div className="w-[100%] h-[100px] mb-4 bg-[#f0f0f1] rounded dark:bg-gray-700">
+            <div className="w-[100%] h-[100px] mb-4 bg-[#f0f0f1] rounded ">
             </div>
             <div className={"flex justify-between"}>
-                <div className="all-filter w-[20%] ml-[15px] sticky top-[105px] hidden lg:block h-[400px] mb-4 bg-[#f0f0f1] rounded dark:bg-gray-700
+                <div className="all-filter w-[20%] ml-[15px] sticky top-[105px] hidden lg:block h-[400px] mb-4 bg-[#f0f0f1] rounded 
                 ">
                 </div>
                 <div className={"flex-1"}>

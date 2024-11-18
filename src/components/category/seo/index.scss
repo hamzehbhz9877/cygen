@@ -13,7 +13,7 @@
     @apply text-xs font-medium text-[#474747] text-center mx-0 my-[3px];
     .show-more,
     .show-less {
-      @apply text-[#1051ef] cursor-pointer text-center font-[bold] relative text-[15px] mt-[15px];
+      @apply text-[#1051ef] cursor-pointer text-center font-bold relative text-[15px] mt-[15px];
     }
 
     .show-less {

@@ -1,0 +1,14 @@
+.popup__lightbox {
+  @apply hidden opacity-0 fixed inset-0 z-[99991]    justify-center items-center;
+}
+.popup__lightbox.open {
+  @apply flex flex-col gap-[20px] visible opacity-100;
+}
+.popup__slidein {
+  @apply hidden opacity-0 z-[200] fixed bottom-[20px] right-[20px]  justify-center;
+}
+.popup__slidein.open {
+  @apply flex  gap-[10px] visible opacity-100;
+}
+
+/*# sourceMappingURL=index.css.map */

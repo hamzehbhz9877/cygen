@@ -132,7 +132,7 @@ header.modern .modal-menu {
   left: 16px;
   right: 16px;
   box-shadow: none;
-  z-index: 99999;
+  z-index: 100;
 }
 .mobile-bottom-navabr {
   display: flex;
@@ -173,4 +173,6 @@ header.modern .modal-menu {
   border-radius: 50%;
   @apply fill-dynamic-color-from;
 }
+
+
 

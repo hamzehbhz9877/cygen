@@ -1,9 +1,10 @@
 import React from 'react';
 import Collapse from "@/components/collapse";
 import {LiaAngleDownSolid} from "react-icons/lia";
+import Link from "next/link";
 
 
-const MenuMobile = () => {
+const MenuMobile = ({Name, Url, OpenInNewPage, childs}: dynamicLinksType[0] & { childs: any }) => {
     return (
         <div className="footer-menu-mobile">
             <Collapse
@@ -11,29 +12,20 @@ const MenuMobile = () => {
                 isOpen={false}
                 title={
                     <div>
-                        <span>راهنمای خرید</span>
+                        <span>آیتم</span>
                         <LiaAngleDownSolid size={14} color={"#000"}/>
                     </div>
                 }
                 content={
                     <div>
                         <ul className="menu">
-                            <li id="navi"
-                                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-764">
-                                <a href="https://pars.parskalas.com/%d9%86%d8%ad%d9%88%d9%87-%d8%ab%d8%a8%d8%aa-%d8%b3%d9%81%d8%a7%d8%b1%d8%b4/">نحوه
-                                    ثبت سفارش</a></li>
-                            <li id="navi"
-                                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-765">
-                                <a href="https://pars.parskalas.com/%d8%b1%d9%88%db%8c%d9%87-%d8%a7%d8%b1%d8%b3%d8%a7%d9%84-%d8%b3%d9%81%d8%a7%d8%b1%d8%b4/">رویه
-                                    ارسال سفارش</a></li>
-                            <li id="navi"
-                                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-766">
-                                <a href="https://pars.parskalas.com/%d8%b4%db%8c%d9%88%d9%87%e2%80%8c%d9%87%d8%a7%db%8c-%d9%be%d8%b1%d8%af%d8%a7%d8%ae%d8%aa/">شیوه‌های
-                                    پرداخت</a></li>
-                            <li id="navi"
-                                className="menu-item menu-item-type-post_type menu-item-object-page menu-item-801">
-                                <a href="https://pars.parskalas.com/%d8%b1%d9%88%db%8c%d9%87%e2%80%8c%d9%87%d8%a7%db%8c-%d8%a8%d8%a7%d8%b2%da%af%d8%b1%d8%af%d8%a7%d9%86%d8%af%d9%86-%da%a9%d8%a7%d9%84%d8%a7/">رویه‌های
-                                    بازگرداندن کالا</a></li>
+                            {
+                                childs.map(d => {
+                                    return <li key={d.Id} id="navi"
+                                               className="menu-item menu-item-type-post_type menu-item-object-page">
+                                        <Link href={"/"+d.SeName}>{d.Name}</Link></li>
+                                })
+                            }
                         </ul>
                     </div>
                 }

@@ -14,5 +14,8 @@ export const GetSiteSettingsQuery = queryOptions({
 
 export const GetPopularSearchTermsQuery = queryOptions({
     queryKey: ['GetPopularSearchTerms'],
-    queryFn: GetPopularSearchTerms,
+    queryFn: async ()=>{
+        const res=await GetPopularSearchTerms()
+        return JSON.parse(JSON.stringify(res.data))
+    },
 })

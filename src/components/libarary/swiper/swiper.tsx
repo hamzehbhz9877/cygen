@@ -1,0 +1,62 @@
+'use client'
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
+import React, {useRef} from "react";
+import { Swiper as SwiperJs } from "swiper/react";
+
+import { Navigation, Pagination,Autoplay} from "swiper/modules";
+import UseNextPrevSwiper from "@/hooks/swipper/useNextPrev";
+import CustomButtons from "@/components/libarary/swiper/customButtons";
+
+import {SwiperOptions} from "swiper/types";
+
+
+type swiperType={
+    children:React.ReactNode
+    SwiperOptions?:SwiperOptions
+    hasDots?:boolean
+    hasNextPrevButton?:boolean
+    blogsBtn?:boolean
+}
+
+const Swiper = ({children,SwiperOptions,hasNextPrevButton=true,hasDots=true,blogsBtn=false}:swiperType) => {
+    const { nextRef, prevRef, setSwiper,
+        afterInit } = UseNextPrevSwiper();
+    const bulletRef = useRef(null);
+
+    return (
+        <div className="relative min-w-0">
+            <SwiperJs
+
+                modules={[Navigation, Pagination,Autoplay]}
+                onAfterInit={afterInit}
+                spaceBetween={18}
+                updateOnWindowResize
+                navigation={{ prevEl: prevRef?.current, nextEl: nextRef?.current }}
+                pagination={{ clickable: true, el: bulletRef?.current }}
+                onSwiper={setSwiper}
+                className="swiper-slides"
+                {...SwiperOptions}
+            >
+                {children}
+            </SwiperJs>
+            {hasDots ? <div
+                className="swiper-pagination"
+                ref={bulletRef}
+            /> : ""}
+            <div className="absolute inset-0 z-10">
+                <CustomButtons
+                    blogsBtn={blogsBtn}
+                    // bulletRef={hasDots?bulletRef:null}
+                    nextRef={hasNextPrevButton?nextRef:null}
+                    prevRef={hasNextPrevButton?prevRef:null}
+                />
+            </div>
+        </div>
+    );
+};
+
+export default Swiper;

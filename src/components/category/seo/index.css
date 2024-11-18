@@ -12,7 +12,7 @@
 }
 .category-seo a.mask-handler .show-more,
 .category-seo a.mask-handler .show-less {
-  @apply text-[#1051ef] cursor-pointer text-center font-[bold] relative text-[15px] mt-[15px];
+  @apply text-[#1051ef] cursor-pointer text-center font-bold relative text-[15px] mt-[15px];
 }
 .category-seo a.mask-handler .show-less {
   @apply text-xs px-0 py-[5px];

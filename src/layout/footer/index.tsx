@@ -59,10 +59,30 @@ const Footer = () => {
                                 )
                         })
                     }
-                    <MenuMobile/>
-                    <MenuMobile/>
-                    <MenuMobile/>
-                    <MailBox/>
+
+                    {
+                        data.find(d=>d.key===20)?.data.map(d => {
+                            return (
+                                <MenuMobile key={d.Id} {...d} childs={settings.FooterTopics.filter(d=>d.IncludeInFooterColumn1)}/>
+                            )
+                        })
+                    }
+                    {
+                        data.find(d=>d.key===21)?.data.map(d => {
+                            return (
+                                <MenuMobile key={d.Id} {...d} childs={settings.FooterTopics.filter(d=>d.IncludeInFooterColumn2)}/>
+                            )
+                        })
+                    }
+                    {
+                        data.find(d=>d.key===22)?.data.map(d => {
+                            return (
+                                <MenuMobile key={d.Id} {...d} childs={settings.FooterTopics.filter(d=>d.IncludeInFooterColumn3)}/>
+                            )
+                        })
+                    }
+
+                     <MailBox/>
                     <div className="clear"></div>
                     <App/>
                     <About/>

@@ -14,7 +14,10 @@ const MobileSort = ({data}:any) => {
                 <ul className="prk-order-products">
                     {
                         data?.map((sort: any, index: number) => {
-                            return <li key={index} onClick={() => addQueryParam('order', sort.Value)}
+                            return <li key={index} onClick={() => {
+                                addQueryParam('order', sort.Value)
+                                document.querySelector('.sort__mobile').classList.remove("open")
+                            }}
                                        className={`order-item order-menu-order ${sort.Selected ? "is-active" : ""}`}>
                                 <Link rel="nofollow"
                                       href="/">

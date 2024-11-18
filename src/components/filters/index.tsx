@@ -5,15 +5,17 @@ import CheckBoxFilter from "@/components/filters/checkbox";
 // css
 import "./index.scss"
 import ActiveFilters from "@/components/filters/active";
-import {Suspense} from "react";
+import React, {Suspense} from "react";
+import Banner from "@/components/banner";
 
 
 type FiltersType = {
     FeaturedProducts: any
     CatalogProductsModel: any
+    id:number
 }
 
-const Filters = ({FeaturedProducts, CatalogProductsModel}: FiltersType) => {
+const Filters = ({FeaturedProducts, CatalogProductsModel,id}: FiltersType) => {
     return (
         <div className="all-filter w-[20%] ml-[15px] sticky top-[138px] h-max hidden lg:block">
                 <ActiveFilters activeFilters={CatalogProductsModel}/>
@@ -30,6 +32,7 @@ const Filters = ({FeaturedProducts, CatalogProductsModel}: FiltersType) => {
                     CatalogProductsModel?.ManufacturerFilter?.Enabled ? <CheckBoxFilter type={"manufacturers"}  title={"برند ها"}
                                                                                       data={CatalogProductsModel.ManufacturerFilter.Manufacturers}/>: ""
                 }
+            <Banner PositionSystemName={"category_sidebar"} EntityName={"Category"} EntityId={String(id)}/>
         </div>
     );
 };

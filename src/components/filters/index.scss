@@ -29,17 +29,26 @@
   @apply flex items-center justify-between pl-2.5 pr-[15px] pt-2.5 pb-2 border-b-[#e7e7e7] border-b border-solid;
 
 }
+
 .content_filter .remodal-header .title {
   @apply text-[15px] font-bold text-[#333];
 }
+
 .content_filter .remodal-header .remodal-back-tabs {
   @apply text-[28px] leading-none border-0;
   background: unset;
 }
+
 .content_filter .sides {
   @apply block w-full p-[30px];
 }
 
-.header.sticky +  main .all-filter{
+.header.sticky + main .all-filter {
   @apply top-[98px];
+}
+
+.all-filter {
+  .banner img{
+    @apply rounded-md;
+  }
 }

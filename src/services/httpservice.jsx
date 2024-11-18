@@ -27,22 +27,18 @@ instant.interceptors.request.use(async (config) => {
             Accept: 'application/json',
         };
 
-        if (guestToken && !userToken) {
-            if (isTokenExpired(guestToken)) {
-                const data = await instant.post('OtpAuthentication/GetGuestCustomer')
-                cookie.remove('guest');
-                cookie.set('guest', data.data)
-                config.headers.Authorization = `Bearer ${data.data.AccessToken}`;
-            } else {
-                config.headers.Authorization = `Bearer ${guestToken}`;
-            }
-        } else {
-            if (userToken) {
-                config.headers.Authorization = `Bearer ${userToken}`;
-            }
-        }
-
-
+        // if (userToken) {
+        //     config.headers.Authorization = `Bearer ${userToken}`;
+        // } else {
+        //     if (isTokenExpired(guestToken)) {
+        //         const data = await instant.post('OtpAuthentication/GetGuestCustomer')
+        //         cookie.remove('guest');
+        //         cookie.set('guest', data.data)
+        //         config.headers.Authorization = `Bearer ${data.data.AccessToken}`;
+        //     } else {
+        //         config.headers.Authorization = `Bearer ${guestToken}`;
+        //     }
+        // }
         return config;
     },
     function (error) {

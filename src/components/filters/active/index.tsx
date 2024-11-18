@@ -20,8 +20,11 @@ const ActiveFilters = ({activeFilters}: any) => {
 
     const searchParams=useSearchParams()
 
+    const s1=searchParams.get("PageNumber")?1:0
+    const s2=searchParams.get("q")?1:0
+
     return (
-        (searchParams.get("PageNumber")?searchParams.size-1:searchParams.size) > 0 ?
+        searchParams.size-s1-s2 > 0 ?
             <div className="filter filter-active">
                 <Collapse
                     isOpen

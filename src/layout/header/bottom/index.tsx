@@ -16,6 +16,7 @@ const Bottom = () => {
 
 
     const {data} = useSuspenseQuery(GetDynamicLinkPositionsQuery)
+    const {data:setting} = useSuspenseQuery(GetSiteSettingsQuery)
 
     const menuRef = useRef<HTMLUListElement | null>(null)
     const borLineRef = useRef<HTMLDivElement | null>(null)
@@ -57,20 +58,38 @@ const Bottom = () => {
                 <ul className="header__bottom-list relative" ref={menuRef}>
                     <MegaMenu/>
                     <div className="menu-line"></div>
-
+                    {setting.TopMenu.DisplayHomepageMenuItem ?
+                        <li className="header__bottom-list-item">
+                            <Link href={"/"}>
+                                <span>خانه</span>
+                            </Link>
+                        </li>
+                        : ""}
                     {rightMenu?.map(d => {
-                        if(d.children.length===0)
-                        return (
-                            <li key={d.Id} className="header__bottom-list-item">
-                                <Link href={d.Url} target={d.OpenInNewPage ? "_blank" : "_self"}>
-                                    {d.Icon ?
-                                        <Image className={""} alt={d.Name} src={d.Name} width={18} height={18}/> : ""}
+                        if (d.children.length === 0)
+                            return (
+                                <li key={d.Id} className="header__bottom-list-item">
+                                    <Link href={d.Url} target={d.OpenInNewPage ? "_blank" : "_self"}>
+                                        {d.Icon ?
+                                            <Image className={""} alt={d.Name} src={d.Name} width={18} height={18}/> : ""}
                                     <span>{d.Name}</span>
                                 </Link>
                             </li>
                         )
                         else
                         return <Menu key={d.Id} {...d}/>
+                    })}
+
+                    {setting?.TopMenu.Topics.map(d=>{
+                        return (
+                            <li key={d.Id} className="header__bottom-list-item">
+                                <Link href={"/"+d.SeName}>
+                                    {d?.Icon ?
+                                        <Image className={""} alt={d.Name} src={d.Name} width={18} height={18}/> : ""}
+                                    <span>{d.Name}</span>
+                                </Link>
+                            </li>
+                        )
                     })}
                     <div className="bor-line" ref={borLineRef}/>
                 </ul>
@@ -83,7 +102,7 @@ const Bottom = () => {
                                 return (
                                     <li key={d.Id}>
                                         <Link href={d.Url}>
-                                            {d.Icon ?
+                                        {d.Icon ?
                                                 <Image className={""} alt={d.Name} src={d.Name} width={18}
                                                        height={18}/> : ""}
                                             {d.Name}

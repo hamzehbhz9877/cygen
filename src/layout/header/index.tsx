@@ -6,8 +6,6 @@ import Bottom from "@/layout/header/bottom";
 import "./header.scss"
 import HeaderMobile from "@/layout/header/mobile";
 import Navbar from "@/layout/header/mobile/navbar";
-import {useQuery} from "@tanstack/react-query";
-import {GetPopularSearchTermsQuery} from "@/services/Common";
 
 const Header = () => {
 
@@ -22,7 +20,6 @@ const Header = () => {
                 <div className="block lg:hidden ">
                   <HeaderMobile/>
                 </div>
-                <Navbar/>
             </header>
         </>
 

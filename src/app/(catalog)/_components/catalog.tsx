@@ -1,5 +1,6 @@
 'use client'
 
+import "./catalog.scss"
 import React, {useEffect, useRef, useState} from 'react';
 import Breadcrumb from "@/components/breadcrumb";
 import CategoryList from "@/components/category/list";
@@ -16,7 +17,13 @@ import ProductsSkeleton from "@/components/product/loader/products";
 import Pagination from "@/components/pagination";
 import {MakePagination} from "@/hooks/usePagination/makePagination";
 import useQueryParams from "@/hooks/useQueryParams";
-
+import Banner from "@/components/banner";
+import {TbCategoryPlus} from "react-icons/tb";
+import Collapse from "@/components/collapse";
+import {LiaAngleDownSolid} from "react-icons/lia";
+import parse from "html-react-parser";
+import {FagQuery} from "@/services/Faq";
+import "@/app/faq/_components/index.scss"
 
 const Catalog = ({category, searchParams}: { category: catalog, searchParams: any }) => {
     const {ref, inView} = useInView()
@@ -91,16 +98,25 @@ const Catalog = ({category, searchParams}: { category: catalog, searchParams: an
         });
 
 
+
+    const {data:FaqItems}=useQuery({
+        queryKey:["faq","category"],
+        queryFn:()=>FagQuery({EntityName:"Category",EntityId:data.pages[0].Id}),
+        enabled:!!data.pages[0].Id
+    })
+
+
     return (
         <>
-            <div>
+            <div className="catalog">
                 {isRefetching && isFetched ?
                     <div className="w-[100%] h-[40px] mb-4 bg-[#f0f0f1] rounded "></div> :
                     <Breadcrumb data={data.pages[0].CategoryBreadcrumb}
                                 show={data.pages[0].DisplayCategoryBreadcrumb}/>}
-                <CategoryList data={data.pages[0].SubCategories}/>
+                <Banner PositionSystemName={"category_top"} EntityName={"Category"} EntityId={data.pages[0].Id}/>
+                {data.pages[0]?.SubCategories ? <CategoryList data={data.pages[0]?.SubCategories}/> : ""}
                 <div className="flex">
-                    <Filters FeaturedProducts={data.pages[0].FeaturedProducts}
+                    <Filters id={data.pages[0].Id} FeaturedProducts={data.pages[0].FeaturedProducts}
                              CatalogProductsModel={data.pages[0].CatalogProductsModel}/>
                     <div className={"flex flex-col flex-1"}>
                         {data.pages[0].CatalogProductsModel?.AllowProductSorting ?
@@ -143,6 +159,37 @@ const Catalog = ({category, searchParams}: { category: catalog, searchParams: an
                 {
                     data.pages[0].Description ?
                         <CategoryDescription content={data.pages[0].Description} title={data.pages[0].Name}/> : ""}
+
+                {FaqItems?.data.length>0?
+                <div className="accordion_faq_questions">
+
+                    <div className="asked_btn_icon">
+                        <TbCategoryPlus size={28} className={"text-dynamic-color-from"}/>
+                    </div>
+
+                    <span className="frequently_asked_questions_title">پرتکرارترین پرسش‌ها</span>
+
+                    {FaqItems?.data?.map(d => {
+                        return (
+                            <div key={d.Id} className={"asked_questions_box"}>
+                                <Collapse
+                                    isOpen={false}
+                                    title={
+                                        <div className="ask_accordion">
+                                            <h2 className="">{d.Question}</h2>
+                                            <LiaAngleDownSolid size={14} color={"#000"}/>
+                                        </div>
+                                    }
+                                    content={
+                                        <div className="panel">
+                                            {parse(d.Answer??"")}
+                                        </div>
+                                    }
+                                />
+                            </div>
+                        )
+                    })}
+                </div>:""}
             </div>
         </>
     )

@@ -40,4 +40,8 @@
   @apply top-[98px];
 }
 
-/*# sourceMappingURL=index.css.map */
+.all-filter .banner img {
+  @apply rounded-md;
+}
+
+/*# sourceMappingURL=catalog.css.map */

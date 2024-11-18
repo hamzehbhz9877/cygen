@@ -1,13 +1,15 @@
 
 import React, {useEffect} from 'react';
+import useOverlay from "@/context/overlay/useOverlay";
 
 const useBodyOverLay = (isActive:boolean) => {
+    const {toggleOverlay}=useOverlay()
     useEffect(() => {
-        const overlay = document.querySelector('.overlay')
+
         if (isActive)
-            overlay.classList.add('active')
+            toggleOverlay(true)
         else
-            overlay.classList.remove('active')
+            toggleOverlay(false)
     }, [isActive])
 };
 

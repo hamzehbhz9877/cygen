@@ -9,8 +9,10 @@ import * as Yup from "yup";
 import {SubscribeToNewsletter} from "@/services/Newsletter";
 import {LoginRegisterVerification} from "@/services/OtpAuthentication";
 import {showToast} from "@/components/react-toastify/react-toastify";
+import {GetSiteSettingsQuery} from "@/services/Common";
 
 const MailBox = () => {
+    const {data: settings} = useSuspenseQuery(GetSiteSettingsQuery)
 
     const formik = useFormik({
         initialValues: {
@@ -32,6 +34,7 @@ const MailBox = () => {
     const {mutate} = useMutation<any, any, any, any>({
         mutationFn: SubscribeToNewsletter, onSuccess: () => {
             showToast("success", 'عملیات با موفقیت انجام شد')
+            formik.values.email=""
         }
     })
 
@@ -50,19 +53,24 @@ const MailBox = () => {
                  })
              }
          </span>
+
+
             </div>
 
-            <span className="foot-title mail">در خبرنامه پر تخفیف ما عضو شوید</span>
+            {settings.NewsLetterBox.HideNewsletter ? "" : <>
+                <span className="foot-title mail">در خبرنامه پر تخفیف ما عضو شوید</span>
 
-            <form onSubmit={formik.handleSubmit} className="mail-foot">
-                <input
-                    type="text"
-                    onChange={formik.handleChange}
-                    value={formik.values.email}
-                    name={"email"}
-                    placeholder="ایمیل خود را وارد کنید..."/>
-                <button type="submit">ثبت</button>
-            </form>
+                <form onSubmit={formik.handleSubmit} className="mail-foot">
+                    <input
+                        type="text"
+                        onChange={formik.handleChange}
+                        value={formik.values.email}
+                        name={"email"}
+                        placeholder="ایمیل خود را وارد کنید..."/>
+                    <button type="submit">ثبت</button>
+                </form>
+            </>}
+
         </div>
     );
 };

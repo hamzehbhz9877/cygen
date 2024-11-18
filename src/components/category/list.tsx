@@ -32,18 +32,17 @@ const CategoryList = ({data}: CategoryListType) => {
 
             <div className={"categories__list"}>
             {
-                    data.length > 7 ? <>
+                    data?.length > 7 ? <>
                         {data.slice(0, 7).map((data, index: number) => {
                             return <Category {...data} key={index}/>
                         })}
                         {otherCategory ?
-                            data.slice(7, data.length).map((data: any, index: number) => {
+                            data.slice(7, data?.length).map((data: any, index: number) => {
                                 return <Category {...data} key={index}/>
                             })
                             :
                             <OtherCategory otherContent={(data) => setOtherCategory(data)} itemCount={data.length - 7}/>
                         }
-
                     </> : data?.map((data, index) => {
                         return <Category {...data} key={index}/>
                     })

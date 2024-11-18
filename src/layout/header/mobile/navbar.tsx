@@ -15,7 +15,7 @@ import Link from "next/link";
 import useAuth from "@/context/authentication/useAuth";
 import { IoCheckmarkCircleSharp } from "react-icons/io5";
 
-const Navbar = () => {
+const Navbar = ({openMenu}:{openMenu:()=>void}) => {
 
     const {openModal}=useModal()
 const {user}=useAuth()
@@ -38,16 +38,16 @@ const {user}=useAuth()
                 </div>
 
 
-                <div className="mobile-bottom-navitem ">
-                    <Link href="https://mobile.parskalas.com/search">
-                        <RiSearch2Line size={24} color={"#333"}/>
-                        <span>جستجو</span>
-                    </Link>
-                </div>
+                {/*<div className="mobile-bottom-navitem ">*/}
+                {/*    <Link href="https://mobile.parskalas.com/search">*/}
+                {/*        <RiSearch2Line size={24} color={"#333"}/>*/}
+                {/*        <span>جستجو</span>*/}
+                {/*    </Link>*/}
+                {/*</div>*/}
 
 
                 <div className="mobile-bottom-navitem ">
-                    <Link href="https://mobile.parskalas.com/shop">
+                    <Link href="#" onClick={openMenu}>
                         <TbCategoryFilled size={23} color={"#08c96f"}/>
                         <span>دسته بندیها</span>
                     </Link>

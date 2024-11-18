@@ -62,13 +62,13 @@
   @apply relative w-[24%] float-right;
 }
 .icon-social{
-  @apply flex items-center gap-[10px];
+  @apply flex items-center md:justify-start gap-[10px] justify-center;
 }
 .foot-title {
   @apply text-[15px] font-[650] text-black inline-flex leading-[30px] mb-[7px] ;
 }
 .mailbox .foot-title {
-  @apply mb-[13px];
+  @apply mb-[13px] mt-[13px] sm:mt-0;
 }
 .mail {
   @apply font-semibold pt-5;

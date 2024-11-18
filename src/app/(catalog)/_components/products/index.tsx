@@ -15,8 +15,7 @@ type ProductsType = {
 const Products = ({Products,isRefetching,isFetchingNextPage}: ProductsType) => {
     return (
         <div className="all-products flex-1">
-            <div className="overflow-hidden lg:border solid-solid border-[#e4e4e4]
- grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3  xl:grid-cols-5 gap-[10px] lg:gap-0">
+            <div>
                 {Products.map((d: any) => {
                         return <Product {...d} key={d.Id}/>
                 })}

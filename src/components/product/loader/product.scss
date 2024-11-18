@@ -1,10 +1,11 @@
 .product {
   @apply inline-block transition-shadow duration-[0.15s] ease-[ease] bg-white text-center relative m-0 pb-0;
+  @apply h-auto relative ;
 
   &::before,
   &::after {
-    @apply hidden lg:block;
-    @apply content-[''] absolute bg-[#e4e4e4] z-[1];
+    @apply  block;
+    @apply content-[''] absolute bg-opacity-70 bg-[#e4e4e4] z-[1];
 
   }
   &::after {
@@ -16,7 +17,4 @@
 
   }
 
-  @apply h-auto   rounded-[14px] lg:rounded-[0] lg:border-none
-  border border-solid border-[#e4e4e4]
-  relative ;
 }

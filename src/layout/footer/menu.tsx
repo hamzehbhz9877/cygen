@@ -7,16 +7,17 @@ import {GetSiteSettingsQuery} from "@/services/Common";
 const Menu = ({Name, Url, OpenInNewPage, childs}: dynamicLinksType[0] & { childs: any }) => {
     return (
         <div className="foot-box has-menu hidden lg:block">
-            <Link href={Url} target={OpenInNewPage ? "_blank" : "_self"}>
-                <span className="foot-title">{Name}</span>
-            </Link>
+            {/*<Link href={Url} target={OpenInNewPage ? "_blank" : "_self"}>*/}
+            {/*    */}
+            {/*</Link>*/}
+            <span className="foot-title">آیتم</span>
             <div>
                 <ul className="menu">
                     {
                         childs.map(d => {
                             return <li key={d.Id} id="navi"
-                                       className="menu-item menu-item-type-post_type menu-item-object-page menu-item-764">
-                                <Link href={"/"+d.SeName}>{d.Name}</Link></li>
+                                       className="menu-item menu-item-type-post_type menu-item-object-page">
+                                <Link href={"/" + d.SeName}>{d.Name}</Link></li>
                         })
                     }
                 </ul>

@@ -1,14 +1,20 @@
 import React, {useEffect} from 'react';
+import useOverlay from "@/context/overlay/useOverlay";
 
 const Logic = () => {
+
+    const {toggleOverlay,isOpen}=useOverlay()
+
     const handleFilter = () => {
         document.querySelector('#filter-sidebar-mobile').classList.toggle("open")
         document.querySelector("body").style.overflow = "hidden"
     }
 
     const handleSort = () => {
-        document.querySelector('.sort__mobile').classList.toggle("open")
+        document.querySelector('.sort__mobile').classList.add("open")
+        toggleOverlay(!isOpen)
     }
+
     useEffect(() => {
         const element:any = document.querySelector('.box-filter-shop')
         const rect = element.getBoundingClientRect();
