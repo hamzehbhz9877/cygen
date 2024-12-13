@@ -1,0 +1,22 @@
+.color-buttercup {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  white-space: nowrap
+}
+
+.color-buttercup svg {
+  display: inline-block!important;
+  vertical-align: top ;
+  pointer-events: none
+}
+
+.color-buttercup svg+svg {
+  margin-right: 3px
+}
+
+.color-buttercup>div {
+  position: absolute;
+  top: 0;
+  overflow: hidden
+}

@@ -1,0 +1,9 @@
+input[type="radio"] {
+  display: none;
+}
+
+.rate-sticker{
+  &>label{
+    cursor: pointer;
+  }
+}

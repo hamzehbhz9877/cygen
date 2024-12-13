@@ -9,7 +9,7 @@ import { Swiper as SwiperJs } from "swiper/react";
 
 import { Navigation, Pagination,Autoplay} from "swiper/modules";
 import UseNextPrevSwiper from "@/hooks/swipper/useNextPrev";
-import CustomButtons from "@/components/libarary/swiper/customButtons";
+import CustomButtons from "@/components/libarary/products/swiper/customButtons";
 
 import {SwiperOptions} from "swiper/types";
 
@@ -47,10 +47,8 @@ const Swiper = ({children,SwiperOptions,hasNextPrevButton=true,hasDots=true,blog
                 className="swiper-pagination"
                 ref={bulletRef}
             /> : ""}
-            <div className="absolute inset-0 z-10">
+            <div className="absolute inset-0 ">
                 <CustomButtons
-                    blogsBtn={blogsBtn}
-                    // bulletRef={hasDots?bulletRef:null}
                     nextRef={hasNextPrevButton?nextRef:null}
                     prevRef={hasNextPrevButton?prevRef:null}
                 />

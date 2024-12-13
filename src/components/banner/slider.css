@@ -30,6 +30,7 @@
 }
 
 .swiper-button {
+  @apply z-[10];
   top: 50%;
   transform: translateY(-50%);
 }

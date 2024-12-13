@@ -11,25 +11,11 @@ $modal-overlay-background--isLoading: 0.28;
 $modal-z-index: 100;
 
 .modal {
-  @apply rounded-[16px] h-full md:h-max  mx-auto right-0 left-0 bg-white my-0 md:my-[20px]
+  @apply rounded-[16px]   mx-auto right-0 left-0 bg-white my-0 md:my-[20px]
   //max-w-[95%]
-  shadow-[0_0_10px_-5px] w-[650px] relative
+  shadow-[0_0_10px_-5px] h-fit w-[650px] relative
   z-[#{$modal-z-index}] animate-[mmslideOut_.3s_cubic-bezier(0,0,.2,1)];
 
-  &__header {
-    @apply px-[25px] py-5 text-center;
-  }
-
-  &__header {
-    @apply mb-5 flex items-center justify-between;
-    svg {
-      @apply text-[27px]
-    }
-
-    h3 {
-      @apply text-[18px] font-bold;
-    }
-  }
 }
 
 

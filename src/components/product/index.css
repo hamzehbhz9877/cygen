@@ -36,16 +36,6 @@
   @apply relative min-h-0 right-0 top-[unset];
   display: unset !important;
 }
-.product .head-archie-pro {
-  @apply justify-between p-0 hidden lg:flex;
-}
-.product .head-archie-pro .onsale,
-.product .head-archie-pro #sales_timer_display {
-  @apply leading-[18px] text-[13px] font-bold m-0 p-0 rounded-lg bg-transparent text-dynamic-color-to;
-}
-.product .head-archie-pro #sales_timer_display {
-  @apply text-xs font-semibold;
-}
 .product .archive-swatch {
   @apply w-3.5 h-3.5 block relative mb-1 rounded-[50%];
 }

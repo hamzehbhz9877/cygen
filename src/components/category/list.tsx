@@ -27,7 +27,7 @@ const CategoryList = ({data}: CategoryListType) => {
 
 
     return (
-        <div className="categories">
+        <div className="categories" id={"content"}>
             <div className="categories__title">دسته‌بندی‌ها</div>
 
             <div className={"categories__list"}>

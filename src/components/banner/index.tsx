@@ -26,7 +26,7 @@ const Banner = ({...rest}: BannerType) => {
 
     if (banner?.data.length > 0)
         return (
-            <div className="banner">
+            <div className="banner"  >
                 <Slider data={banner.data}/>
             </div>
         );

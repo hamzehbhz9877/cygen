@@ -13,12 +13,12 @@ import Colors from "@/components/product/color/list";
 import "./index.scss"
 
 
-const Product = ({Name, MarkAsNew, ProductPrice, PictureModels}: any) => {
+const Product = ({Name,SeName, MarkAsNew,Sku, ProductPrice, PictureModels}: any) => {
     return (
         <div className="product">
             <div className="product-box-inner">
                 <div className="info-product">
-                    <Link href="/" className="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+                    <Link href={`/product/${Sku}/${SeName}`} className="woocommerce-LoopProduct-link woocommerce-loop-product__link">
                         <Colors/>
                         <SpecialOffer/>
                         <Images data={PictureModels}/>

@@ -1,0 +1,208 @@
+.product-slider {
+  margin: 10px 0;
+  background-color: #fff;
+  border: 1px solid #e3e3e3;
+  border-radius: 11px;
+
+  &__title {
+    font-weight: 600;
+    color: #515151;
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 11px;
+    margin-bottom: 35px;
+
+    span {
+      position: relative;
+
+      &::after {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        content: "";
+        top: calc(100% + 11px);
+        height: 2px;
+        @apply bg-gradient-to-l from-dynamic-color-from to-dynamic-color-to;
+      }
+    }
+  }
+}
+
+.slide {
+  width: 100%;
+  padding: 12px;
+  position: relative;
+  border-radius: 11px;
+  box-sizing: border-box;
+  background-color: #fff;
+  display: inline-block;
+
+
+  .thumb-pro {
+    max-width: 67%;
+    position: relative;
+    margin: 10px auto;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+  }
+
+  .product-single .index-title-pro h2 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    height: 45px;
+    font-weight: 600;
+    text-align: right;
+    color: #535353;
+    font-size: 13px;
+    line-height: 20px;
+    margin: 5px 0;
+  }
+
+
+  .item-pro .index-prices-pro {
+    width: 100%;
+    height: 40px;
+    margin-left: 35px;
+    display: inline-block;
+    text-align: left;
+  }
+
+  .index-prices-pro div del, .cart-pro del {
+    display: flex;
+    @apply text-dynamic-color-from;
+    align-items: center;
+    justify-content: left;
+    text-decoration: none;
+  }
+
+  .index-prices-pro div .index-discount-pro, .cart-pro span.index-discount-pro {
+    float: left;
+    font-size: 13px;
+    padding: 2px 7px;
+    border-radius: 9px;
+    color: #fff !important;
+    font-weight: bold;
+    line-height: 18px;
+    margin-right: 7px;
+    display: inline-flex;
+    order: 2;
+    @apply bg-gradient-to-l from-dynamic-color-from to-dynamic-color-to;
+  }
+
+  span.index-discount-pro p {
+    line-height: 20px;
+    padding: 0;
+    color: #fff !important;
+    margin-right: 1px;
+  }
+
+  .index-prices-pro div del span.woocommerce-Price-amount {
+    font-weight: 400;
+    text-decoration: line-through;
+    font-size: 12px;
+    @apply text-dynamic-color-from;
+  }
+
+  .index-prices-pro div span.woocommerce-Price-amount bdi {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+  }
+
+  .index-prices-pro div span.woocommerce-Price-amount .woocommerce-Price-currencySymbol {
+    font-weight: 500;
+    font-weight: 500;
+    order: 1;
+    margin-right: 4px;
+    font-size: 12px;
+  }
+
+  .index-prices-pro div span.woocommerce-Price-amount {
+    display: inline-block !important;
+  }
+
+  .index-prices-pro div span.woocommerce-Price-amount {
+    text-align: left;
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+}
+
+
+//mobile product slider
+
+.right-product {
+  margin: 20px 0;
+
+  .head-product {
+    position: relative;
+    font-weight: 600;
+    color: #515151;
+    width: 95%;
+    border: none;
+    margin: 5px 0px !important;
+    padding-bottom: 0;
+
+    h3 {
+      font-size: 14px !important;
+      margin-right: 3px;
+      color: #2d2d2d;
+      font-weight: 700;
+      line-height: 32px;
+
+      .titles-pro {
+        font-weight: 700;
+        color: #222;
+        font-size: 15px;
+        line-height: 1.571;
+
+        &::after {
+          height: 0;
+        }
+      }
+    }
+
+  }
+
+  .carousel_lister {
+    margin: 0 10px;
+    padding: 10px 0;
+    overflow-x: auto;
+    display: flex;
+    gap: 6px;
+
+    &::-webkit-scrollbar{
+      height: 10px;
+    }
+
+    .slide {
+      min-width: 199px;
+      border: 1px solid #e3e3e3 !important;
+    }
+  }
+}
+.slider__buttons {
+  button {
+    border: 1px solid #dddde1 !important;
+    background: white !important;
+    border-radius: 50% !important;
+    box-shadow: -1.5px 0 4px 0 rgb(0 0 0 / 15%);
+    &.right{
+      right: 10px;
+    }
+    &.left{
+      left: 10px;
+    }
+  }
+}

@@ -73,7 +73,6 @@ const CategoriesMobile = ({closeMenu}:any) => {
                                                                         <span
                                                                             className="toggle-submenu opened"><FaAngleLeft
                                                                             size={16}
-                                                                            toggle-submenu
                                                                             color={"#777"}
                                                                             className={"!ml-0"}/></span> : ""}
                                                                 </li>
@@ -83,7 +82,6 @@ const CategoriesMobile = ({closeMenu}:any) => {
                                                 </ul>
                                                 {SubCategories.length > 0 ?
                                                     <span className="toggle-submenu opened"><FaAngleLeft size={16}
-                                                                                                         toggle-submenu
                                                                                                          color={"#777"}
                                                                                                          className={"!ml-0"}/></span> : ""}
                                             </li>

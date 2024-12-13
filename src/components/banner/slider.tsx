@@ -11,7 +11,7 @@ import {useRouter} from "next/navigation";
 import dynamic from "next/dynamic";
 
 
-const Swiper = dynamic(() => import("@/components/libarary/swiper/swiper"),{
+const Swiper = dynamic(() => import("@/components/libarary/banner/swiper/swiper"),{
     ssr:false
 });
 

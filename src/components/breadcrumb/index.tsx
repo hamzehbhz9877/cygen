@@ -1,4 +1,6 @@
-import React from 'react';
+'use client'
+
+import React, {useEffect} from 'react';
 import Link from "next/link";
 
 
@@ -12,6 +14,7 @@ type BreadCrumbType = {
 }
 
 const BreadCrumb = ({show, data}: BreadCrumbType) => {
+
     if (show)
         return (
             <nav className="breadcrumb" aria-label="Breadcrumb">

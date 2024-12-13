@@ -9,7 +9,7 @@ const CatalogLoader = () => {
             <div className="w-[100%] h-[100px] mb-4 bg-[#f0f0f1] rounded ">
             </div>
             <div className={"flex justify-between"}>
-                <div className="all-filter w-[20%] ml-[15px] sticky top-[105px] hidden lg:block h-[400px] mb-4 bg-[#f0f0f1] rounded 
+                <div className="all-filter w-[20%] ml-[15px] sticky top-[105px] hidden md:block h-[400px] mb-4 bg-[#f0f0f1] rounded 
                 ">
                 </div>
                 <div className={"flex-1"}>

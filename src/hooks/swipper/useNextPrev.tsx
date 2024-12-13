@@ -14,7 +14,7 @@ const UseNextPrevSwiper = () => {
         }
     };
 
-    return { prevRef, nextRef, setSwiper, afterInit };
+    return { prevRef, nextRef, setSwiper, afterInit,swiper };
 };
 
 export default UseNextPrevSwiper;

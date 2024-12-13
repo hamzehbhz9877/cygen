@@ -21,6 +21,9 @@ import {GetAnywherePicturePositionsQuery} from "@/services/AnyWherePicture";
 import {GetPopupQuery, PopupQuery} from "@/services/Popup";
 import GeneralPopup from "@/context/popup";
 import OverlayContext from "@/context/overlay";
+import React from "react";
+import {headers} from "next/headers";
+import {usePathname} from "next/navigation";
 
 const bYekan = localFont({
     src: "./fonts/YekanBakhFaNum-Regular.woff",
@@ -44,10 +47,13 @@ export default async function RootLayout({
                                          }: Readonly<{
     children: React.ReactNode;
 }>) {
+    const headersList = headers()
+        , origin = headersList.get('origin') || ''
+        , referer = headersList.get('referer') || ''
+        , path = referer.replace(origin, '')
 
 
     const queryClient=getQueryClient()
-
     void queryClient.prefetchQuery(GetSiteSettingsQuery)
     void queryClient.prefetchQuery(GetSocialMediasQuery)
     void queryClient.prefetchQuery(GetLicenseLogosQuery)
@@ -72,7 +78,7 @@ export default async function RootLayout({
                             <ModalContext>
                                 <NProgressProviders>
                                     <HydrationBoundary state={dehydrate(queryClient)}>
-                                        <Header/>
+                                        <Header path={path.includes("product")} />
                                         <main>
                                             {children}
                                         </main>
@@ -86,6 +92,7 @@ export default async function RootLayout({
             </OverlayContext>
 
         </ClientReactQueryProvider>
+
         </body>
         </html>
     );

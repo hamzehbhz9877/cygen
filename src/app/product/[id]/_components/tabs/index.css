@@ -1,0 +1,314 @@
+.tabs {
+  margin-top: 20px;
+}
+.tabs ul {
+  border-radius: 11px 14px 0 0;
+  border-bottom: 0;
+  background: #fff;
+  list-style: none;
+  overflow: hidden;
+  position: relative;
+}
+.tabs ul li {
+  padding: 0 0.6em !important;
+  cursor: pointer;
+  color: #515151;
+  display: inline-block;
+  position: relative;
+  border-radius: 4px 4px 0 0;
+  margin: 0 -5px;
+  border-bottom: 2px solid;
+  border: none;
+  padding-bottom: 10px !important;
+  background: #fff;
+  z-index: 2;
+  margin-left: 10px;
+}
+.tabs ul li a {
+  color: #4d4d4d !important;
+  text-shadow: inherit;
+  font-size: 16px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+.tabs ul li a i {
+  @apply bg-gradient-to-r from-dynamic-color-from to-dynamic-color-to;
+  line-height: 20px;
+  color: white;
+  min-width: 21px;
+  min-height: 18px;
+  text-align: center;
+  border-radius: 8px;
+  font-weight: 400;
+  font-size: 14px;
+  margin-right: 6px;
+  display: inline-block;
+}
+.tabs ul li.active {
+  border-bottom: 1px solid;
+  @apply border-dynamic-color-from;
+}
+.tabs ul li.active a {
+  @apply text-dynamic-color-from !important;
+}
+.tabs ul li.active a svg {
+  @apply text-dynamic-color-from !important;
+}
+
+.tab-content {
+  border-radius: 0 0 11px 11px;
+  border: 1px solid #e3e3e3;
+  padding: 1.5rem 2.8rem !important;
+}
+.tab-content .title {
+  color: #343434;
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 30px;
+}
+.tab-content .title-desktop {
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  line-height: 24px;
+  margin-bottom: 1rem !important;
+}
+.tab-content .specification table {
+  width: 100%;
+}
+.tab-content .specification .shop_attributes.woocommerce-group-attributes-layout-2 tbody {
+  width: 100%;
+  display: block;
+}
+.tab-content .specification .shop_attributes.woocommerce-group-attributes-layout-2 tbody tr {
+  width: 100%;
+  display: block;
+}
+.tab-content .specification .shop_attributes.woocommerce-group-attributes-layout-2 tbody tr th.attribute_group_name {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  color: #333;
+  padding: 18px;
+}
+.tab-content .specification .shop_attributes.woocommerce-group-attributes-layout-2 tbody tr th.attribute_group_name i {
+  font-size: 26px;
+  color: #ff6a00;
+  position: relative;
+  right: -5px;
+  margin-left: 4px;
+}
+.tab-content .specification .shop_attributes.woocommerce-group-attributes-layout-2 tbody tr td {
+  width: 100%;
+  display: block;
+}
+.tab-content .specification .shop_attributes.woocommerce-group-attributes-layout-2 tbody tr td table {
+  width: 100%;
+}
+.tab-content .specification .shop_attributes.woocommerce-group-attributes-layout-2 tbody tr td table tr {
+  width: 100%;
+  display: flex;
+  justify-content: right;
+  margin-bottom: 12px;
+  margin-right: 29px;
+}
+.tab-content .specification td p {
+  line-height: 32px;
+  text-align: justify;
+  font-size: 14px;
+  color: #535353;
+}
+.tab-content .specification .shop_attributes.woocommerce-group-attributes-layout-2 tbody tr td table tr .attribute_name {
+  background-color: #fafafa !important;
+  width: 22%;
+  height: auto;
+  color: #4d4d4d !important;
+  padding: 10px 18px;
+  border-radius: 0 8px 8px 0;
+  line-height: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  font-style: normal;
+  float: right;
+  display: flex;
+  align-items: center;
+  margin-left: 18px;
+}
+.tab-content .specification .shop_attributes.woocommerce-group-attributes-layout-2 tbody tr td table tr .attribute_value {
+  background-color: #fafafa !important;
+  width: 73%;
+  float: right;
+  height: auto;
+  color: #4d4d4d !important;
+  padding: 10px 18px;
+  border-radius: 8px 0 0 8px;
+  line-height: 20px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  font-style: normal;
+  display: flex;
+  align-items: center;
+}
+.tab-content .specification .shop_attributes.woocommerce-group-attributes-layout-2 tbody tr td table tr .attribute_value.true {
+  background-color: #f5fcf5 !important;
+}
+.tab-content .specification .shop_attributes.woocommerce-group-attributes-layout-2 tbody tr td table tr .attribute_value.false {
+  background-color: #fcf5f5 !important;
+}
+.tab-content .specification .shop_attributes.woocommerce-group-attributes-layout-2 tbody tr td table tr .attribute_value.true i {
+  font-size: 18px;
+  color: #00cb3b;
+}
+.tab-content .specification .shop_attributes.woocommerce-group-attributes-layout-2 tbody tr td table tr .attribute_value.false i {
+  font-size: 18px;
+  color: #fe4343;
+}
+@media (max-width: 990px) {
+  .tab-content .specification .shop_attributes.woocommerce-group-attributes-layout-2 tbody tr {
+    margin-bottom: 0;
+  }
+  .tab-content .specification .shop_attributes.woocommerce-group-attributes-layout-2 tbody tr th.attribute_group_name {
+    margin-bottom: 10px;
+  }
+  .tab-content .specification .shop_attributes.woocommerce-group-attributes-layout-2 tbody tr td table tr {
+    margin-right: 0 !important;
+  }
+  .tab-content .specification .shop_attributes.woocommerce-group-attributes-layout-2 tbody tr td table tr {
+    margin-bottom: 0;
+  }
+  .tab-content .specification body .shop_attributes.woocommerce-group-attributes-layout-2 tbody tr th.attribute_group_name i {
+    font-size: 19px;
+    margin-left: 0px;
+  }
+  .tab-content .specification .shop_attributes.woocommerce-group-attributes-layout-2 tbody tr td table tr .attribute_name {
+    width: 100%;
+    padding: 8px 9px;
+    background-color: #f1f1f1 !important;
+    color: #2a2a2a !important;
+    font-size: 14px;
+    border-radius: 0;
+  }
+  .tab-content .specification .shop_attributes.woocommerce-group-attributes-layout-2 tbody tr td table tr .attribute_value {
+    width: 100%;
+    padding: 10px 9px;
+    background-color: #fff !important;
+    font-size: 12px;
+  }
+  .tab-content .specification .shop_attributes.woocommerce-group-attributes-layout-2 tbody tr td table tr .attribute_value.true {
+    background-color: #fff !important;
+  }
+  .tab-content .specification .shop_attributes.woocommerce-group-attributes-layout-2 tbody tr td table tr .attribute_value.false {
+    background-color: #fff !important;
+  }
+}
+.tab-content .comments .title-commenter {
+  padding-bottom: 30px;
+}
+.tab-content .comments go-insert-comment {
+  color: #535353;
+  font-size: 17px;
+  font-weight: bold;
+  width: 40%;
+}
+.tab-content .comments .title-insert {
+  display: block;
+  margin-bottom: 20px;
+}
+.tab-content .comments .go-insert-comment .dec-insert {
+  font-size: 15px;
+  font-weight: 500;
+  display: block;
+  line-height: 32px;
+  margin-bottom: 20px;
+}
+.tab-content .comments .continer-rating .go-insert-comment button {
+  display: inline-block;
+  line-height: 1.375;
+  border-radius: 11px;
+  @apply bg-dynamic-color-from;
+  font-size: 16px;
+  color: #fff !important;
+  padding: 15px 50px;
+  transition: 0.2s all;
+  position: relative;
+  padding-right: 95px;
+}
+.tab-content .comments .continer-rating .go-insert-comment button::after {
+  content: "+";
+  width: 90px;
+  height: 106px;
+  position: absolute;
+  right: -7px;
+  top: -28px;
+  background: rgba(255, 255, 255, 0.21);
+  border-radius: 50%;
+  transition: all 0.3s ease-in-out;
+  box-sizing: border-box;
+  padding-right: 63px;
+  padding-top: 36px;
+  text-align: right;
+  font-weight: 500;
+  font-size: 28px;
+}
+.tab-content .comments .continer-rating .go-insert-comment button:hover::after {
+  width: 130%;
+  border-radius: 0;
+}
+.tab-content .comments .reviw-tabs .commnet-lister {
+  border-bottom: 1px solid #eee;
+  display: block;
+  margin-top: 4rem;
+  padding-bottom: 15px;
+  font-size: 17px;
+  font-weight: bold;
+  color: #535353;
+  position: relative;
+  line-height: 1.375;
+}
+.tab-content .comments .reviw-tabs .commnet-lister::before {
+  content: "";
+  right: 0;
+  width: 0;
+  height: 0;
+  border-color: transparent transparent transparent #FF6900;
+  border-style: solid;
+  border-width: 7px 0 0 7px;
+  margin-left: 13px;
+  display: inline-block;
+  bottom: 1px;
+  position: relative;
+}
+.tab-content .comments .color-buttercup {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.tab-content .comments .color-buttercup svg {
+  display: inline-block !important;
+  vertical-align: top;
+  pointer-events: none;
+}
+.tab-content .comments .color-buttercup svg + svg {
+  margin-right: 3px;
+}
+.tab-content .comments .color-buttercup > div {
+  position: absolute;
+  top: 0;
+  overflow: hidden;
+}
+.tab-content #comments, .tab-content .flaticon-question-7 p, .tab-content .parskala-side-faq p, .tab-content .Blank-QA p {
+  line-height: 32px;
+  text-align: justify;
+  font-size: 14px;
+  color: #535353;
+  padding: 15px 10px;
+}
+
+/*# sourceMappingURL=index.css.map */

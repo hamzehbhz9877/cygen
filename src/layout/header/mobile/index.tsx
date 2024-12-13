@@ -18,7 +18,6 @@ const HeaderMobile = () => {
 
 
     const close=()=>{
-        console.log("close")
         if (document.querySelector(".modal-menu-mobile")?.classList.contains("open")) {
             toggleOverlay(false)
             document.querySelector(".modal-menu-mobile")?.classList.remove('open')
@@ -54,7 +53,7 @@ const HeaderMobile = () => {
                 <Logo/>
                 <RiSearch2Line size={26} color={"#424750"} className="cursor-pointer" onClick={()=>document.querySelector(".header__top-search-mobile").classList.add("active")}/>
             </div>
-            <hr className="w-[91%] mx-auto  mt-[50px] border-solid border-[#eee]"/>
+            <hr className="w-[91%] block md:hidden mx-auto  mt-[50px] border-solid border-[#eee]"/>
             <CategoriesMobile closeMenu={()=>handleOpenMenu(".modal-category-mobile")} />
             <MenuMobile/>
             <SearchMobile/>

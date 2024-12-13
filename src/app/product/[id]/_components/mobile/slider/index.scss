@@ -1,0 +1,11 @@
+
+.product-details-slider {
+  .swiper-pagination{
+    bottom:-15px !important;
+  }
+  .swiper-pagination-bullet-active {
+  width:16px;
+    display: inline-block;
+    border-radius: 20px;
+  }
+}

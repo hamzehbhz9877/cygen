@@ -1,6 +1,6 @@
 import {GetTopicDetails} from "@/services/Topics";
 import {Metadata} from "next";
-import Topics from "@/app/[id]/_components/topics";
+import Topics from "@/app/(topics)/[id]/_components/topics";
 
 import "./_components/index.scss"
 

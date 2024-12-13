@@ -8,6 +8,10 @@ const formatter = new Intl.NumberFormat("fa-IR", {
     minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
     maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
 });
+const scrolltoHash = function (element_id: string) {
+    const element = document.getElementById(element_id)
+    document.documentElement?.scrollTo({top:element.offsetTop});
+}
 const isTokenExpired = (token) => {
     if (!token) return true;
     try {
@@ -60,4 +64,4 @@ const UseDebouncedEffect = (
 };
 
 
-export {formatter,UseDebouncedEffect, toEnglishDigits,getErrorFromServer,isTokenExpired}
+export {formatter,scrolltoHash,UseDebouncedEffect, toEnglishDigits,getErrorFromServer,isTokenExpired}

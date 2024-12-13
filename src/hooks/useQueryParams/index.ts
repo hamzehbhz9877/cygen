@@ -1,6 +1,7 @@
 'use client'
 
 import {usePathname, useRouter, useSearchParams} from "next/navigation";
+import {scrolltoHash} from "@/helpers/client";
 
 const UseQueryParams = () => {
 
@@ -11,15 +12,16 @@ const UseQueryParams = () => {
 
     const removeQueryParam = (query: string) => {
         nextSearchParams.delete(query)
-        router.push(`${pathname}?${nextSearchParams}`)
+        router.push(`${pathname}?${nextSearchParams}`,{scroll:false})
     }
+
 
     const addQueryParam = (query: string, value: any, type?:any) => {
 
         if (nextSearchParams.get(query) && type === "multiple") {
             let queryData;
             const dataQuery = nextSearchParams.get(query)?.split(",")
-            if (dataQuery.includes(value.toString())) {
+            if (dataQuery.includes(String(value))) {
                 queryData=dataQuery?.filter(data => +data !== +value)
             } else {
                 queryData=[...dataQuery,value]
@@ -31,7 +33,8 @@ const UseQueryParams = () => {
         } else {
             nextSearchParams.set(query, value)
         }
-        router.push(decodeURIComponent(`${pathname}?${nextSearchParams}`))
+        router.push(decodeURIComponent(`${pathname}?${nextSearchParams}`),{scroll:false})
+        scrolltoHash("content")
     }
 
     function getAllSearchParams() {

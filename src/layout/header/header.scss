@@ -1,5 +1,75 @@
 .header {
 
+  .productDetails{
+    @apply hidden md:block;
+  }
+  .productDetails-header{
+    @apply block md:hidden;
+  }
+
+
+  .right-header-box{
+    padding: 0;
+    z-index: 100;
+    position: fixed;
+    right: 15px;
+    top: 10px;
+    display: flex;
+    gap: 10px;
+  }
+  .right-header-box .backer-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 40px;
+    text-align: center;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 3px 2px 31px rgba(0,0,0,.17);
+  }
+  .right-header-box .backer-button i{
+    font-size: 24px;
+    color: #162C5B;
+    position: relative;
+  }
+  ul.product-tooltips {
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    left: 15px;
+    top: 10px;
+    border: 1px solid #ededed;
+    background-color: #fff;
+    border-radius: 10px;
+    z-index: 100;
+    box-shadow: 3px 2px 31px rgba(0,0,0,.17);
+  }
+  .product-tooltips li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 30px;
+    height: 40px;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+   .mini_cart_counter {
+    position: absolute;
+     @apply bg-dynamic-color-from;
+     color: #fff;
+    top: -4px;
+    right: -6px;
+    font-size: 12px;
+    line-height: 9px;
+    min-width: 15px;
+    min-height: 15px;
+    padding: 3px;
+    border-radius: 5px;
+  }
   background: white;
   width: 100%;
   align-items: center;
@@ -7,9 +77,38 @@
   z-index: 1024;
   top: 0px;
 
+  .more{
+    @apply  text-right bg-white leading-6 inline-block
+    translate-x-2/4 shadow-[rgba(14,30,37,0.12)_0px_2px_4px_0px,rgba(14,30,37,0.32)_0px_2px_16px_0px]
+    opacity-0  pr-[15px] p-2.5 rounded-[11px] right-2/4;
+
+    position: fixed;
+    bottom: -100%;
+    display: block;
+    width: 100%;
+    border-radius: 24px 24px 0 0;
+    padding: 16px;
+    z-index: 1100;
+    transition: all .3s ease-in-out 0s;
+
+    li a{
+      color: #42484F;
+      display: flex;
+      align-items: center;
+      padding: 15px 0;
+      border-bottom: 1px solid #eee;
+      font-size: 15px;
+    }
+    &.open {
+      bottom: 0;
+      @apply opacity-100;
+    }
+  }
+
   @apply static lg:sticky mb-[10px] lg:mb-0;
 
   .mobile {
+    @apply block md:hidden #{!important};
     width: calc(100% - 30px);
     position: relative;
     top: 15px;

@@ -6,7 +6,7 @@ import {GetSiteSettingsQuery} from "@/services/Common";
 
 const Menu = ({Name, Url, OpenInNewPage, childs}: dynamicLinksType[0] & { childs: any }) => {
     return (
-        <div className="foot-box has-menu hidden lg:block">
+        <div className="foot-box has-menu hidden md:block">
             {/*<Link href={Url} target={OpenInNewPage ? "_blank" : "_self"}>*/}
             {/*    */}
             {/*</Link>*/}

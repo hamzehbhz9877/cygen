@@ -32,7 +32,7 @@ const MobileHeadFilters = ({data,isRefetching}: any) => {
     const params=useParams()
 
     return (
-        <div className="block lg:hidden mb-[15px] filters__mobile">
+        <div className="block md:hidden mb-[15px] filters__mobile">
             <div className="box-filter-shop">
                 <div>
                     <span className="filter_by_botton show_sidebar " onClick={handleFilter}>

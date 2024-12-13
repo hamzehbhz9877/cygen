@@ -213,7 +213,7 @@ body .enmads .codes {
 }
 .footer-menu-mobile {
   @apply px-[15px] py-[9px] rounded-[14px];
-  @apply block lg:hidden;
+  @apply block md:hidden;
   background: #f4f4f4;
 }
 .footer-menu-mobile .collapse__title {

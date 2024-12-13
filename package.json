@@ -28,7 +28,8 @@
     "scss": "^0.2.4",
     "swiper": "^11.1.15",
     "universal-cookie": "^7.2.1",
-    "yup": "^1.4.0"
+    "yup": "^1.4.0",
+    "zustand": "^5.0.2"
   },
   "devDependencies": {
     "@tanstack/eslint-plugin-query": "^5.58.1",

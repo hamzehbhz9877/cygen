@@ -4,18 +4,6 @@
   shadow-[0_0_10px_-5px] w-[650px] relative
   z-[100] animate-[mmslideOut_.3s_cubic-bezier(0,0,.2,1)];
 }
-.modal__header {
-  @apply px-[25px] py-5 text-center;
-}
-.modal__header {
-  @apply mb-5 flex items-center justify-between;
-}
-.modal__header svg {
-  @apply text-[27px];
-}
-.modal__header h3 {
-  @apply text-[18px] font-bold;
-}
 
 .modal-overlay {
   @apply fixed flex  inset-0  invisible opacity-0  z-[99999]
@@ -53,4 +41,4 @@
   }
 }
 
-/*# sourceMappingURL=catalog.css.map */
+/*# sourceMappingURL=index.css.map */

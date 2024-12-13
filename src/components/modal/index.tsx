@@ -20,13 +20,13 @@ export const Modal = ({children, close, className, showModal, options, isLoading
                 <div className={[`modal-overlay ${showModal ? "modal-overlay--active" : ""}`, className,].join(' ')}
                      onClick={close}>
                     <div className={['modal', options?.className].join(' ')} onClick={e => e.stopPropagation()}>
-                        {options?.title && <div className="modal__header">
-                            <h3>{options?.title}</h3>
-                            <IoMdClose color={"#555"} onClick={close} role="button" width={30} height={30}/>
-                        </div>}
-                        <div className="flex justify-end title">
-                            <IoMdClose color={"#555"} onClick={close} role="button" size={23}/>
-                        </div>
+                        {/*{options?.title && <div className="modal__header">*/}
+                        {/*    <h3>{options?.title}</h3>*/}
+                        {/*    <IoMdClose color={"#555"} onClick={close} role="button" width={30} height={30}/>*/}
+                        {/*</div>}*/}
+                        {/*<div className="flex justify-end title">*/}
+                        {/*    <IoMdClose color={"#555"} onClick={close} role="button" size={23}/>*/}
+                        {/*</div>*/}
                         {children}
                         {isLoadingOverlay && <div className="loading-overlay">
                             ...loading

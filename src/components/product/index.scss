@@ -48,18 +48,6 @@
     display: unset !important;
   }
 
-  .head-archie-pro {
-    @apply justify-between p-0 hidden lg:flex;
-    .onsale,
-    #sales_timer_display {
-      @apply leading-[18px] text-[13px] font-bold m-0 p-0 rounded-lg bg-transparent text-dynamic-color-to;
-    }
-
-    #sales_timer_display {
-      @apply text-xs font-semibold;
-    }
-  }
-
 
   .archive-swatch {
     @apply w-3.5 h-3.5 block relative mb-1 rounded-[50%];
@@ -84,6 +72,7 @@
   .swatches-divider {
     @apply relative text-[#474444] tracking-[-1px] text-xs font-medium mt-1;
   }
+
 
   .tooltiptext {
     @apply invisible bg-[#878d9d] w-auto text-center z-[1] top-[-5px] absolute text-white text-xs
