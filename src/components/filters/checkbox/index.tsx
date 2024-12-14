@@ -9,6 +9,7 @@ import {LiaAngleDownSolid} from "react-icons/lia";
 import "./index.scss"
 import Link from "next/link";
 import useQueryParams from "@/hooks/useQueryParams";
+import {useSearchParams} from "next/navigation";
 
 
 type CheckBoxFilter = {
@@ -19,7 +20,9 @@ type CheckBoxFilter = {
 }
 const CheckBoxFilter = ({isOpen = false, title, data, type}: CheckBoxFilter) => {
 
-    const {addQueryParam} = useQueryParams()
+    const {addQueryParam, removeQueryParam} = useQueryParams()
+
+    const search = useSearchParams()
 
 
     return (
@@ -36,14 +39,25 @@ const CheckBoxFilter = ({isOpen = false, title, data, type}: CheckBoxFilter) => 
                     <div className="filter__content">
                         <ul className="filter-checkbox__list">
                             {data.map((item: any, index: number) => {
-                                if ( !item?.Disabled || item.Disabled===false)
-                                return <li key={index} className={`${item.Selected ? 'chosen' : ''}`}
-                                           onClick={() => addQueryParam(type, item?.Id ?? item?.Value, "multiple")}>
-                                    <Link href={"/"}>
-                                        {item?.Name ?? item.Text}
-                                    </Link>
-                                    <span className={`color bg-[${item?.ColorSquaresRgb}]`}></span>
-                                </li>
+                                if (!item?.Disabled || item.Disabled === false)
+                                    return <li key={index}
+                                               className={`${type === 'manufacturerId' && index === 0 && !search.get('manufacturerId') ? 'chosen' : ''} ${item.Selected ? 'chosen' : ''}`}
+                                               onClick={() => {
+                                                   if (type === 'manufacturerId') {
+                                                       if (index > 0)
+                                                           addQueryParam(type, item?.Value)
+                                                       else
+                                                           removeQueryParam('manufacturerId')
+                                                   } else {
+                                                       addQueryParam(type, item?.Id ?? item?.Value, "multiple")
+                                                   }
+                                               }}>
+                                        <Link href={"/"}>
+                                            {item?.Name ?? item.Text}
+                                        </Link>
+                                        <span className={`color w-[20px] h-[20px] rounded-full`}
+                                              style={{backgroundColor: item.ColorSquaresRgb}}></span>
+                                    </li>
                             })}
                         </ul>
                     </div>

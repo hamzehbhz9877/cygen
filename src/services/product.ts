@@ -1,30 +1,26 @@
-import {redirectStatus} from "@/utils/notFound-server";
-
+import {fetchAPi} from "@/hooks/fech";
+import {instant} from "@/services/httpservice";
 
 
 export const GetProductsDetails = async (query: any) => {
     const {...rest}: any = query
-    const res = await fetch(`https://api.cygenco.com/api/Product/ProductDetails?` + new URLSearchParams({
+    return await fetchAPi(`https://api.cygenco.com/api/Product/ProductDetails?` + new URLSearchParams({
         ...rest
-    }).toString(), {cache: 'no-store'})
-    const data = await res.json()
-    return redirectStatus(data)
+    }))
 }
 
 export const GetRelatedProducts = async (query: any) => {
     const {...rest}: any = query
-    const res = await fetch(`https://api.cygenco.com/api/Product/GetRelatedProducts?` + new URLSearchParams({
+    return await fetchAPi(`https://api.cygenco.com/api/Product/GetRelatedProducts?` + new URLSearchParams({
         ...rest
-    }).toString(), {cache: 'no-store'})
-    const data = await res.json()
-    return redirectStatus(data)
+    }))
+
 }
 
-export const GetComments = async (query: any) => {
-    const {...rest}: any = query
-    const res = await fetch(`https://api.cygenco.com/api/Product/GetProductReviews?` + new URLSearchParams({
-        ...rest
-    }).toString(), {cache: 'no-store'})
-    const data = await res.json()
-    return redirectStatus(data)
-}
+export const GetComments =(id)=>instant.get(`Product/GetProductReviews?productId=${id}`)
+export const AddHelpfulness =({id, wasHelpful})=>
+    instant.post(`Product/SetProductReviewHelpfulness?productReviewId=${id}&wasHelpful=${wasHelpful}`)
+
+export const AddComments = (data) => instant.post('Product/AddProductReview',data)
+
+

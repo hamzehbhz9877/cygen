@@ -4,7 +4,7 @@
 
 .all-products > div {
   @apply overflow-hidden border border-solid border-[#e4e4e4] border-opacity-50
-  grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3  xl:grid-cols-5 gap-[10px] lg:gap-0;
+  grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3  xl:grid-cols-4 gap-[10px] lg:gap-0;
 }
 
 /*# sourceMappingURL=catalog.css.map */

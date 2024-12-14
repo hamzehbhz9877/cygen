@@ -8,7 +8,7 @@
   @apply flex gap-[7px] items-center cursor-pointer text-sm;
 }
 .pagination .next span, .pagination .prev span {
-  @apply hidden md:block;
+  @apply hidden lg:block;
 }
 .pagination .next svg, .pagination .prev svg {
   @apply w-[10px] md:w-[20px];

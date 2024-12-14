@@ -1,0 +1,41 @@
+.passwordRequired {
+  .label{
+    @apply flex justify-between text-[13px] leading-[21px] text-[#62666d] mb-[15px];
+  }
+
+  .modal__body {
+    @apply w-[90%] md:w-[77%];
+    @apply mt-[25px] mx-auto my-[29px];
+
+    .back-prev-step {
+      @apply cursor-pointer absolute right-5 top-5;
+    }
+    input{
+      @apply pr-[40px];
+    }
+  }
+
+  .title {
+    @apply w-full pb-0 px-[25px] py-5;
+
+  }
+
+  &__title {
+    @apply text-lg font-semibold mb-[15px];
+
+  }
+
+  .logo {
+    @apply max-w-[164px] h-auto object-contain mb-10 mx-auto my-0;
+
+  }
+}
+
+//modal
+.modal{
+  &.passwordRequired{
+    @apply w-full max-w-full rounded-[0] #{!important};
+    @apply  sm:w-[450px] md:rounded-[12px] #{!important};
+  }
+}
+

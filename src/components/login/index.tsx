@@ -1,6 +1,6 @@
 'use client'
 
-import {ModalBody} from "@/components/modal";
+import {ModalBody, ModalHeader} from "@/components/modal";
 import Logo from "@/layout/header/top/logo";
 
 
@@ -16,11 +16,12 @@ import {VscAccount} from "react-icons/vsc";
 import React, {useEffect} from "react";
 import {useMutation, useQuery} from "@tanstack/react-query";
 import {GetGuestCustomer, RequestLoginRegister} from "@/services/OtpAuthentication";
+import {IoCloseOutline} from "react-icons/io5";
 
 
 const Login = () => {
 
-    const {openModal} = useModal()
+    const {openModal,closeModal} = useModal()
 
     const {mutate, isPending,error} = useMutation<any,any,any,any>({
         mutationFn: RequestLoginRegister, onSuccess: (data: any) => {
@@ -32,6 +33,11 @@ const Login = () => {
 
     return (
         <>
+            <ModalHeader>
+                <div className="absolute left-[20px] top-[20px]">
+                    <IoCloseOutline color="#4d4d4d" role={"button"} size={30} onClick={closeModal}/>
+                </div>
+            </ModalHeader>
             <ModalBody>
                 <Logo/>
                 <div className="login__title">
@@ -58,12 +64,16 @@ const Login = () => {
                         )
                     }}
                 </Formik>
-                <p className="copyright">
-                    با ورود و یا ثبت نام در سایت شما <Link className="linkp"
-                                                           href="https://pars.parskalas.com/%d8%ad%d8%b1%db%8c%d9%85-%d8%ae%d8%b5%d9%88%d8%b5%db%8c/"
-                                                           target="_blank">شرایط و قوانین</Link> استفاده از سرویس های
-                    سایت
-                    و <a href="#" target="_blank">قوانین حریم خصوصی</a> آن را می‌پذیرید. </p>
+
+                <div className="h-[30px]">
+
+                </div>
+                {/*<p className="copyright">*/}
+                {/*    با ورود و یا ثبت نام در سایت شما <Link className="linkp"*/}
+                {/*                                           href="https://pars.parskalas.com/%d8%ad%d8%b1%db%8c%d9%85-%d8%ae%d8%b5%d9%88%d8%b5%db%8c/"*/}
+                {/*                                           target="_blank">شرایط و قوانین</Link> استفاده از سرویس های*/}
+                {/*    سایت*/}
+                {/*    و <a href="#" target="_blank">قوانین حریم خصوصی</a> آن را می‌پذیرید. </p>*/}
 
             </ModalBody>
         </>

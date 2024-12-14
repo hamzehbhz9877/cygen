@@ -21,29 +21,31 @@ const SortProducts = ({data, isRefetching}: SortProductsType) => {
 
             <div className="sort-products__filter">
                 <BsSortDownAlt className="sort-products__filter-icon"/>
-                <span className="sort-products__filter-title">مرتب سازی:</span>
-                <ul className="sort-products__filter-list">
-                    {
-                        data?.AvailableSortOptions?.map((sort: any, index: number) => {
-                            return <li key={index} onClick={() => addQueryParam('order', sort.Value)}
-                                       className={`sort-products__filter-item
+                <span className="sort-products__filter-title text-nowrap">مرتب سازی:</span>
+                <div className="overflow-x-auto">
+                    <ul className="sort-products__filter-list">
+                        {
+                            data?.AvailableSortOptions?.map((sort: any, index: number) => {
+                                return <li key={index} onClick={() => addQueryParam('order', sort.Value)}
+                                           className={`sort-products__filter-item min-w-max
                                         ${sort.Selected ? "sort-products__filter-item--active" : ""}`}>
-                                <Link rel="nofollow"
-                                      data-disable-nprogress={sort.Selected}
-                                      href={sort.Selected ? "" : "/"}>
-                                    {sort.Text} </Link>
-                            </li>
-                        })
-                    }
-                </ul>
+                                    <Link rel="nofollow"
+                                          data-disable-nprogress={sort.Selected}
+                                          href={sort.Selected ? "" : "/"}>
+                                        {sort.Text} </Link>
+                                </li>
+                            })
+                        }
+                    </ul>
+                </div>
+
             </div>
             {isRefetching ? <div className={"loader-count"}/> :
-                <div className="sort-products__count">
-                    <span className="count">نمایش</span>
+                <div className="sort-products__count text-nowrap">
 
                     <span className="count total"> {data.TotalItems} </span>
 
-                    <span className="count">قیمت کالا ها</span>
+                    <span className="count"> کالا</span>
                 </div>}
         </div>
     );

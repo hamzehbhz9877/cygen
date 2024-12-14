@@ -21,21 +21,20 @@ import {GetAnywherePicturePositionsQuery} from "@/services/AnyWherePicture";
 import {GetPopupQuery, PopupQuery} from "@/services/Popup";
 import GeneralPopup from "@/context/popup";
 import OverlayContext from "@/context/overlay";
-import React from "react";
+import React, {Suspense} from "react";
 import {headers} from "next/headers";
-import {usePathname} from "next/navigation";
+import "@/components/libarary/slider.scss"
+import {GetAllActivePluginsQuery} from "@/services/Plugin";
 
-const bYekan = localFont({
-    src: "./fonts/YekanBakhFaNum-Regular.woff",
-    variable: "--font-Yekan",
-    weight: "100 900",
-});
-
-const parsKala = localFont({
-    src: "./fonts/parskala.ttf",
-    variable: "--font-parskaka",
-    weight: "100 900",
-});
+// const bYekan = localFont({
+//     src: "./fonts/YekanBakhFaNum-Regular.woff",
+//     variable: "--font-Yekan",
+// });
+//
+// const bYekanBold = localFont({
+//     src: "./fonts/YekanBakhFaNum-Bold.woff",
+//     variable: "--font-Yekan",
+// });
 
 export const metadata: Metadata = {
     title: "Your store",
@@ -47,52 +46,51 @@ export default async function RootLayout({
                                          }: Readonly<{
     children: React.ReactNode;
 }>) {
-    const headersList = headers()
-        , origin = headersList.get('origin') || ''
-        , referer = headersList.get('referer') || ''
-        , path = referer.replace(origin, '')
+
+    const queryClient = getQueryClient()
 
 
-    const queryClient=getQueryClient()
+    void queryClient.prefetchQuery(GetDynamicLinkPositionsQuery)
     void queryClient.prefetchQuery(GetSiteSettingsQuery)
     void queryClient.prefetchQuery(GetSocialMediasQuery)
     void queryClient.prefetchQuery(GetLicenseLogosQuery)
-    // void queryClient.prefetchQuery(GetAllActivePluginsQuery)
+    void queryClient.prefetchQuery(GetAllActivePluginsQuery)
     void queryClient.prefetchQuery(GetPopularSearchTermsQuery)
-    void queryClient.prefetchQuery(GetDynamicLinkPositionsQuery)
     void queryClient.prefetchQuery(GetAnywherePicturePositionsQuery)
-    void queryClient.prefetchQuery(PopupQuery)
+    // void queryClient.prefetchQuery(PopupQuery)
     void queryClient.prefetchQuery(GetPopupQuery)
 
 
     return (
-        <html lang="en">
+        <html lang="fa-IR">
         <body
-            className={`${bYekan.variable} ${parsKala.variable} antialiased`}
+            // className={`${bYekan.variable} ${bYekanBold.variable} antialiased`}
         >
-        <ClientReactQueryProvider>
-            <OverlayContext>
-                <GeneralPopup>
-                    <ToastProvider>
-                        <Auth>
-                            <ModalContext>
-                                <NProgressProviders>
-                                    <HydrationBoundary state={dehydrate(queryClient)}>
-                                        <Header path={path.includes("product")} />
-                                        <main>
-                                            {children}
-                                        </main>
-                                        <Footer/>
-                                    </HydrationBoundary>
-                                </NProgressProviders>
-                            </ModalContext>
-                        </Auth>
-                    </ToastProvider>
-                </GeneralPopup>
-            </OverlayContext>
+        <Suspense>
+            <ClientReactQueryProvider>
+                <OverlayContext>
+                    <GeneralPopup>
+                        <ToastProvider>
+                            <Auth>
+                                <ModalContext>
+                                    <NProgressProviders>
+                                        <HydrationBoundary state={dehydrate(queryClient)}>
+                                            <Header/>
+                                            <main>
 
-        </ClientReactQueryProvider>
+                                                {children}
 
+                                            </main>
+                                            <Footer/>
+                                        </HydrationBoundary>
+                                    </NProgressProviders>
+                                </ModalContext>
+                            </Auth>
+                        </ToastProvider>
+                    </GeneralPopup>
+                </OverlayContext>
+            </ClientReactQueryProvider>
+        </Suspense>
         </body>
         </html>
     );

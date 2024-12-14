@@ -13,9 +13,9 @@ const Lightbox = ({data}: any) => {
     const {toggleOverlay,classname,isOpen}=useOverlay()
 const closePopup=()=>{
     if (data.DisplayOption === 1)
-        cookie.set("popup-period_" + data.Id, Date.now() + ((data.CustomPeriodInHour * 60) * 60 * 1000))
+        cookie.set("popup-period_" + data.Id, Date.now() + ((data.CustomPeriodInHour * 60) * 60 * 1000), {path: "/"})
     else
-        cookie.set("popup-onceTime_" + data.Id, true)
+        cookie.set("popup-onceTime_" + data.Id, true, {path: "/"})
     classname("")
     toggleOverlay(false)
 }

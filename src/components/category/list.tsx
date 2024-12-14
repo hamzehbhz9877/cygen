@@ -7,6 +7,9 @@ import "./index.scss"
 import Category from "@/components/category/single";
 import OtherCategory from "@/components/category/otherCategory";
 import useResize from "@/hooks/useResize";
+import {useSuspenseQuery} from "@tanstack/react-query";
+import {GetSiteSettingsQuery} from "@/services/Common";
+import {useSearchParams} from "next/navigation";
 
 
 export type CategoryListType = {
@@ -18,6 +21,9 @@ const CategoryList = ({data}: CategoryListType) => {
     const [otherCategory, setOtherCategory] = useState(false)
 
 
+    // const {data: setting} = useSuspenseQuery(GetSiteSettingsQuery)
+    // const search=useSearchParams()
+
     const {windowWidth} = useResize()
 
     useEffect(() => {
@@ -25,12 +31,13 @@ const CategoryList = ({data}: CategoryListType) => {
             setOtherCategory(true)
     }, [windowWidth])
 
-
     return (
-        <div className="categories" id={"content"}>
+        <div className="categories container" id={"content"}>
             <div className="categories__title">دسته‌بندی‌ها</div>
 
             <div className={"categories__list"}>
+
+                {/*{search.get("q") && data.length ===0 ? setting.TopMenu.Categories}*/}
             {
                     data?.length > 7 ? <>
                         {data.slice(0, 7).map((data, index: number) => {

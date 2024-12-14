@@ -5,7 +5,7 @@ import { TbLogout2 } from "react-icons/tb";
 import useAuth from "@/context/authentication/useAuth";
 
 const DashboardMenu = () => {
-    const {resetCookie}=useAuth()
+    const {resetUserCookie}=useAuth()
 
     return (
         <div className="dashboard">
@@ -34,7 +34,7 @@ const DashboardMenu = () => {
                         علاقه مندی ها
                     </Link>
                 </li>
-                <li className="log-out" onClick={resetCookie}>
+                <li className="log-out" onClick={resetUserCookie}>
                     <Link href="/">
                         <TbLogout2 size={30} color={"#767676"}/>
                         Log out

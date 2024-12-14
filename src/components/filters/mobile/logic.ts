@@ -3,7 +3,7 @@ import useOverlay from "@/context/overlay/useOverlay";
 
 const Logic = () => {
 
-    const {toggleOverlay,isOpen}=useOverlay()
+    const {toggleOverlay,isOpen,classname}=useOverlay()
 
     const handleFilter = () => {
         document.querySelector('#filter-sidebar-mobile').classList.toggle("open")
@@ -13,6 +13,7 @@ const Logic = () => {
     const handleSort = () => {
         document.querySelector('.sort__mobile').classList.add("open")
         toggleOverlay(!isOpen)
+        classname("!z-[200]")
     }
 
     useEffect(() => {

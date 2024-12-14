@@ -1,8 +1,8 @@
 .head-archie-pro {
-  @apply justify-between p-0 hidden lg:flex;
+  @apply justify-between mb-[3px] sm:mb-[7px] items-center p-0 flex ;
   .onsale,
   #sales_timer_display {
-    @apply leading-[18px] text-[13px] font-bold m-0 p-0 rounded-lg bg-transparent text-dynamic-color-to;
-    @apply text-xs font-semibold;
+    @apply leading-[18px] text-[12px] sm:text-[15px] font-bold m-0 p-0 rounded-lg bg-transparent text-dynamic-color-to;
+    @apply  font-semibold;
   }
 }

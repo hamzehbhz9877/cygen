@@ -1,4 +1,4 @@
-
+'use client'
 
 import React from 'react';
 import Top from "@/layout/header/top/index";
@@ -8,27 +8,31 @@ import Bottom from "@/layout/header/bottom";
 import "./header.scss"
 import HeaderMobile from "@/layout/header/mobile";
 import {usePathname} from "next/navigation";
-import ProductMobileHeader from "@/layout/header/mobile/productMobileHeader";
+import ProductMobileHeader from "@/layout/header/mobile/productDetails/productMobileHeader";
+import More from "@/layout/header/mobile/productDetails/more";
+import Addtocart from "@/layout/header/mobile/addtocart";
+import {productStore} from "@/state/product/product";
+import product from "@/components/product/loader/product";
 
-const Header = ({path}:any) => {
+const Header = () => {
 
+    const pathname=usePathname()
+
+    const {productNotFound} = productStore()
 
     return (
         <>
             <header className="header">
-                <div className={`hidden md:block ${path ? 'productDetails' : ''}`}>
+                <div className={`hidden lg:block ${!productNotFound && decodeURIComponent(pathname).includes('product') ? 'productDetails' : ''}`}>
                     <Top/>
                     <Bottom/>
                 </div>
-                <div className={`block !md:hidden ${path ? 'productDetails' : ''}`}>
+                <div className={`!sm:hidden ${!productNotFound && decodeURIComponent(pathname).includes('product') ? 'productDetails' : ''}`}>
                     <HeaderMobile/>
                 </div>
-                <div className={`header ${path ? 'productDetails-header' : ''}`}>
-                    <ProductMobileHeader/>
-                </div>
+
             </header>
         </>
-
     );
 };
 

@@ -21,28 +21,30 @@ const FaqAnswers = ({data,title}:Props) => {
 
                 </div>
 
-                <span className="frequently_asked_questions_title">{title}</span>
+                <span className="frequently_asked_questions_title me-3 lg:me-0">{title}</span>
 
-                {data.map(d => {
-                    return (
-                        <div key={d.Id} className={"asked_questions_box"}>
-                            <Collapse
-                                isOpen={false}
-                                title={
-                                    <div className="ask_accordion">
-                                        <h2 className="">{d.Question}</h2>
-                                        <LiaAngleDownSolid size={14} color={"#000"}/>
-                                    </div>
-                                }
-                                content={
-                                    <div className="panel">
-                                        {parse(d.Answer)}
-                                    </div>
-                                }
-                            />
-                        </div>
-                    )
-                })}
+                <div className={`faq-questions-list ${data.length===1?'!grid-cols-1':''}`}>
+                    {data.map(d => {
+                        return (
+                            <div key={d.Id} className={"asked_questions_box"}>
+                                <Collapse
+                                    isOpen={false}
+                                    title={
+                                        <div className="ask_accordion">
+                                            <h2 className="">{d.Question}</h2>
+                                            <LiaAngleDownSolid size={14} color={"#000"}/>
+                                        </div>
+                                    }
+                                    content={
+                                        <div className="panel">
+                                            {parse(d.Answer)}
+                                        </div>
+                                    }
+                                />
+                            </div>
+                        )
+                    })}
+                </div>
             </div>
     );
 };

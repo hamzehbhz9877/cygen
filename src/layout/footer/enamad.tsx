@@ -9,7 +9,7 @@ const Enamad = ({link}:Props) => {
         <article className="codes">
             <a href="#"><Image width={73} height={73}
                 src={link}
-                alt=""/></a></article>
+                alt="enamad"/></a></article>
     );
 };
 

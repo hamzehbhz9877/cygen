@@ -33,7 +33,7 @@ const Swiper = ({children,SwiperOptions,hasNextPrevButton=true,hasDots=true,blog
 
                 modules={[Navigation, Pagination,Autoplay]}
                 onAfterInit={afterInit}
-                spaceBetween={18}
+                // spaceBetween={18}
                 updateOnWindowResize
                 navigation={{ prevEl: prevRef?.current, nextEl: nextRef?.current }}
                 pagination={{ clickable: true, el: bulletRef?.current }}

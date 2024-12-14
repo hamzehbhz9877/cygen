@@ -1,0 +1,77 @@
+import React from 'react';
+import ProductDetails from "@/app/product/[name]/_components/productDetails";
+import ProductSliders from "@/components/libarary/products";
+import Tabs from "@/app/product/[name]/_components/tabs";
+import {GetComments, GetProductsDetails, GetRelatedProducts} from "@/services/product";
+import Breadcrumb from "@/components/breadcrumb";
+import SliderMobile from "@/app/product/[name]/_components/mobile/slider";
+import ProductSummary from "@/app/product/[name]/_components/ProductSummary";
+import {Metadata} from "next";
+import TabsMobile from "@/app/product/[name]/_components/mobile/tab";
+import AddToCartMobile from "@/app/product/[name]/_components/mobile/addtocartmobile";
+import "./_components/index.scss"
+
+export const dynamic = "force-dynamic";
+export const revalidate = 0
+
+export async function generateMetadata({params, searchParams}: any): Promise<Metadata> {
+    const product: any = await GetProductsDetails({productSeName: params.name, updateCartItemId: 0})
+
+    const data = {
+        description: product?.MetaDescription,
+        keywords: product?.MetaKeywords,
+    }
+
+    if (product?.MetaTitle!=="NULL")
+        return {...data, title: product?.MetaTitle}
+    else
+        return data
+}
+
+
+
+const Page = async ({params}: any) => {
+    const product: any = await GetProductsDetails({productSeName: params.name, updateCartItemId: 0})
+    const relatedProducts: any = await GetRelatedProducts({productId: product.Id, productThumbPictureSize: 200})
+
+    return (
+        <div className="product-details container">
+            <div className="hidden lg:block mt-[20px]">
+                <Breadcrumb data={[...product.Breadcrumb.CategoryBreadcrumb, {
+                    Name: product.Breadcrumb.ProductName,
+                    SeName: ''
+                }]}
+                            show={product.Breadcrumb.Enabled}/>
+            </div>
+            <SliderMobile product={product}/>
+            <div className="block lg:hidden mt-[20px] overflow-x-auto breadcrumb-mobile">
+                <Breadcrumb data={[...product.Breadcrumb.CategoryBreadcrumb, {
+                    Name: product.Breadcrumb.ProductName,
+                    SeName: ''
+                }]} show={product.Breadcrumb.Enabled}/>
+            </div>
+            <ProductDetails product={product}/>
+            {relatedProducts?.length > 0 ? <ProductSliders data={relatedProducts} title={"محصولات مشابه"}/> : ""}
+            <TabsMobile product={product}/>
+            <AddToCartMobile product={product}/>
+            <Tabs product={product}/>
+
+            {product.JsonLd?
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{__html: JSON.stringify(product.JsonLd)}}
+            />:""}
+
+            {
+                product.Breadcrumb.JsonLd && product.Breadcrumb.Enabled?
+
+                    <script
+                        type="application/ld+json"
+                        dangerouslySetInnerHTML={{__html: JSON.stringify(product.Breadcrumb.JsonLd)}}
+                    />:""}
+        </div>
+    );
+};
+
+
+export default Page;

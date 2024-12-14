@@ -6,7 +6,7 @@ import {GetSiteSettingsQuery} from "@/services/Common";
 
 const Menu = ({Name, Url, OpenInNewPage, childs}: dynamicLinksType[0] & { childs: any }) => {
     return (
-        <div className="foot-box has-menu hidden md:block">
+        <div className="foot-box has-menu hidden lg:block">
             {/*<Link href={Url} target={OpenInNewPage ? "_blank" : "_self"}>*/}
             {/*    */}
             {/*</Link>*/}
@@ -14,10 +14,10 @@ const Menu = ({Name, Url, OpenInNewPage, childs}: dynamicLinksType[0] & { childs
             <div>
                 <ul className="menu">
                     {
-                        childs.map(d => {
+                        childs?.map(d => {
                             return <li key={d.Id} id="navi"
                                        className="menu-item menu-item-type-post_type menu-item-object-page">
-                                <Link href={"/" + d.SeName}>{d.Name}</Link></li>
+                                <Link href={d.Url?d.Url:"/"+d.SeName} target={d.OpenInNewPage?'_blank':"_self"}>{d.Name}</Link></li>
                         })
                     }
                 </ul>

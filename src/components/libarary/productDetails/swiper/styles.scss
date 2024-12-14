@@ -1,13 +1,59 @@
 
 .mySwiper2 {
-  @apply max-w-none w-full lg:max-w-[75vw] lg:w-[calc(100vh-230px)];
+  @apply  max-w-none  w-full;
+  .swiper-slide {
+    @apply flex justify-center items-center;
+    img{
+      @apply w-[400px] mx-auto;
+    }
+    &.video{
+      position: relative;
+      aspect-ratio: 16 / 9; // always use 16/9 video
+      container-type: size;
+
+      &:after {
+        content: "";
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: calc(100% - 14cqh); // show controls
+        clip-path: polygon(0% 0%, 0% 100%, 44% 100%, 44% 49%, 56% 49%, 56% 67%, 0% 67%, 0% 100%, 100% 100%, 100% 0%); // show play button
+      }
+    }
+  }
+  .slider__buttons {
+    button {
+
+      background: #E5E7EB !important;
+      border-radius: 50% !important;
+      box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),0px 1px 5px rgba(0, 0, 0, .2);
+      border: none !important;
+      &.right{
+        right: 20px;
+      }
+      &.left{
+        left: 20px;
+      }
+    }
+  }
 }
 
 .mySwiper {
   .swiper-slide{
     cursor: pointer;
     position: relative;
-      &::before{
+    padding: 5px;
+    margin: 16px 8px;
+    border: 1px solid #D1D5DB;
+    border-radius: 4px;
+opacity: .5;
+    &:hover {
+      border-color: #6B7280;
+
+    }
+    &::before{
         content: "";
         position: absolute;
         visibility: hidden;
@@ -23,7 +69,8 @@
         z-index: 3;
       }
       &-thumb-active{
-
+        opacity: 1;
+        border-color: #6B7280;
         &::before{
           visibility: visible;
         }
@@ -39,18 +86,9 @@
   }
 }
 
-.slider__buttons {
-  button {
-
-    background: hsla(0, 0%, 100%, .5) !important;
-    border-radius: 50% !important;
-    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),0px 1px 5px rgba(0, 0, 0, .2);
-    border: none !important;
-    &.right{
-      right: 20px;
-    }
-    &.left{
-      left: 20px;
-    }
-  }
-}
+//.romeo-progress-bar{
+//  top: 13px !important;
+//}
+//.romeo-controls .left-bar, .romeo-controls .right-bar, .romeo-controls .center-bar{
+//  bottom: 30px !important;
+//}

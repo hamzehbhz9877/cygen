@@ -2,15 +2,16 @@
 
 import {useEffect, useState} from "react";
 
-const useCountdown = (deadline: Date) => {
+const useCountdown = (deadline) => {
     // Time is in seconds
     const [time, setTime] = useState<number>(0);
 
 
     useEffect(() => {
         if (deadline)
-            setTime(Math.max(0, Math.floor((deadline.getTime() - Date.now()) / 1000)))
+            setTime(deadline)
     }, [deadline])
+
 
     const decrement = () =>
         setTime((prevTime) => {

@@ -2,6 +2,7 @@
   @apply border shadow-none mb-2.5 p-[15px] rounded-[11px] border-solid border-[#e3e3e3];
 
 
+
   &__title {
     @apply flex items-center justify-between cursor-pointer;
     h2 {
@@ -11,6 +12,15 @@
 
   &__content {
     @apply mt-[24px]
+  }
+
+  &.category-filter{
+    .submenu-1{
+      @apply ps-[20px];
+    }
+    .submenu-2{
+      @apply ps-[30px];
+    }
   }
 }
 
@@ -44,11 +54,25 @@
 }
 
 .header.sticky + main .all-filter {
-  @apply top-[98px];
+  @apply top-[150px];
+}
+
+.all-filter{
+  @apply top-[202px] ml-[15px] min-w-[270px] w-[300px] h-max hidden lg:block;
 }
 
 .all-filter {
   .banner img{
     @apply rounded-md;
+  }
+}
+
+
+
+.filters__mobile{
+  .all-filter{
+    display: block;
+    width: 100%;
+    position: unset;
   }
 }

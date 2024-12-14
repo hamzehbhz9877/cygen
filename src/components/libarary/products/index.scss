@@ -1,4 +1,18 @@
 .product-slider {
+  .slider__buttons {
+    button {
+      border: 1px solid #dddde1 !important;
+      background: white !important;
+      border-radius: 50% !important;
+      box-shadow: -1.5px 0 4px 0 rgb(0 0 0 / 15%);
+      &.right{
+        right: 10px;
+      }
+      &.left{
+        left: 10px;
+      }
+    }
+  }
   margin: 10px 0;
   background-color: #fff;
   border: 1px solid #e3e3e3;
@@ -10,7 +24,7 @@
     width: 95%;
     margin: 0 auto;
     margin-top: 11px;
-    margin-bottom: 35px;
+    margin-bottom: 15px;
 
     span {
       position: relative;
@@ -49,101 +63,54 @@
   img {
     display: block;
     width: 100%;
-    height: auto;
     max-width: 100%;
   }
-
-  .product-single .index-title-pro h2 {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    height: 45px;
-    font-weight: 600;
-    text-align: right;
-    color: #535353;
-    font-size: 13px;
-    line-height: 20px;
-    margin: 5px 0;
-  }
-
-
-  .item-pro .index-prices-pro {
-    width: 100%;
-    height: 40px;
-    margin-left: 35px;
-    display: inline-block;
-    text-align: left;
-  }
-
-  .index-prices-pro div del, .cart-pro del {
-    display: flex;
-    @apply text-dynamic-color-from;
-    align-items: center;
-    justify-content: left;
-    text-decoration: none;
-  }
-
-  .index-prices-pro div .index-discount-pro, .cart-pro span.index-discount-pro {
-    float: left;
-    font-size: 13px;
-    padding: 2px 7px;
-    border-radius: 9px;
-    color: #fff !important;
-    font-weight: bold;
-    line-height: 18px;
-    margin-right: 7px;
-    display: inline-flex;
-    order: 2;
-    @apply bg-gradient-to-l from-dynamic-color-from to-dynamic-color-to;
-  }
-
-  span.index-discount-pro p {
-    line-height: 20px;
-    padding: 0;
-    color: #fff !important;
-    margin-right: 1px;
-  }
-
-  .index-prices-pro div del span.woocommerce-Price-amount {
-    font-weight: 400;
-    text-decoration: line-through;
-    font-size: 12px;
-    @apply text-dynamic-color-from;
-  }
-
-  .index-prices-pro div span.woocommerce-Price-amount bdi {
-    display: flex;
-    align-items: center;
-    justify-content: left;
-  }
-
-  .index-prices-pro div span.woocommerce-Price-amount .woocommerce-Price-currencySymbol {
-    font-weight: 500;
-    font-weight: 500;
-    order: 1;
-    margin-right: 4px;
-    font-size: 12px;
-  }
-
-  .index-prices-pro div span.woocommerce-Price-amount {
-    display: inline-block !important;
-  }
-
-  .index-prices-pro div span.woocommerce-Price-amount {
-    text-align: left;
-    font-weight: 700;
-    font-size: 14px;
-  }
-
 }
 
+.de-slider{
+  .product{
+    padding: 5px 10px !important;
+    &::before,&::after{
+      display: none;
+    }
+    &:hover{
+      box-shadow: none;
+    }
+    .thumb-pro{
+      @apply w-[150px] md:w-auto md:max-w-[67%];
+      margin: 0 auto !important;
+    }
+    .index-prices-pro{
+      height: auto;
+    }
+    .index-prices-pro{
+      @apply pb-0 lg:pb-3;
+    }
+  }
+}
 
 //mobile product slider
 
-.right-product {
+.product-slider {
   margin: 20px 0;
+
+
+  &.slide-mobile {
+  @apply m-0 border-none;
+    .product{
+      min-width: 200px;
+      border: 1px solid #e3e3e3 !important;
+      &+.product{
+        margin-right: 6px;
+      }
+    }
+    .info-product{
+      padding: 0 !important;
+    }
+    .offers{
+      @apply pt-[8px];
+    }
+  }
 
   .head-product {
     position: relative;
@@ -180,29 +147,9 @@
     padding: 10px 0;
     overflow-x: auto;
     display: flex;
-    gap: 6px;
 
     &::-webkit-scrollbar{
       height: 10px;
-    }
-
-    .slide {
-      min-width: 199px;
-      border: 1px solid #e3e3e3 !important;
-    }
-  }
-}
-.slider__buttons {
-  button {
-    border: 1px solid #dddde1 !important;
-    background: white !important;
-    border-radius: 50% !important;
-    box-shadow: -1.5px 0 4px 0 rgb(0 0 0 / 15%);
-    &.right{
-      right: 10px;
-    }
-    &.left{
-      left: 10px;
     }
   }
 }
