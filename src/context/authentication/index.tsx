@@ -6,7 +6,6 @@ import {useRouter} from "next/navigation";
 import Cookie from 'universal-cookie'
 import {useQuery} from "@tanstack/react-query";
 import {GetGuestCustomer} from "@/services/OtpAuthentication";
-import {isTokenExpired} from "@/helpers/client";
 
 export const AuthProvider = createContext({} as any);
 

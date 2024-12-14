@@ -10,9 +10,9 @@ const SlideIn = ({data}: any) => {
 
     const closePopup = () => {
         if (data.DisplayOption === 1 && data.DisplayPeriod===3)
-            cookie.set("popup-period_" + data.Id, Date.now() + ((data.CustomPeriodInHour * 60) * 60 * 1000))
+            cookie.set("popup-period_" + data.Id, Date.now() + ((data.CustomPeriodInHour * 60) * 60 * 1000), {path: "/"})
         else
-            cookie.set("popup-onceTime_" + data.Id, true)
+            cookie.set("popup-onceTime_" + data.Id, true, {path: "/"})
 
         if (data.DisplayOption === 1 && data.DisplayPeriod===3) {
             document.querySelector(".popup__slidein").classList.remove("open")

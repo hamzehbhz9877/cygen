@@ -17,21 +17,25 @@ const BreadCrumb = ({show, data}: BreadCrumbType) => {
 
     if (show)
         return (
-            <nav className="breadcrumb" aria-label="Breadcrumb">
+            <div className={'container'}>
+                <nav className="breadcrumb w-max " aria-label="Breadcrumb">
                 <span>
                             <Link href={"/"}>خانه</Link>
                             <i> / </i>
                         </span>
-                {
-                    data.map((link: any, index: number) => {
-                        return data.length - 1 === index ? "" : <span key={index}>
+                    {
+                        data.map((link: any, index: number) => {
+                            return data.length - 1 === index ? "" : <span key={index}>
                             <Link href={link.SeName}>{link.Name}</Link>
                             <i> / </i>
                         </span>
-                    })
-                }
-                {data[data.length - 1].Name}
-            </nav>
+                        })
+                    }
+
+                    <span className={'font-semibold'}>{data[data.length - 1].Name}</span>
+                </nav>
+            </div>
+
         );
     else return null
 };

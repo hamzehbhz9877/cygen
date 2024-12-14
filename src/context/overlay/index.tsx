@@ -29,7 +29,7 @@ const OverlayContext= ({children}:Props) => {
             }}
         >
             {children}
-           <div className={`overlay ${isOpen?"open":""} ${classname}`}></div>
+           <div className={`${classname} overlay ${isOpen?"open":""} `}></div>
         </OverlayProvider.Provider>
     );
 };

@@ -1,20 +1,18 @@
 'use client'
 import {FaAngleLeft} from "react-icons/fa6";
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {RiSearchLine} from "react-icons/ri";
 import Link from "next/link";
 import Image from "next/image";
 import {RiFireLine} from "react-icons/ri";
 import {MdKeyboardArrowLeft} from "react-icons/md";
-import useClickOutside from "@/hooks/useOutsideClick";
 import {keepPreviousData, useQuery, useSuspenseQuery} from "@tanstack/react-query";
 import {GetPopularSearchTermsQuery, GetSiteSettingsQuery} from "@/services/Common";
-import {UseDebouncedEffect} from "@/helpers/client";
+import {useDebouncedEffect} from "@/helpers/client";
 import {SearchTermAutoComplete} from "@/services/Catalog";
 import Banner from "@/components/banner";
-import useOverlay from "@/context/overlay/useOverlay";
 import {IoIosCloseCircle, IoMdClose} from "react-icons/io";
-import {useRouter} from "next/navigation";
+import {useRouter, useSearchParams} from "next/navigation";
 
 
 const SearchMobile = () => {
@@ -22,26 +20,40 @@ const SearchMobile = () => {
     const {data} = useSuspenseQuery(GetPopularSearchTermsQuery)
     const {data: setting} = useSuspenseQuery(GetSiteSettingsQuery)
 
-    const [value, setValue] = useState<string>('')
+    const searchParams = useSearchParams()
 
     const handleChangeValue = (data: string) => setValue(data)
+    const [value, setValue] = useState<string>(searchParams.get('q') ?? '')
+
+    useEffect(() => {
+        if (searchParams.get('q'))
+        {
+            setValue(searchParams.get('q'))
+        }
+        else
+        {
+            setValue('')
+        }
+    }, [searchParams.get('q')])
 
     const searchRef = useRef<HTMLFormElement | null>(null)
     const searchResult = useRef<HTMLDivElement | null>(null)
     const router=useRouter()
+    const [dValue,setDValue] = useState<string>('')
 
-    const {data: SearchResultData, refetch} = useQuery({
-        queryFn: () => SearchTermAutoComplete({search: value, sizeOfImage: 50}),
-        queryKey: ["search", value],
+    const {data: SearchResultData} = useQuery({
+        queryFn: () => SearchTermAutoComplete({search: dValue, sizeOfImage: 50}),
+        queryKey: ["search", dValue],
         placeholderData: keepPreviousData,
         gcTime: 0,
         staleTime: 0
     })
 
 
-    UseDebouncedEffect(() => {
-        if (value.length >= setting.SearchBox.SearchTermMinimumLength && setting.AutoCompleteEnabled)
-            refetch()
+    useDebouncedEffect(() => {
+        if (value?.length >= setting.SearchBox.SearchTermMinimumLength && setting.SearchBox.AutoCompleteEnabled) {
+            setDValue(value)
+        }
     }, 500, value);
 
     const closeSearch=()=>{
@@ -103,9 +115,7 @@ const SearchMobile = () => {
                             </div> :
                             <>
                                 <div className="search-result__image">
-                                    <Link href={"/"}>
-                                        <Banner PositionSystemName={"search_box"} PictureSize={400}/>
-                                    </Link>
+                                        <Banner isSingle PositionSystemName={"search_box"} PictureSize={400}/>
                                 </div>
                                 <div className="search-result__promote">
                                     <span><RiFireLine size={24} className="ml-[11px]"/> جستجوی پرطرفدار </span>

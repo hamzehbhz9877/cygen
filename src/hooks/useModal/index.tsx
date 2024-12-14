@@ -24,6 +24,10 @@ const UseModal = () => {
             //@ts-ignore
             document.querySelector("body").style.overflowY = 'auto'
         }
+        console.log("video")
+        document.querySelectorAll("iframe").forEach((iframe: any) => {
+            iframe.src = iframe.src;
+        })
 
 
         setIsModalOpen(false)

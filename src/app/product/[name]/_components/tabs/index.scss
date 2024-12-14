@@ -1,0 +1,320 @@
+.tabs{
+  margin-top:20px;
+  ul {
+    border-radius: 11px 14px 0 0;
+    border-bottom: 0;
+    background: #fff;
+    list-style: none;
+    overflow: hidden;
+    position: relative;
+    li{
+      padding: 0 0.6em !important;
+      cursor: pointer;
+      color: #515151;
+      display: inline-block;
+      position: relative;
+      border-radius: 4px 4px 0 0;
+      margin: 0 -5px;
+      border-bottom: 2px solid ;
+      border: none;
+      padding-bottom: 10px !important;
+      background: #fff;
+      z-index: 2;
+      margin-left: 10px;
+      a{
+        color: #4d4d4d !important;
+        text-shadow: inherit;
+        font-size: 16px;
+        font-weight: 400 ;
+        display: flex ;
+        align-items: center;
+        padding: 0;
+        i{
+            @apply bg-gradient-to-r from-dynamic-color-from to-dynamic-color-to;
+            line-height: 20px;
+          color: white;
+            min-width: 21px;
+            min-height: 18px;
+            text-align: center;
+            border-radius: 8px;
+            font-weight: 400;
+            font-size: 14px;
+            margin-right: 6px;
+            display: inline-block;
+
+        }
+      }
+      &.active {
+        border-bottom: 1px solid ;
+        @apply border-dynamic-color-from;
+        a{
+          @apply text-dynamic-color-from #{!important};
+          svg{
+            @apply text-dynamic-color-from #{!important};
+          }
+        }
+      }
+    }
+  }
+}
+
+.tab-content{
+  border-radius: 0 0 11px 11px;
+  border-top: 1px solid #e3e3e3;
+  padding: 1.5rem 0;
+}
+
+.title{
+  color: #343434;
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 30px;
+  &-desktop{
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    line-height: 24px;
+    margin-bottom: 1rem !important;
+  }
+}
+
+.comments{
+  .response-comment{
+    margin-top: 16px;
+    background: #f9f9f9;
+    padding: 16px;
+    border-radius: 16px;
+    font-size: 14px;
+  }
+  .seller-response{
+    @apply text-dynamic-color-from;
+    padding-bottom: 4px;
+    font-weight: 500;
+  }
+  .title-commenter {
+    padding-bottom: 30px;
+  }
+  .go-insert-comment{
+    color: #535353;
+    font-size: 17px;
+    font-weight: bold;
+  }
+  .title-insert{
+    display: block;
+    margin-bottom: 20px;
+  }
+  .go-insert-comment .dec-insert{
+    font-size: 15px;
+    font-weight: 500;
+    display: block;
+    line-height: 32px;
+    margin-bottom: 20px;
+  }
+  .continer-rating .go-insert-comment button{
+    display: inline-block;
+    line-height: 1.375;
+    border-radius: 11px;
+    @apply bg-dynamic-color-from;
+    font-size: 16px;
+    color: #fff !important;
+    padding: 15px 50px;
+    transition: 0.2s all;
+    position: relative;
+    padding-right: 95px;
+  }
+  .continer-rating .go-insert-comment button::after {
+    content: "+";
+    width: 90px;
+    height: 106px;
+    position: absolute;
+    right: -7px;
+    top: -28px;
+    background: hsla(0,0%,100%,.21);
+    border-radius: 50%;
+    transition: all .3s ease-in-out;
+    box-sizing: border-box;
+    padding-right: 63px;
+    padding-top: 36px;
+    text-align: right;
+    font-weight: 500;
+    font-size: 28px;
+  }
+  .continer-rating .go-insert-comment button:hover::after {
+    width: 130%;
+    border-radius: 0;
+  }
+  .reviw-tabs .commnet-lister {
+    border-bottom: 1px solid #eee;
+    margin-top: 4rem;
+    padding-bottom: 15px;
+    font-size: 17px;
+    font-weight: bold;
+    color: #535353;
+    position: relative;
+    line-height: 1.375;
+    //&::before {
+    //  content: "";
+    //  right: 0;
+    //  width: 0;
+    //  height: 0;
+    //  border-color: transparent transparent transparent #FF6900;
+    //  border-style: solid;
+    //  border-width: 7px 0 0 7px;
+    //  margin-left: 13px;
+    //  display: inline-block;
+    //  bottom: 1px;
+    //  position: relative;
+    //}
+  }
+
+}
+
+#comments,.flaticon-question-7 p,.parskala-side-faq p,.Blank-QA p {
+  line-height: 32px;
+  text-align: justify;
+  font-size: 14px;
+  color: #535353;
+  padding: 15px 10px;
+}
+
+.faq{
+
+}
+.specification{
+  table{
+    width: 100%;
+  }
+
+
+  tbody {
+    .attributes+.attributes{
+      @apply mt-[20px] md:mt-0;
+    }
+  }
+
+  .shop_attributes.woocommerce-group-attributes-layout-2 tbody{
+    width: 100%;
+    display: block;
+  }
+  .shop_attributes.woocommerce-group-attributes-layout-2 tbody tr{
+    width: 100%;
+    display: block;
+  }
+  .shop_attributes.woocommerce-group-attributes-layout-2 tbody tr th.attribute_group_name{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    @apply text-[14px] md:text-[16px];
+    font-weight: 700 !important;
+    color: #333;
+    @apply p-0 md:p-[18px];
+  }
+  .shop_attributes.woocommerce-group-attributes-layout-2 tbody tr td{
+    width: 100%;
+    display: block;
+  }
+  .shop_attributes.woocommerce-group-attributes-layout-2 tbody tr td table{
+    width: 100%;
+  }
+  .shop_attributes.woocommerce-group-attributes-layout-2 tbody tr td table tr{
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    margin-bottom: 12px;
+    margin-right: 29px;
+  }
+  td p {
+    line-height: 32px;
+    text-align: justify;
+    font-size: 14px;
+    color: #535353;
+  }
+  .shop_attributes.woocommerce-group-attributes-layout-2 tbody tr td table tr .attribute_name{
+    background-color: #fafafa !important;
+    width: 22%;
+    height: auto;
+    color: #4d4d4d !important;
+    padding: 10px 18px;
+    border-radius: 0 8px 8px 0;
+    line-height: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    font-style: normal;
+    float: right;
+    display: flex;
+    align-items: center;
+    margin-left: 18px;
+  }
+  .shop_attributes.woocommerce-group-attributes-layout-2 tbody tr td table tr .attribute_value {
+    background-color: #fafafa !important;
+    width: 73%;
+    float: right;
+    height: auto;
+    color: #4d4d4d !important;
+    padding: 10px 18px;
+    border-radius: 8px 0 0 8px;
+    line-height: 20px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    font-style: normal;
+    display: flex;
+    align-items: center;
+  }
+  .shop_attributes.woocommerce-group-attributes-layout-2 tbody tr td table tr .attribute_value.true{
+    background-color: #f5fcf5 !important;
+  }
+  .shop_attributes.woocommerce-group-attributes-layout-2 tbody tr td table tr .attribute_value.false{
+    background-color: #fcf5f5 !important;
+  }
+  .shop_attributes.woocommerce-group-attributes-layout-2 tbody tr td table tr .attribute_value.true i{
+    font-size: 18px;
+    color: #00cb3b;
+  }
+  .shop_attributes.woocommerce-group-attributes-layout-2 tbody tr td table tr .attribute_value.false i{
+    font-size: 18px;
+    color: #fe4343;
+  }
+
+  @media (max-width: 990px) {
+    .shop_attributes.woocommerce-group-attributes-layout-2 tbody tr{
+      margin-bottom: 0;
+    }
+    .shop_attributes.woocommerce-group-attributes-layout-2 tbody tr th.attribute_group_name{
+      margin-bottom: 10px;
+    }
+    .shop_attributes.woocommerce-group-attributes-layout-2 tbody tr td table tr{
+      margin-right: 0 !important;
+    }
+    .shop_attributes.woocommerce-group-attributes-layout-2 tbody tr td table tr{
+      margin-bottom: 0;
+    }
+    body .shop_attributes.woocommerce-group-attributes-layout-2 tbody tr th.attribute_group_name i{
+      font-size: 19px;
+      margin-left: 0px;
+    }
+    .shop_attributes.woocommerce-group-attributes-layout-2 tbody tr td table tr .attribute_name{
+      width: 100%;
+      padding: 8px 9px;
+      background-color: #f1f1f1 !important;
+      color: #2a2a2a !important;
+      font-size: 14px;
+      border-radius: 0;
+    }
+    .shop_attributes.woocommerce-group-attributes-layout-2 tbody tr td table tr .attribute_value{
+      width: 100%;
+      padding: 10px 9px;
+      background-color: #fff !important;
+      font-size: 12px;
+    }
+    .shop_attributes.woocommerce-group-attributes-layout-2 tbody tr td table tr .attribute_value.true{
+      background-color: #fff !important;
+    }
+    .shop_attributes.woocommerce-group-attributes-layout-2 tbody tr td table tr .attribute_value.false{
+      background-color: #fff !important;
+    }
+
+  }
+
+}

@@ -1,0 +1,170 @@
+.special-slider {
+  @apply my-[30px] pt-[9%] pb-[40px]  relative;
+  background-color: transparent;
+  background-image: linear-gradient(0deg, #272727 99%, #FFFFFF 100%);
+
+
+  &::before{
+    content:"";
+    background-image: url(https://dark.parskalas.com/wp-content/uploads/2024/12/wave-header-min-1-1.svg);
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: max(100%, 100%);
+    width: max(100%, 100%);
+    position: absolute;
+  }
+
+  .swiper-slide{
+    height: auto;
+  }
+
+  &__title {
+    @apply text-center mx-auto;
+    font-size: 24px;
+    font-weight: bold;
+    color: #FFFFFF;
+  }
+
+  .swiper-button{
+    position: unset;
+    padding: 0;
+    transform: translateY(0);
+  }
+
+  .slider__buttons {
+    button {
+      @apply flex justify-center items-center;
+      width: 45px;
+      height: 45px;
+      border-radius: 13px;
+      border: 1px solid #dddde1 !important;
+      box-shadow: -1.5px 0 4px 0 rgb(0 0 0 / 15%);
+      transition: 0.2s all;
+      background: #fff;
+      &.right{
+        right: 10px !important;
+      }
+      &.left{
+        left:10px !important;
+      }
+    }
+
+  }
+
+  .product{
+    height: 100%;
+    width: 100%;
+    border-radius: 21px !important;
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+
+    &::before,&::after{
+      display: none;
+    }
+    &:hover{
+      box-shadow: none;
+    }
+    .thumb-pro{
+      @apply w-[150px] md:w-auto md:max-w-[85%];
+      margin: 0 auto !important;
+    }
+    .index-prices-pro{
+      height: auto;
+    }
+    .index-prices-pro{
+      @apply pb-0;
+    }
+  }
+}
+
+.slide {
+  width: 100%;
+  padding: 12px;
+  position: relative;
+  border-radius: 11px;
+  box-sizing: border-box;
+  background-color: #fff;
+  display: inline-block;
+
+
+  .thumb-pro {
+    max-width: 67%;
+    position: relative;
+    margin: 10px auto;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+//mobile product slider
+.special-slider {
+  margin: 20px 0;
+  &.slide-mobile {
+  @apply m-0 border-none;
+    .product{
+      min-width: 200px;
+      border: 1px solid #e3e3e3 !important;
+      &+.product{
+        margin-right: 6px;
+      }
+    }
+    .info-product{
+      padding: 0 !important;
+    }
+    .offers{
+      @apply pt-[8px];
+    }
+  }
+
+  .head-product {
+    position: relative;
+    font-weight: 600;
+    color: #515151;
+    width: 95%;
+    border: none;
+    margin: 5px 0px !important;
+    padding-bottom: 0;
+
+    h3 {
+      font-size: 14px !important;
+      margin-right: 3px;
+      color: #2d2d2d;
+      font-weight: 700;
+      line-height: 32px;
+
+      .titles-pro {
+        font-weight: 700;
+        color: #222;
+        font-size: 15px;
+        line-height: 1.571;
+
+        &::after {
+          height: 0;
+        }
+      }
+    }
+
+  }
+
+  .carousel_lister {
+    margin: 0 10px;
+    padding: 10px 0;
+    overflow-x: auto;
+    display: flex;
+
+    &::-webkit-scrollbar{
+      height: 10px;
+    }
+  }
+}
+
+

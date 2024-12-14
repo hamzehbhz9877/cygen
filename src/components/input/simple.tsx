@@ -34,7 +34,7 @@ const Input = ({type, label, name, error, icon, className,...rest}: Props) => {
                 <Field
                     name={name}
                     type={type}
-                    className={`input-field ${meta.error ? 'input-field--error' : ""} ${className ?? ""}`}
+                    className={`input-field ${meta.touched&& meta.error ? 'input-field--error' : ""} ${className ?? ""}`}
                     {...rest}
                 />
 

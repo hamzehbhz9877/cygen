@@ -1,17 +1,15 @@
 import React, {useEffect, useRef, useState} from "react";
 import "./index.scss";
 import useResize from "@/hooks/useResize";
+import Image from "next/image";
 
-const ImageZoom = ({ src }) => {
+const ImageZoom = ({ src,alt,title }) => {
     const imgRef = useRef(null);
     const lensRef = useRef(null);
 
 
     const {windowWidth}=useResize()
     useEffect(() => {
-
-
-
         const img = imgRef.current;
         const lens = lensRef.current;
         const result:any = document.querySelector(".img-zoom-result");
@@ -79,7 +77,7 @@ const ImageZoom = ({ src }) => {
             onMouseLeave={handleMouseLeave}
         >
                 <div ref={lensRef} className="img-zoom-lens"></div>
-            <img id="myimage" ref={imgRef} src={src} alt="Zoomable" width="500" height="500" />
+            <Image alt={alt} title={title} id="myimage" ref={imgRef} src={src}  width="500" height="500" />
         </div>
     );
 };

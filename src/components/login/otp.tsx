@@ -1,4 +1,4 @@
-import {ModalBody} from "@/components/modal";
+import {ModalBody, ModalHeader} from "@/components/modal";
 import Logo from "@/layout/header/top/logo";
 import {ErrorMessage, Form, Formik, useFormikContext} from "formik";
 import Button from "@/components/button/simple";
@@ -22,6 +22,7 @@ import {
 } from "@/components/login/otpValidation";
 import Input from "@/components/input/simple";
 import React, {useEffect, useState} from "react";
+import {IoCloseOutline} from "react-icons/io5";
 
 
 type Props = {
@@ -50,12 +51,13 @@ const Otp = ({MobileNumber, OtpExpireDateTotalSeconds, AuthenticationToken, Regi
 
     const {openModal, closeModal} = useModal()
 
-    const {setCookie} = useAuth()
+    const {setUserCookie,resetGuestCookie} = useAuth()
 
 
     const {mutate, isPending, error} = useMutation<any, any, any, any>({
         mutationFn: LoginRegisterVerification, onSuccess: (data) => {
-            setCookie(data)
+            setUserCookie(data)
+            resetGuestCookie()
             closeModal()
             showToast("success", 'عملیات با موفقیت انجام شد')
         }
@@ -85,6 +87,11 @@ const Otp = ({MobileNumber, OtpExpireDateTotalSeconds, AuthenticationToken, Regi
 
     return (
         <>
+            <ModalHeader>
+                <div className="absolute left-[20px] top-[20px]">
+                    <IoCloseOutline color="#4d4d4d" role={"button"} size={30} onClick={closeModal}/>
+                </div>
+            </ModalHeader>
             <ModalBody>
                 <Logo/>
                 <div className="back-prev-step" onClick={handleBackToPrevStep}>
@@ -154,8 +161,7 @@ const Otp = ({MobileNumber, OtpExpireDateTotalSeconds, AuthenticationToken, Regi
                         </button> :
                         <div className="sms-confirm--timer-holder">
                             ارسال مجدد کد تا :
-                            <span className="sms-confirm---code-counter " id="stm-counter"
-                                  data-countdown-seconds="120"> {minutes}:{seconds} </span>
+                            <span className="sms-confirm---code-counter " id="stm-counter"> {minutes}:{seconds} </span>
                         </div>
                     }
                 </div>

@@ -3,6 +3,7 @@
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import "./index.scss"
 
 import React, {useRef} from "react";
 import {Swiper as SwiperJs} from "swiper/react";
@@ -54,7 +55,7 @@ const Swiper = ({
                 navigation={{prevEl: prevRef?.current, nextEl: nextRef?.current}}
                 pagination={{clickable: true, el: bulletRef?.current}}
                 onSwiper={setSwiper}
-                className="swiper-slides"
+                className="swiper-slides banner"
                 {...SwiperOptions}
             >
                 {children}

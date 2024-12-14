@@ -419,7 +419,7 @@
 }
 .category-dropdown .level-1 {
   padding: 5px;
-  @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  xl:grid-cols-5 gap-[10px];
+  @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5  xl:grid-cols-5 gap-[10px];
 }
 .category-dropdown .level-2 a {
   line-height: 27px;

@@ -5,12 +5,12 @@ import useCountdown from "@/hooks/useCountdown";
 
 import "./spicialOffer.scss"
 
-const SpecialOffer = () => {
+const SpecialOffer = ({offers}:any) => {
 
-    const {hours,minutes,seconds,days}=useCountdown(new Date("2024/10/18"))
+    const {hours,minutes,seconds,days}=useCountdown(offers)
 
     return (
-        <div className="head-archie-pro">
+        <div className="head-archie-pro w-full">
             <span className="onsale">پیشنهاد ویژه</span>
             <p id="sales_timer_display">
                 <span>

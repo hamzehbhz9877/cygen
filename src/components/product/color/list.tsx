@@ -1,13 +1,15 @@
 import React from 'react';
 import Color from "@/components/product/color/single";
 
-const Colors = () => {
+const Colors = ({colors}:any) => {
     return (
         <div className="archive-swatches">
-            {["طلایی", "بنفش", "سبز"].map((color, index: number) => {
+            {colors?.map((color, index: number) => {
                 return <Color key={index} color={color}/>
             })}
-            <div className="swatches-divider">+1</div>
+            {
+                colors?.length > 3?
+            <div className="swatches-divider">+1</div>:''}
         </div>
     );
 };

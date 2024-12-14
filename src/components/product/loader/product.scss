@@ -1,6 +1,6 @@
 .product {
   @apply inline-block transition-shadow duration-[0.15s] ease-[ease] bg-white text-center relative m-0 pb-0;
-  @apply h-auto relative ;
+  @apply h-auto relative  ;
 
   &::before,
   &::after {
@@ -14,7 +14,5 @@
   }
   &::before {
     @apply w-px h-[-webkit-fill-available] left-[-1.5px] top-0;
-
   }
-
 }

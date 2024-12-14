@@ -2,7 +2,7 @@
   @apply inline-block text-[#81858b] text-[12px] leading-[2] font-semibold mb-[15px];
 }
 .breadcrumb a {
-  @apply text-[11px] text-[#898d92] my-[4px] font-semibold;
+  @apply text-[11px] md:text-[14px] text-[#898d92] my-[4px] font-semibold;
 }
 .breadcrumb a:first-child {
   @apply mr-0;

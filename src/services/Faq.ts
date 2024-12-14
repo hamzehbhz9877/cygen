@@ -1,11 +1,9 @@
-import {redirectStatus} from "@/utils/notFound-server";
 import {instant} from "@/services/httpservice";
+import {fetchAPi} from "@/hooks/fech";
 
 
 export const FagQuery = async (params: any) =>instant.get(`Faq/GetFaqs`,{params:{...params}})
 
 export const GetFaq = async () => {
-    const res = await fetch(`https://api.cygenco.com/api/Faq/GetFaqs`, {cache: 'no-store'})
-    const data = await res.json()
-    return redirectStatus(data)
+    return await fetchAPi(`https://api.cygenco.com/api/Faq/GetFaqs`)
 }

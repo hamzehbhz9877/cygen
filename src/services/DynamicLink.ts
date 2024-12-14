@@ -18,7 +18,7 @@ export const GetDynamicLinkPositionsQuery = queryOptions({
         const data= await Promise.all(res.data.map((item) => GetDynamicLinks(item.Value)))
         .then((res:any) => res)
         .catch((err) => console.error(err));
-        return data
+        return data?data:[]
     },
 })
 

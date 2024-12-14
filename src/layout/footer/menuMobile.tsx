@@ -20,10 +20,10 @@ const MenuMobile = ({Name, Url, OpenInNewPage, childs}: dynamicLinksType[0] & { 
                     <div>
                         <ul className="menu">
                             {
-                                childs.map(d => {
+                                childs?.map(d => {
                                     return <li key={d.Id} id="navi"
                                                className="menu-item menu-item-type-post_type menu-item-object-page">
-                                        <Link href={"/"+d.SeName}>{d.Name}</Link></li>
+                                        <Link href={d.Url?d.Url:"/"+d.SeName} target={d.OpenInNewPage?"_blank":'_self'}>{d.Name}</Link></li>
                                 })
                             }
                         </ul>

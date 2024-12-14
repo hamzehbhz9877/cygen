@@ -2,18 +2,18 @@
 .product {
   @apply inline-block transition-shadow duration-[0.15s] ease-[ease] bg-white text-center relative m-0 pb-0 after:w-screen after:h-px
   after:top-[-1.5px] after:inset-x-0 before:w-px before:h-[-webkit-fill-available] before:left-[-1.5px]
-  before:top-0 hover:shadow-[0_2px_17px_0_rgba(0,0,0,0.09)] hover:z-[11];
+  before:top-0 sm:hover:shadow-[0_2px_17px_0_rgba(0,0,0,0.09)] hover:z-[11];
   @apply h-auto relative;
 
   &::before,
   &::after {
     @apply content-[''] absolute bg-[#e4e4e4] bg-opacity-70 z-[1];
-    @apply block;
+    @apply hidden sm:block ;
   }
 
   &__label {
-    @apply absolute rounded-full top-[10px] lg:top-[35px] left-[10px]
-    bg-green-100 text-green-800 text-xs font-medium  px-2.5 py-0.5;
+    @apply absolute rounded-[4px] top-[60px] lg:top-[60px] left-[10px] hidden
+    bg-dynamic-color-from-rgba text-dynamic-color-from text-xs font-medium  px-2.5 py-0.5;
   }
 
   &:hover .hover-image img {
@@ -40,7 +40,7 @@
   }
 
   .archive-swatches {
-    @apply absolute flex flex-col justify-center items-center right-2.5 top-[50px];
+    @apply absolute flex flex-col z-[10] justify-center items-center right-2.5 top-[60px];
   }
 
   .onsale {
@@ -55,18 +55,6 @@
     &:hover .tooltiptext {
       @apply visible;
     }
-
-    &:nth-of-type(1) {
-      @apply bg-[#f7a468];
-    }
-
-    &:nth-of-type(2) {
-      @apply bg-[#5947da];
-    }
-
-    &:nth-of-type(3) {
-      @apply bg-[#1d9a34];
-    }
   }
 
   .swatches-divider {
@@ -78,7 +66,7 @@
     @apply invisible bg-[#878d9d] w-auto text-center z-[1] top-[-5px] absolute text-white text-xs
     leading-[1.692] whitespace-nowrap font-medium px-2 py-0.5 rounded-[3px] right-[200%];
 
-    &::after{
+    &::after {
       @apply content-[""] absolute right-[-7px] -mt-2.5 border-l-[#878d9d] border-[5px] border-solid border-transparent border-t-[10px]
       border-r-[0] border-b-[12px] border-l-[10px] left-full top-2/4;
     }
@@ -91,43 +79,48 @@
   }
 
   .thumb-pro {
-    @apply w-[85%] relative max-w-[82%] overflow-hidden text-center mx-auto my-2.5;
+    //w-[85%] max-w-[82%]
+    @apply relative  overflow-hidden text-center mx-auto my-2.5;
 
 
     img {
-      @apply max-w-[220px] transition-all duration-[0.2s] ease-[ease] block w-full h-auto object-contain mx-auto my-0;
+      //max-w-[220px]
+      @apply transition-all duration-[0.2s] ease-[ease] block w-full object-contain mx-auto my-0;
     }
 
     .second-img {
-      @apply opacity-0 invisible absolute border-0 top-0 inset-x-0;
+      @apply opacity-0 invisible absolute border-0 bottom-0;
     }
   }
 
   #sales_timer_display span .dot {
-    @apply text-base font-bold mx-1.5 my-0;
+    //@apply text-base font-bold mx-1.5 my-0;
   }
 
   .index-prices-pro {
-    @apply h-[50px] float-left inline-block;
+    //h-[50px]
+    @apply float-left inline-block;
     del {
       @apply flex items-center no-underline;
       @apply text-dynamic-color-to;
       justify-content: left;
 
       .index-discount-pro {
-        @apply float-left text-[13px] text-white font-bold leading-[18px] inline-flex order-2 mr-[5px] px-[7px] py-0.5 rounded-[9px];
+        @apply float-left text-[12px] md:text-[14px] text-white leading-[18px]
+        inline-flex order-2 mr-[5px]
+        px-[7px] py-0.5 rounded-[9px];
         @apply bg-gradient-to-r from-dynamic-color-from to-dynamic-color-to;
       }
 
       span.woocommerce-Price-amount {
-        @apply font-normal text-xs line-through inline-block;
+        @apply font-normal text-[13px] md:text-[15px] line-through inline-block;
       }
     }
 
     ins {
       @apply no-underline block text-left mt-[5px];
       span {
-        @apply font-bold text-sm inline-block;
+        @apply font-bold text-[16px] lg:text-lg inline-block;
         bdi {
           @apply flex items-center justify-end;
           .woocommerce-Price-currencySymbol {
@@ -139,8 +132,57 @@
   }
 
   .index-title-pro h2 {
-    @apply text-[#212121] text-[13px] leading-[22px] overflow-hidden text-ellipsis h-[45px] font-semibold text-right mt-[15px] mb-2.5 mx-0;
+    @apply text-[#212121] text-[13px] md:text-[15px] leading-[22px] md:leading-[24px] overflow-hidden text-ellipsis h-[45px]
+    text-right mt-[15px] mb-2.5 mx-0;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+  }
+
+
+  &.row {
+
+
+    .info-product {
+      @apply px-0;
+    }
+
+    & + & {
+      @apply border-t border-solid border-[#e4e4e4] border-opacity-50;
+    }
+
+    &::before, &::after {
+      display: none;
+    }
+
+    &:hover {
+      box-shadow: none;
+    }
+
+    .thumb-pro {
+      @apply w-[118px] h-[118px] mt-0;
+    }
+
+    .archive-swatches {
+      position: unset;
+      flex-direction: row;
+      gap: 7px;
+
+      .archive-swatch {
+        width: 8px;
+        height: 8px;
+      }
+    }
+
+    .product__label {
+      position: unset;
+      width: 30px;
+    }
+
+    .price_onsale_ar > div {
+      @apply pb-0;
+      //.w-full{
+      //  @apply w-[60px];
+      //}
+    }
   }
 }

@@ -10,7 +10,6 @@ const useTimer = ({sec}:Props) => {
     const [seconds, setSeconds] = useState(0);
 
     useEffect(()=>{
-        console.log("sec",sec)
         const minutes = Math.floor(sec / 60);
         const seconds = sec - minutes * 60;
 

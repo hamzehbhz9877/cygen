@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 // Import Swiper React components
 import {Swiper, SwiperSlide} from 'swiper/react';
 
@@ -10,12 +10,10 @@ import 'swiper/css/thumbs';
 
 import './styles.scss';
 
-// import required modules
-import {FreeMode, Navigation, Thumbs} from 'swiper/modules';
+import {FreeMode,Controller, Navigation, Thumbs} from 'swiper/modules';
 import Image from "next/image";
 import CustomButtons from "@/components/libarary/productDetails/swiper/customButtons";
 import UseNextPrevSwiper from "@/hooks/swipper/useNextPrev";
-import {FaRegImages} from "react-icons/fa";
 
 export default function SwiperFiles({data,index,setIndex}: any) {
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
@@ -35,16 +33,16 @@ export default function SwiperFiles({data,index,setIndex}: any) {
         }
     }, [index]);
 
+
     return (
         <>
             <Swiper
                 onSwiper={setSwiper}
                 spaceBetween={10}
                 thumbs={{swiper: thumbsSwiper}}
-                modules={[FreeMode, Navigation, Thumbs]}
+                modules={[Navigation, Thumbs]}
                 className="mySwiper2"
                 onSlideChange={e=>setIndex(e.activeIndex)}
-                watchSlidesProgress={true}
                 onAfterInit={afterInit}
                 updateOnWindowResize
                 initialSlide={index}
@@ -60,29 +58,35 @@ export default function SwiperFiles({data,index,setIndex}: any) {
                         />
                     </SwiperSlide>
                 })}
-                <div className="absolute inset-0 ">
-                    <CustomButtons
-                        nextRef={nextRef}
-                        prevRef={prevRef}
-                    />
-                </div>
-            </Swiper>
 
-            <div
-                className={"relative w-full py-4 z-2 flex justify-start items-center  duration-300 opacity-100"}>
+                {data.VideoModels.map((video, index) => {
+                    return <SwiperSlide key={index} className={"video"}>
+                        <iframe src={video.VideoUrl} width="auto" height="545"
+                                className={"w-full h-[272px] md:h-[545px]"}></iframe>
+
+                    </SwiperSlide>
+                })}
+                    <div className="absolute inset-0 ">
+                        <CustomButtons
+                            nextRef={nextRef}
+                            prevRef={prevRef}
+                        />
+                    </div>
+                </Swiper>
+
+                    <div
+                        className={"relative w-full py-4 z-2 flex justify-start items-center  duration-300 opacity-100 max-w-[800px] mx-auto"}>
                 <Swiper
                     onSwiper={setThumbsSwiper}
                     spaceBetween={2}
                     slidesPerView={"auto"}
                     initialSlide={index}
-                    watchSlidesProgress={true}
-                    freeMode={true}
-                    modules={[FreeMode, Navigation, Thumbs]}
+                    modules={[Navigation, Thumbs]}
                     className="mySwiper"
                 >
                             {data.PictureModels.map((pic, index) => {
                                 return <SwiperSlide key={index}>
-                                    <Image loading="lazy" width="70" height="70"
+                                    <Image loading="lazy" width="125" height="70"
                                            className="attachment-thumbnail size-thumbnail"
                                            alt={pic.AlternateText}
                                            title={pic.Title}
@@ -90,6 +94,12 @@ export default function SwiperFiles({data,index,setIndex}: any) {
                                     />
                                 </SwiperSlide>
                             })}
+                    {data.VideoModels.map((video, index) => {
+                        return <SwiperSlide key={index} className="relative">
+                            <div className="absolute z-[30] inset-0 bg-transparent"></div>
+                            <iframe  src={video.VideoUrl} width="125" height="70"/>
+                        </SwiperSlide>
+                    })}
                 </Swiper>
             </div>
 

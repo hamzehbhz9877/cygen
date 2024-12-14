@@ -8,19 +8,18 @@
   visibility: hidden;
   position: absolute;
   cursor: crosshair;
-  width: 250px ;
-  height: 250px ;
-  border-radius: 6px ;
-  background: rgba(239, 86, 97, 0.10) ;
-  border: 1px solid rgba(239, 86, 97, 0.19) ;
+  width: 250px;
+  height: 250px;
+  border-radius: 6px;
+  @apply bg-dynamic-color-from-rgba-20 border border-dynamic-color-from-rgba-30;
 }
 
 .img-zoom-result {
   visibility: hidden;
   position: absolute;
-  @apply hidden md:block;
-  top: 20px;
-  right: 30px;
+  @apply hidden lg:block;
+  top: 0;
+  right: 0;
   border: 1px solid #d4d4d4;
   background-repeat: no-repeat;
   width: 600px;

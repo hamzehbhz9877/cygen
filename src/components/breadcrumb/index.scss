@@ -1,7 +1,7 @@
 .breadcrumb {
-  @apply inline-block text-[#81858b] text-[12px] leading-[2] font-semibold mb-[15px];
+  @apply inline-block text-[#81858b] text-[12px] leading-normal  md:leading-[2]  mb-[15px];
   a {
-    @apply text-[11px] text-[#898d92] my-[4px] font-semibold;
+    @apply text-[11px] md:text-[13px] text-[#898d92] my-[4px];
     &:first-child {
       @apply mr-0;
     }

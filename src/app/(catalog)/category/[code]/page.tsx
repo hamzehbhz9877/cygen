@@ -21,7 +21,7 @@ export default async function Home({searchParams,params}:any) {
     const category:catalog = await ProductsListByCategory({categorySeName:decodeURIComponent(params.code),...searchParams})
 
     return (
-        <div className="main-page container">
+        <div className="main-page">
                 <Catalog searchParams={searchParams} category={category}/>
             <script
                 type="application/ld+json"

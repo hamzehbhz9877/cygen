@@ -1,0 +1,16 @@
+.slider-mobile-top{
+  .head-archie-pro {
+    @apply bg-dynamic-color-from-rgba rounded-[6px] py-[15px] px-3;
+  }
+}
+.product-details-slider {
+
+  .swiper-pagination{
+    bottom:-15px !important;
+  }
+  .swiper-pagination-bullet-active {
+  width:16px;
+    display: inline-block;
+    border-radius: 20px;
+  }
+}

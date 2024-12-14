@@ -21,8 +21,16 @@ const config = {
         'dynamic-color-from':'#4859f9',
         'dynamic-color-to':'#4859f9',
         'dynamic-color-from-rgba':'#4859f910',
+        'dynamic-color-from-rgba-20':'#4859f920',
+        'dynamic-color-from-rgba-30':'#4859f930',
         'dynamic-color-to-rgba':'#4859f901'
       },
+      screens: {
+        'tablet': '640px',
+        'laptop': '1024px',
+        'desktop': '1200px',
+        'xdesktop': '1400px',
+      }
     },
     container: {
       center: true,
@@ -38,7 +46,7 @@ const config = {
         md: '1350px',
         lg: '1400px',
         xl: '1600px',
-        '2xl': '1300px',
+        '2xl': '1300px'
       }
     },
   },

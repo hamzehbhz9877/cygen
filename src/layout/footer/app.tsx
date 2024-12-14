@@ -9,7 +9,7 @@ const App = () => {
                     <div className="dn-link">
                         <Image width={200} height={200} src="https://pars.parskalas.com/wp-content/uploads/2022/10/icon-app.png"
                              alt="Download app"/>
-                        <span className="name-app">دانلود اپلیکیشن پارس کالا</span>
+                        <span className="name-app">دانلود اپلیکیشن سیژن</span>
                     </div>
                 </a>
                 <div className="imgs-dn">

@@ -1,7 +1,5 @@
 import axios from 'axios';
 import Cookie from "universal-cookie";
-import {isTokenExpired} from "@/helpers/client";
-import useAuth from "@/context/authentication/useAuth";
 
 export const instant = axios.create({
     baseURL: "https://api.cygenco.com/api",
@@ -15,10 +13,23 @@ export const CancelToken = () => {
     return controller;
 };
 
+export function parseJwt(token) {
+    if (!token) { return; }
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace('-', '+').replace('_', '/');
+    return JSON.parse(window.atob(base64));
+}
+
+export const isTokenExpired = (token) => {
+    if (!token) return true;
+    const decodedToken = parseJwt(token);
+    const currentTime = Date.now() / 1000;
+    return decodedToken.exp < currentTime;
+};
+
 instant.interceptors.request.use(async (config) => {
 
         const cookie = new Cookie()
-
 
         const guestToken = cookie.get("guest")?.AccessToken
         const userToken = cookie.get("user")?.AccessToken
@@ -27,18 +38,21 @@ instant.interceptors.request.use(async (config) => {
             Accept: 'application/json',
         };
 
-        // if (userToken) {
-        //     config.headers.Authorization = `Bearer ${userToken}`;
-        // } else {
-        //     if (isTokenExpired(guestToken)) {
-        //         const data = await instant.post('OtpAuthentication/GetGuestCustomer')
-        //         cookie.remove('guest');
-        //         cookie.set('guest', data.data)
-        //         config.headers.Authorization = `Bearer ${data.data.AccessToken}`;
-        //     } else {
-        //         config.headers.Authorization = `Bearer ${guestToken}`;
-        //     }
-        // }
+        if (userToken) {
+            config.headers.Authorization = `Bearer ${userToken}`;
+        } else {
+            if (!guestToken ||(guestToken&& isTokenExpired(guestToken))) {
+                const res = await fetch('https://api.cygenco.com/api/OtpAuthentication/GetGuestCustomer',{method:'post'})
+                const data=await res.json()
+                if(cookie.get('guest'))
+                cookie.remove('guest');
+                cookie.set('guest', data)
+                config.headers.Authorization = `Bearer ${data.AccessToken}`;
+            }
+            else {
+                config.headers.Authorization = `Bearer ${guestToken}`;
+            }
+        }
         return config;
     },
     function (error) {
@@ -50,6 +64,7 @@ instant.interceptors.response.use((res) => {
         return res;
     },
     async (error) => {
+
         // const originalConfig = error.config;
 
         // if (error.response?.status !== 401 && error.response?.status >= 400 && error.response.data.message) {

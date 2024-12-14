@@ -20,7 +20,7 @@ const Category = ({PictureModel,Name,SeName}:any) => {
                        height="150" title={PictureModel.Title}
                        alt={PictureModel.AlternateText} className="post-thumb"/>
                 <h2 className="category__name">{Name}</h2>
-                <span className="category__count">12</span>
+                {/*<span className="category__count">12</span>*/}
             </Link>
         </div>
     );

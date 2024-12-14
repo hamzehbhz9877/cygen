@@ -2,12 +2,13 @@ import React from 'react';
 
 
 type Props = {
-    color: string
+    color: any
 }
 const Color = ({color}: Props) => {
     return (
-        <div className="archive-swatch">
-            <span className="tooltiptext">{color}</span></div>
+        <div className="archive-swatch" style={{backgroundColor: color.ColorSquaresRgb}}>
+            <span className="tooltiptext">{color.ValueRaw}</span>
+        </div>
     );
 };
 

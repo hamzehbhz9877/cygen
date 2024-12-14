@@ -12,19 +12,26 @@ import {IoClose} from "react-icons/io5";
 import useQueryParams from "@/hooks/useQueryParams";
 import {formatter} from "@/helpers/client";
 import {useSearchParams} from "next/navigation";
+import {useSuspenseQuery} from "@tanstack/react-query";
+import {GetSiteSettingsQuery} from "@/services/Common";
 
-const ActiveFilters = ({activeFilters}: any) => {
+const ActiveFilters = ({activeFilters, AvailableManufacturers}: any) => {
 
 
     const {getAllSearchParams, removeQueryParam, addQueryParam} = useQueryParams()
 
-    const searchParams=useSearchParams()
+    const {data} = useSuspenseQuery(GetSiteSettingsQuery)
 
-    const s1=searchParams.get("PageNumber")?1:0
-    const s2=searchParams.get("q")?1:0
+
+    const searchParams = useSearchParams()
+
+    const s1 = searchParams.get("PageNumber") ? 1 : 0
+    const s2 = searchParams.get("q") ? 1 : 0
+    const s3 = searchParams.get("order") ? 1 : 0
+    const s4=searchParams.get("categoryId")?1:0
 
     return (
-        searchParams.size-s1-s2 > 0 ?
+        searchParams.size - s1 - s2 - s3 -s4 > 0 ?
             <div className="filter filter-active">
                 <Collapse
                     isOpen
@@ -38,30 +45,30 @@ const ActiveFilters = ({activeFilters}: any) => {
                         <div className="filter__content">
                             <ul className="filter-active__list">
                                 {Object.entries(getAllSearchParams()).map((item, index) => {
-                                    if (item[0] === 'order' && activeFilters?.AllowProductSorting) {
-                                        return activeFilters?.AvailableSortOptions.map((data, index) => {
-                                            if (data.Selected)
-                                                return (
-                                                    <li key={index}>
-                                                        <Link href={"/"}>
-                                                            {data.Text}
-                                                        </Link>
-                                                        <IoClose className="cursor-pointer" size={13} color={"#bdbdbd"}
-                                                                 onClick={() => removeQueryParam(item[0])}/>
-                                                    </li>
-                                                )
-                                        })
-                                    }
+                                    // if (item[0] === 'order' && activeFilters?.AllowProductSorting) {
+                                    //     return activeFilters?.AvailableSortOptions.map((data, index) => {
+                                    //         if (data.Selected)
+                                    //             return (
+                                    //                 <li key={index}>
+                                    //                     <Link href={"/"}>
+                                    //                         {data.Text}
+                                    //                     </Link>
+                                    //                     <IoClose className="cursor-pointer" size={13} color={"#bdbdbd"}
+                                    //                              onClick={() => removeQueryParam(item[0])}/>
+                                    //                 </li>
+                                    //             )
+                                    //     })
+                                    // }
                                     if (item[0] === 'price' && activeFilters?.PriceRangeFilter.Enabled) {
                                         return (
                                             <li key={index}>
                                                 <Link href={"/"}>
-                                                    {formatter.format(activeFilters?.PriceRangeFilter.SelectedPriceRange.From)
-                                                        + "-" +
-                                                        formatter.format(activeFilters?.PriceRangeFilter.SelectedPriceRange.To)
-                                                        +
-                                                        " تومان "
-                                                    }
+                                                    قیمت: {" "}{formatter.format(activeFilters?.PriceRangeFilter.SelectedPriceRange.From)
+                                                    + "-" +
+                                                    formatter.format(activeFilters?.PriceRangeFilter.SelectedPriceRange.To)
+                                                    +
+                                                    " تومان "
+                                                }
                                                 </Link>
                                                 <IoClose className="cursor-pointer" size={13} color={"#bdbdbd"}
                                                          onClick={() => removeQueryParam(item[0])}/>
@@ -69,14 +76,14 @@ const ActiveFilters = ({activeFilters}: any) => {
                                         )
                                     }
                                     if (item[0] === 'specifications' && activeFilters?.SpecificationFilter?.Enabled) {
-                                        return activeFilters.SpecificationFilter.Attributes.map((data) => {
-                                            return data.Values.map((spec,index) => {
+                                        return activeFilters.SpecificationFilter.Attributes.map((data, Index) => {
+                                            return data.Values.map((spec, index) => {
 
                                                 if (spec.Selected)
                                                     return (
                                                         <li key={index}>
                                                             <Link href={"/"}>
-                                                                {spec.Name}
+                                                                {activeFilters.SpecificationFilter.Attributes[Index].Name}: {spec.Name}
                                                             </Link>
                                                             <IoClose className="cursor-pointer" size={13}
                                                                      color={"#bdbdbd"}
@@ -92,11 +99,40 @@ const ActiveFilters = ({activeFilters}: any) => {
                                                 return (
                                                     <li key={index}>
                                                         <Link href={"/"}>
-                                                            {data.Text}
+                                                            برند: {data.Text}
                                                         </Link>
                                                         <IoClose className="cursor-pointer" size={13}
                                                                  color={"#bdbdbd"}
                                                                  onClick={() => addQueryParam(item[0], data.Value, 'multiple')}/>
+                                                    </li>
+                                                )
+                                        })
+                                    }
+
+                                    // if (item[0] === 'categoryId') {
+                                    //     return (
+                                    //         <li key={index}>
+                                    //             <Link href={"/"}>
+                                    //                 دسته بندی:
+                                    //             </Link>
+                                    //             <IoClose className="cursor-pointer" size={13}
+                                    //                      color={"#bdbdbd"}
+                                    //                      onClick={() => removeQueryParam(item[0])}/>
+                                    //         </li>
+                                    //     )
+                                    // }
+
+                                    if (item[0] === 'manufacturerId') {
+                                        return AvailableManufacturers?.map((data, index) => {
+                                            if (data.Selected)
+                                                return (
+                                                    <li key={index}>
+                                                        <Link href={"/"}>
+                                                            برند:{data.Text}
+                                                        </Link>
+                                                        <IoClose className="cursor-pointer" size={13}
+                                                                 color={"#bdbdbd"}
+                                                                 onClick={() => removeQueryParam(item[0])}/>
                                                     </li>
                                                 )
                                         })

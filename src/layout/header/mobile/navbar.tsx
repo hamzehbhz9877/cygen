@@ -48,7 +48,7 @@ const {user}=useAuth()
 
                 <div className="mobile-bottom-navitem ">
                     <Link href="#" onClick={openMenu}>
-                        <TbCategoryFilled size={23} color={"#08c96f"}/>
+                        <TbCategoryFilled size={28} color={"#08c96f"}/>
                         <span>دسته بندیها</span>
                     </Link>
                 </div>
@@ -56,7 +56,7 @@ const {user}=useAuth()
 
                 <div className="mobile-bottom-navitem cart1">
                     <Link href="https://mobile.parskalas.com/cart">
-                        <CiShoppingCart  size={23} color={"#333"}/>
+                        <CiShoppingCart  size={28} color={"#333"}/>
                         <span>سبد خرید</span>
                     </Link>
                 </div>
@@ -64,7 +64,7 @@ const {user}=useAuth()
 
                 <div className="mobile-bottom-navitem account1 " onClick={handleLogin}>
                     <Link href="#" className="relative"  scroll={false}>
-                        <AiOutlineUser size={23} color={"#333"}/>
+                        <AiOutlineUser size={28} color={"#333"}/>
                         {user?<IoCheckmarkCircleSharp className="check" size={11}/>
                         :""}
                         <span>حساب کاربری</span>

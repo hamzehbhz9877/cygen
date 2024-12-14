@@ -1,7 +1,6 @@
 'use client'
 
 import React, {useEffect} from "react";
-import {jwtDecode} from "jwt-decode";
 
 const formatter = new Intl.NumberFormat("fa-IR", {
     useGrouping: true,
@@ -10,19 +9,51 @@ const formatter = new Intl.NumberFormat("fa-IR", {
 });
 const scrolltoHash = function (element_id: string) {
     const element = document.getElementById(element_id)
-    document.documentElement?.scrollTo({top:element.offsetTop});
+    document.documentElement?.scrollTo({top:element?.offsetTop??0});
 }
-const isTokenExpired = (token) => {
-    if (!token) return true;
-    try {
-        const decodedToken = jwtDecode(token);
-        const currentTime = Date.now() / 1000;
-        return decodedToken.exp < currentTime;
-    } catch (error) {
-        console.error('Error decoding token:', error);
-        return true;
-    }
-};
+
+
+const diffDays=(data)=>{
+    const date1:any = new Date(data);
+    const date2:any = new Date();
+
+    const dateFormatter:any = new Intl.DateTimeFormat('fa-IR');
+
+    const Difference_In_Days:any =
+        Math.floor((date2 - date1) / (1000 * 60 * 60 * 24));
+
+//     console.log(`Total number of days between dates:
+// ${dateFmatter.format(date1)} and ${dateFormatter.format(date2)} is:
+// ${Difference_In_Days} days`);
+
+    return Difference_In_Days
+}
+function copyToClipboard(copyMe: any) {
+    // @ts-ignore
+    navigator?.clipboard.writeText(copyMe);
+}
+const findKey = (key,data:any) => {
+    const res = data.find(d => d.key === key)?.data
+    if (res === '')
+        return []
+    else
+        return res
+}
+const priceDiscount=(product)=>{
+    const discount=product.ProductPrice.PriceWithDiscountValue
+    const price=product.ProductPrice.PriceValue
+    const oldPrice=product.ProductPrice.OldPriceValue
+    const discountRes= ( discount && price)? (price-discount)/price :(oldPrice&& price)? (oldPrice-price) / oldPrice:null;
+    return Math.round(discountRes * 100)
+}
+
+function colorIsDarkSimple(bgColor) {
+    const color = (bgColor.charAt(0) === '#') ? bgColor.substring(1, 7) : bgColor;
+    const r = parseInt(color.substring(0, 2), 16); // hexToR
+    const g = parseInt(color.substring(2, 4), 16); // hexToG
+    const b = parseInt(color.substring(4, 6), 16); // hexToB
+    return ((r * 0.299) + (g * 0.587) + (b * 0.114)) <= 186;
+}
 
 
 function toEnglishDigits(num: any) {
@@ -52,16 +83,42 @@ function getErrorFromServer(error:any, name:any) {
     })
     return valueRes
 }
-const UseDebouncedEffect = (
+const useDebouncedEffect = (
     onChange,
     delay,
     value
 ) => {
     useEffect(() => {
-        const handler = setTimeout(() => onChange(value), delay);
+        const handler = setTimeout(() => onChange(), delay);
         return () => clearTimeout(handler);
     }, [value]);
 };
 
 
-export {formatter,scrolltoHash,UseDebouncedEffect, toEnglishDigits,getErrorFromServer,isTokenExpired}
+
+function round(n,v) {
+        return v.toFixed(n).replace(/0+$/, '0').replace(/\.0+$/, '');
+}
+
+const averReview = (product) => {
+    const sum = product.ProductReviewOverview?.RatingSum
+    const total = product.ProductReviewOverview?.TotalReviews
+    return isNaN(+sum / +total) ? 0 : round(1,+sum / +total);
+}
+
+
+
+const computeRate = (cot,comments) => {
+    const count = comments?.reduce((acc, cur) => {
+        if (cot === cur.Rating)
+            return acc + 1;
+        else
+            return acc
+    }, 0)
+    return count * 100;
+}
+
+export {formatter,findKey,diffDays,
+    averReview,
+    computeRate
+    ,copyToClipboard,priceDiscount,scrolltoHash,useDebouncedEffect, toEnglishDigits,getErrorFromServer,colorIsDarkSimple}

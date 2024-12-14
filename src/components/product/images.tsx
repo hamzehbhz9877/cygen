@@ -8,12 +8,14 @@ type Props = {
         FullSizeImageUrl: string,
             Title: string,
             AlternateText: string
-        }[]
+        }[],
+    offer:any
+
     }
-    const Images = ({data}: Props) => {
+    const Images = ({data,offer}: Props) => {
         return (
             <div
-                className={`thumb-pro ${data[1]?'hover-image':""}  duration-500  group-hover:-mt-[22px] group-hover:-rotate-1`}>
+                className={`thumb-pro ${data[1]?'hover-image':""} duration-500  group-hover:-mt-[22px] group-hover:-rotate-1`}>
                 <Image fetchPriority="high" width="300" height="300"
                        src={data[0].ImageUrl}
                        title={data[0].Title}

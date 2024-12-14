@@ -10,6 +10,8 @@ import {SubscribeToNewsletter} from "@/services/Newsletter";
 import {LoginRegisterVerification} from "@/services/OtpAuthentication";
 import {showToast} from "@/components/react-toastify/react-toastify";
 import {GetSiteSettingsQuery} from "@/services/Common";
+import Link from "next/link";
+import LicenseLogo from "@/layout/footer/licenseLogo";
 
 const MailBox = () => {
     const {data: settings} = useSuspenseQuery(GetSiteSettingsQuery)
@@ -29,33 +31,21 @@ const MailBox = () => {
         },
     });
 
-    const {data} = useSuspenseQuery(GetSocialMediasQuery)
 
     const {mutate} = useMutation<any, any, any, any>({
         mutationFn: SubscribeToNewsletter, onSuccess: () => {
             showToast("success", 'عملیات با موفقیت انجام شد')
             formik.values.email=""
+        },
+        onError:(err)=>{
+            if (err.status===409)
+                showToast("error", 'ایمیل تکراری است')
         }
     })
 
     return (
         <div className="foot-box mailbox">
-            <span className="foot-title">رسانه های خبری ما</span>
-            <div className="social-foot">
-         <span className="icon-social">
-             {
-                 data.map((link) => {
-                     return <a key={link.Id}
-                               className={"cursor-pointer"}
-                               target="_blank" rel="nofollow">
-                         <Image src={link.Picture.ImageUrl} alt={link.Picture.AlternateText} width={30} height={30}/>
-                     </a>
-                 })
-             }
-         </span>
 
-
-            </div>
 
             {settings.NewsLetterBox.HideNewsletter ? "" : <>
                 <span className="foot-title mail">در خبرنامه پر تخفیف ما عضو شوید</span>
@@ -70,6 +60,7 @@ const MailBox = () => {
                     <button type="submit">ثبت</button>
                 </form>
             </>}
+
 
         </div>
     );

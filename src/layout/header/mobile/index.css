@@ -108,7 +108,7 @@ header.modern .modal-menu {
 }
 
 .mobile-navbar-menu {
-  @apply block md:hidden;
+  @apply block lg:hidden;
   height: 60px;
   width: auto;
   transition: all 0.4s ease-out;

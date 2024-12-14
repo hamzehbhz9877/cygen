@@ -1,7 +1,42 @@
-.catalog > div.banner{
+.catalog > div.banner {
   @apply mb-[20px];
 }
-.all-products >div{
-  @apply overflow-hidden border border-solid border-[#e4e4e4] border-opacity-50
-  grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3  xl:grid-cols-5 gap-[10px] lg:gap-0;
+
+.all-products {
+  margin-bottom: 50px;
+  > div {
+    @apply overflow-hidden border-y  sm:border sm:border-solid border-[#e4e4e4] border-opacity-50
+    grid grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-2 desktop:grid-cols-3 xdesktop:grid-cols-4 2xl:grid-cols-5 gap-[10px] lg:gap-0;
+
+  }
+}
+
+.faq-catalog{
+  .accordion_faq_questions{
+    @apply shadow-sm border rounded-[12px] p-[35px];
+    .ask_accordion h2{
+      @apply pl-2;
+    }
+    .faq-questions-list{
+      @apply items-baseline grid grid-cols-1 md:grid-cols-2 gap-[10px];
+    }
+  }
+}
+
+
+
+.woocommerce-info {
+  margin: 9px auto 10px !important;
+  border-radius: 11px !important;
+  direction: rtl !important;
+  color: #4d4d4d !important;
+  padding: 15px 10px !important;
+  font-size: 15px !important;
+  background-color: #ffda100a !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start;
+  line-height: 20px !important;
+  width: 100% !important;
+  border: 1px solid #d5b20275 !important;
 }

@@ -278,7 +278,7 @@ body .enmads .codes {
 
 .footer-menu-mobile {
   @apply px-[15px] py-[9px] rounded-[14px];
-  @apply block md:hidden;
+  @apply block lg:hidden;
   background: #f4f4f4;
 }
 
