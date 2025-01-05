@@ -40,11 +40,10 @@ const findKey = (key,data:any) => {
         return res
 }
 const priceDiscount=(product)=>{
-
     const discount=product.ProductPrice.PriceWithDiscountValue
     const price=product.ProductPrice.PriceValue
     const oldPrice=product.ProductPrice.OldPriceValue
-    const discountRes= ( discount && price)? (price-discount)/price :(oldPrice&& price)? (price-oldPrice) / oldPrice:null;
+    const discountRes= ( discount && price)? (price-discount)/price :(oldPrice&& price)? (oldPrice-price) / oldPrice:null;
     return Math.round(discountRes * 100)
 }
 

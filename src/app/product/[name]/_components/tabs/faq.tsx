@@ -6,6 +6,7 @@ import FaqAnswers from "@/app/faq/_components/faqQuestions";
 import {useQuery} from "@tanstack/react-query";
 import {FagQuery} from "@/services/Faq";
 
+
 const Faq = ({id}: any) => {
 
     const {data: FaqItems} = useQuery({

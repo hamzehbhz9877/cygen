@@ -1,15 +1,14 @@
 import {NextResponse} from "next/server";
+import {fetchAPi} from "@/hooks/fech";
 
 export async function middleware(req) {
 
-    // const pluginsres = await fetch('https://api.cygenco.com/api/Plugin/GetAllActivePlugins')
 
-    const res = await fetch('https://api.cygenco.com/api/AdvanceRedirect/RedirectRecords');
-    const redirects = await res.json();
+    const res = await fetchAPi('https://api.cygenco.com/api/AdvanceRedirect/RedirectRecords');
 
-    const redirect = redirects.find((redirect) => decodeURIComponent(req.nextUrl.pathname) === redirect.OldUrl);
 
-    // const token=JSON.parse( req.cookies.get('user').value).AccessToken
+    const redirect = res.find((redirect) => decodeURIComponent(req.nextUrl.pathname) === redirect.OldUrl);
+
 
     if (redirect) {
         const statusCode = redirect.RedirectType === 301 ? 307 : 308

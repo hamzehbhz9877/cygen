@@ -33,7 +33,7 @@ const SpecificationModal = ({closeModal,product}:any) => {
 
                                             {d.Attributes.map(attr => {
                                                 return (
-                                                    <tr  key={attr.Id}>
+                                                    <tr key={attr.Id}>
                                                         <td className="attribute_name">{attr.Name}</td>
 
                                                         <td className="attribute_value "><p>
@@ -55,6 +55,38 @@ const SpecificationModal = ({closeModal,product}:any) => {
                                     </td>
                                 </tr>
                         })}
+                        <tr>
+                            <th className="attribute_group_name"><RiArrowLeftSFill size={38}
+                                                                                   className="text-dynamic-color-from me-[4px]"/>
+                                سایر مشخصات
+                            </th>
+                            <td>
+                                <table className="attribute_name_values">
+                                    <tbody>
+
+                                    {product?.ProductSpecificationModel.Groups[0].Attributes.map(attr => {
+                                        return (
+                                            <tr key={attr.Id}>
+                                                <td className="attribute_name">{attr.Name}</td>
+
+                                                <td className="attribute_value "><p>
+                                                    {attr.Values.map((value) => {
+                                                        return (
+                                                            <div key={value.AttributeTypeId}>
+                                                                {value.ValueRaw}
+                                                                <br/>
+                                                            </div>
+                                                        )
+
+                                                    })}
+                                                </p></td>
+                                            </tr>
+                                        )
+                                    })}
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
                         </tbody>
                     </table>
                 </section>

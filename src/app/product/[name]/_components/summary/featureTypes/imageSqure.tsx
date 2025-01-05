@@ -1,9 +1,6 @@
 'use client'
 
 import React, {useEffect, useState} from 'react';
-import {productStore} from "@/state/product/product";
-import {TiTick} from "react-icons/ti";
-import {colorIsDarkSimple} from "@/helpers/client";
 import Image from "next/image";
 
 const ImageSquare = ({data}: any) => {
@@ -20,7 +17,7 @@ const ImageSquare = ({data}: any) => {
 
     return (
         <>
-            <label className={"mb-[5px] inline-block"}>{data.TextPrompt?data.TextPrompt: data.Name}</label>
+            <label className={"mb-[5px] inline-block"}>{data.TextPrompt ? data.TextPrompt : data.Name}</label>
             <div className="thwvsf_fields">
                 <ul className="thwvsf-wrapper-ul imageSquare">
                     {

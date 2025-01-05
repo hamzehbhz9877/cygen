@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react';
-import Top from "@/layout/header/top/index";
+import Top from "@/layout/header/top";
 import Bottom from "@/layout/header/bottom";
 
 // css

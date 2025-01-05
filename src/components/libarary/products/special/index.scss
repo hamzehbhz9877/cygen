@@ -1,19 +1,36 @@
-.product-slider {
-  @apply my-[30px];
+.special-slider {
+  @apply my-[30px] pt-[9%] pb-[40px]  relative;
+  background-color: transparent;
+  background-image: linear-gradient(0deg, #272727 99%, #FFFFFF 100%);
+
+
+  &::before{
+    content:"";
+    background-image: url(https://dark.parskalas.com/wp-content/uploads/2024/12/wave-header-min-1-1.svg);
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: max(100%, 100%);
+    width: max(100%, 100%);
+    position: absolute;
+  }
 
   .swiper-slide{
     height: auto;
   }
 
   &__title {
-    background: #F2F2F2;
-    padding: 8px 9px;
-    border-radius: 16px;
-    margin-bottom: 20px;
+    @apply text-center mx-auto;
+    font-size: 24px;
+    font-weight: bold;
+    color: #FFFFFF;
   }
 
   .swiper-button{
-    position: relative;
+    position: unset;
     padding: 0;
     transform: translateY(0);
   }
@@ -21,28 +38,29 @@
   .slider__buttons {
     button {
       @apply flex justify-center items-center;
-      width: 41px;
-      height: 41px;
+      width: 45px;
+      height: 45px;
       border-radius: 13px;
-      @apply bg-gradient-to-r from-dynamic-color-from to-dynamic-color-to;
+      border: 1px solid #dddde1 !important;
+      box-shadow: -1.5px 0 4px 0 rgb(0 0 0 / 15%);
+      transition: 0.2s all;
+      background: #fff;
+      &.right{
+        right: 10px !important;
+      }
+      &.left{
+        left:10px !important;
+      }
     }
-  }
 
-  .swiper-button-disabled{
-    @apply opacity-40;
   }
 
   .product{
-    border-style: solid;
-    border-width: 1px 1px 1px 1px;
-    border-color: rgba(0, 0, 0, 0.06);
-    padding: 23px 23px 23px 23px !important;
-    border-radius: 26px !important;
-    box-shadow: 1px 1px 6px 1px #F9F9F9;
-    padding: 5px 10px !important;
-
     height: 100%;
     width: 100%;
+    border-radius: 21px !important;
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+
     &::before,&::after{
       display: none;
     }
@@ -88,7 +106,7 @@
 }
 
 //mobile product slider
-.product-slider {
+.special-slider {
   margin: 20px 0;
   &.slide-mobile {
   @apply m-0 border-none;

@@ -9,7 +9,7 @@ import {Swiper as SwiperJs} from "swiper/react";
 
 import {Navigation, Pagination, Autoplay} from "swiper/modules";
 import UseNextPrevSwiper from "@/hooks/swipper/useNextPrev";
-import CustomButtons from "@/components/libarary/products/swiper/customButtons";
+import CustomButtons from "@/components/libarary/products/special/swiper/customButtons";
 
 import {SwiperOptions} from "swiper/types";
 
@@ -29,9 +29,9 @@ const Swiper = ({children, SwiperOptions, hasNextPrevButton = true, title}: swip
     const bulletRef = useRef(null);
 
     return (
-        <div className="relative min-w-0">
-            <div className={"product-slider__title flex items-center justify-between"}>
-                <h3>{title}</h3>
+        <div className="relative min-w-0 px-[30px]">
+            <div className={"text-center mb-[30px] flex justify-between items-center"}>
+                <h3 className={"special-slider__title"}>{title}</h3>
                 <CustomButtons
                     nextRef={hasNextPrevButton ? nextRef : null}
                     prevRef={hasNextPrevButton ? prevRef : null}
@@ -50,6 +50,7 @@ const Swiper = ({children, SwiperOptions, hasNextPrevButton = true, title}: swip
             >
                 {children}
             </SwiperJs>
+
         </div>
     );
 };

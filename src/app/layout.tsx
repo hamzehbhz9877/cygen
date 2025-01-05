@@ -57,7 +57,7 @@ export default async function RootLayout({
     void queryClient.prefetchQuery(GetAllActivePluginsQuery)
     void queryClient.prefetchQuery(GetPopularSearchTermsQuery)
     void queryClient.prefetchQuery(GetAnywherePicturePositionsQuery)
-    // void queryClient.prefetchQuery(PopupQuery)
+    void queryClient.prefetchQuery(PopupQuery)
     void queryClient.prefetchQuery(GetPopupQuery)
 
 

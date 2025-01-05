@@ -23,6 +23,15 @@ const Price = ({
 
         const discount = (OldPriceValue - PriceValue) / OldPriceValue;
 
+        const PriceSection = () => {
+            return <bdi>
+                {Price.includes("از") ? <span
+                    className="woocommerce-Price-currencySymbol !order-none ml-[5px]">{Price?.split(" ")[0]}</span> : ""}
+                <span>{Price.includes("از") ? Price.split(" ")[1] : Price?.split(" ")[0]}&nbsp;</span>
+                <span
+                    className="woocommerce-Price-currencySymbol">{Price.includes("از") ? Price?.split(" ")[2] : Price?.split(" ")[1]}</span>
+            </bdi>
+        }
 
         return (
             <div className="index-prices-pro w-full mt-0 md:mt-4">
@@ -39,12 +48,9 @@ const Price = ({
                                 {/*    className="woocommerce-Price-currencySymbol">{OldPrice?.split(" ")[1]}</span>*/}
                                 </bdi></bdi></span>
                             </del>
-                            <ins><span className="woocommerce-Price-amount amount price_sale"><bdi>{Price?.split(" ")[0]}&nbsp;
-                                <span
-                                    className="woocommerce-Price-currencySymbol">{Price?.split(" ")[1]}</span></bdi></span>
+                            <ins><span className="woocommerce-Price-amount amount price_sale"><PriceSection/></span>
                             </ins>
-                        </> : PriceValue ? <ins><span className="woocommerce-Price-amount amount price_sale"><bdi>{Price?.split(" ")[0]}&nbsp;
-                                <span className="woocommerce-Price-currencySymbol">{Price?.split(" ")[1]}</span></bdi></span>
+                        </> : PriceValue ? <ins><span className="woocommerce-Price-amount amount price_sale"><PriceSection/></span>
                             </ins>
                             : <span className="flex justify-end text-sm">{Price}</span>
                     }

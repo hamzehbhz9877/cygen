@@ -10,16 +10,16 @@ type CustomButtons = {
 
 const CustomButtons = ({nextRef, prevRef}: CustomButtons) => {
     return (
-        <div className=" items-center slider__buttons flex gap-[5px] z-[10]">
+        <div className="items-center slider__buttons flex gap-[5px] z-[10] absolute left-[20px]">
             {
                 nextRef ? <button className="swiper-button right" ref={prevRef}>
-                    <FaAngleRight size={20} color={"#fff"}/>
+                    <FaAngleRight size={20} color={"#000"}/>
 
                 </button> : ""
             }
             {prevRef ?
                 <button className="swiper-button left" ref={nextRef}>
-                    <FaAngleLeft size={20} color={"#fff"}/>
+                    <FaAngleLeft size={20} color={"#000"}/>
                 </button> : ""}
         </div>
     );

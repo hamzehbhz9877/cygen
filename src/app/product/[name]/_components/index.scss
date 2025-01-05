@@ -103,7 +103,7 @@
 
 .displayBackInStockSubscription {
   @apply bg-gradient-to-r from-white to-white  #{!important};
-  @apply text-dynamic-color-from mt-0 text-[13px] border border-dynamic-color-from border-solid xl:text-[15px];
+  @apply text-dynamic-color-from mt-0 text-[13px] border border-dynamic-color-from border-solid xl:text-[15px] #{!important};
 }
 
 .nonexistent {
@@ -150,7 +150,7 @@
         border-radius: 8px;
         background: transparent;
         color: #535353;
-        @apply text-[16px] lg:text-[18px];
+        @apply text-[14px] lg:text-[16px];
         text-align: center;
       }
     }
@@ -565,7 +565,7 @@
           display: flex;
           gap: 10px;
           border-top: solid 1px #dddd;
-          padding-top: 5px;
+         @apply pt-3;
 
           .flexed {
             display: flex;
@@ -700,7 +700,6 @@
                 width: 50px !important;
                 height: 50px;
                 padding: 3px !important;
-                border-radius: 50% !important;
               }
             }
           }
@@ -865,7 +864,7 @@
 
     .ellipsis-2 {
       display: -webkit-box;
-      -webkit-line-clamp: 2;
+      -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
       overflow: hidden;
     }

@@ -13,24 +13,59 @@ const Specification = ({product}) => {
                 role="tabpanel" aria-labelledby="tab-title-additional_information" id="tab-additional_information"
             >
 
-                <h2 className="title">مشخصات</h2>
+                {/*<h2 className="title">مشخصات</h2>*/}
 
-                <span className="title-desktop">{product.Name}</span>
+                {/*<span className="title-desktop">{product.Name}</span>*/}
                 <table className="shop_attributes woocommerce-group-attributes-layout-2">
 
                     <tbody>
-                    {product?.ProductSpecificationModel.Groups.map(d => {
+                    {product?.ProductSpecificationModel.Groups.map((d,index) => {
                         if (d.Name)
-                            return <tr key={d.Id}>
+                        return <tr key={d.Id}>
+                            <th className={`attribute_group_name ${index===1?"!pt-0":""}`}><RiArrowLeftSFill size={38}
+                                                                                       className="text-dynamic-color-from me-[4px]"/>
+                                {d.Name}
+                            </th>
+                            <td>
+                                <table className="attribute_name_values">
+                                    <tbody>
+
+                                    {d.Attributes.map(attr => {
+                                        return (
+                                            <tr key={attr.Id}>
+                                                <td className="attribute_name">{attr.Name}</td>
+
+                                                <td className="attribute_value "><p>
+                                                    {attr.Values.map((value) => {
+                                                        return (
+                                                            <div key={value.AttributeTypeId}>
+                                                                {value.ValueRaw}
+                                                                <br/>
+                                                            </div>
+                                                        )
+
+                                                    })}
+                                                </p></td>
+                                            </tr>
+                                        )
+                                    })}
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    })}
+
+
+                             <tr>
                                 <th className="attribute_group_name"><RiArrowLeftSFill size={38}
                                                                                        className="text-dynamic-color-from me-[4px]"/>
-                                    {d.Name}
+                                   سایر مشخصات
                                 </th>
                                 <td>
                                     <table className="attribute_name_values">
                                         <tbody>
 
-                                        {d.Attributes.map(attr => {
+                                        {product?.ProductSpecificationModel.Groups[0].Attributes.map(attr => {
                                             return (
                                                 <tr key={attr.Id}>
                                                     <td className="attribute_name">{attr.Name}</td>
@@ -53,7 +88,7 @@ const Specification = ({product}) => {
                                     </table>
                                 </td>
                             </tr>
-                    })}
+
 
                     {/*<tr>*/}
 

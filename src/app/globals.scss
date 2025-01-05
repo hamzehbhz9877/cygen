@@ -6,13 +6,13 @@
 @font-face {
   font-family: 'bYekan';
   font-weight: regular;
-  src: local('Unkempt'), url('./fonts/YekanBakhFaNum-Regular.woff') format('woff');
+  src: local('Unkempt'), url('fonts/YekanBakhFaNum-Regular.woff') format('woff');
 }
 
 @font-face {
   font-family: 'bYekan';
   font-weight: bold;
-  src: local('Merriweather Bold'), local('Merriweather-Bold'), url('./fonts/YekanBakhFaNum-Bold.woff') format('woff');
+  src: local('Merriweather Bold'), local('Merriweather-Bold'), url('fonts/YekanBakhFaNum-Bold.woff') format('woff');
 }
 
 * {

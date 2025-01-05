@@ -23,7 +23,7 @@ const ProductSummary = ({product}:any) => {
 
                             </div>
                         </div>
-                        <div className="flex image pb-3 mb-3">
+                        <div className="flex items-center image pb-3 mb-3">
                             <div className="rounded shrink-0">
                                 <Image loading="lazy" width="80" height="80"
                                        className="attachment-thumbnail size-thumbnail"
@@ -34,9 +34,9 @@ const ProductSummary = ({product}:any) => {
                             </div>
                             <div className="flex flex-col mr-5 leading-[25px]"><p
                                 className="ellipsis-2 leading-[20px]">{product.Name}</p>
-                                <div className="flex items-center mt-auto">
-                                    <div className="w-[14px] h-[14px] rounded-[50%] bg-black"></div>
-                                    <p className="mr-2">طلایی</p></div>
+                                {/*<div className="flex items-center mt-auto">*/}
+                                {/*    <div className="w-[14px] h-[14px] rounded-[50%] bg-black"></div>*/}
+                                {/*    <p className="mr-2">طلایی</p></div>*/}
                             </div>
                         </div>
                         <AddToCartPrice product={product}/>
