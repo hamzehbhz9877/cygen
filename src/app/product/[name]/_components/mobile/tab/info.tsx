@@ -25,7 +25,7 @@ const Info = ({data}: Props) => {
                 </div>
             </div>
 
-            <div className="tabs-mobile-item__content">
+            <div className="tabs-mobile-item__content line-clamp-6 text-justify">
                 {data.FullDescription?
                 parse(data.FullDescription)
                     :""}

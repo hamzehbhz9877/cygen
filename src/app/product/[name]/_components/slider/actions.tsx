@@ -28,7 +28,7 @@ const Actions = ({product}) => {
                 product.VideoModels.length > 0 ?
                     <a onClick={() => openModal(<FilesModal data={product} type={"video"}
                                                             index={product.PictureModels.length} close={closeModal}/>,
-                        {className: "!min-h-max !h-[700px] !w-[900px] "})}>
+                        {className: "!min-h-max !h-[730px] !w-[900px] "})}>
                         <div className="btns-pro">
                             <PiPlayBold color={"#4d4d4d"} size={26} className={"opacity-80"}/>
                             <span className="tooltiptext">ویدیو محصول</span>

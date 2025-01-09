@@ -37,8 +37,10 @@ const fetchAPi = async (url) => {
     if (res.status === 204) {
         return []
     }
+    if (res.status === 401) {
+        return []
+    }
     const data = await res.json()
-
     return redirectStatus(data)
 }
 

@@ -17,7 +17,7 @@ import {getQueryClient} from "@/utils/get-query-client";
 import {GetPopularSearchTermsQuery, GetSiteSettingsQuery} from "@/services/Common";
 import {GetSocialMediasQuery} from "@/services/SocialMedia";
 import {GetLicenseLogosQuery} from "@/services/LicenseLogo";
-import {GetAnywherePicturePositionsQuery} from "@/services/AnyWherePicture";
+// import {GetAnywherePicturePositionsQuery} from "@/services/AnyWherePicture";
 import {GetPopupQuery, PopupQuery} from "@/services/Popup";
 import GeneralPopup from "@/context/popup";
 import OverlayContext from "@/context/overlay";
@@ -50,15 +50,15 @@ export default async function RootLayout({
     const queryClient = getQueryClient()
 
 
-    void queryClient.prefetchQuery(GetDynamicLinkPositionsQuery)
-    void queryClient.prefetchQuery(GetSiteSettingsQuery)
-    void queryClient.prefetchQuery(GetSocialMediasQuery)
-    void queryClient.prefetchQuery(GetLicenseLogosQuery)
-    void queryClient.prefetchQuery(GetAllActivePluginsQuery)
-    void queryClient.prefetchQuery(GetPopularSearchTermsQuery)
-    void queryClient.prefetchQuery(GetAnywherePicturePositionsQuery)
-    void queryClient.prefetchQuery(PopupQuery)
-    void queryClient.prefetchQuery(GetPopupQuery)
+    // void queryClient.prefetchQuery(GetDynamicLinkPositionsQuery)
+    // void queryClient.prefetchQuery(GetSiteSettingsQuery)
+    // void queryClient.prefetchQuery(GetSocialMediasQuery)
+    // void queryClient.prefetchQuery(GetLicenseLogosQuery)
+    // void queryClient.prefetchQuery(GetAllActivePluginsQuery)
+    // void queryClient.prefetchQuery(GetPopularSearchTermsQuery)
+    // void queryClient.prefetchQuery(GetAnywherePicturePositionsQuery)
+    // void queryClient.prefetchQuery(PopupQuery)
+    // void queryClient.prefetchQuery(GetPopupQuery)
 
 
     return (

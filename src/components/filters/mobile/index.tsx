@@ -58,7 +58,6 @@ const MobileHeadFilters = ({data,isRefetching}: any) => {
             {/*decodeURIComponent(params?.code as string)?.replaceAll("-", " ")*/}
             <FilterSidebarMobile title={'فیلتر ها'}>
                 <Filters AvailableManufacturers={data.AvailableManufacturers} id={data.Id}
-                         FeaturedProducts={data.FeaturedProducts}
                          CatalogProductsModel={data.CatalogProductsModel}/>
             </FilterSidebarMobile>
         </div>

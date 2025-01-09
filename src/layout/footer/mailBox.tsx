@@ -37,9 +37,8 @@ const MailBox = () => {
             showToast("success", 'عملیات با موفقیت انجام شد')
             formik.values.email=""
         },
-        onError:(err)=>{
-            if (err.status===409)
-                showToast("error", 'ایمیل تکراری است')
+        onError:(data)=>{
+            showToast("error", data.response.data)
         }
     })
 

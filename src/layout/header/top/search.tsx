@@ -130,7 +130,7 @@ const Search = () => {
                                                             className="flex items-center gap-[10px] cursor-pointer">
                                                             {
                                                                 setting.SearchBox.ShowProductImagesInSearchAutoComplete ?
-                                                                    <div className="w-[100px] h-[56px]">
+                                                                    <div className="h-[56px]">
 
                                                                         <Image width={100} height={100}
                                                                                className="h-full object-contain w-auto"

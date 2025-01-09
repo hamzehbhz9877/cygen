@@ -12,6 +12,7 @@ type Props = {
 }
 const ShortInfo = ({data}: Props) => {
     const {openModal,closeModal}=useModal()
+
     return (
         <div className="info tabs-mobile-item">
             <div className="tabs-mobile-item__title">
@@ -25,7 +26,7 @@ const ShortInfo = ({data}: Props) => {
                 </div>
             </div>
 
-            <div className="tabs-mobile-item__content">
+            <div className="tabs-mobile-item__content line-clamp-6 text-justify">
                 {data.ShortDescription?
                     parse(data.ShortDescription)
                     :""}

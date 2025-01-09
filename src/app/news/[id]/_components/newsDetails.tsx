@@ -3,7 +3,7 @@
 import React from 'react';
 
 
-import "./index.scss"
+import "@/app/blogs/[id]/_components/index.scss"
 import {RiTimerLine} from "react-icons/ri";
 import parse from "html-react-parser";
 import {GrShareOption} from "react-icons/gr";
@@ -40,14 +40,14 @@ const NewsDetails = ({data}) => {
                             {data.Title} </h1>
 
                         <span className="reading-time"><RiTimerLine size={15}
-                                                                    color={'#9d9d9d'}/>{diffDays(data.CreatedOn)}  روز پیش منتشر شده</span>
+                                                                    color={'#9d9d9d'}/>{diffDays(data.CreatedOn)}   پیش منتشر شده</span>
 
                     </div>
                 </div>
 
 
                 <div className="humbnail-single">
-                  <Banner  PositionSystemName={'home_page_before_blog'} EntityName={'public'} EntityId={data.Id} isSingle/></div>
+                  <Banner  PositionSystemName={'home_page_before_blog'} EntityName={'public'} isSingle/></div>
 
 
                 <div className="counts">{parse(data.Full)}</div>

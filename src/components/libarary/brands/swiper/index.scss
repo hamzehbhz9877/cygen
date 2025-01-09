@@ -1,0 +1,20 @@
+.brands{
+  .slider__buttons {
+    @apply flex items-center justify-center;
+    button {
+      width: 35px;
+      height: 35px;
+      background: #fff !important;
+      border-radius: 50% !important;
+      box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),0px 1px 5px rgba(0, 0, 0, .2);
+      border: none !important;
+      &.right{
+        right: 10px;
+      }
+      &.left{
+        left: 10px;
+      }
+      @apply hidden lg:block;
+    }
+  }
+}

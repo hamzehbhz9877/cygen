@@ -22,6 +22,7 @@ import {FagQuery} from "@/services/Faq";
 import "@/app/faq/_components/index.scss"
 import FaqAnswers from "@/app/faq/_components/faqQuestions";
 import LogoLoader from "@/components/loading/logoLoader";
+import ProductSliders from "@/components/libarary/products";
 
 const Catalog = ({category, searchParams}: { category: catalog, searchParams: any }) => {
     const {ref, inView} = useInView()
@@ -117,12 +118,15 @@ const Catalog = ({category, searchParams}: { category: catalog, searchParams: an
                 }
 
                 <Banner PositionSystemName={"category_top"} EntityName={"Category"} EntityId={data.pages[0].Id}/>
+                <div className="container">
+                    {data.pages[0].FeaturedProducts?.length > 0 ?
+                        <ProductSliders data={data.pages[0].FeaturedProducts} title={"محصولات ویژه"}/> : ""}
+                </div>
                 {data.pages[0]?.SubCategories?.length > 0 ?
                     <CategoryList data={
                         data.pages[0]?.SubCategories}/> : ""}
                 <div className="flex items-start container">
                     <Filters AvailableManufacturers={data.pages[0].AvailableManufacturers} id={data.pages[0].Id}
-                             FeaturedProducts={data.pages[0].FeaturedProducts}
                              CatalogProductsModel={data.pages[0].CatalogProductsModel}/>
                     <div className={"flex flex-col flex-1"}>
                         {data.pages.length === 1 && data.pages[0].CatalogProductsModel.Products?.length === 0 ? "" : data.pages[0].CatalogProductsModel?.AllowProductSorting ?

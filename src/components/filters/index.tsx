@@ -11,13 +11,12 @@ import CategoryFilter from "@/components/filters/category";
 
 
 type FiltersType = {
-    FeaturedProducts: any
     CatalogProductsModel: any
     id:number
     AvailableManufacturers?:any
 }
 
-const Filters = ({FeaturedProducts,AvailableManufacturers, CatalogProductsModel,id}: FiltersType) => {
+const Filters = ({AvailableManufacturers, CatalogProductsModel,id}: FiltersType) => {
 
     return (
         <div className="all-filter sticky">

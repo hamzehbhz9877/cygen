@@ -92,7 +92,7 @@ const AddToCartPrice = ({product}) => {
                 </div>
             </div>
 
-            {product.AddToCart.DisableBuyButton ? "" :
+            {product.AddToCart.DisableBuyButton || !product.InStock ? "" :
                 <div className="back_holder">
                     {product.ProductPrice.HidePrices ? "" :
                         <>

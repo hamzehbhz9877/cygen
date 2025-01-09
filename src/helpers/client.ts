@@ -1,6 +1,7 @@
 'use client'
 
 import React, {useEffect} from "react";
+import moment from "jalali-moment";
 
 const formatter = new Intl.NumberFormat("fa-IR", {
     useGrouping: true,
@@ -9,41 +10,52 @@ const formatter = new Intl.NumberFormat("fa-IR", {
 });
 const scrolltoHash = function (element_id: string) {
     const element = document.getElementById(element_id)
-    document.documentElement?.scrollTo({top:element?.offsetTop??0});
+    document.documentElement?.scrollTo({top: element?.offsetTop ?? 0});
 }
 
 
-const diffDays=(data)=>{
-    const date1:any = new Date(data);
-    const date2:any = new Date();
+const diffDays = (data) => {
+    const date1: any = new Date(data);
+    const date2: any = new Date();
+    const time = date2 - date1;
 
-    const dateFormatter:any = new Intl.DateTimeFormat('fa-IR');
+    const dateFormatter: any = new Intl.DateTimeFormat('fa-IR');
+    const seconds = moment.duration(time).seconds();
+    const minutes = moment.duration(time).minutes();
+    const hours = moment.duration(time).hours();
+    const days = moment.duration(time).days();
+    const month = moment.duration(time).months();
 
-    const Difference_In_Days:any =
-        Math.floor((date2 - date1) / (1000 * 60 * 60 * 24));
-
-//     console.log(`Total number of days between dates:
-// ${dateFmatter.format(date1)} and ${dateFormatter.format(date2)} is:
-// ${Difference_In_Days} days`);
-
-    return Difference_In_Days
+    if (month > 0) {
+        return month + " " + "ماه"
+    } else if (month === 0 && days !== 0) {
+        return days + " " + "روز"
+    } else if (month === 0 && days === 0 && hours !== 0) {
+        return hours + " " + "ساعت"
+    } else if (month === 0 && days === 0 && hours === 0 && minutes !== 0) {
+        return minutes + " " + "دقیقه"
+    } else {
+        return seconds + " " + "ثانیه"
+    }
 }
+
 function copyToClipboard(copyMe: any) {
     // @ts-ignore
     navigator?.clipboard.writeText(copyMe);
 }
-const findKey = (key,data:any) => {
+
+const findKey = (key, data: any) => {
     const res = data.find(d => d.key === key)?.data
     if (res === '')
         return []
     else
         return res
 }
-const priceDiscount=(product)=>{
-    const discount=product.ProductPrice.PriceWithDiscountValue
-    const price=product.ProductPrice.PriceValue
-    const oldPrice=product.ProductPrice.OldPriceValue
-    const discountRes= ( discount && price)? (price-discount)/price :(oldPrice&& price)? (oldPrice-price) / oldPrice:null;
+const priceDiscount = (product) => {
+    const discount = product.ProductPrice.PriceWithDiscountValue
+    const price = product.ProductPrice.PriceValue
+    const oldPrice = product.ProductPrice.OldPriceValue
+    const discountRes = (discount && price) ? (price - discount) / price : (oldPrice && price) ? (oldPrice - price) / oldPrice : null;
     return Math.round(discountRes * 100)
 }
 
@@ -75,14 +87,15 @@ function toEnglishDigits(num: any) {
     }) : null
 }
 
-function getErrorFromServer(error:any, name:any) {
-    const valueRes:any = []
+function getErrorFromServer(error: any, name: any) {
+    const valueRes: any = []
     Object.entries(error).forEach(([key, value]) => {
         if (key === name)
             valueRes.push(value)
     })
     return valueRes
 }
+
 const useDebouncedEffect = (
     onChange,
     delay,
@@ -95,20 +108,18 @@ const useDebouncedEffect = (
 };
 
 
-
-function round(n,v) {
-        return v.toFixed(n).replace(/0+$/, '0').replace(/\.0+$/, '');
+function round(n, v) {
+    return v.toFixed(n).replace(/0+$/, '0').replace(/\.0+$/, '');
 }
 
 const averReview = (product) => {
     const sum = product.ProductReviewOverview?.RatingSum
     const total = product.ProductReviewOverview?.TotalReviews
-    return isNaN(+sum / +total) ? 0 : round(1,+sum / +total);
+    return isNaN(+sum / +total) ? 0 : round(1, +sum / +total);
 }
 
 
-
-const computeRate = (cot,comments) => {
+const computeRate = (cot, comments) => {
     const count = comments?.reduce((acc, cur) => {
         if (cot === cur.Rating)
             return acc + 1;
@@ -118,7 +129,18 @@ const computeRate = (cot,comments) => {
     return count * 100;
 }
 
-export {formatter,findKey,diffDays,
+export {
+    formatter,
+    findKey,
+    diffDays,
     averReview,
     computeRate
-    ,copyToClipboard,priceDiscount,scrolltoHash,useDebouncedEffect, toEnglishDigits,getErrorFromServer,colorIsDarkSimple}
+    ,
+    copyToClipboard,
+    priceDiscount,
+    scrolltoHash,
+    useDebouncedEffect,
+    toEnglishDigits,
+    getErrorFromServer,
+    colorIsDarkSimple
+}

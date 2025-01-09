@@ -16,17 +16,16 @@ const Swiper = dynamic(() => import("@/components/libarary/products/special/swip
 type Props = {
     data: any
     title: string
+    extra:any
 }
-const SpecialSlider = ({data, title}: Props) => {
+const SpecialSlider = ({data, title,extra}: Props) => {
 
     const {windowWidth} = useResize()
 
-
     if (windowWidth <= 768)
-        return <section className="special-slider slide-mobile">
-            <div className="head-product">
-                <h3><span className="titles-pro">{title}</span></h3>
-                <span className="line-pro"></span>
+        return <section className="special-slider slide-mobile" style={{backgroundColor:extra.BackgroundColorCode}}>
+            <div className="text-center mb-[10px] mt-[15px] flex justify-center items-center">
+                <h3><span className="special-slider__title" style={{color:extra.TextColorCode}}>{title}</span></h3>
             </div>
             <div className="carousel_lister">
                 {data.map((item: any, index: number) =>
@@ -36,28 +35,33 @@ const SpecialSlider = ({data, title}: Props) => {
         </section>
     else
         return (
-            <div className="special-slider">
+            <div className="special-slider" style={{backgroundColor:extra.BackgroundColorCode}}>
 
-                <Swiper title={title} hasNextPrevButton={true} SwiperOptions={{
-                    // autoplay: {
-                        // delay: 4000,
-                    // },
+                <Swiper title={title} extra={extra} hasNextPrevButton={true} SwiperOptions={{
+                    autoplay: {
+                        delay: 4000,
+                    },
+
                     breakpoints: {
                         '1600': {
-                            slidesPerView: 8,
+                            slidesPerView: 7.5,
                             spaceBetween: 10,
+                            loop:data.length>=7,
                         },
                         '1400': {
-                            slidesPerView: 7,
+                            slidesPerView: 6.5,
                             spaceBetween: 10,
+                            loop:data.length>=6,
                         },
                         '1200': {
-                            slidesPerView: 6,
+                            slidesPerView: 5.5,
                             spaceBetween: 10,
+                            loop:data.length>=5,
                         },
                         '992': {
-                            slidesPerView: 4,
+                            slidesPerView: 4.5,
                             spaceBetween: 10,
+                            loop:data.length>=4,
                         },
                         '400': {
                             slidesPerView: 2,

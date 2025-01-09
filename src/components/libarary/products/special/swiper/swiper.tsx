@@ -19,9 +19,10 @@ type swiperType = {
     SwiperOptions?: SwiperOptions
     hasNextPrevButton?: boolean
     title: string
+    extra?:any
 }
 
-const Swiper = ({children, SwiperOptions, hasNextPrevButton = true, title}: swiperType) => {
+const Swiper = ({children,extra, SwiperOptions, hasNextPrevButton = true, title}: swiperType) => {
     const {
         nextRef, prevRef, setSwiper,
         afterInit
@@ -29,14 +30,16 @@ const Swiper = ({children, SwiperOptions, hasNextPrevButton = true, title}: swip
     const bulletRef = useRef(null);
 
     return (
-        <div className="relative min-w-0 px-[30px]">
+        <div className="relative min-w-0 ">
             <div className={"text-center mb-[30px] flex justify-between items-center"}>
-                <h3 className={"special-slider__title"}>{title}</h3>
+                <h3 className={"special-slider__title"} style={{color:extra.TextColorCode}}>{title}</h3>
                 <CustomButtons
                     nextRef={hasNextPrevButton ? nextRef : null}
                     prevRef={hasNextPrevButton ? prevRef : null}
                 />
             </div>
+            <div className={"mr-[30px]"}>
+
             <SwiperJs
                 modules={[Navigation, Pagination, Autoplay]}
                 onAfterInit={afterInit}
@@ -45,12 +48,12 @@ const Swiper = ({children, SwiperOptions, hasNextPrevButton = true, title}: swip
                 navigation={{prevEl: prevRef?.current, nextEl: nextRef?.current}}
                 pagination={{clickable: true, el: bulletRef?.current}}
                 onSwiper={setSwiper}
-                className="swiper-slides"
+                className="swiper-slides "
                 {...SwiperOptions}
             >
                 {children}
             </SwiperJs>
-
+            </div>
         </div>
     );
 };

@@ -8,6 +8,7 @@ import useResize from "@/hooks/useResize";
 import Product from "@/components/product/single";
 
 import "./index.scss"
+import Blog from "@/app/_components/blogs/blog";
 
 const Swiper = dynamic(() => import("@/components/libarary/products/swiper/swiper"), {
     ssr: false
@@ -16,20 +17,22 @@ const Swiper = dynamic(() => import("@/components/libarary/products/swiper/swipe
 type Props = {
     data: any
     title: string
+    isNewsOrBlog?: boolean
 }
-const ProductSliders = ({data, title}: Props) => {
+const ProductSliders = ({data, title,isNewsOrBlog=false}: Props) => {
 
     const {windowWidth} = useResize()
 
 
     if (windowWidth <= 768)
-        return <section className="product-slider slide-mobile ">
+        return <section className="section-slider slide-mobile ">
             <div className="head-product">
                 <h3><span className="titles-pro">{title}</span></h3>
                 <span className="line-pro"></span>
             </div>
             <div className="carousel_lister">
-                {data.map((item: any, index: number) =>
+                {isNewsOrBlog ?data.map((item: any, index: number) =><Blog {...item} key={data.Id}/>):
+                data.map((item: any, index: number) =>
                     <Product row={false} key={index} {...item}/>)}
             </div>
 
@@ -37,14 +40,14 @@ const ProductSliders = ({data, title}: Props) => {
     else
         return (
             <div>
-                <div className="product-slider">
+                <div className="section-slider">
                     <Swiper title={title} hasNextPrevButton={true} SwiperOptions={{
                         // autoplay: {
                         // delay: 4000,
                         // },
                         breakpoints: {
                             '1600': {
-                                slidesPerView: 6,
+                                slidesPerView: isNewsOrBlog?5 :6,
                                 spaceBetween: 10,
                             },
                             '1400': {
@@ -70,7 +73,12 @@ const ProductSliders = ({data, title}: Props) => {
                         },
                         lazyPreloadPrevNext: 4
                     }}>
-                        {data.map((item: any, index: number) => <SwiperSlide key={index}>
+
+                        {isNewsOrBlog?
+                            data.map((item: any, index: number) => <SwiperSlide key={index}>
+                                <Blog {...item}/>
+                            </SwiperSlide>)
+                            :data.map((item: any, index: number) => <SwiperSlide key={index}>
                             <Product {...item}/>
                         </SwiperSlide>)}
                     </Swiper>

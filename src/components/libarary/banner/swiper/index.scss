@@ -4,7 +4,39 @@
   }
 }
 
+.grid-left {
+  .banner {
+    @apply w-[calc((100%_-_10px)/2)] lg:w-full;
+    .swiper-button{
+      display: none;
+    }
+  }
+}
+
 .banner {
+
+  .banner-swiper{
+    @apply rounded-[12px];
+  }
+
+
+  img {
+    @apply rounded-[12px];
+  }
+
+
+  .sliderWide{
+    @apply my-[30px] lg:my-0;
+  }
+
+  .sliderWide, .single {
+    .banner-swiper{
+      @apply rounded-none ;
+    }
+    img {
+      @apply rounded-none;
+    }
+  }
 
   .grid-2 {
     @apply grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2  xl:grid-cols-2;
@@ -27,10 +59,16 @@
   }
 
   .swiper-pagination {
-    @apply flex items-center absolute;
-    @apply absolute w-max bottom-[10px] #{!important};
+    @apply flex items-center justify-center absolute;
+    @apply absolute  bottom-[10px] #{!important};
     right: 50%;
     transform: translateX(50%) !important;
+
+    margin-bottom: -15px;
+    background-repeat:  no-repeat;
+    @apply bg-none lg:bg-[url(https://pars.parskalas.com/wp-content/themes/parskala/assets/img/Vector1.svg)];
+    width: 157px !important;
+    height: 35px;
   }
 
 

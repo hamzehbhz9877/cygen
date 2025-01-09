@@ -19,7 +19,7 @@ const Slider = ({data}:{data:any}) => {
     // const {windowWidth}=useResize()
     return (
         <div className="banner-slider">
-            <Swiper hasNextPrevButton={true} SwiperOptions={{autoplay: {
+            <Swiper hasNextPrevButton={true} hasDots={data.length>1} SwiperOptions={{autoplay: {
                     delay: 4000,
                 },
                 lazyPreloadPrevNext:4

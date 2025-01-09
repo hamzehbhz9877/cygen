@@ -10,12 +10,13 @@ import TabsMobile from "@/app/product/[name]/_components/mobile/tab";
 import AddToCartMobile from "@/app/product/[name]/_components/mobile/addtocartmobile";
 import "./_components/index.scss"
 import SpecialSlider from "@/components/libarary/products/special";
+import Banner from "@/components/banner";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0
 
 export async function generateMetadata({params}: any): Promise<Metadata> {
-    const product: any = await GetProductsDetails({productSeName: params.name, updateCartItemId: 0})
+    const product: any = await GetProductsDetails({productSeName: decodeURIComponent(params.name), updateCartItemId: 0})
 
     const data = {
         description: product?.MetaDescription??product.ShortDescription,
@@ -30,7 +31,7 @@ export async function generateMetadata({params}: any): Promise<Metadata> {
 
 
 const Page = async ({params}: any) => {
-    const product: any = await GetProductsDetails({productSeName: params.name, updateCartItemId: 0})
+    const product: any = await GetProductsDetails({productSeName: decodeURIComponent(params.name), updateCartItemId: 0})
     const relatedProducts: any = await GetRelatedProducts({productId: product.Id, productThumbPictureSize: 200})
 
     return (
@@ -66,20 +67,17 @@ const Page = async ({params}: any) => {
             </div>
 
 
+            <Banner PositionSystemName={"product_details_before_related_products"}  EntityName={"Product"} EntityId={String(product.Id)}/>
+
             <div className={"container"}>
                 {relatedProducts?.length > 0 ?
                     <ProductSliders data={relatedProducts} title={"محصولات مشابه"}/> : ""}
             </div>
-
-            {/*{relatedProducts?.length > 0 ?*/}
-            {/*    <SpecialSlider data={relatedProducts} title={"تخفیف باورنکردنی سیژن"}/> : ""}*/}
-
             <div className={"container"}>
                 <TabsMobile product={product}/>
                 <AddToCartMobile product={product}/>
                 <Tabs product={product}/>
             </div>
-
             {product.JsonLd ?
                 <script
                     type="application/ld+json"

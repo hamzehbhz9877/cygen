@@ -30,7 +30,7 @@ const Swiper = ({children, SwiperOptions, hasNextPrevButton = true, title}: swip
 
     return (
         <div className="relative min-w-0">
-            <div className={"product-slider__title flex items-center justify-between"}>
+            <div className={"section-slider__title flex items-center justify-between"}>
                 <h3>{title}</h3>
                 <CustomButtons
                     nextRef={hasNextPrevButton ? nextRef : null}

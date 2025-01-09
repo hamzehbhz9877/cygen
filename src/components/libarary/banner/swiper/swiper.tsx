@@ -55,7 +55,7 @@ const Swiper = ({
                 navigation={{prevEl: prevRef?.current, nextEl: nextRef?.current}}
                 pagination={{clickable: true, el: bulletRef?.current}}
                 onSwiper={setSwiper}
-                className="swiper-slides banner"
+                className="swiper-slides banner-swiper"
                 {...SwiperOptions}
             >
                 {children}

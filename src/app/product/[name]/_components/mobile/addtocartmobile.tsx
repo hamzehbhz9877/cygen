@@ -13,7 +13,7 @@ const AddToCartMobile = ({product}) => {
     return (
         <>
             {
-                product.AddToCart.DisableBuyButton ?"":<div
+                product.AddToCart.DisableBuyButton || !product.InStock ?"":<div
                 className={`${!productNotFound && decodeURIComponent(pathname).includes('product') ? 'addtocart-wrapper' : 'hidden'} `}>
                 <Addtocart product={product}/>
                 </div>

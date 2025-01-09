@@ -61,8 +61,8 @@ export default function SwiperFiles({data,index,setIndex}: any) {
 
                 {data.VideoModels.map((video, index) => {
                     return <SwiperSlide key={index} className={"video"}>
-                        <iframe src={video.VideoUrl} width="auto" height="545"
-                                className={"w-full h-[272px] md:h-[545px]"}></iframe>
+                        <iframe src={video.VideoUrl} width="auto" height="auto"
+                                className={"h-[355px] lg:h-full absolute w-full inset-0"}></iframe>
 
                     </SwiperSlide>
                 })}

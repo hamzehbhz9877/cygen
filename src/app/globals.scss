@@ -34,6 +34,7 @@
 
 ::-webkit-scrollbar-track {
   background: #ececed !important;
+  border-radius: 6px !important;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -86,7 +87,7 @@ input[type=number] {
   height: 100%;
   background-color: rgba(8, 10, 56, .5);
   position: fixed;
-  z-index: 1;
+  z-index: 20;
   opacity: 0;
   visibility: hidden;
   transition: 0.1s all;
@@ -112,7 +113,7 @@ input[type=number] {
 }
 
 
-.Toastify__toast {
+.Toastify__toast-container {
   @apply font-bYekan z-[9999999]  #{!important};
 }
 

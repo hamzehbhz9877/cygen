@@ -8,7 +8,7 @@ export const dynamic = "force-dynamic";
 export const revalidate = 0
 
 export async function generateMetadata({params}: any): Promise<Metadata> {
-    const news=await BlogDetail({blogSeName: params.id})
+    const news=await BlogDetail({blogSeName: decodeURIComponent(params.id)})
     return {
         title: news?.MetaTitle??news.Title,
         description: news?.MetaDescription??news?.Body,
@@ -17,11 +17,10 @@ export async function generateMetadata({params}: any): Promise<Metadata> {
 }
 
 const Page = async ({params}: any) => {
-    const blogDetails: any = await BlogDetail({blogSeName: params.id})
-
+    const blogDetails: any = await BlogDetail({blogSeName: decodeURIComponent(params.id)})
     return (
         <div className="product-details container">
-            <BlogDetails data={blogDetails}/>
+            <BlogDetails data={blogDetails} news={false}/>
         </div>
     );
 };

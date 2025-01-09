@@ -15,6 +15,8 @@ import {keepPreviousData, useMutation, useQuery} from "@tanstack/react-query";
 import {AddHelpfulness, GetComments} from "@/services/product";
 import parse from "html-react-parser";
 import DOMPurify from "dompurify";
+import Login from "@/components/login";
+import useAuth from "@/context/authentication/useAuth";
 
 type Props = {
     product:any
@@ -24,6 +26,7 @@ const Comments = ({product}: Props) => {
     const {openModal,closeModal}=useModal()
 
     const queryClient=getQueryClient();
+    const {user} = useAuth()
 
     const {data} = useQuery({
         queryFn: async () => {
@@ -54,8 +57,10 @@ const Comments = ({product}: Props) => {
             <div className="tabs-mobile-item__title">
                 <h4 className={"#232222"}>نظرات</h4>
                 <a className="insert_comment_mobile" role={"button"}
-                   onClick={() => openModal(<AddComment product={product} closeModal={closeModal}/>,{className:"!rounded-[0]"})}>افزودن
-                    نظر جدید +</a>
+                   onClick={() =>user? openModal(<AddComment product={product} closeModal={closeModal}/>,{className:"!rounded-[0]"}):openModal(<Login/>, {className: "login"})}>
+                    {user?'افزودن نظر جدید +':'ورود به حساب کاربری'}
+
+                    </a>
             </div>
 
             <div className="tabs-mobile-item__content">

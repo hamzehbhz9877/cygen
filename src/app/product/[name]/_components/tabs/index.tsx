@@ -32,7 +32,7 @@ const Tabs = ({product}: any) => {
 
 
     const {data: FaqItems} = useQuery({
-        queryKey: ["faq", "Product",product.Id],
+        queryKey: ["faq", "Product", product.Id],
         queryFn: () => FagQuery({EntityName: "Product", EntityId: product.Id}),
         enabled: !!product.Id
     })
@@ -52,6 +52,13 @@ const Tabs = ({product}: any) => {
             setActiveTab('')
         }
     }, [tabsActive]);
+
+    useEffect(()=>{
+        if (active !== '') {
+            document.querySelector(".nav-item.active")?.classList.remove("active")
+            document.getElementById(active).classList.add("active")
+        }
+    },[active])
 
 
     return (
@@ -89,7 +96,7 @@ const Tabs = ({product}: any) => {
                             نظرات<i>{product.ProductReviewOverview?.TotalReviews}</i> </a>
                     </li>
                     {
-                        FaqItems?.data?.length>0 ?
+                        FaqItems?.data?.length > 0 ?
                             <li className="nav-item" id="tab-title-faq" role="tab" aria-selected="true"
                                 onClick={(e) => handleChange('tab-title-faq')}>
                                 <a className="nav-link" data-scroll="tab-parskala-faq">

@@ -451,7 +451,7 @@
       form {
         display: flex;
         justify-content: space-between;
-        flex-wrap: wrap;
+        @apply flex-wrap lg:flex-nowrap;
       }
 
 
@@ -542,12 +542,14 @@
       }
 
       &__cart {
-        @apply w-full mt-2 lg:mt-0 max-w-full lg:max-w-[345px] lg:w-[38%];
+        @apply flex flex-col w-full mt-2 lg:mt-0 max-w-full lg:max-w-[345px] lg:w-[38%];
+      &>div{
         border: 1px solid #e0e0e2;
         padding: 10px;
         border-radius: 14px;
         @apply bg-white lg:bg-[#f8f8f8];
         align-self: baseline;
+      }
 
 
       }

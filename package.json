@@ -27,6 +27,7 @@
     "react-toastify": "^10.0.6",
     "sass": "^1.79.5",
     "scss": "^0.2.4",
+    "sharp": "^0.33.5",
     "swiper": "^11.1.15",
     "universal-cookie": "^7.2.1",
     "yup": "^1.4.0",

@@ -19,7 +19,7 @@ const Files = ({product}:any) => {
                         <li data-remodal-target="modalvidoe" className="show_modal_gallery video"
                             onClick={() => openModal(<FilesModal data={product}  type={"video"} index={product.VideoModels.length-1}
                                                                  close={closeModal}/>,
-                                {className:"!min-h-max !h-[700px] !w-[900px] "})}
+                                {className:"!min-h-max !h-[730px] !w-[900px] "})}
                         >
                             <Image loading="lazy" width="150" height="150"
                                    className="attachment-thumbnail size-thumbnail"
@@ -37,7 +37,7 @@ const Files = ({product}:any) => {
                     product.PictureModels?.map((pic, index) => {
                         if (index <= 3)
                             return (
-                                <li key={pic.Id} onClick={() => openModal(<FilesModal data={product}  type={"image"} index={index} close={closeModal}/>,{className:"!min-h-max !h-[700px] !w-[900px] "})}>
+                                <li key={pic.Id} onClick={() => openModal(<FilesModal data={product}  type={"image"} index={index} close={closeModal}/>,{className:"!min-h-max !h-[730px] !w-[900px] "})}>
                                     <Image loading="lazy" width="150" height="150"
                                            className="attachment-thumbnail size-thumbnail"
                                            alt={pic.AlternateText}
@@ -48,7 +48,7 @@ const Files = ({product}:any) => {
                     })
                 }
                 {/*{product.PictureModels?.length > 4 ?*/}
-                    <li className="show_modal_gallery" onClick={() => openModal(<FilesModal data={product} type={"image"} index={0} close={closeModal}/>,{className:"!min-h-max !h-[700px] !w-[900px] "})}>
+                    <li className="show_modal_gallery" onClick={() => openModal(<FilesModal data={product} type={"image"} index={0} close={closeModal}/>,{className:"!min-h-max !h-[730px] !w-[900px] "})}>
                         <Image loading="lazy" width="150" height="150"
                                className="attachment-thumbnail size-thumbnail"
                                alt={product.DefaultPictureModel.AlternateText}

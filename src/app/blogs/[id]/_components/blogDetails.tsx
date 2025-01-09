@@ -13,25 +13,33 @@ import {diffDays} from "@/helpers/client";
 import Share from "@/app/product/[name]/_components/slider/modal/share";
 import useModal from "@/context/modal/useModal";
 
-const BlogDetails = ({data}) => {
+const NewsBlogsDetails = ({data, news}) => {
 
 
-    const {openModal,closeModal}=useModal()
+    const {openModal, closeModal} = useModal()
 
     return (
 
-        <div className="container my-[20px]">
+        <div className=" my-[20px]">
             <div className="breadcrumb-wrapper">
                 <Breadcrumb data={[{
                     Name: 'اخبار',
                     SeName: '/news'
-                },{
+                }, {
                     Name: data.Title,
                     SeName: ''
                 }]} show={true}/>
             </div>
+            {
+                news ?
+                    <Banner PositionSystemName={'news_details_before_content'}  EntityName={'News'}
+                            EntityId={data.Id}/> :
+                    <Banner PositionSystemName={'blog_details_before_content'}  EntityName={'Blog'}
+                            EntityId={data.Id}/>
+            }
 
-            <div className="main-cont  single-post">
+
+            <div className="main-cont container  single-post">
 
 
                 <div className="header-content-post">
@@ -40,18 +48,20 @@ const BlogDetails = ({data}) => {
                             {data.Title} </h1>
 
                         <span className="reading-time"><RiTimerLine size={15}
-                                                                    color={'#9d9d9d'}/>{diffDays(data.CreatedOn)}  روز پیش منتشر شده</span>
+                                                                    color={'#9d9d9d'}/>{diffDays(data.CreatedOn)} پیش منتشر شده</span>
 
                     </div>
                 </div>
 
 
                 <div className="humbnail-single">
-                  <Banner  PositionSystemName={'home_page_before_blog'} EntityName={'public'} EntityId={data.Id} isSingle/></div>
+                </div>
 
 
-                <div className="counts">{parse(data.Full)}</div>
+                <div className="counts">{data?.Full ? parse(data.Full) : data?.Body ? parse(data.Body) : ''}</div>
 
+
+                <hr className="w-full h-[1px] bg-[#eee] my-[20px]"/>
                 <div className="tag-coment-box">
 
         <span className="coment-cont">
@@ -62,6 +72,16 @@ const BlogDetails = ({data}) => {
               <span>اشتراک گذاری</span>
             </div>
         </span>
+                    {data?.Tags?.length > 0 ?
+                        <span className="tags-cont">
+             <ul className="post-categories">
+	{data?.Tags?.map((tag, i) => {
+        return (
+            <li key={i}><span
+                rel="category tag">{tag}</span></li>
+        )
+    })}
+	</ul>          </span> : ""}
                 </div>
             </div>
         </div>
@@ -69,4 +89,4 @@ const BlogDetails = ({data}) => {
     );
 };
 
-export default BlogDetails;
+export default NewsBlogsDetails;

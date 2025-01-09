@@ -4,10 +4,8 @@ import React from 'react';
 import {useQuery, useSuspenseQuery} from "@tanstack/react-query";
 import {GetAnywherePictures} from "@/services/AnyWherePicture";
 import Slider from "@/components/banner/slider";
-import {SwiperSlide} from "swiper/react";
 import Link from "next/link";
 import Image from "next/image";
-import {date} from "yup";
 import {GetAllActivePluginsQuery} from "@/services/Plugin";
 
 
@@ -19,12 +17,12 @@ type BannerType = Partial<{
     MobilePictureSize: number
     type?: boolean
     isSingle?: boolean
+    ignorecontainer?: boolean
 }>
 
-const LinkImage=({item})=>{
+const LinkImage = ({item}) => {
     return <Link href={item.Url ?? '/'}
-          target={item.OpenInNewPage ? '_blank' : "_self"}>
-
+                 target={item.OpenInNewPage ? '_blank' : "_self"}>
         <picture>
             <source media="(max-width:768px)"
                     srcSet={item.MobilePicture.ImageUrl} title={item.MobilePicture.Title}
@@ -40,15 +38,14 @@ const LinkImage=({item})=>{
     </Link>
 }
 
-const Banner = ({type = false,isSingle=false, ...rest}: BannerType) => {
-
+const Banner = ({type = false, isSingle = false,ignorecontainer=false, ...rest}: BannerType) => {
 
     const {data: banner} = useQuery({
         queryFn: () => GetAnywherePictures({...rest}),
         queryKey: ['banner', {...rest}]
     })
 
-    const {data}=useSuspenseQuery(GetAllActivePluginsQuery)
+    const {data} = useSuspenseQuery(GetAllActivePluginsQuery)
 
     if (banner?.data.length > 0 && data.includes('Widgets.AnyWherePicture'))
         if (type) {
@@ -71,29 +68,27 @@ const Banner = ({type = false,isSingle=false, ...rest}: BannerType) => {
             )
         } else {
             return (
-                <div className="banner flex flex-col gap-[10px]">
+                <div className={`banner flex flex-col gap-[10px]`}>
 
-                    <div className="sliderWide">
-                        <Slider data={banner.data.filter(d => d.Type === 3)}/>
-                    </div>
-                    <div className="container">
-                        <Slider data={banner.data.filter(d => d.Type === 2)}/>
+                    {banner.data.filter(d => d.Type === 3).length > 0 ?
+                        <div className="sliderWide">
+                            <Slider data={banner.data.filter(d => d.Type === 3)}/>
+                        </div> : ""}
 
-                    </div>
+                    {banner.data.filter(d => d.Type === 2).length > 0 ?
+                        <div className={`${ignorecontainer?"":'container'}`}>
+                            <Slider data={banner.data.filter(d => d.Type === 2)}/>
+                        </div> : ""}
                     {
-                        isSingle ?
 
-                            banner.data.filter(d => d.Type === 1)?.map((item: any, index: number) =>
-                                <LinkImage item={item} key={index}/>) :
-                            <div className={`container gap-3 grid-${banner.data.filter(d => d.Type === 1).length}`}>
-                                {
-                                    banner.data.filter(d => d.Type === 1)?.map((item: any, index: number) =>
-                                        <LinkImage item={item} key={index}/>)
-                                }
-                            </div>
+                            banner.data.filter(d => d.Type === 1).length > 0 ?
+                                <div className={`${isSingle?"single":"container"}  gap-3 grid-${banner.data.filter(d => d.Type === 1).length}`}>
+                                    {
+                                        banner.data.filter(d => d.Type === 1)?.map((item: any, index: number) =>
+                                            <LinkImage item={item} key={index}/>)
+                                    }
+                                </div> :""
                     }
-
-
                 </div>
             );
         }

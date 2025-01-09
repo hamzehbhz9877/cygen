@@ -1,0 +1,4 @@
+.brands{
+  @apply rounded-[20px] flex flex-col lg:flex-row gap-y-[15px] my-[30px];
+  @apply border-none lg:border lg:border-solid border-[rgb(211,216,228)];
+}

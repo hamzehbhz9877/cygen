@@ -1,7 +1,5 @@
 .special-slider {
-  @apply my-[30px] pt-[9%] pb-[40px]  relative;
-  background-color: transparent;
-  background-image: linear-gradient(0deg, #272727 99%, #FFFFFF 100%);
+  @apply my-[30px] pt-[9%] pb-[30px] lg:pb-[40px]  relative;
 
 
   &::before{
@@ -24,7 +22,7 @@
 
   &__title {
     @apply text-center mx-auto;
-    font-size: 24px;
+    @apply text-[16px] lg:text-[24px];
     font-weight: bold;
     color: #FFFFFF;
   }
@@ -107,53 +105,34 @@
 
 //mobile product slider
 .special-slider {
-  margin: 20px 0;
+  margin: 30px 0;
   &.slide-mobile {
-  @apply m-0 border-none;
+  @apply  border-none;
+    .carousel_lister{
+      @apply z-20 relative;
+    }
     .product{
-      min-width: 200px;
+      min-width: 220px;
+      width: 220px;
+      height: auto;
       border: 1px solid #e3e3e3 !important;
+      padding: 5px 10px !important;
       &+.product{
-        margin-right: 6px;
+        margin-right: 10px;
+      }
+      .index-prices-pro{
+        @apply mb-3;
+      }
+      .info-product{
+        padding: 0 !important;
       }
     }
-    .info-product{
-      padding: 0 !important;
-    }
+
     .offers{
       @apply pt-[8px];
     }
   }
 
-  .head-product {
-    position: relative;
-    font-weight: 600;
-    color: #515151;
-    width: 95%;
-    border: none;
-    margin: 5px 0px !important;
-    padding-bottom: 0;
-
-    h3 {
-      font-size: 14px !important;
-      margin-right: 3px;
-      color: #2d2d2d;
-      font-weight: 700;
-      line-height: 32px;
-
-      .titles-pro {
-        font-weight: 700;
-        color: #222;
-        font-size: 15px;
-        line-height: 1.571;
-
-        &::after {
-          height: 0;
-        }
-      }
-    }
-
-  }
 
   .carousel_lister {
     margin: 0 10px;

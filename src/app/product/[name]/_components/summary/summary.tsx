@@ -2,6 +2,7 @@ import React from 'react';
 import AddToCart from "@/app/product/[name]/_components/summary/cart/addToCart";
 import Content from "@/app/product/[name]/_components/summary/content";
 import Title from "@/app/product/[name]/_components/summary/title";
+import Banner from "@/components/banner";
 
 const Summary = ({product}) => {
 

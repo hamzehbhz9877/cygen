@@ -124,7 +124,8 @@ const Otp = ({MobileNumber, OtpExpireDateTotalSeconds, AuthenticationToken, Regi
                                         }
                                         <div className="label">
                                             کد تایید را وارد کنید
-                                            <span className="phone-number">{MobileNumber}</span>
+                                            <span className="phone-number" style={{direction:"ltr"}}>{
+                                                MobileNumber.slice(0, 4) + "***"+MobileNumber.slice(7)}</span>
                                         </div>
 
                                         <Input onKeyPress={(e) => {

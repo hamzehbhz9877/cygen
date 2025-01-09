@@ -1,4 +1,4 @@
-.product-slider {
+.section-slider {
   @apply my-[30px];
 
   .swiper-slide{
@@ -55,6 +55,7 @@
     }
     .index-prices-pro{
       height: auto;
+      display: unset !important;
     }
     .index-prices-pro{
       @apply pb-0;
@@ -88,17 +89,27 @@
 }
 
 //mobile product slider
-.product-slider {
-  margin: 20px 0;
+.section-slider {
+  margin: 30px 0;
   &.slide-mobile {
-  @apply m-0 border-none;
+  @apply  border-none;
+    .prk-post-item{
+      min-width: 250px;
+      height: auto;
+    }
     .product{
-      min-width: 200px;
+      width: 220px;
+      min-width: 220px;
+      height: auto;
       border: 1px solid #e3e3e3 !important;
       &+.product{
         margin-right: 6px;
       }
+      .index-prices-pro{
+        @apply mb-3;
+      }
     }
+
     .info-product{
       padding: 0 !important;
     }
@@ -138,9 +149,9 @@
   }
 
   .carousel_lister {
-    margin: 0 10px;
     padding: 10px 0;
     overflow-x: auto;
+    gap: 10px;
     display: flex;
 
     &::-webkit-scrollbar{
