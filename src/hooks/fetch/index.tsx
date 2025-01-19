@@ -5,7 +5,7 @@ import Cookie from "universal-cookie";
 import {isTokenExpired} from "@/services/httpservice";
 
 
-const fetchAPi = async (url) => {
+const fetchAPi = async ({url, option}:any) => {
 
     const cookie = new Cookie()
 
@@ -32,7 +32,7 @@ const fetchAPi = async (url) => {
     const res = await fetch(url.toString(), {
         headers: {
             Authorization
-        }, cache: 'no-store'
+        }, cache: 'no-store',...option
     })
     if (res.status === 204) {
         return []

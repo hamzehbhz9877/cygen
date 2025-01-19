@@ -1,20 +1,21 @@
-import {fetchAPi} from "@/hooks/fech";
+import {fetchAPi} from "@/hooks/fetch";
 import {instant} from "@/services/httpservice";
 
 
 export const GetProductsDetails = async (query: any) => {
     const {...rest}: any = query
-    return await fetchAPi(`https://api.cygenco.com/api/Product/ProductDetails?` + new URLSearchParams({
+    return await fetchAPi({url:`https://api.cygenco.com/api/Product/ProductDetails?` + new URLSearchParams({
         ...rest
-    }))
+    })
+})
 }
 
 export const GetRelatedProducts = async (query: any) => {
     const {...rest}: any = query
-    return await fetchAPi(`https://api.cygenco.com/api/Product/GetRelatedProducts?` + new URLSearchParams({
+    return await fetchAPi({url:`https://api.cygenco.com/api/Product/GetRelatedProducts?` + new URLSearchParams({
         ...rest
-    }))
-
+    })
+})
 }
 
 export const GetComments =(id)=>instant.get(`Product/GetProductReviews?productId=${id}`)

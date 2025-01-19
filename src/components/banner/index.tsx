@@ -10,7 +10,7 @@ import {GetAllActivePluginsQuery} from "@/services/Plugin";
 
 
 type BannerType = Partial<{
-    PositionSystemName: string
+    PositionSystemNames:string
     EntityId: string
     EntityName: string
     PictureSize: number
@@ -47,18 +47,18 @@ const Banner = ({type = false, isSingle = false,ignorecontainer=false, ...rest}:
 
     const {data} = useSuspenseQuery(GetAllActivePluginsQuery)
 
-    if (banner?.data.length > 0 && data.includes('Widgets.AnyWherePicture'))
+    if (banner?.data[0].AnyWherePictures.length > 0 && data.includes('Widgets.AnyWherePicture'))
         if (type) {
             return (
                 <div className="banner banner-tiny">
-                    <Slider data={banner.data.filter(d => d.Type === 3)}/>
+                    <Slider data={banner.data[0].AnyWherePictures.filter(d => d.Type === 3)}/>
 
                     <div className="mt-[7px]">
-                        <Slider data={banner.data.filter(d => d.Type === 2)}/>
+                        <Slider data={banner.data[0].AnyWherePictures.filter(d => d.Type === 2)}/>
                     </div>
                     <div className="mt-[7px]">
                         {
-                            banner.data.filter(d => d.Type === 1)?.map((item: any, index: number) =>
+                            banner.data[0].AnyWherePictures.filter(d => d.Type === 1)?.map((item: any, index: number) =>
                                 <LinkImage item={item} key={index}/>
                             )
                         }
@@ -70,21 +70,21 @@ const Banner = ({type = false, isSingle = false,ignorecontainer=false, ...rest}:
             return (
                 <div className={`banner flex flex-col gap-[10px]`}>
 
-                    {banner.data.filter(d => d.Type === 3).length > 0 ?
+                    {banner.data[0].AnyWherePictures.filter(d => d.Type === 3).length > 0 ?
                         <div className="sliderWide">
-                            <Slider data={banner.data.filter(d => d.Type === 3)}/>
+                            <Slider data={banner.data[0].AnyWherePictures.filter(d => d.Type === 3)}/>
                         </div> : ""}
 
-                    {banner.data.filter(d => d.Type === 2).length > 0 ?
+                    {banner.data[0].AnyWherePictures.filter(d => d.Type === 2).length > 0 ?
                         <div className={`${ignorecontainer?"":'container'}`}>
-                            <Slider data={banner.data.filter(d => d.Type === 2)}/>
+                            <Slider data={banner.data[0].AnyWherePictures.filter(d => d.Type === 2)}/>
                         </div> : ""}
                     {
 
-                            banner.data.filter(d => d.Type === 1).length > 0 ?
-                                <div className={`${isSingle?"single":"container"}  gap-3 grid-${banner.data.filter(d => d.Type === 1).length}`}>
+                            banner.data[0].AnyWherePictures.filter(d => d.Type === 1).length > 0 ?
+                                <div className={`${isSingle?"single":"container"}  gap-3 grid-${banner.data[0].AnyWherePictures.filter(d => d.Type === 1).length}`}>
                                     {
-                                        banner.data.filter(d => d.Type === 1)?.map((item: any, index: number) =>
+                                        banner.data[0].AnyWherePictures.filter(d => d.Type === 1)?.map((item: any, index: number) =>
                                             <LinkImage item={item} key={index}/>)
                                     }
                                 </div> :""

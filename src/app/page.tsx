@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+    GetAnywherePictures,
     GetHomepageBestSellerProducts, GetHomepageBlogs, GetHomepageCategories,
     GetHomepageManufacturers,
     GetHomepageNewProducts, GetHomepageNews,
@@ -10,9 +11,9 @@ import Categories from "@/app/_components/categories";
 
 
 import "./index.scss"
-import Banner from "@/components/banner";
 import DynamicSection from "@/components/dynamicSection";
 import Brands from "@/app/_components/brands";
+import BannerMain from "@/components/banner/bannerMain";
 
 
 const Home = async () => {
@@ -25,25 +26,37 @@ const Home = async () => {
     const homepageNews = await GetHomepageNews()
     const homepageBlogs = await GetHomepageBlogs()
 
+    const banner = await GetAnywherePictures([
+        'home_page_top_grid_right',
+        'home_page_top_grid_left_top',
+        'home_page_top_grid_left_bottom',
+        'home_page_before_categories',
+        'home_page_before_products',
+        'home_page_before_new_products',
+        'home_page_before_best_sellers',
+        'home_page_before_news',
+        'home_page_before_blog',
+    ])
+
     return (
 
         <div className="home-page">
             <div className={"container flex flex-wrap lg:flex-nowrap  gap-[10px] lg:gap-[20px] my-[30px]"}>
                 <div className={"w-full lg:w-[70%]"}>
-                    <Banner ignorecontainer PositionSystemName={'home_page_top_grid_right'} EntityName={'Public'}/>
+                    <BannerMain ignorecontainer  data={banner.find(d=>d.PositionSystemName==='home_page_top_grid_right')?.AnyWherePictures}/>
                 </div>
                 <div
                     className={"flex-1 grid-left w-full lg:w-[0%] justify-between flex flex-row lg:flex-col gap-[10px] lg:gap-[20px]"}>
-                    <Banner ignorecontainer PositionSystemName={'home_page_top_grid_left_top'} EntityName={'Public'}/>
-                    <Banner ignorecontainer PositionSystemName={'home_page_top_grid_left_bottom'}
-                            EntityName={'Public'}/>
+                    <BannerMain ignorecontainer  data={banner.find(d=>d.PositionSystemName==='home_page_top_grid_left_top')?.AnyWherePictures}/>
+                    <BannerMain ignorecontainer  data={banner.find(d=>d.PositionSystemName==='home_page_top_grid_left_bottom')?.AnyWherePictures}
+                    />
                 </div>
             </div>
-            <Banner PositionSystemName={'home_page_before_categories'} EntityName={'Public'}/>
+            <BannerMain data={banner.find(d=>d.PositionSystemName==='home_page_before_categories')?.AnyWherePictures}/>
             <DynamicSection PositionSystemName={'home_page_before_categories'}/>
 
             <Categories data={homepageCategories}/>
-            <Banner PositionSystemName={'home_page_before_products'} EntityName={'Public'}/>
+            <BannerMain data={banner.find(d=>d.PositionSystemName==='home_page_before_products')?.AnyWherePictures}/>
             <DynamicSection PositionSystemName={'home_page_before_products'}/>
 
             <div className="container">
@@ -51,7 +64,7 @@ const Home = async () => {
                     <ProductSliders data={homepageProducts} title={" پیشنهادی"}/> : ""}
             </div>
 
-            <Banner PositionSystemName={'home_page_before_new_products'} EntityName={'Public'}/>
+            <BannerMain data={banner.find(d=>d.PositionSystemName==='home_page_before_new_products')?.AnyWherePictures}/>
             <DynamicSection PositionSystemName={'home_page_before_new_products'}/>
 
             <div className="container">
@@ -59,21 +72,21 @@ const Home = async () => {
                     <ProductSliders data={homepageBestSellerProducts} title={"پرفروش ترین"}/> : ""}
             </div>
 
-            <Banner PositionSystemName={'home_page_before_best_sellers'} EntityName={'Public'}/>
+            <BannerMain data={banner.find(d=>d.PositionSystemName==='home_page_before_best_sellers')?.AnyWherePictures}/>
             <DynamicSection PositionSystemName={'home_page_before_best_sellers'}/>
             <div className="container">
                 {homepageProducts?.length > 0 ?
                     <ProductSliders data={homepageNewProducts} title={"جدیدترین"}/> : ""}
             </div>
 
-            <Banner PositionSystemName={'home_page_before_news'} EntityName={'Public'}/>
+            <BannerMain data={banner.find(d=>d.PositionSystemName==='home_page_before_news')?.AnyWherePictures}/>
             <DynamicSection PositionSystemName={'home_page_before_news'}/>
             <div className={"container"}>
                 {homepageNews?.length > 0 ?
                     <ProductSliders isNewsOrBlog data={homepageNews} title={"آخرین اخبار"}/> : ""}
             </div>
 
-            <Banner PositionSystemName={'home_page_before_blog'} EntityName={'Public'}/>
+            <BannerMain data={banner.find(d=>d.PositionSystemName==='home_page_before_blog')?.AnyWherePictures}/>
             <DynamicSection PositionSystemName={'home_page_before_posts'}/>
             <div className={"container"}>
                 {homepageBlogs?.length > 0 ?

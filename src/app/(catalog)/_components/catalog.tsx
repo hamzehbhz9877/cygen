@@ -117,7 +117,7 @@ const Catalog = ({category, searchParams}: { category: catalog, searchParams: an
                                 show={data.pages[0].DisplayCategoryBreadcrumb}/>
                 }
 
-                <Banner PositionSystemName={"category_top"} EntityName={"Category"} EntityId={data.pages[0].Id}/>
+                <Banner PositionSystemNames={"category_top"} EntityName={"Category"} EntityId={data.pages[0].Id}/>
                 <div className="container">
                     {data.pages[0].FeaturedProducts?.length > 0 ?
                         <ProductSliders data={data.pages[0].FeaturedProducts} title={"محصولات ویژه"}/> : ""}

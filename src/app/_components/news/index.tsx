@@ -21,7 +21,7 @@ const News = ({data}: any) => {
                 Name:'اخبار',
                 SeName: ''
             }]} show={true}/>
-            <Banner PositionSystemName={'news_list_top'}  EntityName={'Public'}/>
+            <Banner PositionSystemNames={'news_list_top'}  EntityName={'Public'}/>
             <div className={"container"}>
                 <NewsData data={data.NewsItems} title={'آخرین اخبار'}/>
                 <div className={"mt-[12px]"}>

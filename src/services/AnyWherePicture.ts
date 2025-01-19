@@ -6,7 +6,7 @@ import axios from "axios";
 
 // export const GetAnywherePicturePositions = async () => instant.get('AnyWherePicture/GetAnywherePicturePositions')
 
-export const GetAnywherePictures = async (params: any) =>instant.get(`AnyWherePicture/GetAnywherePictures`,{params:{...params}})
+export const    GetAnywherePictures = async (params: any) =>instant.get(`AnyWherePicture/GetAnywherePictures`,{params:{...params}})
 
 // export const GetAnywherePicturePositionsQuery = queryOptions({
 //     queryKey: ['GetAnywherePicturePositions'],

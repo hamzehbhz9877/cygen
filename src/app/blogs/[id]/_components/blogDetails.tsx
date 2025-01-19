@@ -32,9 +32,9 @@ const NewsBlogsDetails = ({data, news}) => {
             </div>
             {
                 news ?
-                    <Banner PositionSystemName={'news_details_before_content'}  EntityName={'News'}
+                    <Banner PositionSystemNames={'news_details_before_content'}  EntityName={'News'}
                             EntityId={data.Id}/> :
-                    <Banner PositionSystemName={'blog_details_before_content'}  EntityName={'Blog'}
+                    <Banner PositionSystemNames={'blog_details_before_content'}  EntityName={'Blog'}
                             EntityId={data.Id}/>
             }
 

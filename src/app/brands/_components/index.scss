@@ -1,0 +1,77 @@
+.brands-page {
+  @apply pb-[40px];
+  ul {
+    @apply grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5  xl:grid-cols-6 gap-[10px] ;
+    li {
+      cursor: pointer;
+      height: auto;
+      padding: 20px 10px;
+      position: relative;
+      text-align: center;
+      font-size: 15px;
+      @apply text-[12px] lg:text-[15px];
+      font-weight: 300;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px -2px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease 0.1s;
+      flex: 1 0 auto;
+      @apply z-10  border border-[rgb(145,158,188,0.2)];
+    }
+  }
+
+  .ask-search {
+    position: relative;
+    top: -0.625rem;
+    width: 100%;
+    background: linear-gradient(180deg, #e0e0e2, hsla(0, 0%, 100%, 0));
+  }
+
+  .brands-search {
+    @apply w-full max-w-full flex flex-col items-center justify-center bg-[url("../../../assets/images/faq-pattern.svg")] bg-contain bg-top bg-no-repeat px-[calc(6_*_35px)] py-[35px];
+    .circle_btn_icon {
+      @apply w-[60px] h-[60px] text-center flex items-center justify-center rounded-[50%];
+      background: #fff;
+
+      i {
+        @apply text-[#19bfd3] text-2xl font-black;
+      }
+    }
+  }
+
+  .page_title {
+    @apply text-[#0c0c0c] text-[19px] font-semibold leading-6 pt-[30px] pb-[11px];
+  }
+
+  .form_search_faqpage {
+    @apply w-6/12 flex justify-center relative mt-4 mx-auto;
+    .input_field {
+      @apply inline-block w-full leading-[1.222] tracking-[-0.6px] border font-normal text-[15px] px-[18px] py-[15px] rounded-lg border-solid border-[#c8c8c8];
+      background: #fff;
+
+      &:focus {
+        @apply border-dynamic-color-from;
+      }
+
+      &:focus, &:active {
+        @apply outline-[#19bfd3];
+      }
+    }
+
+    .search-submit {
+      @apply font-bold text-[1.071rem] leading-[1.467] bg-[#00bfd6] border text-white cursor-pointer transition-all duration-[0.3s] ease-[ease-in-out] pt-[11px] pb-[9px] px-10 rounded-[9px] border-solid border-[#148693] hover:bg-[#36cddf];
+    }
+  }
+
+  @media only screen and (max-width: 990px) {
+    .form_search_faqpage {
+      @apply w-full py-0;
+    }
+    .form_search_faqpage .input_field {
+      @apply px-[15px] py-3;
+    }
+    .brands-search {
+      @apply px-4 py-5;
+    }
+  }
+}

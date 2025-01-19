@@ -52,7 +52,7 @@ const Filters = ({AvailableManufacturers, CatalogProductsModel,id}: FiltersType)
                     }) : ""
                 }
 
-            <Banner PositionSystemName={"category_sidebar"} type EntityName={"Category"} EntityId={String(id)}/>
+            <Banner PositionSystemNames={"category_sidebar"} type EntityName={"Category"} EntityId={String(id)}/>
         </div>
     );
 };

@@ -67,7 +67,7 @@ const Page = async ({params}: any) => {
             </div>
 
 
-            <Banner PositionSystemName={"product_details_before_related_products"}  EntityName={"Product"} EntityId={String(product.Id)}/>
+            <Banner PositionSystemNames={"product_details_before_related_products"}  EntityName={"Product"} EntityId={String(product.Id)}/>
 
             <div className={"container"}>
                 {relatedProducts?.length > 0 ?

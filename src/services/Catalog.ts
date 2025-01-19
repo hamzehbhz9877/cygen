@@ -1,35 +1,39 @@
 import {instant} from "@/services/httpservice";
-import {fetchAPi} from "@/hooks/fech";
+import {fetchAPi} from "@/hooks/fetch";
 
 
 export const ProductsListByCategory = async (query: any) => {
     const {pageParam = 1, ...rest}: any = query
-    return await fetchAPi(`https://api.cygenco.com/api/Catalog/Category?PageNumber=${query.PageNumber ?? pageParam}&` + new URLSearchParams({
+    return await fetchAPi({url:`https://api.cygenco.com/api/Catalog/Category?PageNumber=${query.PageNumber ?? pageParam}&` + new URLSearchParams({
         ...rest
-    }))
+    })
+})
 }
 
 export const ProductsListBySearch = async (query: any) => {
     const {pageParam = 1, ...rest}: any = query
-    return await fetchAPi(`
+    return await fetchAPi({url:`
     https://api.cygenco.com/api/Catalog/Search?PageNumber=${query.PageNumber ?? pageParam}&` + new URLSearchParams({
-        ...rest
+            ...rest
         }
-    ))
+    )
+})
 }
 
 export const ProductsListByManufacturer = async (query: any) => {
     const {pageParam = 1, ...rest}: any = query
-     return await fetchAPi(`https://api.cygenco.com/api/Catalog/Manufacturer?PageNumber=${query.PageNumber ?? pageParam}&` + new URLSearchParams({
-        ...rest
-    }))
+     return await fetchAPi({url:`https://api.cygenco.com/api/Catalog/Manufacturer?PageNumber=${query.PageNumber ?? pageParam}&` + new URLSearchParams({
+         ...rest
+     })
+})
 }
 
 export const ProductsListByGetTagProducts = async (query: any) => {
     const {pageParam = 1, ...rest}: any = query
-    return await fetchAPi(`https://api.cygenco.com/api/Catalog/Tag?PageNumber=${query.PageNumber ?? pageParam}&` + new URLSearchParams({
+    return await fetchAPi({url:`https://api.cygenco.com/api/Catalog/Tag?PageNumber=${query.PageNumber ?? pageParam}&` + new URLSearchParams({
         ...rest
-    }))
+    })
+})
 }
 
 

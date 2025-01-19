@@ -31,7 +31,7 @@ const AddToCart = ({product}) => {
                    </div>
                </div> : ""}
            </div>
-            <Banner PositionSystemName={"product_details_after_price_box"} type  EntityName={"Product"} EntityId={String(product.Id)}/>
+                <Banner PositionSystemNames={"product_details_after_price_box"} type  EntityName={"Product"} EntityId={String(product.Id)}/>
         </div>
     );
 };

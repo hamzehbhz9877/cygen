@@ -115,7 +115,7 @@ const SearchMobile = () => {
                             </div> :
                             <>
                                 <div className="search-result__image">
-                                        <Banner isSingle PositionSystemName={"search_box"} PictureSize={400}/>
+                                        <Banner isSingle PositionSystemNames={"search_box"} PictureSize={400}/>
                                 </div>
                                 <div className="search-result__promote">
                                     <span><RiFireLine size={24} className="ml-[11px]"/> جستجوی پرطرفدار </span>

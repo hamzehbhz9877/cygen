@@ -47,7 +47,7 @@ const NewsDetails = ({data}) => {
 
 
                 <div className="humbnail-single">
-                  <Banner  PositionSystemName={'home_page_before_blog'} EntityName={'public'} isSingle/></div>
+                  <Banner  PositionSystemNames={'home_page_before_blog'} EntityName={'public'} isSingle/></div>
 
 
                 <div className="counts">{parse(data.Full)}</div>

@@ -542,7 +542,7 @@
       }
 
       &__cart {
-        @apply flex flex-col w-full mt-2 lg:mt-0 max-w-full lg:max-w-[345px] lg:w-[38%];
+        @apply flex flex-col gap-[10px] w-full mt-2 lg:mt-0 max-w-full lg:max-w-[345px] lg:w-[38%];
       &>div{
         border: 1px solid #e0e0e2;
         padding: 10px;

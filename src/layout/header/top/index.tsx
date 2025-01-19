@@ -10,7 +10,7 @@ import Banner  from "@/components/banner";
 const Top = () => {
     return (
         <>
-            <Banner isSingle PositionSystemName={"header_before"}/>
+            <Banner isSingle PositionSystemNames={"header_before"}/>
             <div className="header__top container">
                 <div className="flex items-center ">
                     <Logo/>

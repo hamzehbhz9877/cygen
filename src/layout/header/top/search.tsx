@@ -168,7 +168,7 @@ const Search = () => {
                                             </div>
                                         </div> : <>
                                             <div className="search-result__image">
-                                                    <Banner isSingle PositionSystemName={"search_box"}
+                                                    <Banner isSingle PositionSystemNames={"search_box"}
                                                             PictureSize={400}/>
                                             </div>
                                             <div className="search-result__promote">

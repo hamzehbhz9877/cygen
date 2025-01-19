@@ -14,6 +14,7 @@ const Blogs = ({blogs}: any) => {
         });
     const {addQueryParam} = useQueryParams()
 
+
     return (
         <div className="blogs">
             <Breadcrumb data={[{
@@ -21,7 +22,7 @@ const Blogs = ({blogs}: any) => {
                 SeName: ''
             }]} show={true}/>
 
-            <Banner PositionSystemName={'blog_list_top'} EntityName={'Public'}/>
+            <Banner PositionSystemNames={'blog_list_top'} EntityName={'Public'}/>
             <div className={"container"}>
 
                 <BlogsData data={blogs.BlogPosts} title={' آخرین مطالب'}/>
