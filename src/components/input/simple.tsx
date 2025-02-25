@@ -46,7 +46,7 @@ const Input = ({type, label, name, error, icon, className,...rest}: Props) => {
 
             {error && error.status===400 ?
                 <ul>
-                    {getErrorFromServer(error?.response?.data, name).map((d, index) => {
+                    {getErrorFromServer(error?.response?.data?.errors||error?.response?.data, name).map((d, index) => {
                         return <li key={index} className="error">{d}</li>
                     })}
                 </ul>

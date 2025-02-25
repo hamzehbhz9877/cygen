@@ -25,7 +25,7 @@ const Blog = ({
                        className="attachment-post-thumbnail size-post-thumbnail wp-post-image"/>
             </div>
             <h2 className="post-item-title">
-                <Link href={'/blogs/' + SeName}>{Title}</Link>
+                <Link href={(Body?'/blogs/':'/news/') + SeName}>{Title}</Link>
             </h2>
 
             {Body?
@@ -37,7 +37,7 @@ const Blog = ({
                                                                             color={'#9d9d9d'}/>{diffDays(CreatedOn)}  پیش منتشر شده</span>
 
 
-                <Link href={'/blogs/' + SeName} className="view-more"><LiaArrowLeftSolid size={18}
+                <Link href={(Body?'/blogs/':'/news/') + SeName} className="view-more"><LiaArrowLeftSolid size={18}
                                                                                               color={"black"}/></Link>
 
             </div>

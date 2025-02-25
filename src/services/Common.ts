@@ -3,6 +3,7 @@ import {queryOptions} from "@tanstack/react-query";
 
 export const GetSiteSettings = () => instant.get('Common/GetSiteSettings')
 export const GetPopularSearchTerms = () => instant.get('Common/GetPopularSearchTerms')
+export const GetCitiesByStateId = (id) => instant.get(`Common/GetCitiesByStateId?stateId=${id}`)
 
 export const GetSiteSettingsQuery = queryOptions({
     queryKey: ['GetSiteSettings'],

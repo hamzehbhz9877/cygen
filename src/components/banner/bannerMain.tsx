@@ -26,7 +26,7 @@ const LinkImage = ({item}) => {
             />
             <Image src={item.Picture.ImageUrl} title={item.Picture.Title}
                    alt={item.Picture.AlternateText}
-                   priority width={0} height={0} layout={"responsive"}
+                    width={0} height={0} layout={"responsive"}
                    className={"static w-full"}/>
         </picture>
 

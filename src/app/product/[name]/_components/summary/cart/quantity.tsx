@@ -1,37 +1,43 @@
 'use client'
-
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {FaMinus, FaPlus} from "react-icons/fa6";
-import {FaTrash} from "react-icons/fa";
 import {BsTrash3} from "react-icons/bs";
+import {useMutation, useQueryClient} from "@tanstack/react-query";
+import {UpdateShoppingCart} from "@/services/ShoppingCart";
+import {showToast} from "@/components/react-toastify/react-toastify";
+import useQuantity from "@/hooks/useQuantity";
 
-const Quantity = ({product}) => {
-    const [value, setValue] = useState(1)
+const Quantity = ({product, defaultValue}: any) => {
 
-    useEffect(() => {
-        setValue(product?.AddToCart.EnteredQuantity)
-    }, [product]);
+    const queryClient = useQueryClient()
 
-    const handleChangeQuantity = (value) => {
-        if (value > 0 && Number(value))
-            setValue(value)
-    }
+    const {mutate, isPending} = useMutation<any, any, any, any>({
+        mutationFn: UpdateShoppingCart, onSuccess: () => {
+            queryClient.invalidateQueries({queryKey: ["FlyoutShoppingCart"]})
 
-    const handlePlus = () => setValue(value + 1)
+        },
+        onError: (data) => {
+            showToast("error", data.response.data)
+        }
+    })
 
-    const handleMinus = () => setValue(value > 1 ? value - 1 : value)
+    const {handleRemoveFromCart,handlePlus,handleChangeQuantity,handleMinus,value}=useQuantity(mutate,product.Id,defaultValue)
 
 
     return (
         <div className="quantity">
-            <a className={`ms-[4px] ${product?.AddToCart.MinimumQuantityNotification === value ? 'opacity-60 !cursor-not-allowed' : ""}`}
+            <a className={`ms-[4px]`}
                onClick={handlePlus}>
                 <FaPlus/> </a>
 
-            <input type="number" value={value} onChange={(e) => handleChangeQuantity(e.target.value)}/>
+            {isPending ? <div className={"w-full h-[24px] grid place-content-center"}>
+                    <div className={"loader-cart"}/>
+                </div> :
+                <input type="number" value={value} onChange={(e) => handleChangeQuantity(e.target.value)}/>}
 
-            <a className={`me-[4px]`} onClick={value <= product?.AddToCart.EnteredQuantity ? null : handleMinus}>{
-                value === product?.AddToCart.EnteredQuantity ? <BsTrash3 size={18}/> : <FaMinus size={12}/>
+            <a className={`me-[4px]`}
+               onClick={value <= product?.AddToCart.EnteredQuantity ? null : handleMinus}>{
+                value === product?.AddToCart.EnteredQuantity ? <BsTrash3 size={18} onClick={handleRemoveFromCart}/> : <FaMinus size={12}/>
             }</a>
         </div>
 

@@ -30,65 +30,65 @@ const Footer = () => {
         <footer className="footer-s">
             <div className="main-footer">
 
-                <div className="container">
-                    <div className="info-boxer">
-                        <Logo/>
-                        <ScrollToTop/>
-                        <TellBox/>
+                    <div className="container">
+                        <div className="info-boxer">
+                            <Logo/>
+                            <ScrollToTop/>
+                            <TellBox/>
+                            <div className="clear"></div>
+                        </div>
+                        {
+                            findKey(20,data)?.map(d => {
+                                return (
+                                    <Menu key={d.Id} {...d} childs={[...findKey(20,data),...settings.FooterTopics.filter(d=>d.IncludeInFooterColumn1)]}/>
+                                )
+                            })
+                        }
+                        {
+                           findKey(21,data)?.map(d => {
+                                return (
+                                    <Menu key={d.Id} {...d} childs={[...findKey(21,data),...settings.FooterTopics.filter(d=>d.IncludeInFooterColumn2)]}/>
+                                )
+                            })
+                        }
+                        {
+                            findKey(22,data)?.map(d => {
+                                return (
+                                    <Menu key={d.Id} {...d} childs={[...findKey(22,data),...settings.FooterTopics.filter(d=>d.IncludeInFooterColumn3)]}/>
+                                )
+                            })
+                        }
+
+                        {
+                            findKey(20,data)?.map(d => {
+                                return (
+                                    <MenuMobile key={d.Id} {...d} childs={[...findKey(20,data),...settings.FooterTopics.filter(d=>d.IncludeInFooterColumn1)]}/>
+                                )
+                            })
+                        }
+                        {
+                           findKey(21,data)?.map(d => {
+                                return (
+                                    <MenuMobile key={d.Id} {...d} childs={[...findKey(21,data),...settings.FooterTopics.filter(d=>d.IncludeInFooterColumn2)]}/>
+                                )
+                            })
+                        }
+                        {
+                            findKey(22,data)?.map(d => {
+                                return (
+                                    <MenuMobile key={d.Id} {...d} childs={[...findKey(22,data),...settings.FooterTopics.filter(d=>d.IncludeInFooterColumn3)]}/>
+                                )
+                            })
+                        }
+
+                        <MailBox/>
                         <div className="clear"></div>
+                        <App/>
+                        <About/>
+                        <div className="clear"></div>
+                        <span className="line-foot"></span>
+                        <Copyright/>
                     </div>
-                    {
-                        findKey(20,data)?.map(d => {
-                            return (
-                                <Menu key={d.Id} {...d} childs={[...findKey(20,data),...settings.FooterTopics.filter(d=>d.IncludeInFooterColumn1)]}/>
-                            )
-                        })
-                    }
-                    {
-                       findKey(21,data)?.map(d => {
-                            return (
-                                <Menu key={d.Id} {...d} childs={[...findKey(21,data),...settings.FooterTopics.filter(d=>d.IncludeInFooterColumn2)]}/>
-                            )
-                        })
-                    }
-                    {
-                        findKey(22,data)?.map(d => {
-                            return (
-                                <Menu key={d.Id} {...d} childs={[...findKey(22,data),...settings.FooterTopics.filter(d=>d.IncludeInFooterColumn3)]}/>
-                            )
-                        })
-                    }
-
-                    {
-                        findKey(20,data)?.map(d => {
-                            return (
-                                <MenuMobile key={d.Id} {...d} childs={[...findKey(20,data),...settings.FooterTopics.filter(d=>d.IncludeInFooterColumn1)]}/>
-                            )
-                        })
-                    }
-                    {
-                       findKey(21,data)?.map(d => {
-                            return (
-                                <MenuMobile key={d.Id} {...d} childs={[...findKey(21,data),...settings.FooterTopics.filter(d=>d.IncludeInFooterColumn2)]}/>
-                            )
-                        })
-                    }
-                    {
-                        findKey(22,data)?.map(d => {
-                            return (
-                                <MenuMobile key={d.Id} {...d} childs={[...findKey(22,data),...settings.FooterTopics.filter(d=>d.IncludeInFooterColumn3)]}/>
-                            )
-                        })
-                    }
-
-                    <MailBox/>
-                    <div className="clear"></div>
-                    <App/>
-                    <About/>
-                    <div className="clear"></div>
-                    <span className="line-foot"></span>
-                    <Copyright/>
-                </div>
 
             </div>
         </footer>

@@ -25,6 +25,7 @@ import React, {Suspense} from "react";
 import {headers} from "next/headers";
 import "@/components/libarary/slider.scss"
 import {GetAllActivePluginsQuery} from "@/services/Plugin";
+import SidebarCart from "@/layout/sidebar/sidebarCart";
 
 // const bYekan = localFont({
 //     src: "./fonts/YekanBakhFaNum-Regular.woff",
@@ -77,9 +78,7 @@ export default async function RootLayout({
                                         <HydrationBoundary state={dehydrate(queryClient)}>
                                             <Header/>
                                             <main>
-
                                                 {children}
-
                                             </main>
                                             <Footer/>
                                         </HydrationBoundary>

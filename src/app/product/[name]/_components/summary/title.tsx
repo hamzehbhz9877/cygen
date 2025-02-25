@@ -1,7 +1,11 @@
+'use client'
 import React from 'react';
 import Link from "next/link";
+import {productStore} from "@/state/product/product";
 
 const Title = ({product}:any) => {
+    const {changeAttributes}=productStore(d=>d)
+
     return (
         <div className="title_compleates flexed_start">
             <div className="boxed_title">
@@ -19,30 +23,30 @@ const Title = ({product}:any) => {
                    {
                        product.ShowSku && product.Sku ? <div className="product_meta">
                         <span className="sku_wrapper">شناسه محصول: <span className="sku"
-                                                                         data-o_content="apple-13pak#-1">{product.Sku}</span></span>
+                                                                         data-o_content="apple-13pak#-1">{changeAttributes?.sku??product.Sku}</span></span>
                        </div> : ""
                    }
                    {
                        product.ShowManufacturerPartNumber && product.ManufacturerPartNumber ? <div className="product_meta">
                         <span className="sku_wrapper">شناسه برند: <span className="sku"
-                                                                        data-o_content="apple-13pak#-1">{product.ManufacturerPartNumber}</span></span>
+                                                                        data-o_content="apple-13pak#-1">{changeAttributes?.manufacturerPartNumber??product.ManufacturerPartNumber}</span></span>
                        </div> : ""
                    }
 
                    {
                        product.ShowGtin && product.Gtin ? <div className="product_meta">
                         <span className="sku_wrapper">پارت نامبر: <span className="sku"
-                                                                        data-o_content="apple-13pak#-1">{product.Gtin}</span></span>
+                                                                        data-o_content="apple-13pak#-1">{changeAttributes?.gtin??product.Gtin}</span></span>
                        </div> : ""
                    }
                </div>
                 {
                     product.ProductTags.length > 0 ?
                         <div className={"tag mb-3"}>
-                            <ul className={"flex items-center"}>
+                            <ul className={"flex items-center flex-wrap gap-[10px]"}>
                                 {product.ProductTags.map(tag => {
                                     return <li key={tag.Id}
-                                               className={"bg-gray-100 text-gray-800 text-xs font-medium me-2 px-[13px] py-[6px] rounded-full"}>
+                                               className={"bg-gray-100 text-gray-800 text-xs font-medium px-[13px] py-[6px] rounded-full"}>
                                         <Link href={`/tag/${tag.Name}`}>{tag.Name}</Link>
                                     </li>
                                 })}

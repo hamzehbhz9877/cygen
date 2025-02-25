@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {useQuery, useSuspenseQuery} from "@tanstack/react-query";
 import {GetDynamicSections} from "@/services/DynamicSection";
 import {GetAllActivePluginsQuery} from "@/services/Plugin";
@@ -10,19 +10,32 @@ import SpecialSlider from "@/components/libarary/products/special";
 type DynamicSectionType = Partial<{
     PositionSystemName: string
     PictureSize: number
+    data?: any
 }>
-const DynamicSection = ({...rest}: DynamicSectionType) => {
+const DynamicSection = ({data, ...rest}: DynamicSectionType) => {
+
+    const [res, setRes] = useState<any>();
     const {data: section} = useQuery({
         queryFn: () => GetDynamicSections({...rest}),
-        queryKey: ['dynamicSection', {...rest}]
+        queryKey: ['dynamicSection', {...rest}],
+        enabled: !data
     })
-    const {data} = useSuspenseQuery(GetAllActivePluginsQuery)
+    const {data: plugin} = useSuspenseQuery(GetAllActivePluginsQuery)
 
+    useEffect(() => {
+        if (data)
+            setRes(data)
+    }, [data])
 
-    if (data.includes('Widgets.DynamicSection'))
+    useEffect(() => {
+        if (!data)
+            setRes(section?.data)
+    }, [section])
+
+    if (plugin.includes('Widgets.DynamicSection'))
         return (
             <div>
-                {section?.data.map((item: any, index: number) => (
+                {res?.map((item: any, index: number) => (
                     item.Theme === 1 ?
                         <div className={"container"} key={item.Id}>
                             <ProductSliders data={item.Products} title={item.Title}/>

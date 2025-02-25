@@ -32,7 +32,7 @@ const FaqAnswers = ({data,title}:Props) => {
                                     title={
                                         <div className="ask_accordion">
                                             <h2 className="">{d.Question}</h2>
-                                            <LiaAngleDownSolid size={14} color={"#000"}/>
+                                            <LiaAngleDownSolid className={"angled"} size={14} color={"#000"}/>
                                         </div>
                                     }
                                     content={

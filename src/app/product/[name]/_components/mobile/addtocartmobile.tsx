@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react';
-import Addtocart from "@/layout/header/mobile/addtocart";
+import AddToCartFloat from "@/layout/header/mobile/addToCartFloat";
 import {usePathname} from "next/navigation";
 import {productStore} from "@/state/product/product";
 import ProductMobileHeader from "@/layout/header/mobile/productDetails/productMobileHeader";
@@ -15,7 +15,7 @@ const AddToCartMobile = ({product}) => {
             {
                 product.AddToCart.DisableBuyButton || !product.InStock ?"":<div
                 className={`${!productNotFound && decodeURIComponent(pathname).includes('product') ? 'addtocart-wrapper' : 'hidden'} `}>
-                <Addtocart product={product}/>
+                <AddToCartFloat product={product}/>
                 </div>
                 }
 

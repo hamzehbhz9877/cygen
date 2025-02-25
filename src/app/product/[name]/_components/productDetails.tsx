@@ -5,6 +5,7 @@ import Slider from "@/app/product/[name]/_components/slider";
 import Summary from "@/app/product/[name]/_components/summary/summary";
 
 const ProductDetails = ({product}:any) => {
+
     return (
        <div className={"product-details"}>
            <div className="product-details__content">

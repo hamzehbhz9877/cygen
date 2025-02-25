@@ -8,13 +8,13 @@ import {GetSiteSettingsQuery} from "@/services/Common";
 
 const Logo = () => {
     const {data} = useSuspenseQuery(GetSiteSettingsQuery)
+
     return (
         <div className="logo">
             <Link href={"/"} >
                 <Image alt={data.Logo.StoreName} width={135} height={61}
                        src={data.Logo.LogoPath}/>
             </Link>
-
         </div>
     );
 };

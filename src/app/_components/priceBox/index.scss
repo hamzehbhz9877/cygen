@@ -1,0 +1,32 @@
+.priceBox {
+  @apply w-full lg:w-[344px] h-max bg-white py-[24px] px-[16px] rounded-[16px] border border-[#E3E3E3];
+  .item {
+    @apply flex justify-between items-center text-[18px];
+    &.product-cart {
+      @apply text-[#979797] ;
+    }
+    &.discount:first-child {
+      @apply text-[#5E5E5E];
+    }
+    &.discount:last-child {
+      @apply text-[#ED303D]
+    }
+    .total{
+      @apply font-bold text-[#5E5E5E];
+    }
+    .payable{
+      @apply text-[#2F2F2F] font-bold;
+    }
+  }
+
+  button.proc{
+    @apply w-full bg-[#ED303D] py-[14px] rounded-[16px] text-white text-[16px] md:text-[18px] font-bold mt-[30px];
+    &.inactive{
+      @apply bg-[#CBCBCB] cursor-not-allowed;
+    }
+  }
+
+  hr {
+    @apply h-[1px] w-full text-[#E6E6E6] my-[16px];
+  }
+}

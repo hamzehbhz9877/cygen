@@ -25,13 +25,18 @@
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 12px;
 }
 
 .breadcrumb-mobile::-webkit-scrollbar {
   height: 3px;
 }
-
+::-webkit-scrollbar {
+  height: 6px;
+}
+select::-webkit-scrollbar{
+  width: 10px;
+}
 ::-webkit-scrollbar-track {
   background: #ececed !important;
   border-radius: 6px !important;
@@ -152,7 +157,7 @@ input[type=number] {
   align-items: center;
   justify-content: center;
   background-color: #fff;
-  @apply w-[200px] md:w-[300px] h-[114px] md:h-[170px] rounded-[8px] md:rounded-[14px];
+  @apply w-[200px] md:w-[300px] h-[124px] md:h-[170px] rounded-[8px] md:rounded-[14px];
 }
 
 .ellipsis-1 {
@@ -177,7 +182,7 @@ body .error-404 {
   span {
     margin: 30px auto;
     display: inline-block;
-    padding: 10px 15px;
+    padding: 12px 15px;
     border-radius: 8px;
     @apply bg-dynamic-color-from;
     color: #fff;
@@ -192,4 +197,18 @@ body .error-404 {
 
 @layer utilities {
 
+}
+
+
+.loader-cart {
+  width: 8px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  animation: l5 1s infinite linear alternate;
+}
+@keyframes l5 {
+  0%  {box-shadow: 12px 0 #514a4a30, -12px 0 #514a4a30;background: #19151540 }
+    33% {box-shadow: 12px 0 #19151540, -12px 0 #514a4a30;background: #514a4a30}
+  66% {box-shadow: 12px 0 #514a4a30,-12px 0 #19151540; background: #514a4a30}
+  100%{box-shadow: 12px 0 #514a4a30,-12px 0 #19151540; background: #19151540 }
 }

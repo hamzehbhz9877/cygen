@@ -7,7 +7,7 @@ import useModal from "@/context/modal/useModal";
 import AddComment from "@/app/product/[name]/_components/tabs/comments/add/add";
 import RateReview from "@/app/product/[name]/_components/tabs/comments/rate/review";
 import {keepPreviousData, useMutation, useQuery} from "@tanstack/react-query";
-import {AddHelpfulness, GetComments} from "@/services/product";
+import {AddHelpfulness, GetComments} from "@/services/Product";
 import {getQueryClient} from "@/utils/get-query-client";
 import LogoLoader from "@/components/loading/logoLoader";
 import {showToast} from "@/components/react-toastify/react-toastify";

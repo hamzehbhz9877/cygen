@@ -1,8 +1,8 @@
 .input{
 
-  & + .input{
-    @apply mt-[20px];
-  }
+  //& + .input{
+  //  @apply mt-[20px];
+  //}
   &-field{
     @apply bg-white border text-base leading-6 w-full text-[#030a16]
     font-medium p-3 rounded-[11px] border-solid border-[#e0e0e2] focus-visible:border-black;

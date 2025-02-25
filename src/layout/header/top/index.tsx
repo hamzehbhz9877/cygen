@@ -1,13 +1,27 @@
-import React from 'react';
+'use client'
+
+import React, {useEffect, useState} from 'react';
 import Search from "@/layout/header/top/search";
 import Logo from "@/layout/header/top/logo";
 import {FiPhoneCall} from "react-icons/fi";
 import Account from "@/layout/header/top/account";
 import {PiShoppingCartSimpleLight} from "react-icons/pi";
 import Banner  from "@/components/banner";
+import {useQuery, useQueryClient} from "@tanstack/react-query";
+import SidebarCart from "@/layout/sidebar/sidebarCart";
+import {FlyoutShoppingCart} from "@/services/ShoppingCart";
+import {usePathname} from "next/navigation";
 
 
 const Top = () => {
+
+    const [isOpen,setIsOpen]=useState(false);
+
+    const {data} = useQuery({
+        queryKey: ["FlyoutShoppingCart"],
+        queryFn: FlyoutShoppingCart,
+    })
+
     return (
         <>
             <Banner isSingle PositionSystemNames={"header_before"}/>
@@ -21,12 +35,13 @@ const Top = () => {
                     <i className="line-account"></i>
                     <Account/>
                     <i className="line-account"></i>
-                    <div className="shopping-cart cursor-pointer" title="cart">
+                    <div className="shopping-cart cursor-pointer" title="cart" onClick={()=>{setIsOpen(true)}}>
                         <PiShoppingCartSimpleLight size={28} color={'#424750'}/>
-                        <em className="rounded-full">0</em>
+                        <em className="rounded-full">{data?.data.TotalProducts??0}</em>
                     </div>
                 </div>
             </div>
+            <SidebarCart isOpen={isOpen} setIsOpen={setIsOpen}/>
         </>
 
     );

@@ -2,7 +2,7 @@ import React from 'react';
 import ProductDetails from "@/app/product/[name]/_components/productDetails";
 import ProductSliders from "@/components/libarary/products";
 import Tabs from "@/app/product/[name]/_components/tabs";
-import {GetComments, GetProductsDetails, GetRelatedProducts} from "@/services/product";
+import {GetComments, GetProductsDetails, GetRelatedProducts} from "@/services/Product";
 import Breadcrumb from "@/components/breadcrumb";
 import SliderMobile from "@/app/product/[name]/_components/mobile/slider";
 import {Metadata} from "next";
@@ -65,7 +65,6 @@ const Page = async ({params}: any) => {
                 }
                 <ProductDetails product={product}/>
             </div>
-
 
             <Banner PositionSystemNames={"product_details_before_related_products"}  EntityName={"Product"} EntityId={String(product.Id)}/>
 

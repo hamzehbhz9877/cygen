@@ -39,7 +39,7 @@ const FilterByPrice = ({isOpen = true, data}: FilterByPriceType) => {
                 title={
                     <div className="filter__title">
                         <h2 className="">محدوده قیمت</h2>
-                        <LiaAngleDownSolid size={14} color={"#000"}/>
+                        <LiaAngleDownSolid className={"angled"} size={14} color={"#000"}/>
                     </div>}
                 content={
                     <div className="filter__content">

@@ -102,33 +102,7 @@
   }
 }
 
-/* totalitems loader */
-.loader-count {
-  //@apply w-[7px] aspect-[1] animate-[l5_0.5s_infinite_linear_alternate] mx-[15px] my-0 rounded-[50%];
 
-  margin: 0 15px;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background-color: #fff;
-  box-shadow: 10px 0 #fff, -10px 0 #fff;
-  position: relative;
-  animation: flash 0.5s ease-out infinite alternate;
-}
-@keyframes flash {
-  0% {
-    background-color: rgb(129,133,139);
-    box-shadow: 10px 0 rgb(129,133,139), -10px 0 #0003;
-  }
-  50% {
-    background-color: #0003;
-    box-shadow: 10px 0 rgb(129,133,139), -10px 0 rgb(129,133,139);
-  }
-  100% {
-    background-color: rgb(129,133,139);
-    box-shadow: 10px 0 #0003, -10px 0 rgb(129,133,139);
-  }
-}
 //mobile
 .box-filter-shop {
   @apply flex h-[34px] flex-grow items-center gap-6 rounded-md bg-[rgb(233,236,242)] py-[9px] pr-3 mb-4;

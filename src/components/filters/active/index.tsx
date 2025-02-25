@@ -38,7 +38,7 @@ const ActiveFilters = ({activeFilters, AvailableManufacturers}: any) => {
                     title={
                         <div className="filter__title">
                             <h2 className="">فیلتر های فعال</h2>
-                            <LiaAngleDownSolid size={14} color={"#000"}/>
+                            <LiaAngleDownSolid className={"angled"} size={14} color={"#000"}/>
                         </div>
                     }
                     content={

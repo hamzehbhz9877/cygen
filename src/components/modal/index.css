@@ -1,12 +1,15 @@
 .modal {
-  @apply rounded-[16px] h-full md:h-max  mx-auto right-0 left-0 bg-white my-0 md:my-[20px]
-  //max-w-[95%]
-  shadow-[0_0_10px_-5px] w-[650px] relative
-  z-[100] animate-[mmslideOut_.3s_cubic-bezier(0,0,.2,1)];
+  @apply rounded-[0] md:rounded-[16px]   mx-auto right-0 left-0 bg-white my-0 md:my-[20px]
+  shadow-[0_0_10px_-5px] min-h-full md:min-h-[auto] h-max w-full md:w-[650px] relative
+  z-[100]
+  lg:animate-[mmslideOut_.3s_cubic-bezier(0,0,.2,1)];
+}
+.modal.no-full {
+  @apply w-[90%] min-h-max rounded-[16px];
 }
 
 .modal-overlay {
-  @apply fixed flex  inset-0  invisible opacity-0  z-[99999]
+  @apply fixed grid items-center  inset-0  invisible opacity-0  z-[99999]
   overflow-y-auto  bg-[rgb(0,0,0,0.51)];
   @apply transition-all duration-[0.3s] ease-[ease-in-out] delay-[0s];
 }
@@ -14,30 +17,23 @@
   @apply visible opacity-100  !important;
 }
 .modal-overlay--active .modal {
-  @apply animate-[mmslideIn_0.5s_cubic-bezier(0,0,0.2,1)];
-}
-
-.loading-overlay {
-  @apply absolute inset-0 grid content-center;
-}
-.loading-overlay:before {
-  @apply content-[""] absolute inset-0 bg-[rgb(0,0,0,0.28)];
+  @apply lg:animate-[mmslideIn_0.5s_cubic-bezier(0,0,0.2,1)];
 }
 
 @keyframes mmslideIn {
   0% {
-    transform: translateY(-30%);
+    transform: translateY(-100%);
   }
   100% {
-    transform: translateY(0);
+    transform: translateY(0%);
   }
 }
 @keyframes mmslideOut {
   0% {
-    transform: translateY(0);
+    transform: translateY(0%);
   }
   100% {
-    transform: translateY(-40%);
+    transform: translateY(-100%);
   }
 }
 

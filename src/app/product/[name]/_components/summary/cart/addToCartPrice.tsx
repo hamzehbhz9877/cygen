@@ -1,12 +1,12 @@
 import React from 'react';
 import {CiDeliveryTruck, CiShop} from "react-icons/ci";
 import {LiaShippingFastSolid} from "react-icons/lia";
-import {priceDiscount} from "@/helpers/client";
-import Quantity from "@/app/product/[name]/_components/summary/cart/quantity";
-import {TbPhoneCall} from "react-icons/tb";
+import {productStore} from "@/state/product/product";
+import AddToCart from "@/app/product/[name]/_components/summary/cart/addToCart";
 
 const AddToCartPrice = ({product}) => {
 
+    const {changeAttributes} = productStore(d => d)
 
     return (
         <div>
@@ -25,7 +25,7 @@ const AddToCartPrice = ({product}) => {
                         </div>
                     </div>
                     {
-                        product.IsShipEnabled===true ?
+                        product.IsShipEnabled === true ?
                             <>
                                 {product.DeliveryDate ?
 
@@ -50,11 +50,9 @@ const AddToCartPrice = ({product}) => {
                                             </ul>
                                         </div>
                                     </div> : <div className="product-seller-row">
-
                                         <div className="product-seller-row-icon">
                                             <CiDeliveryTruck size={25}/>
                                         </div>
-
                                         <div className="product-seller-row-detail">
                                             <a data-remodal-target="send_modal" className="cursor">
                                                 <div className="product-seller-row-detail-title  send-seller">
@@ -67,7 +65,7 @@ const AddToCartPrice = ({product}) => {
                                         </div>
                                     </div>}
 
-                                {product.IsFreeShipping ?
+                                {changeAttributes?.isFreeShipping ?? product.IsFreeShipping ?
                                     <div className="product-seller-row">
 
                                         <div className="product-seller-row-icon">
@@ -91,52 +89,12 @@ const AddToCartPrice = ({product}) => {
                     }
                 </div>
             </div>
-
-            {product.AddToCart.DisableBuyButton || !product.InStock ? "" :
-                <div className="back_holder">
-                    {product.ProductPrice.HidePrices ? "" :
-                        <>
-                            <div className="old-price">
-                                <div className="old-price__value">
-                                    <del>
-                                        <bdi>{product.ProductPrice.PriceWithDiscountValue ? product.ProductPrice.Price?.split(" ")[0] : product.ProductPrice.OldPrice?.split(" ")[0]}</bdi>
-                                    </del>
-                                </div>
-                                {priceDiscount(product) ?
-                                    <div className="discount">%<p>{priceDiscount(product)}</p></div> : ""}
-                            </div>
-                            <div className='price'>
-                                <bdi>{product.ProductPrice.PriceWithDiscountValue ? product.ProductPrice.PriceWithDiscount.split(" ")[0] : product.ProductPrice.Price?.split(" ")[0]}&nbsp;
-                                    <span
-                                        className="woocommerce-Price-currencySymbol font-light">{product.ProductPrice.PriceWithDiscountValue ? product.ProductPrice.PriceWithDiscount?.split(" ")[1] : product.ProductPrice.Price?.split(" ")[1]}</span>
-                                </bdi>
-                            </div>
-                        </>
-                    }
-                    {product.ProductPrice.CallForPrice ?
-                        <div className="m-[10px]">
-                            <button className={"displayBackInStockSubscription button !flex gap-3"}>
-                                <TbPhoneCall size={20}/>
-                                تماس برای قیمت
-                            </button>
-                        </div>
-                        :
-
-                        <>
-                            <div className="add-to-cart">
-                                <Quantity product={product}/>
-                                <button type="submit" className="button">
-                                    افزودن به سبد خرید
-                                </button>
-                            </div>
-                            <span
-                                className="text-red-500 text-[14px] px-[12px] text-right">{product.AddToCart.MinimumQuantityNotification}</span>
-                        </>
-                    }
-                </div>}
-
+            <div className="back_holder">
+                <AddToCart product={product}/>
+            </div>
         </div>
-    );
+    )
+        ;
 };
 
 export default AddToCartPrice;

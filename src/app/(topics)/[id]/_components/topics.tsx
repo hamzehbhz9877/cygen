@@ -13,7 +13,7 @@ const Topics = ({Body, Title, IsPasswordProtected, Id}: Topic) => {
 
 
     useEffect(() => {
-        if (data)
+        if (Body)
             setData(Body)
     }, [Body])
 

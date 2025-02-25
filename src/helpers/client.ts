@@ -45,11 +45,16 @@ function copyToClipboard(copyMe: any) {
 }
 
 const findKey = (key, data: any) => {
-    const res = data.find(d => d.key === key)?.data
-    if (res === '')
+    if (data) {
+        const res = data.find(d => d.Position === key)?.DynamicLinks
+        if (res === '')
+            return []
+        else
+            return res
+    } else {
         return []
-    else
-        return res
+    }
+
 }
 const priceDiscount = (product) => {
     const discount = product.ProductPrice.PriceWithDiscountValue
@@ -58,6 +63,8 @@ const priceDiscount = (product) => {
     const discountRes = (discount && price) ? (price - discount) / price : (oldPrice && price) ? (oldPrice - price) / oldPrice : null;
     return Math.round(discountRes * 100)
 }
+
+const Discount = (d1, d2) => Math.round(((d1 - d2) / d1) * 100)
 
 function colorIsDarkSimple(bgColor) {
     const color = (bgColor.charAt(0) === '#') ? bgColor.substring(1, 7) : bgColor;
@@ -89,9 +96,9 @@ function toEnglishDigits(num: any) {
 
 function getErrorFromServer(error: any, name: any) {
     const valueRes: any = []
-    Object.entries(error).forEach(([key, value]) => {
+    Object.entries(error).forEach(([key, value]: any) => {
         if (key === name)
-            valueRes.push(value)
+            valueRes.push(value?.length ? value : value)
     })
     return valueRes
 }
@@ -134,8 +141,7 @@ export {
     findKey,
     diffDays,
     averReview,
-    computeRate
-    ,
+    computeRate, Discount,
     copyToClipboard,
     priceDiscount,
     scrolltoHash,

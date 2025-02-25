@@ -10,7 +10,7 @@ import useModal from "@/context/modal/useModal";
 import Login from "@/components/login/index";
 import useTimer from "@/hooks/useTimer";
 import Code from "@/components/input/code/code";
-import {useMutation} from "@tanstack/react-query";
+import {useMutation, useQueryClient} from "@tanstack/react-query";
 import {LoginRegisterVerification, ResendLoginRegisterOtpCode} from "@/services/OtpAuthentication";
 import {showToast} from "@/components/react-toastify/react-toastify";
 import useAuth from "@/context/authentication/useAuth";
@@ -23,6 +23,7 @@ import {
 import Input from "@/components/input/simple";
 import React, {useEffect, useState} from "react";
 import {IoCloseOutline} from "react-icons/io5";
+import {useRouter, useSearchParams} from "next/navigation";
 
 
 type Props = {
@@ -31,8 +32,8 @@ type Props = {
     OtpExpireDateTotalSeconds: number,
     RegisterRequired: boolean
 }
-const AutoSubmitToken = ():any => {
-    const {values, submitForm}:any = useFormikContext();
+const AutoSubmitToken = (): any => {
+    const {values, submitForm}: any = useFormikContext();
     React.useEffect(() => {
         if (values.OtpCode.toString().length === 5) {
             submitForm();
@@ -45,21 +46,31 @@ const Otp = ({MobileNumber, OtpExpireDateTotalSeconds, AuthenticationToken, Regi
 
     const [timer, setTimer] = useState() as any
 
+    const query = useSearchParams()
+    const router = useRouter()
+
     useEffect(() => {
         setTimer(OtpExpireDateTotalSeconds)
     }, [OtpExpireDateTotalSeconds])
 
     const {openModal, closeModal} = useModal()
 
-    const {setUserCookie,resetGuestCookie} = useAuth()
+    const {setUserCookie, resetGuestCookie} = useAuth()
 
+
+    const queryClient = useQueryClient()
 
     const {mutate, isPending, error} = useMutation<any, any, any, any>({
         mutationFn: LoginRegisterVerification, onSuccess: (data) => {
             setUserCookie(data)
             resetGuestCookie()
             closeModal()
+            queryClient.invalidateQueries({queryKey: ["FlyoutShoppingCart"]})
+            queryClient.invalidateQueries({queryKey: ["ShoppingCart"]})
             showToast("success", 'عملیات با موفقیت انجام شد')
+            if (query.get('redirectUrl')) {
+                router.push(query.get('redirectUrl'))
+            }
         }
     });
 
@@ -124,18 +135,18 @@ const Otp = ({MobileNumber, OtpExpireDateTotalSeconds, AuthenticationToken, Regi
                                         }
                                         <div className="label">
                                             کد تایید را وارد کنید
-                                            <span className="phone-number" style={{direction:"ltr"}}>{
-                                                MobileNumber.slice(0, 4) + "***"+MobileNumber.slice(7)}</span>
+                                            <span className="phone-number" style={{direction: "ltr"}}>{
+                                                MobileNumber.slice(0, 4) + "***" + MobileNumber.slice(7)}</span>
                                         </div>
 
                                         <Input onKeyPress={(e) => {
-                                            const {value, maxLength}:any = e.target;
+                                            const {value, maxLength}: any = e.target;
                                             if (String(value).length >= maxLength) {
                                                 e.preventDefault();
                                                 return;
                                             }
                                         }} maxLength={5} className="text-center text-[18px] tracking-[11px]"
-                                               placeholder={ new Array(5).fill("-").join('')}
+                                               placeholder={new Array(5).fill("-").join('')}
                                                error={error} type={'number'} label={''}
                                                name={"OtpCode"}/>
 

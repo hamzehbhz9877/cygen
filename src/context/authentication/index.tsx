@@ -4,32 +4,37 @@ import {createContext, ReactNode, useEffect, useState} from "react";
 import {useRouter} from "next/navigation";
 
 import Cookie from 'universal-cookie'
-import {useQuery} from "@tanstack/react-query";
+import {useQuery, useQueryClient} from "@tanstack/react-query";
 import {GetGuestCustomer} from "@/services/OtpAuthentication";
 
 export const AuthProvider = createContext({} as any);
 
-type Props= {
+type Props = {
     children: ReactNode
 }
 
 
-const Auth= ({children}:Props) => {
+const Auth = ({children}: Props) => {
 
-    const cookie=new Cookie()
+    const cookie = new Cookie()
 
 
     const router = useRouter();
 
     const [user, setUser] = useState<any>(null);
 
+    const queryClient = useQueryClient()
 
-    const {data} = useQuery({queryKey:["guest"],
-        queryFn: GetGuestCustomer,enabled:cookie.get("guest") === undefined && cookie.get('user')===undefined
+
+    const {data} = useQuery({
+        queryKey: ["guest"],
+        queryFn: GetGuestCustomer, enabled: cookie.get("guest") === undefined && cookie.get('user') === undefined
     });
 
     const resetUserCookie = async () => {
-        await cookie.remove("user",{path:"/"});
+        await cookie.remove("user", {path: "/"});
+        await queryClient.invalidateQueries({queryKey: ["FlyoutShoppingCart"]})
+        await queryClient.invalidateQueries({queryKey: ["ShoppingCart"]})
         setUser(null)
         router.push("/");
     };
@@ -40,15 +45,15 @@ const Auth= ({children}:Props) => {
     };
 
     useEffect(() => {
-        setUser(user?user:cookie.get('user'));
+        setUser(user ? user : cookie.get('user'));
     }, [user]);
 
-    useEffect(()=>{
-        if(data)
+    useEffect(() => {
+        if (data)
             cookie.set("guest", data.data, {path: "/"});
-    },[data])
+    }, [data])
 
-    const resetGuestCookie=()=>{
+    const resetGuestCookie = () => {
         cookie.remove('guest')
     }
 

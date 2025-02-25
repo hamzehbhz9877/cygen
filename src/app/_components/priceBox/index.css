@@ -1,0 +1,32 @@
+.priceBox {
+  @apply w-full lg:w-[344px] h-max bg-white py-[24px] px-[16px] rounded-[16px] border border-[#E3E3E3];
+}
+.priceBox .item {
+  @apply flex justify-between items-center text-[18px];
+}
+.priceBox .item.product-cart {
+  @apply text-[#979797];
+}
+.priceBox .item.discount:first-child {
+  @apply text-[#5E5E5E];
+}
+.priceBox .item.discount:last-child {
+  @apply text-[#ED303D];
+}
+.priceBox .item .total {
+  @apply font-bold text-[#5E5E5E];
+}
+.priceBox .item .payable {
+  @apply text-[#2F2F2F] font-bold;
+}
+.priceBox button.proc {
+  @apply w-full bg-[#ED303D] py-[14px] rounded-[16px] text-white text-[16px] md:text-[18px] font-bold mt-[30px];
+}
+.priceBox button.proc.inactive {
+  @apply bg-[#CBCBCB] cursor-not-allowed;
+}
+.priceBox hr {
+  @apply h-[1px] w-full text-[#E6E6E6] my-[16px];
+}
+
+/*# sourceMappingURL=index.css.map */

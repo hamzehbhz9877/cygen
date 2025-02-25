@@ -10,7 +10,7 @@ import {RiSearch2Line} from "react-icons/ri";
 import useOverlay from "@/context/overlay/useOverlay";
 import MenuMobile from "@/layout/header/mobile/menu";
 import SearchMobile from "@/layout/header/mobile/search";
-import Addtocart from "@/layout/header/mobile/addtocart";
+import Addtocart from "@/layout/header/mobile/addToCartFloat";
 
 const HeaderMobile = () => {
 

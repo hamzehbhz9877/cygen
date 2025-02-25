@@ -1,11 +1,12 @@
 'use client'
 
-import {ReactNode, useCallback, useState} from "react";
+import {ReactNode, useCallback, useEffect, useState} from "react";
 
 const UseModal = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalData, setModalData] = useState<ReactNode | null>(null);
     const [options, setOptions] = useState<any>(null);
+
 
     const handleOpen = useCallback((data: ReactNode, options?: any) => {
         //@ts-ignore
@@ -19,17 +20,17 @@ const UseModal = () => {
 
     const handleClose = useCallback(() => {
         //@ts-ignore
-        if (!document.querySelector('.overlay.index-selection'))
-        {
+        if (!document.querySelector('.overlay.index-selection')) {
             //@ts-ignore
             document.querySelector("body").style.overflowY = 'auto'
         }
-        console.log("video")
+        setTimeout(()=>{
+            setModalData(null);
+        },1000)
+
         document.querySelectorAll("iframe").forEach((iframe: any) => {
             iframe.src = iframe.src;
         })
-
-
         setIsModalOpen(false)
     }, []);
 

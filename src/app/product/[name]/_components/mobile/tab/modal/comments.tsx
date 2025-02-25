@@ -8,7 +8,7 @@ import RateReview from "@/app/product/[name]/_components/tabs/comments/rate/revi
 import product from "@/components/product/loader/product";
 import {getQueryClient} from "@/utils/get-query-client";
 import {keepPreviousData, useMutation, useQuery} from "@tanstack/react-query";
-import {AddHelpfulness, GetComments} from "@/services/product";
+import {AddHelpfulness, GetComments} from "@/services/Product";
 import {showToast} from "@/components/react-toastify/react-toastify";
 import LogoLoader from "@/components/loading/logoLoader";
 import parse from "html-react-parser";

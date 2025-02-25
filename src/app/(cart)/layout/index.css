@@ -1,0 +1,18 @@
+.cart-header {
+  @apply bg-white flex-col flex items-center justify-center;
+}
+.cart-header .logo img {
+  @apply w-[82px] md:w-[100px];
+}
+.cart-header .process {
+  @apply flex  justify-between items-center;
+}
+.cart-header .process div.proc {
+  @apply top-[15px] z-[10] lg:top-0  relative flex items-center gap-[8px] text-[#979797] bg-[#F2F2F2] rounded-[16px] p-[14px];
+}
+.cart-header .process div.proc.active {
+  @apply text-[#5E5E5E] bg-white px-[14px] lg:px-[22px];
+  box-shadow: 0 2px 11px -4px rgba(0, 0, 0, 0.12);
+}
+
+/*# sourceMappingURL=index.css.map */

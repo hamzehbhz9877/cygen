@@ -23,8 +23,8 @@ const NewsBlogsDetails = ({data, news}) => {
         <div className=" my-[20px]">
             <div className="breadcrumb-wrapper">
                 <Breadcrumb data={[{
-                    Name: 'اخبار',
-                    SeName: '/news'
+                    Name: news?'اخبار':"مقاله",
+                    SeName: news?'/news':"/blogs"
                 }, {
                     Name: data.Title,
                     SeName: ''
@@ -43,7 +43,7 @@ const NewsBlogsDetails = ({data, news}) => {
 
 
                 <div className="header-content-post">
-                    <div className="flex justify-between items-center">
+                    <div className="flex flex-wrap gap-[10px] justify-between items-center">
                         <h1 className="title-cont">
                             {data.Title} </h1>
 

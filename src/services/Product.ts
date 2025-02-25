@@ -17,6 +17,8 @@ export const GetRelatedProducts = async (query: any) => {
     })
 })
 }
+export const GetProductCombinations =  (id) =>
+    instant.get(`Product/GetProductCombinations?productId=${id}`)
 
 export const GetComments =(id)=>instant.get(`Product/GetProductReviews?productId=${id}`)
 export const AddHelpfulness =({id, wasHelpful})=>

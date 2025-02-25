@@ -18,7 +18,7 @@ const Collapse = ({title, content, withAnimation=true,isOpen = false}: Props) =>
     const collapseRef = useRef<any>(null)
 
     const handleCollapseContent = () => {
-        const icon=collapseRef.current.querySelector('.collapse__title svg')
+        const icon=collapseRef.current.querySelector('.collapse__title .angled')
         if (contentRef.current.classList.contains("collapse__content--show")) {
             contentRef.current.style.maxHeight =contentRef.current.scrollHeight + "px";
             setTimeout(()=>{
@@ -44,7 +44,7 @@ const Collapse = ({title, content, withAnimation=true,isOpen = false}: Props) =>
             setTimeout(()=>{
                 contentRef.current.style.maxHeight ='max-content';
             },200)
-            const icon=collapseRef.current.querySelector('.collapse__title svg')
+            const icon=collapseRef.current.querySelector('.collapse__title .angled')
             icon.classList.add("rotate")
         }
     }, [isOpen]);

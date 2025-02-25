@@ -12,19 +12,18 @@ $modal-z-index: 100;
 
 .modal {
   @apply rounded-[0] md:rounded-[16px]   mx-auto right-0 left-0 bg-white my-0 md:my-[20px]
-  top-auto
-  lg:top-1/2 -translate-y-0  lg:-translate-y-1/2
-  //max-w-[95%]
-  shadow-[0_0_10px_-5px] min-h-full md:min-h-[auto] h-max w-[650px] relative
+  shadow-[0_0_10px_-5px] min-h-full md:min-h-[auto] h-max w-full md:w-[650px] relative
   z-[#{$modal-z-index}]
-
   lg:animate-[mmslideOut_.3s_cubic-bezier(0,0,.2,1)];
-
+  &.no-full{
+    @apply w-[90%] min-h-max rounded-[16px];
+  }
 }
 
 
+
 .modal-overlay {
-  @apply fixed flex  inset-0  invisible opacity-0  z-[#{$modal-overlay-z-index}]
+  @apply fixed grid items-center  inset-0  invisible opacity-0  z-[#{$modal-overlay-z-index}]
   overflow-y-auto  bg-[rgb(0,0,0,#{$modal-overlay-background})];
   @apply transition-all duration-[0.3s] ease-[ease-in-out] delay-[0s];
   &--active {
@@ -48,14 +47,14 @@ $modal-z-index: 100;
   }
 
   100% {
-    transform: translateY(-50%);
+    transform: translateY(0%);
   }
 }
 
 
 @keyframes mmslideOut {
   0% {
-    transform: translateY(-50%);
+    transform: translateY(0%);
   }
 
   100% {

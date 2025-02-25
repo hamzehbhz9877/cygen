@@ -35,7 +35,7 @@ const NewsDetails = ({data}) => {
 
 
                 <div className="header-content-post">
-                    <div className="flex justify-between items-center">
+                    <div className="flex flex-wrap gap-[10px] justify-between items-center">
                         <h1 className="title-cont">
                             {data.Title} </h1>
 

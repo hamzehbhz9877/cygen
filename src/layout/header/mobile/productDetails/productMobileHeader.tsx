@@ -2,51 +2,71 @@
 import React, {useEffect, useRef} from 'react';
 import Link from "next/link";
 import {useRouter} from "next/navigation";
-import {PiShoppingCartSimpleLight} from "react-icons/pi";
+import {PiPlayLight, PiShare, PiShoppingCartSimpleLight} from "react-icons/pi";
 import {CiHeart, CiMenuKebab} from "react-icons/ci";
 import {SlHeart} from "react-icons/sl";
-import More from "@/layout/header/mobile/productDetails/more";
+import {HiArrowRight} from "react-icons/hi";
+import Image from "next/image";
+import {useQuery, useSuspenseQuery} from "@tanstack/react-query";
+import {GetSiteSettingsQuery} from "@/services/Common";
+import {FlyoutShoppingCart} from "@/services/ShoppingCart";
+import Share from "@/app/product/[name]/_components/slider/modal/share";
+import FilesModal from "@/app/product/[name]/_components/slider/filesModal";
+import More from "@/components/modal/slideIn";
+import useSlideInModal from "@/hooks/useSlideinModal";
+import useModal from "@/context/modal/useModal";
 import useOverlay from "@/context/overlay/useOverlay";
 import useClickOutside from "@/hooks/useOutsideClick";
-import {HiArrowRight} from "react-icons/hi";
-import Logo from "@/layout/header/top/logo";
-import Image from "next/image";
-import {useSuspenseQuery} from "@tanstack/react-query";
-import {GetSiteSettingsQuery} from "@/services/Common";
+import UseSlideinModal from "@/hooks/useSlideinModal";
 
 const ProductMobileHeader = ({product}) => {
     const router = useRouter()
+
+
     const {data} = useSuspenseQuery(GetSiteSettingsQuery)
 
-    const {toggleOverlay, classname} = useOverlay()
+    const {handleMore,isOpen,close,moreRef} = UseSlideinModal()
 
-    useEffect(() => {
-        classname("!z-[100]")
-        return () => {
-            classname("!z-[1]");
-        }
-    }, [])
 
-    const handleMore = () => {
-        document.querySelector(".more").classList.add("open");
-        toggleOverlay(true)
-    }
-    const moreRef = useRef<HTMLLIElement | null>(null)
 
-    const close = () => {
-        document.querySelector('.more').classList.remove("open")
-        toggleOverlay(false)
-    }
+    const {closeModal, openModal} = useModal()
 
-    useClickOutside(moreRef, () => {
-        if (document.querySelector('.more').classList.contains("open")) {
-            close()
-        }
+    const {data: cart} = useQuery({
+        queryKey: ["FlyoutShoppingCart"],
+        queryFn: FlyoutShoppingCart,
     })
 
     return (
         <div>
-            <More product={product} close={close}/>
+            <More isOpen={isOpen}>
+                <ul>
+                    <li>
+                        <a rel="nofollow" onClick={() => {
+                            close()
+                            openModal(<Share close={closeModal}/>, {className: "!w-max "})
+                        }}
+                        >
+                            <PiShare size={22} className="me-[15px]" color={"#4b4f58"}/>
+                            <span>به اشتراگ گذاری</span>
+                        </a>
+                    </li>
+                    {
+                        product.VideoModels.length > 0 ?
+                            <li>
+                                <a rel="nofollow" onClick={() => {
+                                    close()
+                                    openModal(<FilesModal data={product} type={"video"}
+                                                          index={product.PictureModels.length} close={closeModal}/>,
+                                        {className: "!w-full !rounded-none !h-auto !m-0"})
+                                }}
+                                >
+                                    <PiPlayLight size={22} className="me-[15px]" color={"#4b4f58"}/>
+                                    <span>ویدیو محصول</span>
+                                </a>
+                            </li> : ""}
+                </ul>
+            </More>
+
             <div className="head">
                 <div className="right-header-box">
                     <a id="backer-button" className="backer-button" role={"button"} onClick={() => router.back()}>
@@ -61,9 +81,9 @@ const ProductMobileHeader = ({product}) => {
                     <ul className="product-tooltips">
 
                         <li className="carter-mobiler">
-                            <Link href="/" className="relative">
+                            <Link href="/cart" className="relative">
                                 <PiShoppingCartSimpleLight size={24} color={"#162C5B"}/>
-                                <em className="mini_cart_counter ">0</em>
+                                <em className="mini_cart_counter ">{cart?.data.TotalProducts ?? 0}</em>
                             </Link>
                         </li>
 

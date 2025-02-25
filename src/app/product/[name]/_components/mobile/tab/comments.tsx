@@ -12,7 +12,7 @@ import LogoLoader from "@/components/loading/logoLoader";
 import {showToast} from "@/components/react-toastify/react-toastify";
 import {getQueryClient} from "@/utils/get-query-client";
 import {keepPreviousData, useMutation, useQuery} from "@tanstack/react-query";
-import {AddHelpfulness, GetComments} from "@/services/product";
+import {AddHelpfulness, GetComments} from "@/services/Product";
 import parse from "html-react-parser";
 import DOMPurify from "dompurify";
 import Login from "@/components/login";
@@ -59,7 +59,6 @@ const Comments = ({product}: Props) => {
                 <a className="insert_comment_mobile" role={"button"}
                    onClick={() =>user? openModal(<AddComment product={product} closeModal={closeModal}/>,{className:"!rounded-[0]"}):openModal(<Login/>, {className: "login"})}>
                     {user?'افزودن نظر جدید +':'ورود به حساب کاربری'}
-
                     </a>
             </div>
 
@@ -90,7 +89,7 @@ const Comments = ({product}: Props) => {
                                         <div>
                                             <div id="674d9eec7a6ef8ed12251cb4"
                                                  className="overflow-hidden text-ellipsis whitespace-pre-line text-base font-semiBold
-                                                  leading-[30px] text-dynamic-color-from lg:text-[17px]  line-clamp-3 max-h-[90px]">{DOMPurify.sanitize(comment.ReviewText,{ FORCE_BODY: true,
+                                                  leading-[30px] text-dynamic-color-from lg:text-[17px]  line-clamp-3 max-h-[90px]">{DOMPurify?.sanitize(comment.ReviewText,{ FORCE_BODY: true,
                                                 ADD_TAGS: ['script']})}</div>
                                         </div>
                                         {

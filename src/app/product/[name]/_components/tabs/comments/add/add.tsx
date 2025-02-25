@@ -4,7 +4,7 @@ import {IoCloseCircleOutline} from "react-icons/io5";
 import * as Yup from "yup";
 import Image from "next/image";
 import {useMutation} from "@tanstack/react-query";
-import {AddComments} from "@/services/product";
+import {AddComments} from "@/services/Product";
 import {ErrorMessage, Form, Formik} from "formik";
 import "./index.scss"
 import Input from "@/components/input/simple";

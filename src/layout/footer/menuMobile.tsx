@@ -13,7 +13,7 @@ const MenuMobile = ({Name, Url, OpenInNewPage, childs}: dynamicLinksType[0] & { 
                 title={
                     <div>
                         <span>آیتم</span>
-                        <LiaAngleDownSolid size={14} color={"#000"}/>
+                        <LiaAngleDownSolid className={"angled"} size={14} color={"#000"}/>
                     </div>
                 }
                 content={

@@ -1,13 +1,20 @@
-import {NextResponse} from "next/server";
+import {NextRequest, NextResponse} from "next/server";
 import {fetchAPi} from "@/hooks/fetch";
 
-export async function middleware(req) {
+
+const loggedInRoutes = ["/shipping", "/payment"];
+
+export async function middleware(req:NextRequest) {
 
 
-    const res = await fetchAPi({url:'https://api.cygenco.com/api/AdvanceRedirect/RedirectRecords'});
+    const res = await fetchAPi({url: 'https://api.cygenco.com/api/AdvanceRedirect/RedirectRecords'});
+
+    const guest = req.cookies.get("guest")
+    const user = req.cookies.get("user")
 
 
     const redirect = res.find((redirect) => decodeURIComponent(req.nextUrl.pathname) === redirect.OldUrl);
+
 
 
     if (redirect) {
@@ -17,6 +24,12 @@ export async function middleware(req) {
             return NextResponse.redirect(new URL(redirect.NewUrl), statusCode);
         }
         return NextResponse.redirect(new URL(redirect.NewUrl, req.url), statusCode);
+    }
+
+    if (
+        !user && loggedInRoutes.some((path) => req.nextUrl.pathname.startsWith(path))
+    ) {
+        return NextResponse.redirect(req.nextUrl.origin);
     }
 
     const response = NextResponse.next()
